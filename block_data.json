@@ -13147,6 +13147,9 @@
         "BookcaseTile",
         "GenericShelfTile",
         "PotionShelfTile",
-        "ArmorStandTile"
+        "ArmorStandTile",
+        "biblioClockTile",
+        "WeaponCaseTile",
+        "fancySignTile"
     ]
 }
