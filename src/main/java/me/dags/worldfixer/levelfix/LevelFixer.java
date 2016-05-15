@@ -58,16 +58,15 @@ public class LevelFixer {
     }
 
     private Result processEntry(CompoundTag tag) {
-        String name = tag.getTag("K").getValue().toString().toLowerCase().trim();
+        String name = tag.getTag("K").getValue().toString().toLowerCase();
         if (name.contains("minecraft:")) {
-            tag.setTag("K", new StringTag("K", name));
             return Result.KEEP;
         }
         if (name.contains("biblio")) {
             return Result.DISCARD;
         }
         name = correctBlockName(name);
-        if (config.removeBlocks.containsKey(name)) {
+        if (config.removeBlocks.containsKey(name.trim())) {
             return Result.DISCARD;
         }
         tag.setTag("K", new StringTag("K", name));
