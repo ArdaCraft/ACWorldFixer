@@ -38,7 +38,7 @@ class SetupWindow extends JPanel {
         chooseDir.addActionListener(choose(targetDir));
 
         targetConfig.setPreferredSize(new Dimension(fullWidth, lineHeight));
-        targetConfig.setText("https://your-mom.com");
+        targetConfig.setText("https://raw.githubusercontent.com/ArdaCraft/ACWorldFixer/master/block_data.json");
 
         cores.setPreferredSize(new Dimension(fullWidth, 35));
         cores.setMinimum(1);
