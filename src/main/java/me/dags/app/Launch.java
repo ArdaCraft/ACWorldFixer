@@ -1,11 +1,14 @@
 package me.dags.app;
 
+import java.awt.GridBagLayout;
+
+import javax.swing.JFrame;
+import javax.swing.UIManager;
+import javax.swing.WindowConstants;
+
 import me.dags.blockinfo.BlockInfo;
 import me.dags.blockinfo.Config;
 import me.dags.data.node.NodeAdapters;
-
-import javax.swing.*;
-import java.awt.*;
 
 /**
  * @author dags <dags@dags.me>

@@ -5,7 +5,11 @@
 
 package org.pepsoft.minecraft;
 
-import static org.pepsoft.minecraft.Constants.*;
+import static org.pepsoft.minecraft.Constants.BLK_BEDROCK;
+import static org.pepsoft.minecraft.Constants.BLK_DIRT;
+import static org.pepsoft.minecraft.Constants.BLK_GRASS;
+import static org.pepsoft.minecraft.Constants.BLK_STONE;
+import static org.pepsoft.minecraft.Constants.SUPPORTED_VERSION_1;
 
 /**
  *

@@ -5,6 +5,26 @@
 
 package org.pepsoft.minecraft;
 
+import static org.pepsoft.minecraft.Constants.BLK_AIR;
+import static org.pepsoft.minecraft.Constants.TAG_ADD;
+import static org.pepsoft.minecraft.Constants.TAG_BIOMES;
+import static org.pepsoft.minecraft.Constants.TAG_BLOCKS;
+import static org.pepsoft.minecraft.Constants.TAG_BLOCK_LIGHT;
+import static org.pepsoft.minecraft.Constants.TAG_DATA;
+import static org.pepsoft.minecraft.Constants.TAG_ENTITIES;
+import static org.pepsoft.minecraft.Constants.TAG_HEIGHT_MAP;
+import static org.pepsoft.minecraft.Constants.TAG_INHABITED_TIME;
+import static org.pepsoft.minecraft.Constants.TAG_LAST_UPDATE;
+import static org.pepsoft.minecraft.Constants.TAG_LEVEL;
+import static org.pepsoft.minecraft.Constants.TAG_LIGHT_POPULATED;
+import static org.pepsoft.minecraft.Constants.TAG_SECTIONS;
+import static org.pepsoft.minecraft.Constants.TAG_SKY_LIGHT;
+import static org.pepsoft.minecraft.Constants.TAG_TERRAIN_POPULATED;
+import static org.pepsoft.minecraft.Constants.TAG_TILE_ENTITIES;
+import static org.pepsoft.minecraft.Constants.TAG_X_POS;
+import static org.pepsoft.minecraft.Constants.TAG_Y2;
+import static org.pepsoft.minecraft.Constants.TAG_Z_POS;
+
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -15,7 +35,6 @@ import java.util.stream.Collectors;
 
 import org.jnbt.CompoundTag;
 import org.jnbt.Tag;
-import static org.pepsoft.minecraft.Constants.*;
 
 /**
  * An "Anvil" chunk.

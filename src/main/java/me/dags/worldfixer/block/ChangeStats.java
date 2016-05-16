@@ -1,15 +1,22 @@
-package me.dags.worldfixer.blockfix;
+package me.dags.worldfixer.block;
 
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Dimension;
+import java.awt.GridLayout;
 import java.text.NumberFormat;
 import java.util.concurrent.atomic.AtomicInteger;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.WindowConstants;
 
 /**
  * @author dags <dags@dags.me>
  */
 public class ChangeStats {
 
+    private static final AtomicInteger regionsComplete = new AtomicInteger(0);
+    private static final AtomicInteger chunksComplete = new AtomicInteger(0);
     private static final AtomicInteger blockChanges = new AtomicInteger(0);
     private static final AtomicInteger entitiesRemoved = new AtomicInteger(0);
     private static final AtomicInteger tileEntitiesRemoved = new AtomicInteger(0);
@@ -17,12 +24,24 @@ public class ChangeStats {
     private static long start = 0L;
     private static long finish = 0L;
 
-    static void punchIn() {
+    public static int getProgress() {
+        return regionsComplete.get();
+    }
+
+    public static void punchIn() {
         start = System.currentTimeMillis();
     }
 
-    static void punchOut() {
+    public static void punchOut() {
         finish = System.currentTimeMillis();
+    }
+
+    static void incRegionsCount() {
+        regionsComplete.addAndGet(1);
+    }
+
+    static void incChunkCount() {
+        chunksComplete.addAndGet(1);
     }
 
     static void incBlockCount() {
@@ -37,9 +56,9 @@ public class ChangeStats {
         tileEntitiesRemoved.getAndAdd(1);
     }
 
-    static void displayResults(int regionCount, int cores) {
+    public static void displayResults(int regionCount, int cores) {
         JFrame frame = new JFrame();
-        frame.add(getStats(regionCount, cores));
+        frame.add(getStats(cores));
         frame.pack();
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
@@ -47,47 +66,52 @@ public class ChangeStats {
         frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
     }
 
-    private static JPanel getStats(int regionCount, int cores) {
+    private static JPanel getStats(int cores) {
+        int chunks = chunksComplete.get();
         int blocks = blockChanges.get();
         int entities = entitiesRemoved.get();
         int tileEntities = tileEntitiesRemoved.get();
-        int totalBlocks = regionCount * 32 * 16 * 16 * 256;
+        int totalBlocks = chunks * 16 * 16 * 256;
 
         double time = (finish - start) / 1000D;
         double bps = totalBlocks / time;
-        double rps = regionCount / time;
+        double rps = getProgress() / time;
 
         JPanel panel = new JPanel();
 
-        panel.setLayout(new GridLayout(12, 1));
-        JLabel rp = new JLabel("Regions processed: " + numFormat(regionCount));
+        panel.setLayout(new GridLayout(14, 1));
+        JLabel rp = new JLabel(" Regions processed: " + numFormat(getProgress()));
         rp.setPreferredSize(new Dimension(250, 25));
 
-        JLabel bp = new JLabel("Blocks processed: " + numFormat(totalBlocks));
+        JLabel cp = new JLabel(" Chunks processed: " + numFormat(chunks));
+        cp.setPreferredSize(new Dimension(250, 25));
+
+        JLabel bp = new JLabel(" Blocks processed: " + numFormat(totalBlocks));
         bp.setPreferredSize(new Dimension(250, 25));
 
-        JLabel bc = new JLabel("Blocks changed: " + numFormat(blocks));
+        JLabel bc = new JLabel(" Blocks changed: " + numFormat(blocks));
         bc.setPreferredSize(new Dimension(250, 25));
 
-        JLabel er = new JLabel("Entities removed: " + numFormat(entities));
+        JLabel er = new JLabel(" Entities removed: " + numFormat(entities));
         er.setPreferredSize(new Dimension(250, 25));
 
-        JLabel tr = new JLabel("TileEntities removed: " + numFormat(tileEntities));
+        JLabel tr = new JLabel(" TileEntities removed: " + numFormat(tileEntities));
         tr.setPreferredSize(new Dimension(250, 25));
 
-        JLabel tt = new JLabel("Time taken: " + numFormat(time) + "s");
+        JLabel tt = new JLabel(" Time taken: " + numFormat(time) + "s");
         tt.setPreferredSize(new Dimension(250, 25));
 
-        JLabel bPS = new JLabel("Blocks per second: " + numFormat(bps));
+        JLabel bPS = new JLabel(" Blocks per second: " + numFormat(bps));
         bPS.setPreferredSize(new Dimension(250, 25));
 
-        JLabel rPS = new JLabel("Regions per second: " + numFormat(rps));
+        JLabel rPS = new JLabel(" Regions per second: " + numFormat(rps));
         rPS.setPreferredSize(new Dimension(250, 25));
 
-        JLabel cU = new JLabel("Cores used: " + cores);
+        JLabel cU = new JLabel(" Cores used: " + cores);
         cU.setPreferredSize(new Dimension(250, 25));
 
         panel.add(rp);
+        panel.add(cp);
         panel.add(bp);
         panel.add(bc);
         panel.add(er);

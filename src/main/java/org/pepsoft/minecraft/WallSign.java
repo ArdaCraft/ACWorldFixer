@@ -4,8 +4,13 @@
  */
 package org.pepsoft.minecraft;
 
+import static org.pepsoft.minecraft.Constants.ID_SIGN;
+import static org.pepsoft.minecraft.Constants.TAG_TEXT1;
+import static org.pepsoft.minecraft.Constants.TAG_TEXT2;
+import static org.pepsoft.minecraft.Constants.TAG_TEXT3;
+import static org.pepsoft.minecraft.Constants.TAG_TEXT4;
+
 import org.jnbt.CompoundTag;
-import static org.pepsoft.minecraft.Constants.*;
 
 /**
  *

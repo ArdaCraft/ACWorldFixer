@@ -4,8 +4,9 @@
  */
 package org.pepsoft.minecraft;
 
+import static org.pepsoft.minecraft.Constants.TAG_PROFESSION;
+
 import org.jnbt.CompoundTag;
-import static org.pepsoft.minecraft.Constants.*;
 
 /**
  *

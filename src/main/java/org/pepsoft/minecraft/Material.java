@@ -4,13 +4,13 @@
  */
 package org.pepsoft.minecraft;
 
-import java.awt.*;
+import static org.pepsoft.minecraft.Block.BLOCK_TYPE_NAMES;
+import static org.pepsoft.minecraft.Constants.*;
+
+import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.ObjectStreamException;
 import java.io.Serializable;
-
-import static org.pepsoft.minecraft.Block.BLOCK_TYPE_NAMES;
-import static org.pepsoft.minecraft.Constants.*;
 
 /**
  *
@@ -27,7 +27,7 @@ public final class Material implements Serializable, Comparable<Material> {
 
     /**
      * Get the cardinal direction this block is pointing, if applicable.
-     * 
+     *
      * @return The cardinal direction in which this block is pointing, or
      *     <code>null</code> if it has no direction, or is not pointing in a
      *     cardinal direction (but for instance up or down)
@@ -276,11 +276,11 @@ public final class Material implements Serializable, Comparable<Material> {
         }
         return null;
     }
-    
+
     /**
      * Get a material that is pointing in the specified direction, if applicable
      * for the block type. Throws an exception otherwise.
-     * 
+     *
      * @param direction The direction in which the returned material should
      *     point
      * @return A material with the same block type, but pointing in the
@@ -545,11 +545,11 @@ public final class Material implements Serializable, Comparable<Material> {
         }
         throw new IllegalArgumentException("Block type " + blockType + " has no direction");
     }
-    
+
     /**
      * If applicable, return a Material that is rotated a specific number of
      * quarter turns.
-     * 
+     *
      * @param steps The number of 90 degree turns to turn the material
      *     clockwise. May be negative to turn the material anti clockwise
      * @return The rotated material (or the same one if rotation does not apply
@@ -611,11 +611,11 @@ public final class Material implements Serializable, Comparable<Material> {
                 }
         }
     }
-    
+
     /**
      * If applicable, return a Material that is the mirror image of this one in
      * a specific axis.
-     * 
+     *
      * @param axis Indicates the axis in which to mirror the material.
      * @return The mirrored material (or the same one if mirroring does not
      *     apply to this material)
@@ -812,13 +812,13 @@ public final class Material implements Serializable, Comparable<Material> {
      * Indicates whether the material has an associated image which can be
      * retrieved with the {@link #getImage(BufferedImage)} or painted with the
      * {@link #paintImage(Graphics2D, int, int, BufferedImage)} method.
-     * 
-     * @return <code>true</code> if this material has an associated image. 
+     *
+     * @return <code>true</code> if this material has an associated image.
      */
     public boolean hasImage() {
         return (blockType < 256) && (TEXTURE_OFFSETS[blockType] != 0);
     }
-    
+
     /**
      * Gets the relevant image for this material from the specified Minecraft
      * texture pack terrain image.
@@ -832,12 +832,12 @@ public final class Material implements Serializable, Comparable<Material> {
             return null;
         }
     }
-    
+
     /**
      * Paints the relevant image for this material from the specified Minecraft
      * texture pack terrain image to the specified location on a graphics
      * canvas.
-     * 
+     *
      * @param g2 The graphics canvas to paint the image on.
      * @param x The X coordinate to paint the image to.
      * @param y The Y coordinate to paint the image to.
@@ -850,11 +850,11 @@ public final class Material implements Serializable, Comparable<Material> {
             g2.drawImage(terrain, x, y, x + 16, y + 16, imageX, imageY, imageX + 16, imageY + 16, null);
         }
     }
-    
+
     public static Material get(int blockType) {
         return get(blockType, 0);
     }
-    
+
     public static Material get(int blockType, int data) {
         return MATERIALS[(blockType << 4) | data];
     }
@@ -896,7 +896,7 @@ public final class Material implements Serializable, Comparable<Material> {
     }
 
     // Comparable
-    
+
     @Override
     public int compareTo(Material o) {
         if (blockType != o.blockType) {
@@ -905,23 +905,23 @@ public final class Material implements Serializable, Comparable<Material> {
             return data - o.data;
         }
     }
-    
+
     private Object readResolve() throws ObjectStreamException {
         return MATERIALS[(blockType << 4) | data];
     }
-    
+
     public final int blockType, data;
     public final transient int index;
     public final transient Block block;
-    
+
     private static final Material[] MATERIALS = new Material[65536];
-    
+
     static {
         for (int i = 0; i < 65536; i++) {
             MATERIALS[i] = new Material(i >> 4, i & 0xF);
         }
     }
-    
+
     public static final Material AIR                   = get(BLK_AIR);
     public static final Material DANDELION             = get(BLK_DANDELION);
     public static final Material ROSE                  = get(BLK_ROSE);
@@ -1020,21 +1020,21 @@ public final class Material implements Serializable, Comparable<Material> {
     public static final Material WOOD_JUNGLE   = get(BLK_WOOD, DATA_JUNGLE);
     public static final Material WOOD_ACACIA   = get(BLK_WOOD2, DATA_ACACIA);
     public static final Material WOOD_DARK_OAK = get(BLK_WOOD2, DATA_DARK_OAK);
-    
+
     public static final Material LEAVES_OAK      = get(BLK_LEAVES, DATA_OAK);
     public static final Material LEAVES_BIRCH    = get(BLK_LEAVES, DATA_BIRCH);
     public static final Material LEAVES_PINE     = get(BLK_LEAVES, DATA_PINE);
     public static final Material LEAVES_JUNGLE   = get(BLK_LEAVES, DATA_JUNGLE);
     public static final Material LEAVES_ACACIA   = get(BLK_LEAVES2, DATA_ACACIA);
     public static final Material LEAVES_DARK_OAK = get(BLK_LEAVES2, DATA_DARK_OAK);
-    
+
     public static final Material WOODEN_PLANK_OAK       = get(BLK_WOODEN_PLANK, DATA_OAK);
     public static final Material WOODEN_PLANK_BIRCH     = get(BLK_WOODEN_PLANK, DATA_BIRCH);
     public static final Material WOODEN_PLANK_PINE      = get(BLK_WOODEN_PLANK, DATA_PINE);
     public static final Material WOODEN_PLANK_JUNGLE    = get(BLK_WOODEN_PLANK, DATA_JUNGLE);
     public static final Material WOODEN_PLANK_ACACIA    = get(BLK_WOODEN_PLANK, 4 + DATA_ACACIA);
     public static final Material WOODEN_PLANK_DARK_WOOD = get(BLK_WOODEN_PLANK, 4 + DATA_DARK_OAK);
-    
+
     public static final Material WOOL_WHITE      = get(BLK_WOOL, DATA_WHITE);
     public static final Material WOOL_ORANGE     = get(BLK_WOOL, DATA_ORANGE);
     public static final Material WOOL_MAGENTA    = get(BLK_WOOL, DATA_MAGENTA);
@@ -1053,7 +1053,7 @@ public final class Material implements Serializable, Comparable<Material> {
     public static final Material WOOL_BLACK      = get(BLK_WOOL, DATA_BLACK);
 
     public static final Material COBBLESTONE_SLAB = get(BLK_SLAB, DATA_SLAB_COBBLESTONE);
-    
+
     public static final Material DOOR_OPEN_LEFT_BOTTOM    = get(BLK_WOODEN_DOOR, DATA_DOOR_BOTTOM | DATA_DOOR_BOTTOM_OPEN);
     public static final Material DOOR_OPEN_LEFT_TOP       = get(BLK_WOODEN_DOOR, DATA_DOOR_TOP    | DATA_DOOR_TOP_HINGE_LEFT);
     public static final Material DOOR_OPEN_RIGHT_BOTTOM   = get(BLK_WOODEN_DOOR, DATA_DOOR_BOTTOM | DATA_DOOR_BOTTOM_OPEN);
@@ -1062,7 +1062,7 @@ public final class Material implements Serializable, Comparable<Material> {
     public static final Material DOOR_CLOSED_LEFT_TOP     = get(BLK_WOODEN_DOOR, DATA_DOOR_TOP    | DATA_DOOR_TOP_HINGE_LEFT);
     public static final Material DOOR_CLOSED_RIGHT_BOTTOM = get(BLK_WOODEN_DOOR, DATA_DOOR_BOTTOM | DATA_DOOR_BOTTOM_CLOSED);
     public static final Material DOOR_CLOSED_RIGHT_TOP    = get(BLK_WOODEN_DOOR, DATA_DOOR_TOP    | DATA_DOOR_TOP_HINGE_RIGHT);
-    
+
     public static final Material BED_FOOT = get(BLK_BED, DATA_BED_FOOT);
     public static final Material BED_HEAD = get(BLK_BED, DATA_BED_HEAD);
 
@@ -1095,13 +1095,13 @@ public final class Material implements Serializable, Comparable<Material> {
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
     };
     private static final int[] TEXTURE_OFFSETS = new int[256];
-    
+
     static {
         for (int i = 0; i < 256; i++) {
             int blockType = REVERSE_TEXTURE_OFFSETS[i];
             if (blockType != 0) {
                 TEXTURE_OFFSETS[blockType] = i;
-                
+
                 // Patches
                 if (blockType == BLK_GLASS) {
                     TEXTURE_OFFSETS[BLK_GLASS_PANE] = i;
@@ -1117,6 +1117,6 @@ public final class Material implements Serializable, Comparable<Material> {
             }
         }
     }
-    
+
     private static final long serialVersionUID = 2011101001L;
 }

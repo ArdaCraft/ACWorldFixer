@@ -1,5 +1,8 @@
 package org.pepsoft.minecraft;
 
+import static org.pepsoft.minecraft.Constants.SUPPORTED_VERSION_1;
+import static org.pepsoft.minecraft.Constants.SUPPORTED_VERSION_2;
+
 /*
  ** 2011 January 5
  **
@@ -24,11 +27,14 @@ package org.pepsoft.minecraft;
  */
 
 // A simple cache and wrapper for efficiently multiple RegionFiles simultaneously.
-
-import java.io.*;
-import java.lang.ref.*;
-import java.util.*;
-import static org.pepsoft.minecraft.Constants.*;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.File;
+import java.io.IOException;
+import java.lang.ref.Reference;
+import java.lang.ref.SoftReference;
+import java.util.HashMap;
+import java.util.Map;
 
 public final class RegionFileCache {
 

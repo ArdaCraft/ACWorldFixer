@@ -1,8 +1,11 @@
 package me.dags.blockinfo;
 
+import java.util.Comparator;
+
 import me.dags.data.node.Node;
 import me.dags.data.node.NodeAdapter;
 import me.dags.data.node.NodeObject;
+import me.dags.worldfixer.block.BlockRegistry;
 
 /**
  * @author dags <dags@dags.me>
@@ -37,6 +40,19 @@ public class BlockInfo {
         this.min = min;
         this.max = max;
         this.to = to;
+    }
+
+    public BlockInfo copy() {
+        return new BlockInfo(name, min, max, new BlockInfo(to.name, to.min, false));
+    }
+
+    public static Comparator<BlockInfo> idSorter(BlockRegistry registry) {
+        return new Comparator<BlockInfo>() {
+            @Override
+            public int compare(BlockInfo o1, BlockInfo o2) {
+                return registry.getId(o1.name) >= registry.getId(o2.name) ? 1 : -1;
+            }
+        };
     }
 
     public static class Adapter implements NodeAdapter<BlockInfo> {

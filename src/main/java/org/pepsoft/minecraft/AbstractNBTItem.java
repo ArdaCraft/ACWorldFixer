@@ -8,6 +8,7 @@ package org.pepsoft.minecraft;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
 import org.jnbt.ByteArrayTag;
 import org.jnbt.ByteTag;
 import org.jnbt.CompoundTag;

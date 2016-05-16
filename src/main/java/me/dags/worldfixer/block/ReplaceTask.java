@@ -1,19 +1,24 @@
-package me.dags.worldfixer.blockfix;
-
-import me.dags.worldfixer.blockfix.replacers.Replacer;
-import org.jnbt.CompoundTag;
-import org.jnbt.NBTInputStream;
-import org.jnbt.NBTOutputStream;
-import org.pepsoft.minecraft.*;
+package me.dags.worldfixer.block;
 
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
-import java.util.concurrent.atomic.AtomicInteger;
+
+import org.jnbt.CompoundTag;
+import org.jnbt.NBTInputStream;
+import org.jnbt.NBTOutputStream;
+import org.pepsoft.minecraft.Chunk;
+import org.pepsoft.minecraft.ChunkImpl2;
+import org.pepsoft.minecraft.Entity;
+import org.pepsoft.minecraft.RegionFile;
+import org.pepsoft.minecraft.TileEntity;
+
+import me.dags.worldfixer.block.replacers.Replacer;
 
 /**
  * @author dags <dags@dags.me>
@@ -23,21 +28,19 @@ public class ReplaceTask implements Runnable {
     private final Replacer[][] replacers;
     private final Set<String> entities = new HashSet<>();
     private final Set<String> tileEntities = new HashSet<>();
-    private final AtomicInteger globalCount;
     private final File regionFile;
 
-    ReplaceTask(AtomicInteger globalCount, File regionFile, Replacer[][] replacers) {
-        this.globalCount = globalCount;
+    public ReplaceTask(File regionFile, Replacer[][] replacers) {
         this.regionFile = regionFile;
         this.replacers = replacers;
     }
 
-    ReplaceTask withEntities(Collection<String> entities) {
+    public ReplaceTask withEntities(Collection<String> entities) {
         entities.stream().map(String::toLowerCase).forEach(this.entities::add);
         return this;
     }
 
-    ReplaceTask withTileEntities(Collection<String> tileEntities) {
+    public ReplaceTask withTileEntities(Collection<String> tileEntities) {
         tileEntities.stream().map(String::toLowerCase).forEach(this.tileEntities::add);
         return this;
     }
@@ -46,20 +49,18 @@ public class ReplaceTask implements Runnable {
     public void run() {
         try {
             RegionFile region = loadRegionFile();
-            for (int x = -100; x < 100; x++) {
-                for (int z = -100; z < 100; z++) {
-                    if (!region.containsChunk(x, z)) {
-                        continue;
-                    }
+            for (int x = 0; x < 32; x++) {
+                for (int z = 0; z < 32; z++) {
                     Chunk chunk = readChunk(region, x, z);
                     if (chunk == null) {
                         continue;
                     }
                     processChunk(chunk);
+                    ChangeStats.incChunkCount();
                     writeChunk(region, chunk, x, z);
                 }
             }
-            globalCount.getAndAdd(1);
+            ChangeStats.incRegionsCount();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -70,9 +71,14 @@ public class ReplaceTask implements Runnable {
     }
 
     private Chunk readChunk(RegionFile region, int i, int j) throws IOException {
-        try (NBTInputStream stream = new NBTInputStream(region.getChunkDataInputStream(i, j))) {
-            CompoundTag tag = (CompoundTag) stream.readTag();
-            return new ChunkImpl2(tag, 256);
+        try (InputStream input = region.getChunkDataInputStream(i,  j)) {
+            if (input == null) {
+                return null;
+            }
+            try (NBTInputStream stream = new NBTInputStream(input)) {
+                CompoundTag tag = (CompoundTag) stream.readTag();
+                return new ChunkImpl2(tag, 256);
+            }
         }
     }
 

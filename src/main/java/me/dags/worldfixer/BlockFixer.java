@@ -1,12 +1,5 @@
-package me.dags.worldfixer.blockfix;
+package me.dags.worldfixer;
 
-import me.dags.blockinfo.BlockInfo;
-import me.dags.blockinfo.Config;
-import me.dags.worldfixer.WorldData;
-import me.dags.worldfixer.blockfix.replacers.Replacer;
-import me.dags.worldfixer.blockfix.replacers.Replacers;
-
-import javax.swing.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -14,15 +7,23 @@ import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
+
+import javax.swing.JFrame;
+import javax.swing.JProgressBar;
+
+import me.dags.blockinfo.BlockInfo;
+import me.dags.blockinfo.Config;
+import me.dags.worldfixer.block.ChangeStats;
+import me.dags.worldfixer.block.ReplaceTask;
+import me.dags.worldfixer.block.replacers.Replacer;
+import me.dags.worldfixer.block.replacers.Replacers;
 
 /**
  * @author dags <dags@dags.me>
  */
 public class BlockFixer {
 
-    private static final AtomicInteger progress = new AtomicInteger(0);
     private static volatile boolean finished = false;
 
     private final WorldData worldData;
@@ -54,13 +55,13 @@ public class BlockFixer {
         while (!finished) {
             if (System.currentTimeMillis() - time > 500) {
                 time = System.currentTimeMillis();
-                int complete = progress.get();
+                int complete = ChangeStats.getProgress();
                 progressBar.setValue(complete);
                 progressBar.setString(String.format("Processed %s of %s regions!", complete, total));
             }
         }
-        ChangeStats.punchOut();
         frame.dispose();
+        ChangeStats.punchOut();
         ChangeStats.displayResults(total, cores);
     }
 
@@ -105,7 +106,7 @@ public class BlockFixer {
     private List<ReplaceTask> getTasks(Replacer[][] replacers) {
         return worldData.getRegionFiles()
                 .stream()
-                .map(f -> new ReplaceTask(progress, f, replacers)
+                .map(file -> new ReplaceTask(file, replacers)
                         .withEntities(config.entities)
                         .withTileEntities(config.tileEntities))
                 .collect(Collectors.toList());

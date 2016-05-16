@@ -1,28 +1,46 @@
 package me.dags.app;
 
-import me.dags.blockinfo.Config;
-import me.dags.data.json.JsonSerializer;
-import me.dags.worldfixer.WorldData;
-import me.dags.worldfixer.blockfix.BlockFixer;
-import me.dags.worldfixer.levelfix.LevelFixer;
-
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Dimension;
+import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+
+import javax.swing.JButton;
+import javax.swing.JComponent;
+import javax.swing.JFileChooser;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JProgressBar;
+import javax.swing.JScrollPane;
+import javax.swing.JSlider;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.WindowConstants;
+
+import me.dags.blockinfo.Config;
+import me.dags.data.json.JsonSerializer;
+import me.dags.worldfixer.BlockFixer;
+import me.dags.worldfixer.LevelFixer;
+import me.dags.worldfixer.WorldData;
 
 /**
  * @author dags <dags@dags.me>
  */
-class SetupWindow extends JPanel {
+public class SetupWindow extends JPanel {
 
     private static final File WORKING_DIR = new File(new File("").getAbsolutePath());
     private final JTextField targetDir = new JTextField();
     private final JTextField targetConfig = new JTextField();
     private final JSlider cores = new JSlider(SwingConstants.HORIZONTAL);
+
+    Config config = null;
+    LevelFixer levelFixer = null;
+    BlockFixer blockFixer = null;
 
     SetupWindow() {
         int fullWidth = 425;
@@ -37,8 +55,12 @@ class SetupWindow extends JPanel {
         chooseDir.setPreferredSize(new Dimension(buttonWidth, lineHeight));
         chooseDir.addActionListener(choose(targetDir));
 
-        targetConfig.setPreferredSize(new Dimension(fullWidth, lineHeight));
+        targetConfig.setPreferredSize(new Dimension(fullWidth - buttonWidth, lineHeight));
         targetConfig.setText("https://raw.githubusercontent.com/ArdaCraft/ACWorldFixer/master/block_data.json");
+
+        JButton loadConfig = new JButton("Modify");
+        loadConfig.setPreferredSize(new Dimension(buttonWidth, lineHeight));
+        loadConfig.addActionListener(loadConfig(targetConfig));
 
         cores.setPreferredSize(new Dimension(fullWidth, 35));
         cores.setMinimum(1);
@@ -61,9 +83,13 @@ class SetupWindow extends JPanel {
 
         this.setLayout(new GridLayout(4, 1));
         this.add(toPanel(worldLabel, targetDir, chooseDir));
-        this.add(toPanel(configLabel, targetConfig));
+        this.add(toPanel(configLabel, targetConfig, loadConfig));
         this.add(toPanel(coresLabel, cores));
         this.add(toPanel(ok));
+    }
+
+    public void updateConfig(Config config) {
+        this.config = config;
     }
 
     private JPanel toPanel(JComponent... component) {
@@ -72,6 +98,28 @@ class SetupWindow extends JPanel {
             panel.add(c);
         }
         return panel;
+    }
+
+    private void loadLevelData(File target) {
+        WorldData worldData = new WorldData(target);
+        if (!worldData.validate()) {
+            errorWindow("Invalid world directory selected!", worldData.error());
+            return;
+        }
+        this.levelFixer = new LevelFixer(worldData);
+        this.levelFixer.loadRegistry();
+    }
+
+    private void loadConfig() {
+        Config config = null;
+        try (InputStream inputStream = new URL(targetConfig.getText()).openConnection().getInputStream()) {
+            config = JsonSerializer.pretty().deserialize(inputStream, Config.class);
+        } catch (Exception ex) {
+        }
+        if (config == null) {
+            config = new Config();
+        }
+        this.config = config;
     }
 
     private ActionListener choose(JTextField updateField) {
@@ -86,6 +134,7 @@ class SetupWindow extends JPanel {
                 case JFileChooser.APPROVE_OPTION:
                     File target = dirChooser.getSelectedFile();
                     updateField.setText(target.getAbsolutePath());
+                    loadLevelData(target);
                     break;
                 default:
                     break;
@@ -93,41 +142,40 @@ class SetupWindow extends JPanel {
         };
     }
 
+    private ActionListener loadConfig(JTextField configField) {
+        return e -> {
+            if (this.levelFixer == null) {
+                errorWindow("Invalid world directory selected!", "");
+                return;
+            }
+            loadConfig();
+            JFrame frame = new JFrame();
+            frame.setTitle("Remapper");
+            frame.setLayout(new GridBagLayout());
+            frame.add(new MappingWindow(this, frame));
+            frame.pack();
+            frame.setLocationRelativeTo(null);
+            frame.setVisible(true);
+            frame.setResizable(false);
+            frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        };
+    }
+
     private ActionListener ok() {
         return e -> {
-            URL url = null;
-            try {
-                url = new URL(targetConfig.getText());
-            } catch (IOException ex) {
-                errorWindow("Invalid config URL provided!", ex.getMessage());
+            if (this.levelFixer == null) {
+                errorWindow("World directory not loaded correctly!", "");
                 return;
             }
-
-            WorldData worldData = new WorldData(new File(targetDir.getText()));
-
-            if (!worldData.validate()) {
-                errorWindow("Invalid world directory selected!", worldData.error());
-                return;
+            if (this.config == null) {
+                loadConfig();
             }
 
-            Config config = null;
-            try (InputStream inputStream = url.openConnection().getInputStream()) {
-                config = JsonSerializer.pretty().deserialize(inputStream, Config.class);
-            } catch (Exception ex) {
-                errorWindow("Error reading config!", ex.getMessage());
-                return;
-            }
+            this.levelFixer.removeBlocks(config.removeBlocks.keySet());
+            this.levelFixer.writeChanges();
 
             try {
-                LevelFixer levelFixer = new LevelFixer(config, worldData);
-                levelFixer.fix();
-            } catch (Exception ex) {
-                errorWindow("Error occurred whilst fixing level data!", ex.getMessage());
-                return;
-            }
-
-            try {
-                BlockFixer blockFixer = new BlockFixer(config, worldData, cores.getValue());
+                BlockFixer blockFixer = new BlockFixer(config, levelFixer.worldData, cores.getValue());
 
                 JProgressBar progressBar = new JProgressBar();
                 progressBar.setPreferredSize(new Dimension(250, 30));

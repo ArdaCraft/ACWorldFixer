@@ -5,13 +5,15 @@
 
 package org.pepsoft.minecraft;
 
+import static org.pepsoft.minecraft.Constants.ID_CHEST;
+import static org.pepsoft.minecraft.Constants.TAG_ITEMS;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import org.jnbt.CompoundTag;
 import org.jnbt.Tag;
-import static org.pepsoft.minecraft.Constants.*;
 
 /**
  *
