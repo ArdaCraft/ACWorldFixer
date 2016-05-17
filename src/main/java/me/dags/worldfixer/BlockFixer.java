@@ -1,5 +1,13 @@
 package me.dags.worldfixer;
 
+import me.dags.blockinfo.BlockInfo;
+import me.dags.blockinfo.Config;
+import me.dags.worldfixer.block.ChangeStats;
+import me.dags.worldfixer.block.ReplaceTask;
+import me.dags.worldfixer.block.replacers.Replacer;
+import me.dags.worldfixer.block.replacers.Replacers;
+
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -8,16 +16,6 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
-
-import javax.swing.JFrame;
-import javax.swing.JProgressBar;
-
-import me.dags.blockinfo.BlockInfo;
-import me.dags.blockinfo.Config;
-import me.dags.worldfixer.block.ChangeStats;
-import me.dags.worldfixer.block.ReplaceTask;
-import me.dags.worldfixer.block.replacers.Replacer;
-import me.dags.worldfixer.block.replacers.Replacers;
 
 /**
  * @author dags <dags@dags.me>
@@ -62,7 +60,7 @@ public class BlockFixer {
         }
         frame.dispose();
         ChangeStats.punchOut();
-        ChangeStats.displayResults(total, cores);
+        ChangeStats.displayResults(cores);
     }
 
     private void execute(List<ReplaceTask> tasks, int cores) {

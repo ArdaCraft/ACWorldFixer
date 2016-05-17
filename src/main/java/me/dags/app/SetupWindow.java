@@ -1,32 +1,16 @@
 package me.dags.app;
 
-import java.awt.Dimension;
-import java.awt.GridBagLayout;
-import java.awt.GridLayout;
-import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.InputStream;
-import java.net.URL;
-
-import javax.swing.JButton;
-import javax.swing.JComponent;
-import javax.swing.JFileChooser;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JProgressBar;
-import javax.swing.JScrollPane;
-import javax.swing.JSlider;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
-import javax.swing.WindowConstants;
-
 import me.dags.blockinfo.Config;
-import me.dags.data.json.JsonSerializer;
+import me.dags.data.NodeAdapter;
 import me.dags.worldfixer.BlockFixer;
 import me.dags.worldfixer.LevelFixer;
 import me.dags.worldfixer.WorldData;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionListener;
+import java.io.File;
+import java.net.URL;
 
 /**
  * @author dags <dags@dags.me>
@@ -112,8 +96,8 @@ public class SetupWindow extends JPanel {
 
     private void loadConfig() {
         Config config = null;
-        try (InputStream inputStream = new URL(targetConfig.getText()).openConnection().getInputStream()) {
-            config = JsonSerializer.pretty().deserialize(inputStream, Config.class);
+        try {
+            config = NodeAdapter.json().from(new URL(targetConfig.getText()), Config.class);
         } catch (Exception ex) {
         }
         if (config == null) {

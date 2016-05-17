@@ -27,7 +27,7 @@ public class BlockRegistry {
     public String[] blockNames() {
         List<String> sorted = blockIds.entrySet().stream()
             .sorted((e1, e2) -> e1.getValue() >= e2.getValue() ? 1 : -1)
-            .map(e -> e.getKey())
+            .map(Map.Entry::getKey)
             .collect(Collectors.toList());
         return sorted.toArray(new String[sorted.size()]);
     }

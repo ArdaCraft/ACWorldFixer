@@ -64,7 +64,7 @@
         <dependency>
             <groupId>com.github.dags-</groupId>
             <artifactId>nodedata</artifactId>
-            <version>master-SNAPSHOT</version>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
 </project>

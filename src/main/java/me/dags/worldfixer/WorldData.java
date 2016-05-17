@@ -1,5 +1,8 @@
 package me.dags.worldfixer;
 
+import me.dags.worldfixer.block.BlockRegistry;
+import org.jnbt.*;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -9,13 +12,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
-
-import me.dags.worldfixer.block.BlockRegistry;
-import org.jnbt.CompoundTag;
-import org.jnbt.ListTag;
-import org.jnbt.NBTInputStream;
-import org.jnbt.NBTOutputStream;
-import org.jnbt.Tag;
 
 /**
  * @author dags <dags@dags.me>

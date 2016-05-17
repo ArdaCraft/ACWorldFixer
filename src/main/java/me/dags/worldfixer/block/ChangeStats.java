@@ -1,14 +1,9 @@
 package me.dags.worldfixer.block;
 
-import java.awt.Dimension;
-import java.awt.GridLayout;
+import javax.swing.*;
+import java.awt.*;
 import java.text.NumberFormat;
 import java.util.concurrent.atomic.AtomicInteger;
-
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.WindowConstants;
 
 /**
  * @author dags <dags@dags.me>
@@ -56,7 +51,7 @@ public class ChangeStats {
         tileEntitiesRemoved.getAndAdd(1);
     }
 
-    public static void displayResults(int regionCount, int cores) {
+    public static void displayResults(int cores) {
         JFrame frame = new JFrame();
         frame.add(getStats(cores));
         frame.pack();

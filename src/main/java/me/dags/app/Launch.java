@@ -1,14 +1,11 @@
 package me.dags.app;
 
-import java.awt.GridBagLayout;
-
-import javax.swing.JFrame;
-import javax.swing.UIManager;
-import javax.swing.WindowConstants;
-
 import me.dags.blockinfo.BlockInfo;
 import me.dags.blockinfo.Config;
-import me.dags.data.node.NodeAdapters;
+import me.dags.data.node.NodeTypeAdapters;
+
+import javax.swing.*;
+import java.awt.*;
 
 /**
  * @author dags <dags@dags.me>
@@ -22,8 +19,8 @@ public class Launch {
             e.printStackTrace();
         }
 
-        NodeAdapters.register(BlockInfo.class, new BlockInfo.Adapter());
-        NodeAdapters.register(Config.class, new Config.Adapter());
+        NodeTypeAdapters.register(BlockInfo.class, new BlockInfo.Adapter());
+        NodeTypeAdapters.register(Config.class, new Config.Adapter());
 
         JFrame frame = new JFrame();
         frame.setTitle("ACWorldFixer");

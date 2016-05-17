@@ -1,16 +1,9 @@
 package me.dags.app;
 
-import java.awt.Frame;
-
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JSpinner;
-import javax.swing.SpinnerModel;
-import javax.swing.SpinnerNumberModel;
-
 import me.dags.blockinfo.BlockInfo;
+
+import javax.swing.*;
+import java.awt.*;
 
 public class MappingPopup extends JPanel {
 

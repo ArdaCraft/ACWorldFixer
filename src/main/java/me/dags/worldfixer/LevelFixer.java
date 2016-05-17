@@ -1,19 +1,9 @@
 package me.dags.worldfixer;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-
-import org.jnbt.CompoundTag;
-import org.jnbt.IntTag;
-import org.jnbt.ListTag;
-import org.jnbt.StringTag;
-import org.jnbt.Tag;
+import org.jnbt.*;
 import org.pepsoft.minecraft.Block;
-import sun.reflect.generics.tree.TypeVariableSignature;
+
+import java.util.*;
 
 /**
  * @author dags <dags@dags.me>
@@ -39,7 +29,7 @@ public class LevelFixer {
         });
     }
 
-    public void loadItemData() {
+    private void loadItemData() {
         if (worldData.getLevelData().containsTag("FML")) {
             CompoundTag FML = FML();
             if (FML.containsTag("ItemData")) {

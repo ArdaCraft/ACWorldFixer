@@ -1,17 +1,12 @@
 package me.dags.blockinfo;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import me.dags.data.json.JsonSerializer;
+import me.dags.data.NodeAdapter;
 import me.dags.data.node.Node;
-import me.dags.data.node.NodeAdapter;
 import me.dags.data.node.NodeArray;
 import me.dags.data.node.NodeObject;
+import me.dags.data.node.NodeTypeAdapter;
+
+import java.util.*;
 
 /**
  * @author dags <dags@dags.me>
@@ -23,7 +18,7 @@ public class Config {
     public final Set<String> entities = new HashSet<>();
     public final Set<String> tileEntities = new HashSet<>();
 
-    public static class Adapter implements NodeAdapter<Config> {
+    public static class Adapter implements NodeTypeAdapter<Config> {
 
         @Override
         public Node toNode(Config config) {
@@ -57,7 +52,7 @@ public class Config {
                 if (object.contains("blocks")) {
                     NodeArray array = object.get("blocks").asNodeArray();
                     array.values().stream()
-                            .map(n ->  JsonSerializer.pretty().deserialize(n, BlockInfo.class))
+                            .map(n ->  NodeAdapter.json().from(n, BlockInfo.class))
                             .filter(b -> b != null)
                             .forEach(config.blocks::add);
                 }

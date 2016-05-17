@@ -1,5 +1,11 @@
 package me.dags.worldfixer.block;
 
+import me.dags.worldfixer.block.replacers.Replacer;
+import org.jnbt.CompoundTag;
+import org.jnbt.NBTInputStream;
+import org.jnbt.NBTOutputStream;
+import org.pepsoft.minecraft.*;
+
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.IOException;
@@ -8,17 +14,6 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
-
-import org.jnbt.CompoundTag;
-import org.jnbt.NBTInputStream;
-import org.jnbt.NBTOutputStream;
-import org.pepsoft.minecraft.Chunk;
-import org.pepsoft.minecraft.ChunkImpl2;
-import org.pepsoft.minecraft.Entity;
-import org.pepsoft.minecraft.RegionFile;
-import org.pepsoft.minecraft.TileEntity;
-
-import me.dags.worldfixer.block.replacers.Replacer;
 
 /**
  * @author dags <dags@dags.me>
