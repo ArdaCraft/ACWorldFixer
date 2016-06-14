@@ -3768,7 +3768,7 @@
             "max": 16,
             "to": {
                 "name": "acblocks:log_pile_log",
-                "data": 0
+                "data": 12
             }
         },
         {
@@ -9384,7 +9384,7 @@
             "max": 16,
             "to": {
                 "name": "acblocks:beaver_log_log",
-                "data": 0
+                "data": 12
             }
         },
         {
@@ -9591,7 +9591,7 @@
             "max": 16,
             "to": {
                 "name": "acblocks:log_acacia_mossy_log",
-                "data": 0
+                "data": 12
             }
         },
         {
@@ -9600,7 +9600,7 @@
             "max": 16,
             "to": {
                 "name": "acblocks:log_ash_log",
-                "data": 0
+                "data": 12
             }
         },
         {
@@ -9609,7 +9609,7 @@
             "max": 16,
             "to": {
                 "name": "acblocks:log_birch_mossy_log",
-                "data": 0
+                "data": 12
             }
         },
         {
@@ -9618,7 +9618,7 @@
             "max": 16,
             "to": {
                 "name": "acblocks:log_burned_ash_log",
-                "data": 0
+                "data": 12
             }
         },
         {
@@ -9627,7 +9627,7 @@
             "max": 16,
             "to": {
                 "name": "acblocks:log_burned_oak_log",
-                "data": 0
+                "data": 12
             }
         },
         {
@@ -9636,7 +9636,7 @@
             "max": 16,
             "to": {
                 "name": "acblocks:log_dark_oak_mossy_log",
-                "data": 0
+                "data": 12
             }
         },
         {
@@ -9645,7 +9645,7 @@
             "max": 16,
             "to": {
                 "name": "acblocks:log_fir_mossy_log",
-                "data": 0
+                "data": 12
             }
         },
         {
@@ -9654,7 +9654,7 @@
             "max": 16,
             "to": {
                 "name": "acblocks:log_jungle_log",
-                "data": 0
+                "data": 12
             }
         },
         {
@@ -9663,7 +9663,7 @@
             "max": 16,
             "to": {
                 "name": "acblocks:log_oak_mossy_log",
-                "data": 0
+                "data": 12
             }
         },
         {
@@ -9672,7 +9672,7 @@
             "max": 16,
             "to": {
                 "name": "acblocks:rope_log",
-                "data": 0
+                "data": 12
             }
         },
         {
@@ -12057,7 +12057,7 @@
             "max": 16,
             "to": {
                 "name": "acblocks:acacia_beam_log",
-                "data": 0
+                "data": 12
             }
         },
         {
@@ -12075,7 +12075,7 @@
             "max": 16,
             "to": {
                 "name": "acblocks:birch_beam_log",
-                "data": 0
+                "data": 12
             }
         },
         {
@@ -12093,7 +12093,7 @@
             "max": 16,
             "to": {
                 "name": "acblocks:dark_oak_beam_log",
-                "data": 0
+                "data": 12
             }
         },
         {
@@ -12111,7 +12111,7 @@
             "max": 16,
             "to": {
                 "name": "acblocks:jungle_beam_log",
-                "data": 0
+                "data": 12
             }
         },
         {
@@ -12129,7 +12129,7 @@
             "max": 16,
             "to": {
                 "name": "acblocks:oak_beam_log",
-                "data": 0
+                "data": 12
             }
         },
         {
@@ -12147,7 +12147,7 @@
             "max": 16,
             "to": {
                 "name": "acblocks:spruce_beam_log",
-                "data": 0
+                "data": 12
             }
         },
         {
