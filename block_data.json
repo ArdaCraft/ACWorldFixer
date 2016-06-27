@@ -1910,11 +1910,20 @@
         },
         {
             "name": "acblocks:ant_hill_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:ant_hill_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:ant_hill_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:ant_hill_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -2423,11 +2432,20 @@
         },
         {
             "name": "acblocks:copper_top_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:copper_top_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:copper_top_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:copper_top_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -2468,11 +2486,20 @@
         },
         {
             "name": "acblocks:driftwood_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:driftwood_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:driftwood_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:driftwood_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -2504,11 +2531,20 @@
         },
         {
             "name": "acblocks:fancy_gold_pattern_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:fancy_gold_pattern_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:fancy_gold_pattern_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:fancy_gold_pattern_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -2576,11 +2612,20 @@
         },
         {
             "name": "acblocks:gold_coins_pile_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:gold_coins_pile_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:gold_coins_pile_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:gold_coins_pile_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -3125,11 +3170,20 @@
         },
         {
             "name": "acblocks:dried_fodder_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:dried_fodder_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:dried_fodder_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:dried_fodder_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -3152,11 +3206,20 @@
         },
         {
             "name": "acblocks:fodder_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:fodder_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:fodder_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:fodder_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -3170,11 +3233,20 @@
         },
         {
             "name": "acblocks:hay_slab_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:hay_slab_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:hay_slab_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:hay_slab_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -3197,11 +3269,20 @@
         },
         {
             "name": "acblocks:hot_coals_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:hot_coals_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:hot_coals_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:hot_coals_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -3512,11 +3593,20 @@
         },
         {
             "name": "acblocks:rusted_iron_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:rusted_iron_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:rusted_iron_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:rusted_iron_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -3782,11 +3872,20 @@
         },
         {
             "name": "acblocks:log_pile_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:log_pile_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:log_pile_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:log_pile_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -3818,11 +3917,20 @@
         },
         {
             "name": "acblocks:wool_black_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:wool_black_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:wool_black_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:wool_black_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -3836,11 +3944,20 @@
         },
         {
             "name": "acblocks:wool_blue_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:wool_blue_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:wool_blue_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:wool_blue_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -3854,11 +3971,20 @@
         },
         {
             "name": "acblocks:wool_brown_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:wool_brown_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:wool_brown_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:wool_brown_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -3872,11 +3998,20 @@
         },
         {
             "name": "acblocks:wool_cyan_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:wool_cyan_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:wool_cyan_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:wool_cyan_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -3890,11 +4025,20 @@
         },
         {
             "name": "acblocks:wool_gray_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:wool_gray_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:wool_gray_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:wool_gray_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -3908,11 +4052,20 @@
         },
         {
             "name": "acblocks:wool_green_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:wool_green_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:wool_green_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:wool_green_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -3926,11 +4079,20 @@
         },
         {
             "name": "acblocks:wool_light_blue_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:wool_light_blue_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:wool_light_blue_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:wool_light_blue_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -3944,11 +4106,20 @@
         },
         {
             "name": "acblocks:wool_lime_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:wool_lime_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:wool_lime_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:wool_lime_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -3962,11 +4133,20 @@
         },
         {
             "name": "acblocks:wool_magenta_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:wool_magenta_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:wool_magenta_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:wool_magenta_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -3980,11 +4160,20 @@
         },
         {
             "name": "acblocks:wool_orange_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:wool_orange_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:wool_orange_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:wool_orange_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -3998,11 +4187,20 @@
         },
         {
             "name": "acblocks:wool_pink_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:wool_pink_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:wool_pink_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:wool_pink_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -4016,11 +4214,20 @@
         },
         {
             "name": "acblocks:wool_purple_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:wool_purple_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:wool_purple_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:wool_purple_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -4034,11 +4241,20 @@
         },
         {
             "name": "acblocks:wool_red_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:wool_red_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:wool_red_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:wool_red_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -4052,11 +4268,20 @@
         },
         {
             "name": "acblocks:wool_silver_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:wool_silver_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:wool_silver_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:wool_silver_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -4070,11 +4295,20 @@
         },
         {
             "name": "acblocks:wool_white_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:wool_white_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:wool_white_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:wool_white_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -4088,11 +4322,20 @@
         },
         {
             "name": "acblocks:wool_yellow_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:wool_yellow_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:wool_yellow_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:wool_yellow_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -4205,11 +4448,20 @@
         },
         {
             "name": "acblocks:hornfels_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:hornfels_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:hornfels_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:hornfels_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -4241,11 +4493,20 @@
         },
         {
             "name": "acblocks:marble_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:marble_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:marble_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:marble_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -4268,11 +4529,20 @@
         },
         {
             "name": "acblocks:mining_debris_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:mining_debris_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:mining_debris_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:mining_debris_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -4304,11 +4574,20 @@
         },
         {
             "name": "acblocks:soft_gravel_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:soft_gravel_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:soft_gravel_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:soft_gravel_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -4376,11 +4655,20 @@
         },
         {
             "name": "acblocks:andesite_smooth_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:andesite_smooth_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:andesite_smooth_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:andesite_smooth_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -4412,11 +4700,20 @@
         },
         {
             "name": "acblocks:cut_limestone_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:cut_limestone_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:cut_limestone_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:cut_limestone_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -4448,11 +4745,20 @@
         },
         {
             "name": "acblocks:diorite_smooth_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:diorite_smooth_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:diorite_smooth_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:diorite_smooth_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -4475,11 +4781,20 @@
         },
         {
             "name": "acblocks:mudstone_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:mudstone_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:mudstone_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:mudstone_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -4511,11 +4826,20 @@
         },
         {
             "name": "acblocks:red_sandstone_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:red_sandstone_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:red_sandstone_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:red_sandstone_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -4547,11 +4871,20 @@
         },
         {
             "name": "acblocks:stone_snow_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:stone_snow_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:stone_snow_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:stone_snow_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -4574,11 +4907,20 @@
         },
         {
             "name": "acblocks:thin_ice_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:thin_ice_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:thin_ice_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:thin_ice_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -4601,11 +4943,20 @@
         },
         {
             "name": "acblocks:white_gravel_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:white_gravel_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:white_gravel_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:white_gravel_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -4628,11 +4979,20 @@
         },
         {
             "name": "acblocks:clay_2_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:clay_2_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:clay_2_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:clay_2_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -4655,11 +5015,20 @@
         },
         {
             "name": "acblocks:dirt_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:dirt_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:dirt_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:dirt_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -4700,11 +5069,20 @@
         },
         {
             "name": "acblocks:dirt_bones_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:dirt_bones_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:dirt_bones_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:dirt_bones_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -4727,11 +5105,20 @@
         },
         {
             "name": "acblocks:dirt_leaves_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:dirt_leaves_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:dirt_leaves_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:dirt_leaves_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -4754,11 +5141,20 @@
         },
         {
             "name": "acblocks:dirt_path_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:dirt_path_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:dirt_path_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:dirt_path_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -4781,11 +5177,20 @@
         },
         {
             "name": "acblocks:dirt_pine_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:dirt_pine_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:dirt_pine_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:dirt_pine_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -4808,11 +5213,20 @@
         },
         {
             "name": "acblocks:dirt_snow_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:dirt_snow_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:dirt_snow_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:dirt_snow_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -4844,11 +5258,20 @@
         },
         {
             "name": "acblocks:sand_grass_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:sand_grass_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:sand_grass_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:sand_grass_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -4871,11 +5294,20 @@
         },
         {
             "name": "acblocks:dried_river_bed_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:dried_river_bed_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:dried_river_bed_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:dried_river_bed_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -4898,11 +5330,20 @@
         },
         {
             "name": "acblocks:dry_dirt_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:dry_dirt_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:dry_dirt_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:dry_dirt_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -4925,11 +5366,20 @@
         },
         {
             "name": "acblocks:gravelly_dirt_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:gravelly_dirt_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:gravelly_dirt_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:gravelly_dirt_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -4943,11 +5393,20 @@
         },
         {
             "name": "acblocks:gravel_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:gravel_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:gravel_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:gravel_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -4970,11 +5429,20 @@
         },
         {
             "name": "acblocks:gravel_1_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:gravel_1_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:gravel_1_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:gravel_1_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -4997,11 +5465,20 @@
         },
         {
             "name": "acblocks:grey_tiles_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:grey_tiles_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:grey_tiles_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:grey_tiles_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -5024,11 +5501,20 @@
         },
         {
             "name": "acblocks:grimy_paving_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:grimy_paving_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:grimy_paving_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:grimy_paving_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -5078,11 +5564,20 @@
         },
         {
             "name": "acblocks:mossy_gravelly_dirt_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:mossy_gravelly_dirt_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:mossy_gravelly_dirt_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:mossy_gravelly_dirt_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -5105,11 +5600,20 @@
         },
         {
             "name": "acblocks:muddy_cobble_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:muddy_cobble_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:muddy_cobble_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:muddy_cobble_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -5123,11 +5627,20 @@
         },
         {
             "name": "acblocks:gravel_path_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:gravel_path_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:gravel_path_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:gravel_path_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -5150,11 +5663,20 @@
         },
         {
             "name": "acblocks:stone_path_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:stone_path_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:stone_path_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:stone_path_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -5186,11 +5708,20 @@
         },
         {
             "name": "acblocks:patterend_stone_floor_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:patterend_stone_floor_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:patterend_stone_floor_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:patterend_stone_floor_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -5231,11 +5762,20 @@
         },
         {
             "name": "acblocks:red_obsidian_tiles_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:red_obsidian_tiles_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:red_obsidian_tiles_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:red_obsidian_tiles_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -5258,11 +5798,20 @@
         },
         {
             "name": "acblocks:solid_moss_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:solid_moss_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:solid_moss_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:solid_moss_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -5708,11 +6257,20 @@
         },
         {
             "name": "acblocks:bones_connected1_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:bones_connected1_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:bones_connected1_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:bones_connected1_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -5735,11 +6293,20 @@
         },
         {
             "name": "acblocks:bones_connected2_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:bones_connected2_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:bones_connected2_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:bones_connected2_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -5762,11 +6329,20 @@
         },
         {
             "name": "acblocks:bones_connected3_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:bones_connected3_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:bones_connected3_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:bones_connected3_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -5789,11 +6365,20 @@
         },
         {
             "name": "acblocks:bones_connected4_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:bones_connected4_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:bones_connected4_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:bones_connected4_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -6122,11 +6707,20 @@
         },
         {
             "name": "acblocks:pink_clay_tiles_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:pink_clay_tiles_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:pink_clay_tiles_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:pink_clay_tiles_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -6149,11 +6743,20 @@
         },
         {
             "name": "acblocks:red_clay_tiles_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:red_clay_tiles_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:red_clay_tiles_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:red_clay_tiles_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -6176,11 +6779,20 @@
         },
         {
             "name": "acblocks:slate_blue_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:slate_blue_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:slate_blue_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:slate_blue_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -6212,11 +6824,20 @@
         },
         {
             "name": "acblocks:slate_blue_grey_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:slate_blue_grey_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:slate_blue_grey_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:slate_blue_grey_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -6248,11 +6869,20 @@
         },
         {
             "name": "acblocks:slate_brown_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:slate_brown_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:slate_brown_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:slate_brown_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -6284,11 +6914,20 @@
         },
         {
             "name": "acblocks:slate_green_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:slate_green_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:slate_green_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:slate_green_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -6320,11 +6959,20 @@
         },
         {
             "name": "acblocks:slate_grey_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:slate_grey_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:slate_grey_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:slate_grey_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -6356,11 +7004,20 @@
         },
         {
             "name": "acblocks:slate_light_blue_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:slate_light_blue_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:slate_light_blue_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:slate_light_blue_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -6392,11 +7049,20 @@
         },
         {
             "name": "acblocks:slate_light_green_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:slate_light_green_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:slate_light_green_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:slate_light_green_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -6428,11 +7094,20 @@
         },
         {
             "name": "acblocks:slate_light_red_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:slate_light_red_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:slate_light_red_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:slate_light_red_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -6464,11 +7139,20 @@
         },
         {
             "name": "acblocks:slate_red_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:slate_red_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:slate_red_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:slate_red_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -6491,11 +7175,20 @@
         },
         {
             "name": "acblocks:thatch_black_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:thatch_black_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:thatch_black_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:thatch_black_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -6518,11 +7211,20 @@
         },
         {
             "name": "acblocks:thatch_brown_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:thatch_brown_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:thatch_brown_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:thatch_brown_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -6545,11 +7247,20 @@
         },
         {
             "name": "acblocks:thatch_dark_border_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:thatch_dark_border_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:thatch_dark_border_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:thatch_dark_border_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -6572,11 +7283,20 @@
         },
         {
             "name": "acblocks:thatch_gray_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:thatch_gray_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:thatch_gray_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:thatch_gray_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -6599,11 +7319,20 @@
         },
         {
             "name": "acblocks:thatch_yellow_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:thatch_yellow_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:thatch_yellow_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:thatch_yellow_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -6643,6 +7372,15 @@
             }
         },
         {
+            "name": "acblocks:wavy_roof_tiles_slab",
+            "min": 9,
+            "max": 16,
+            "to": {
+                "name": "acblocks:wavy_roof_tiles_slab",
+                "data": 8
+            }
+        },
+        {
             "name": "acblocks:wavy_tiles_blue_block",
             "min": 1,
             "max": 16,
@@ -6662,11 +7400,20 @@
         },
         {
             "name": "acblocks:wavy_tiles_blue_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:wavy_tiles_blue_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:wavy_tiles_blue_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:wavy_tiles_blue_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -6689,11 +7436,20 @@
         },
         {
             "name": "acblocks:wavy_tiles_grey_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:wavy_tiles_grey_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:wavy_tiles_grey_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:wavy_tiles_grey_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -6716,11 +7472,20 @@
         },
         {
             "name": "acblocks:wavy_tiles_red_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:wavy_tiles_red_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:wavy_tiles_red_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:wavy_tiles_red_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -6752,11 +7517,20 @@
         },
         {
             "name": "acblocks:brick_timber_0_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:brick_timber_0_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:brick_timber_0_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:brick_timber_0_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -6779,11 +7553,20 @@
         },
         {
             "name": "acblocks:brick_timber_1_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:brick_timber_1_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:brick_timber_1_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:brick_timber_1_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -6806,11 +7589,20 @@
         },
         {
             "name": "acblocks:brick_timber_2_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:brick_timber_2_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:brick_timber_2_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:brick_timber_2_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -6833,11 +7625,20 @@
         },
         {
             "name": "acblocks:brick_timber_3_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:brick_timber_3_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:brick_timber_3_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:brick_timber_3_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -6860,11 +7661,20 @@
         },
         {
             "name": "acblocks:brick_timber_4_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:brick_timber_4_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:brick_timber_4_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:brick_timber_4_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -6887,11 +7697,20 @@
         },
         {
             "name": "acblocks:brick_timber_5_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:brick_timber_5_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:brick_timber_5_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:brick_timber_5_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -6914,11 +7733,20 @@
         },
         {
             "name": "acblocks:clay_timber_1_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:clay_timber_1_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:clay_timber_1_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:clay_timber_1_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -6941,11 +7769,20 @@
         },
         {
             "name": "acblocks:clay_timber_2_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:clay_timber_2_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:clay_timber_2_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:clay_timber_2_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -6968,11 +7805,20 @@
         },
         {
             "name": "acblocks:clay_timber_3_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:clay_timber_3_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:clay_timber_3_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:clay_timber_3_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -6995,11 +7841,20 @@
         },
         {
             "name": "acblocks:clay_timber_4_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:clay_timber_4_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:clay_timber_4_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:clay_timber_4_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -7022,11 +7877,20 @@
         },
         {
             "name": "acblocks:clay_timber_5_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:clay_timber_5_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:clay_timber_5_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:clay_timber_5_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -7049,11 +7913,20 @@
         },
         {
             "name": "acblocks:clay_timber_box_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:clay_timber_box_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:clay_timber_box_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:clay_timber_box_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -7076,11 +7949,20 @@
         },
         {
             "name": "acblocks:dark_cobblestone_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:dark_cobblestone_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:dark_cobblestone_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:dark_cobblestone_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -7112,11 +7994,20 @@
         },
         {
             "name": "acblocks:dark_red_mortar_bricks_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:dark_red_mortar_bricks_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:dark_red_mortar_bricks_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:dark_red_mortar_bricks_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -7148,11 +8039,20 @@
         },
         {
             "name": "acblocks:dark_wood_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:dark_wood_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:dark_wood_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:dark_wood_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -7175,11 +8075,20 @@
         },
         {
             "name": "acblocks:daub_timber_box_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:daub_timber_box_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:daub_timber_box_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:daub_timber_box_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -7202,11 +8111,20 @@
         },
         {
             "name": "acblocks:daub_timber_box_yellow_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:daub_timber_box_yellow_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:daub_timber_box_yellow_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:daub_timber_box_yellow_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -7229,11 +8147,20 @@
         },
         {
             "name": "acblocks:drystone_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:drystone_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:drystone_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:drystone_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -7265,11 +8192,20 @@
         },
         {
             "name": "acblocks:gray_timber_1_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:gray_timber_1_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:gray_timber_1_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:gray_timber_1_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -7292,11 +8228,20 @@
         },
         {
             "name": "acblocks:gray_timber_2_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:gray_timber_2_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:gray_timber_2_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:gray_timber_2_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -7319,11 +8264,20 @@
         },
         {
             "name": "acblocks:gray_timber_3_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:gray_timber_3_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:gray_timber_3_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:gray_timber_3_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -7346,11 +8300,20 @@
         },
         {
             "name": "acblocks:gray_timber_4_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:gray_timber_4_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:gray_timber_4_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:gray_timber_4_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -7373,11 +8336,20 @@
         },
         {
             "name": "acblocks:gray_timber_5_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:gray_timber_5_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:gray_timber_5_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:gray_timber_5_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -7400,11 +8372,20 @@
         },
         {
             "name": "acblocks:harad_wall_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:harad_wall_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:harad_wall_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:harad_wall_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -7472,11 +8453,20 @@
         },
         {
             "name": "acblocks:limestone_huge_bricks_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:limestone_huge_bricks_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:limestone_huge_bricks_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:limestone_huge_bricks_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -7499,11 +8489,20 @@
         },
         {
             "name": "acblocks:mithlond_wall_grey_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:mithlond_wall_grey_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:mithlond_wall_grey_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:mithlond_wall_grey_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -7535,11 +8534,20 @@
         },
         {
             "name": "acblocks:mithlond_wall_grey_fancy_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:mithlond_wall_grey_fancy_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:mithlond_wall_grey_fancy_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:mithlond_wall_grey_fancy_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -7562,11 +8570,20 @@
         },
         {
             "name": "acblocks:bree_pink_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:bree_pink_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:bree_pink_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:bree_pink_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -7589,11 +8606,20 @@
         },
         {
             "name": "acblocks:bree_purple_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:bree_purple_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:bree_purple_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:bree_purple_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -7616,11 +8642,20 @@
         },
         {
             "name": "acblocks:mossy_mortar_brick_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:mossy_mortar_brick_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:mossy_mortar_brick_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:mossy_mortar_brick_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -7643,11 +8678,20 @@
         },
         {
             "name": "acblocks:sandstone_brick_wall_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:sandstone_brick_wall_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:sandstone_brick_wall_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:sandstone_brick_wall_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -7679,11 +8723,20 @@
         },
         {
             "name": "acblocks:tudor_1_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:tudor_1_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:tudor_1_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:tudor_1_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -7706,11 +8759,20 @@
         },
         {
             "name": "acblocks:tudor_2_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:tudor_2_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:tudor_2_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:tudor_2_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -7742,11 +8804,20 @@
         },
         {
             "name": "acblocks:plaster_peach_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:plaster_peach_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:plaster_peach_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:plaster_peach_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -7760,11 +8831,20 @@
         },
         {
             "name": "acblocks:plaster_white_0_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:plaster_white_0_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:plaster_white_0_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:plaster_white_0_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -7787,11 +8867,20 @@
         },
         {
             "name": "acblocks:plaster_white_1_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:plaster_white_1_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:plaster_white_1_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:plaster_white_1_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -7814,11 +8903,20 @@
         },
         {
             "name": "acblocks:plaster_white_2_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:plaster_white_2_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:plaster_white_2_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:plaster_white_2_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -7841,11 +8939,20 @@
         },
         {
             "name": "acblocks:plaster_white_3_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:plaster_white_3_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:plaster_white_3_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:plaster_white_3_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -7868,11 +8975,20 @@
         },
         {
             "name": "acblocks:plaster_white_4_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:plaster_white_4_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:plaster_white_4_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:plaster_white_4_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -7904,11 +9020,20 @@
         },
         {
             "name": "acblocks:plaster_yellow_0_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:plaster_yellow_0_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:plaster_yellow_0_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:plaster_yellow_0_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -7931,11 +9056,20 @@
         },
         {
             "name": "acblocks:plaster_yellow_1_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:plaster_yellow_1_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:plaster_yellow_1_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:plaster_yellow_1_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -7958,11 +9092,20 @@
         },
         {
             "name": "acblocks:plaster_yellow_2_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:plaster_yellow_2_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:plaster_yellow_2_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:plaster_yellow_2_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -7985,11 +9128,20 @@
         },
         {
             "name": "acblocks:plaster_yellow_3_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:plaster_yellow_3_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:plaster_yellow_3_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:plaster_yellow_3_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -8012,11 +9164,20 @@
         },
         {
             "name": "acblocks:plaster_yellow_4_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:plaster_yellow_4_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:plaster_yellow_4_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:plaster_yellow_4_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -8030,11 +9191,20 @@
         },
         {
             "name": "acblocks:prismarine_brick_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:prismarine_brick_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:prismarine_brick_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:prismarine_brick_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -8066,11 +9236,20 @@
         },
         {
             "name": "acblocks:prismarine_tiles_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:prismarine_tiles_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:prismarine_tiles_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:prismarine_tiles_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -8111,11 +9290,20 @@
         },
         {
             "name": "acblocks:refined_orange_wall_decor_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:refined_orange_wall_decor_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:refined_orange_wall_decor_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:refined_orange_wall_decor_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -8174,11 +9362,20 @@
         },
         {
             "name": "acblocks:sandstone_huge_bricks_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:sandstone_huge_bricks_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:sandstone_huge_bricks_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:sandstone_huge_bricks_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -8201,11 +9398,20 @@
         },
         {
             "name": "acblocks:sandstone_stone_brick_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:sandstone_stone_brick_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:sandstone_stone_brick_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:sandstone_stone_brick_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -8237,11 +9443,20 @@
         },
         {
             "name": "acblocks:slate_cobblestone_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:slate_cobblestone_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:slate_cobblestone_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:slate_cobblestone_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -8309,11 +9524,20 @@
         },
         {
             "name": "acblocks:slate_cobble_mortar_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:slate_cobble_mortar_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:slate_cobble_mortar_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:slate_cobble_mortar_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -8336,11 +9560,20 @@
         },
         {
             "name": "acblocks:stained_white_brick_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:stained_white_brick_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:stained_white_brick_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:stained_white_brick_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -8381,11 +9614,20 @@
         },
         {
             "name": "acblocks:bordered_cobble_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:bordered_cobble_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:bordered_cobble_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:bordered_cobble_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -8435,11 +9677,20 @@
         },
         {
             "name": "acblocks:cobble_1_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:cobble_1_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:cobble_1_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:cobble_1_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -8516,11 +9767,20 @@
         },
         {
             "name": "acblocks:huge_bricks_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:huge_bricks_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:huge_bricks_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:huge_bricks_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -8579,11 +9839,20 @@
         },
         {
             "name": "acblocks:light_bricks_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:light_bricks_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:light_bricks_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:light_bricks_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -8678,11 +9947,20 @@
         },
         {
             "name": "acblocks:brick_2_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:brick_2_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:brick_2_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:brick_2_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -8732,11 +10010,20 @@
         },
         {
             "name": "acblocks:mossy_brick_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:mossy_brick_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:mossy_brick_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:mossy_brick_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -9299,11 +10586,20 @@
         },
         {
             "name": "acblocks:yellow_plaster_stone_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:yellow_plaster_stone_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:yellow_plaster_stone_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:yellow_plaster_stone_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -9326,11 +10622,20 @@
         },
         {
             "name": "acblocks:aged_planks_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:aged_planks_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:aged_planks_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:aged_planks_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -9362,11 +10667,20 @@
         },
         {
             "name": "acblocks:ash_planks_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:ash_planks_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:ash_planks_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:ash_planks_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -9434,11 +10748,20 @@
         },
         {
             "name": "acblocks:bound_spruce_wood_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:bound_spruce_wood_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:bound_spruce_wood_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:bound_spruce_wood_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -9506,11 +10829,20 @@
         },
         {
             "name": "acblocks:dark_oak_planks_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:dark_oak_planks_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:dark_oak_planks_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:dark_oak_planks_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -9749,11 +11081,20 @@
         },
         {
             "name": "acblocks:painted_planks_rustic_blue_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:painted_planks_rustic_blue_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:painted_planks_rustic_blue_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:painted_planks_rustic_blue_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -9830,11 +11171,20 @@
         },
         {
             "name": "acblocks:painted_planks_rustic_green_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:painted_planks_rustic_green_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:painted_planks_rustic_green_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:painted_planks_rustic_green_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -9911,11 +11261,20 @@
         },
         {
             "name": "acblocks:painted_planks_rustic_red_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:painted_planks_rustic_red_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:painted_planks_rustic_red_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:painted_planks_rustic_red_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -9992,11 +11351,20 @@
         },
         {
             "name": "acblocks:painted_planks_rustic_white_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:painted_planks_rustic_white_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:painted_planks_rustic_white_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:painted_planks_rustic_white_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -10073,11 +11441,20 @@
         },
         {
             "name": "acblocks:painted_planks_rustic_yellow_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:painted_planks_rustic_yellow_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:painted_planks_rustic_yellow_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:painted_planks_rustic_yellow_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -10181,11 +11558,20 @@
         },
         {
             "name": "acblocks:birch_dark_planks_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:birch_dark_planks_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:birch_dark_planks_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:birch_dark_planks_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -10262,11 +11648,20 @@
         },
         {
             "name": "acblocks:planks_nondescript_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:planks_nondescript_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:planks_nondescript_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:planks_nondescript_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -10307,11 +11702,20 @@
         },
         {
             "name": "acblocks:reinforced_planks_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:reinforced_planks_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:reinforced_planks_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:reinforced_planks_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -10334,11 +11738,20 @@
         },
         {
             "name": "acblocks:roped_wood_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:roped_wood_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:roped_wood_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:roped_wood_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -10550,11 +11963,20 @@
         },
         {
             "name": "acblocks:crate_0_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:crate_0_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:crate_0_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:crate_0_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -10604,11 +12026,20 @@
         },
         {
             "name": "acblocks:crate_1_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:crate_1_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:crate_1_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:crate_1_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -10793,11 +12224,20 @@
         },
         {
             "name": "acblocks:arnor_floor_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:arnor_floor_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:arnor_floor_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:arnor_floor_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -10820,11 +12260,20 @@
         },
         {
             "name": "acblocks:dirt_path_dark_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:dirt_path_dark_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:dirt_path_dark_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:dirt_path_dark_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -10847,11 +12296,20 @@
         },
         {
             "name": "acblocks:dirt_path_light_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:dirt_path_light_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:dirt_path_light_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:dirt_path_light_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -10874,11 +12332,20 @@
         },
         {
             "name": "acblocks:dirt_path_mid_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:dirt_path_mid_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:dirt_path_mid_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:dirt_path_mid_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -10901,11 +12368,20 @@
         },
         {
             "name": "acblocks:mud_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:mud_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:mud_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:mud_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -10937,11 +12413,20 @@
         },
         {
             "name": "acblocks:clay_tiles_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:clay_tiles_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:clay_tiles_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:clay_tiles_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -10964,11 +12449,20 @@
         },
         {
             "name": "acblocks:light_tiles_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:light_tiles_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:light_tiles_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:light_tiles_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -11009,11 +12503,20 @@
         },
         {
             "name": "acblocks:mixed_tiles_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:mixed_tiles_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:mixed_tiles_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:mixed_tiles_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -11198,11 +12701,20 @@
         },
         {
             "name": "acblocks:roof_tiles_red_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:roof_tiles_red_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:roof_tiles_red_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:roof_tiles_red_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -11315,11 +12827,20 @@
         },
         {
             "name": "acblocks:brick_red_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:brick_red_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:brick_red_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:brick_red_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -11414,11 +12935,20 @@
         },
         {
             "name": "acblocks:light_stone_brick_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:light_stone_brick_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:light_stone_brick_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:light_stone_brick_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -11513,11 +13043,20 @@
         },
         {
             "name": "acblocks:stone_brick_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:stone_brick_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:stone_brick_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:stone_brick_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -12224,11 +13763,20 @@
         },
         {
             "name": "acblocks:painted_planks_brown_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:painted_planks_brown_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:painted_planks_brown_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:painted_planks_brown_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -12305,11 +13853,20 @@
         },
         {
             "name": "acblocks:painted_planks_cyan_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:painted_planks_cyan_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:painted_planks_cyan_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:painted_planks_cyan_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -12386,11 +13943,20 @@
         },
         {
             "name": "acblocks:painted_planks_dark_blue_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:painted_planks_dark_blue_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:painted_planks_dark_blue_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:painted_planks_dark_blue_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -12467,11 +14033,20 @@
         },
         {
             "name": "acblocks:painted_planks_green_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:painted_planks_green_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:painted_planks_green_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:painted_planks_green_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -12548,11 +14123,20 @@
         },
         {
             "name": "acblocks:painted_planks_light_blue_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:painted_planks_light_blue_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:painted_planks_light_blue_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:painted_planks_light_blue_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -12629,11 +14213,20 @@
         },
         {
             "name": "acblocks:painted_planks_light_red_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:painted_planks_light_red_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:painted_planks_light_red_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:painted_planks_light_red_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -12710,11 +14303,20 @@
         },
         {
             "name": "acblocks:painted_planks_lime_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:painted_planks_lime_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:painted_planks_lime_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:painted_planks_lime_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -12791,11 +14393,20 @@
         },
         {
             "name": "acblocks:painted_planks_orange_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:painted_planks_orange_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:painted_planks_orange_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:painted_planks_orange_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -12872,11 +14483,20 @@
         },
         {
             "name": "acblocks:painted_planks_purple_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:painted_planks_purple_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:painted_planks_purple_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:painted_planks_purple_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -12953,11 +14573,20 @@
         },
         {
             "name": "acblocks:painted_planks_red_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:painted_planks_red_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:painted_planks_red_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:painted_planks_red_slab",
-                "data": 0
+                "data": 8
             }
         },
         {
@@ -13034,11 +14663,20 @@
         },
         {
             "name": "acblocks:painted_planks_yellow_slab",
+            "min": 1,
+            "max": 7,
+            "to": {
+                "name": "acblocks:painted_planks_yellow_slab",
+                "data": 0
+            }
+        },
+        {
+            "name": "acblocks:painted_planks_yellow_slab",
             "min": 9,
             "max": 16,
             "to": {
                 "name": "acblocks:painted_planks_yellow_slab",
-                "data": 0
+                "data": 8
             }
         }
     ],
