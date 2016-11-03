@@ -23,6 +23,7 @@ public class WorldData {
     private CompoundTag cachedLevel;
     public final BlockRegistry blockRegistry = new BlockRegistry();
 
+    // NOTE! this expects an old level.dat format, needs to be updated to suited Forge's newer scheme
     public WorldData(File root) {
         this.level = new File(root, "level.dat");
         this.region = new File(root, "region");

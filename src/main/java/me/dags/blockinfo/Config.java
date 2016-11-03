@@ -58,8 +58,7 @@ public class Config {
                 }
                 if (object.contains("remove_blocks")) {
                     NodeObject remove = object.get("remove_blocks").asNodeObject();
-                    remove.entries().stream()
-                            .forEach(e -> config.removeBlocks.put(e.getKey().asString(), e.getValue().asNumber().intValue()));
+                    remove.entries().forEach(e -> config.removeBlocks.put(e.getKey().asString(), e.getValue().asNumber().intValue()));
                 }
                 if (object.contains("entities")) {
                     NodeArray array = object.get("entities").asNodeArray();

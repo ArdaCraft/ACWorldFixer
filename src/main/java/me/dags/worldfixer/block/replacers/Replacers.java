@@ -48,4 +48,8 @@ public class Replacers {
     public static RangeReplacer rangeMatchTypeReplaceTypeAndData(int typeFrom, int typeTo, int minData, int maxData, int dataTo) {
         return new RangeReplacer(typeFrom, typeTo, minData, maxData, dataTo, replaceTypeAndData);
     }
+
+    public static BiomeReplacer matchBiomeWithReplacer(int biomeId, Replacer replacer) {
+        return new BiomeReplacer(biomeId, replacer);
+    }
 }

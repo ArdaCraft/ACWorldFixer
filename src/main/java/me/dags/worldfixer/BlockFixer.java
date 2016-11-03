@@ -121,7 +121,7 @@ public class BlockFixer {
         if (blockInfo.min == blockInfo.max) { // matching specific meta data value
             if (toData == blockInfo.min) { // only change block's id
                 replacer = Replacers.matchTypeAndDataReplaceType(fromId, toId, blockInfo.min);
-            } else if (toId == fromId){ // only change block's meta data
+            } else if (toId == fromId) { // only change block's meta data
                 replacer = Replacers.matchTypeAndDataReplaceData(fromId, blockInfo.min, toData);
             } else { // change both id and data
                 replacer = Replacers.matchTypeAndDataReplaceTypeAndData(fromId, toId, blockInfo.min, toData);
@@ -133,6 +133,11 @@ public class BlockFixer {
                 replacer = Replacers.matchTypeAndDataReplaceTypeAndData(fromId, toId, blockInfo.min, toData);
             }
         }
+
+        if (blockInfo.biome >= 0) {
+            replacer = Replacers.matchBiomeWithReplacer(blockInfo.biome, replacer);
+        }
+
         list.add(replacer);
     }
 }

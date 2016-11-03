@@ -7,12 +7,12 @@ import org.pepsoft.minecraft.Chunk;
  */
 public class SimpleReplacer implements Replacer {
 
-    private final int typeFrom;
-    private final int typeTo;
-    private final int dataFrom;
-    private final int dataTo;
-    private final BlockPredicate rule;
-    private final BlockChangeApplier consumer;
+    final int typeFrom;
+    final int typeTo;
+    final int dataFrom;
+    final int dataTo;
+    final BlockPredicate rule;
+    final BlockChangeApplier consumer;
 
     SimpleReplacer(int typeFrom, int typeTo, int dataFrom, int dataTo, BlockPredicate blockPredicate, BlockChangeApplier consumer) {
         this.typeFrom = typeFrom;
@@ -21,11 +21,6 @@ public class SimpleReplacer implements Replacer {
         this.dataTo = dataTo;
         this.rule = blockPredicate;
         this.consumer = consumer;
-    }
-
-    @Override
-    public int getType() {
-        return typeFrom;
     }
 
     @Override
