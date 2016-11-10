@@ -1,17 +1,13 @@
 package me.dags.worldfixer;
 
-import me.dags.blockinfo.BlockInfo;
-import me.dags.blockinfo.Config;
 import me.dags.worldfixer.block.ChangeStats;
 import me.dags.worldfixer.block.ReplaceTask;
 import me.dags.worldfixer.block.replacers.Replacer;
 import me.dags.worldfixer.block.replacers.Replacers;
 
 import javax.swing.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.io.File;
+import java.util.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
@@ -20,18 +16,20 @@ import java.util.stream.Collectors;
 /**
  * @author dags <dags@dags.me>
  */
-public class BlockFixer {
+public class WorldModifier {
 
     private static volatile boolean finished = false;
 
     private final WorldData worldData;
     private final Config config;
+    private final File regions;
     private final int cores;
 
-    public BlockFixer(Config config, WorldData worldData, int cores) {
+    public WorldModifier(Config config, WorldData worldData, File worldDir, int cores) {
         this.worldData = worldData;
         this.config = config;
         this.cores = cores;
+        this.regions = new File(worldDir, "regions");
     }
 
     public void run(JFrame frame, JProgressBar progressBar) {
@@ -102,8 +100,7 @@ public class BlockFixer {
     }
 
     private List<ReplaceTask> getTasks(Replacer[][] replacers) {
-        return worldData.getRegionFiles()
-                .stream()
+        return getRegionFiles(regions).stream()
                 .map(file -> new ReplaceTask(file, replacers)
                         .withEntities(config.entities)
                         .withTileEntities(config.tileEntities))
@@ -139,5 +136,19 @@ public class BlockFixer {
         }
 
         list.add(replacer);
+    }
+
+    private static List<File> getRegionFiles(File region) {
+        File[] files = region.listFiles();
+        if (files != null && files.length > 0) {
+            List<File> mca_files = new ArrayList<>();
+            for (File f : files) {
+                if (f.getName().endsWith(".mca")) {
+                    mca_files.add(f);
+                }
+            }
+            return mca_files;
+        }
+        return Collections.emptyList();
     }
 }

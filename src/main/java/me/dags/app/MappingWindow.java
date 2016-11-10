@@ -1,7 +1,7 @@
 package me.dags.app;
 
-import me.dags.blockinfo.BlockInfo;
-import me.dags.blockinfo.Config;
+import me.dags.worldfixer.BlockInfo;
+import me.dags.worldfixer.Config;
 
 import javax.swing.*;
 import java.awt.*;
@@ -22,7 +22,7 @@ public class MappingWindow extends JPanel {
         this.parent = parent;
         this.setup = setup;
         this.config = setup.config;
-        this.blockNames = setup.levelFixer.worldData.blockRegistry.blockNames();
+        this.blockNames = setup.worldData.blockRegistry.blockNames();
 
         content.setLayout(new BoxLayout(content, BoxLayout.Y_AXIS));
         scrollPane.setAutoscrolls(true);
@@ -51,7 +51,7 @@ public class MappingWindow extends JPanel {
         this.add(all);
 
         for (BlockInfo info : config.blocks) {
-            if (setup.levelFixer.worldData.blockRegistry.getId(info.name) != null) {
+            if (setup.worldData.blockRegistry.getId(info.name) != null) {
                 Mapping mapping = new Mapping(this, info, blockNames);
                 mappings.add(mapping);
                 content.add(mapping);
@@ -60,8 +60,8 @@ public class MappingWindow extends JPanel {
     }
 
     private void create() {
-        BlockInfo to = new BlockInfo("minecraft:air", 0, false);
-        BlockInfo from = new BlockInfo(to.name, 0, 0, to);
+        BlockInfo to = new BlockInfo("minecraft:air", -1, 0, 0, BlockInfo.EMPTY);
+        BlockInfo from = new BlockInfo(to.name, -1, 0, 0, BlockInfo.EMPTY);
         Mapping mapping = new Mapping(this, from, blockNames);
         mappings.add(mapping);
         refresh();

@@ -2,14 +2,14 @@ package me.dags.worldfixer;
 
 import me.dags.worldfixer.block.BlockRegistry;
 import org.jnbt.*;
+import org.pepsoft.minecraft.Block;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
+import java.util.function.Consumer;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
 
@@ -19,25 +19,33 @@ import java.util.zip.GZIPOutputStream;
 public class WorldData {
 
     private final File level;
-    private final File region;
     private CompoundTag cachedLevel;
     public final BlockRegistry blockRegistry = new BlockRegistry();
 
     // NOTE! this expects an old level.dat format, needs to be updated to suited Forge's newer scheme
-    public WorldData(File root) {
-        this.level = new File(root, "level.dat");
-        this.region = new File(root, "region");
+    public WorldData(File level) {
+        this.level = level;
     }
 
     public void loadRegistry() {
-        CompoundTag FML = (CompoundTag) cachedLevel.getTag("FML");
-        ListTag repaired = ((ListTag) FML.getTag("ItemData"));
-        repaired.getValue().forEach(tag -> {
-            CompoundTag mapping = (CompoundTag) tag;
-            String name = mapping.getTag("K").toString().trim();
-            int id = (int) mapping.getTag("V").getValue();
-            blockRegistry.register(name, id);
-        });
+        if (getLevelData().containsTag("FML")) {
+            CompoundTag FML = (CompoundTag) getLevelData().getTag("FML");
+            if (FML.containsTag("ItemData")) {
+                ListTag repaired = ((ListTag) FML.getTag("ItemData"));
+                repaired.getValue().forEach(this::register);
+            } else if (FML.containsTag("Registries")) {
+                CompoundTag registries = (CompoundTag) FML.getTag("Registries");
+                CompoundTag blocks = (CompoundTag) registries.getTag("minecraft:blocks");
+                ListTag ids = (ListTag) blocks.getTag("ids");
+                ids.getValue().forEach(this::register);
+            }
+        } else {
+            for (Block block : Block.BLOCKS) {
+                if (block.name == null) continue;
+                String name = "minecraft:" + block.name.toLowerCase().replace(' ', '_');
+                blockRegistry.register(name, block.id);
+            }
+        }
     }
 
     public CompoundTag getLevelData() {
@@ -55,6 +63,13 @@ public class WorldData {
         }
     }
 
+    private void register(Tag tag) {
+        CompoundTag mapping = (CompoundTag) tag;
+        String name = mapping.getTag("K").getValue().toString().trim();
+        int id = (int) mapping.getTag("V").getValue();
+        blockRegistry.register(name, id);
+    }
+
     public void writeLevelData() {
         try (NBTOutputStream out = new NBTOutputStream(new GZIPOutputStream(new FileOutputStream(level)))) {
             out.writeTag(cachedLevel);
@@ -64,7 +79,7 @@ public class WorldData {
     }
 
     public boolean validate() {
-        return level.exists() && region.exists();
+        return level.exists();
     }
 
     public String error() {
@@ -72,19 +87,5 @@ public class WorldData {
             return "level.dat is missing!";
         }
         return "region directory is missing!";
-    }
-
-    public List<File> getRegionFiles() {
-        File[] files = region.listFiles();
-        if (files != null && files.length > 0) {
-            List<File> mca_files = new ArrayList<>();
-            for (File f : files) {
-                if (f.getName().endsWith(".mca")) {
-                    mca_files.add(f);
-                }
-            }
-            return mca_files;
-        }
-        return Collections.emptyList();
     }
 }

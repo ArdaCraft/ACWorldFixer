@@ -1,8 +1,8 @@
 package me.dags.app;
 
-import me.dags.blockinfo.BlockInfo;
-import me.dags.blockinfo.Config;
 import me.dags.data.node.NodeTypeAdapters;
+import me.dags.worldfixer.BlockInfo;
+import me.dags.worldfixer.Config;
 
 import javax.swing.*;
 import java.awt.*;

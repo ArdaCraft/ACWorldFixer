@@ -39,7 +39,7 @@ package org.jnbt;
  *
  */
 public final class NBTUtils {
-	
+
 	/**
 	 * Gets the type name of a tag.
 	 * @param clazz The tag class.
@@ -72,7 +72,7 @@ public final class NBTUtils {
 			throw new IllegalArgumentException("Invalid tag classs (" + clazz.getName() + ").");
 		}
 	}
-	
+
 	/**
 	 * Gets the type code of a tag class.
 	 * @param clazz The tag class.
@@ -102,13 +102,13 @@ public final class NBTUtils {
 			return NBTConstants.TYPE_SHORT;
 		} else if(clazz.equals(StringTag.class)) {
 			return NBTConstants.TYPE_STRING;
-                } else if(clazz.equals(IntArrayTag.class)) {
-                        return NBTConstants.TYPE_INT_ARRAY;
+		} else if(clazz.equals(IntArrayTag.class)) {
+			return NBTConstants.TYPE_INT_ARRAY;
 		} else {
 			throw new IllegalArgumentException("Invalid tag classs (" + clazz.getName() + ").");
 		}
 	}
-	
+
 	/**
 	 * Gets the class of a type of tag.
 	 * @param type The type.
@@ -117,38 +117,40 @@ public final class NBTUtils {
 	 */
 	public static Class<? extends Tag> getTypeClass(int type) {
 		switch(type) {
-		case NBTConstants.TYPE_END:
-			return EndTag.class;
-		case NBTConstants.TYPE_BYTE:
-			return ByteTag.class;
-		case NBTConstants.TYPE_SHORT:
-			return ShortTag.class;
-		case NBTConstants.TYPE_INT:
-			return IntTag.class;
-		case NBTConstants.TYPE_LONG:
-			return LongTag.class;
-		case NBTConstants.TYPE_FLOAT:
-			return FloatTag.class;
-		case NBTConstants.TYPE_DOUBLE:
-			return DoubleTag.class;
-		case NBTConstants.TYPE_BYTE_ARRAY:
-			return ByteArrayTag.class;
-		case NBTConstants.TYPE_STRING:
-			return StringTag.class;
-		case NBTConstants.TYPE_LIST:
-			return ListTag.class;
-		case NBTConstants.TYPE_COMPOUND:
-			return CompoundTag.class;
-		default:
-			throw new IllegalArgumentException("Invalid tag type : " + type + ".");
+			case NBTConstants.TYPE_END:
+				return EndTag.class;
+			case NBTConstants.TYPE_BYTE:
+				return ByteTag.class;
+			case NBTConstants.TYPE_SHORT:
+				return ShortTag.class;
+			case NBTConstants.TYPE_INT:
+				return IntTag.class;
+			case NBTConstants.TYPE_LONG:
+				return LongTag.class;
+			case NBTConstants.TYPE_FLOAT:
+				return FloatTag.class;
+			case NBTConstants.TYPE_DOUBLE:
+				return DoubleTag.class;
+			case NBTConstants.TYPE_BYTE_ARRAY:
+				return ByteArrayTag.class;
+			case NBTConstants.TYPE_STRING:
+				return StringTag.class;
+			case NBTConstants.TYPE_LIST:
+				return ListTag.class;
+			case NBTConstants.TYPE_COMPOUND:
+				return CompoundTag.class;
+			case NBTConstants.TYPE_INT_ARRAY:
+				return IntArrayTag.class;
+			default:
+				throw new IllegalArgumentException("Invalid tag type : " + type + ".");
 		}
 	}
-	
+
 	/**
 	 * Default private constructor.
 	 */
 	private NBTUtils() {
-		
+
 	}
 
 }

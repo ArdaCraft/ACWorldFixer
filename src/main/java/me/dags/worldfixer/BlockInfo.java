@@ -1,16 +1,15 @@
-package me.dags.blockinfo;
+package me.dags.worldfixer;
 
 import me.dags.data.node.Node;
 import me.dags.data.node.NodeObject;
 import me.dags.data.node.NodeTypeAdapter;
-import me.dags.worldfixer.block.BlockRegistry;
-
-import java.util.Comparator;
 
 /**
  * @author dags <dags@dags.me>
  */
 public class BlockInfo {
+
+    public static BlockInfo EMPTY = new BlockInfo();
 
     public final String name;
     public final int min;
@@ -18,32 +17,20 @@ public class BlockInfo {
     public final int biome;
     public final BlockInfo to;
 
-    public BlockInfo(String name, int data, boolean derp) {
-        this.name = name;
-        this.min = data;
-        this.max = data;
-        this.to = null;
+    private BlockInfo() {
+        this.name = "EMPTY";
+        this.min = -1;
+        this.max = -1;
         this.biome = -1;
+        this.to = this;
     }
 
-    public BlockInfo(String name, int data) {
-        this(name, data, new BlockInfo(name, 0, false));
-    }
-
-    public BlockInfo(String name, int data, BlockInfo to) {
-        this.name = name;
-        this.min = data;
-        this.max = 16;
-        this.to = to;
-        this.biome = -1;
-    }
-
-    public BlockInfo(String name, int min, int max, BlockInfo to) {
-        this.name = name;
-        this.min = min;
-        this.max = max;
-        this.to = to;
-        this.biome = -1;
+    private BlockInfo(BlockInfo info) {
+        this.name = info.name;
+        this.min = info.min;
+        this.max = info.max;
+        this.biome = info.biome;
+        this.to = info.to;
     }
 
     public BlockInfo(String name, int biome, int min, int max, BlockInfo to) {
@@ -54,8 +41,12 @@ public class BlockInfo {
         this.biome = biome;
     }
 
+    public boolean present() {
+        return this != EMPTY;
+    }
+
     public BlockInfo copy() {
-        return new BlockInfo(name, min, max, new BlockInfo(to.name, to.min, false));
+        return present() ? new BlockInfo(name, biome, min, max, (to.present() ? new BlockInfo(to) : EMPTY)) : EMPTY;
     }
 
     public static class Adapter implements NodeTypeAdapter<BlockInfo> {
@@ -67,7 +58,7 @@ public class BlockInfo {
             nodeObject.put("min", blockInfo.min);
             nodeObject.put("max", blockInfo.max);
             nodeObject.put("biome", blockInfo.biome);
-            if (blockInfo.to != null) {
+            if (blockInfo.to.present()) {
                 NodeObject to = new NodeObject();
                 to.put("name", blockInfo.to.name);
                 to.put("data", blockInfo.to.min);
@@ -82,14 +73,17 @@ public class BlockInfo {
                 String name = node.asNodeObject().get("name").asString();
                 int min = node.asNodeObject().get("min").asNumber().intValue();
                 int max = node.asNodeObject().get("max").asNumber().intValue();
-                int biome = node.asNodeObject().get("biome").asNumber().intValue();
+                int biome = -1;
+                if (node.asNodeObject().contains("biome")) {
+                    biome = node.asNodeObject().get("biome").asNumber().intValue();
+                }
                 if (node.asNodeObject().contains("to")) {
                     NodeObject toObject = node.asNodeObject().get("to").asNodeObject();
                     String toName = toObject.get("name").asString();
                     int toMin = toObject.get("data").asNumber().intValue();
-                    return new BlockInfo(name, biome, min, max, new BlockInfo(toName, toMin, false));
+                    return new BlockInfo(name, biome, min, max, new BlockInfo(toName, -1, toMin, toMin, EMPTY));
                 }
-                return new BlockInfo(name, min);
+                return new BlockInfo(name, biome, min, min, EMPTY);
             }
             return null;
         }

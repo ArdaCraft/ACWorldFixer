@@ -1,6 +1,6 @@
 package me.dags.app;
 
-import me.dags.blockinfo.BlockInfo;
+import me.dags.worldfixer.BlockInfo;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,8 +9,8 @@ import java.awt.event.ActionListener;
 
 public class Mapping extends JPanel {
 
-    private static final Dimension NAME = new Dimension(200, 25);
-    private static final Dimension DATA = new Dimension(40, 25);
+    private static final Dimension NAME = new Dimension(185, 25);
+    private static final Dimension DATA = new Dimension(50, 25);
 
     BlockInfo blockInfo;
     final String[] blocks;
@@ -40,16 +40,16 @@ public class Mapping extends JPanel {
         JLabel from = new JLabel(info.name);
         from.setPreferredSize(NAME);
 
-        JLabel min = new JLabel("min: " + info.min);
-        min.setPreferredSize(DATA);
+        JLabel biome = new JLabel("biome: " + (info.biome < 0 ? "-" : info.biome));
+        biome.setPreferredSize(DATA);
 
-        JLabel max = new JLabel("max: " + info.max);
-        max.setPreferredSize(DATA);
+        JLabel meta = new JLabel("meta(s): " + info.min + " to " + info.max);
+        meta.setPreferredSize(new Dimension(85, 25));
 
-        JLabel to = new JLabel(info.to.name);
+        JLabel to = new JLabel(info.to.present() ? info.to.name : info.name);
         to.setPreferredSize(NAME);
 
-        JLabel data = new JLabel("data: " + info.to.min);
+        JLabel data = new JLabel("meta: " + (info.to.min < 0 ? "-" : info.to.min));
         data.setPreferredSize(DATA);
 
         JButton edit = new JButton("Edit");
@@ -62,9 +62,9 @@ public class Mapping extends JPanel {
         remove.addActionListener(e -> parent.removeMapping(this));
 
         row.add(from);
-        row.add(min);
-        row.add(max);
-        row.add(new JLabel("---->  "));
+        row.add(biome);
+        row.add(meta);
+        row.add(new JLabel("---->"));
         row.add(to);
         row.add(data);
         row.add(edit);

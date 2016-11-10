@@ -1,4 +1,4 @@
-package me.dags.blockinfo;
+package me.dags.worldfixer;
 
 import me.dags.data.NodeAdapter;
 import me.dags.data.node.Node;

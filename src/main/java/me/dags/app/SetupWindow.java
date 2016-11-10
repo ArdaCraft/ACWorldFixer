@@ -1,9 +1,10 @@
 package me.dags.app;
 
-import me.dags.blockinfo.Config;
 import me.dags.data.NodeAdapter;
-import me.dags.worldfixer.BlockFixer;
-import me.dags.worldfixer.LevelFixer;
+import me.dags.data.node.Node;
+import me.dags.data.node.NodeTypeAdapters;
+import me.dags.worldfixer.Config;
+import me.dags.worldfixer.WorldModifier;
 import me.dags.worldfixer.WorldData;
 
 import javax.swing.*;
@@ -11,6 +12,8 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.net.URL;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
 
 /**
  * @author dags <dags@dags.me>
@@ -18,13 +21,14 @@ import java.net.URL;
 public class SetupWindow extends JPanel {
 
     private static final File WORKING_DIR = new File(new File("").getAbsolutePath());
+    private final JTextField targetLevel = new JTextField();
     private final JTextField targetDir = new JTextField();
     private final JTextField targetConfig = new JTextField();
     private final JSlider cores = new JSlider(SwingConstants.HORIZONTAL);
 
     Config config = null;
-    LevelFixer levelFixer = null;
-    BlockFixer blockFixer = null;
+    File worldDir = null;
+    WorldData worldData = null;
 
     SetupWindow() {
         int fullWidth = 425;
@@ -32,19 +36,29 @@ public class SetupWindow extends JPanel {
         int labelWidth = 65;
         int lineHeight = 25;
 
+        targetLevel.setPreferredSize(new Dimension(fullWidth - buttonWidth, lineHeight));
+        targetLevel.setText(WORKING_DIR.getAbsolutePath());
+        JButton chooseLevel = new JButton("Choose");
+        chooseLevel.setPreferredSize(new Dimension(buttonWidth, lineHeight));
+        chooseLevel.addActionListener(choose(targetLevel, JFileChooser.FILES_ONLY, f -> f.getName().endsWith(".dat"), this::loadLevelData));
+
         targetDir.setPreferredSize(new Dimension(fullWidth - buttonWidth, lineHeight));
         targetDir.setText(WORKING_DIR.getAbsolutePath());
 
         JButton chooseDir = new JButton("Choose");
         chooseDir.setPreferredSize(new Dimension(buttonWidth, lineHeight));
-        chooseDir.addActionListener(choose(targetDir));
+        chooseDir.addActionListener(choose(targetDir, JFileChooser.DIRECTORIES_ONLY, f -> true, f -> worldDir = f));
 
-        targetConfig.setPreferredSize(new Dimension(fullWidth - buttonWidth, lineHeight));
-        targetConfig.setText("https://raw.githubusercontent.com/ArdaCraft/ACWorldFixer/master/block_data.json");
+        targetConfig.setPreferredSize(new Dimension(fullWidth - buttonWidth - buttonWidth, lineHeight));
+        targetConfig.setText("");
 
         JButton loadConfig = new JButton("Modify");
         loadConfig.setPreferredSize(new Dimension(buttonWidth, lineHeight));
         loadConfig.addActionListener(loadConfig(targetConfig));
+
+        JButton saveConfig = new JButton("Save");
+        saveConfig.setPreferredSize(new Dimension(buttonWidth, lineHeight));
+        saveConfig.addActionListener(saveConfig());
 
         cores.setPreferredSize(new Dimension(fullWidth, 35));
         cores.setMinimum(1);
@@ -58,6 +72,8 @@ public class SetupWindow extends JPanel {
         ok.setPreferredSize(new Dimension(buttonWidth, lineHeight));
         ok.addActionListener(ok());
 
+        JLabel levelLabel = new JLabel("Level File:");
+        levelLabel.setPreferredSize(new Dimension(labelWidth, lineHeight));
         JLabel worldLabel = new JLabel("World Dir:");
         worldLabel.setPreferredSize(new Dimension(labelWidth, lineHeight));
         JLabel configLabel = new JLabel("Config URL:");
@@ -65,9 +81,10 @@ public class SetupWindow extends JPanel {
         JLabel coresLabel = new JLabel("CPU Cores:");
         coresLabel.setPreferredSize(new Dimension(labelWidth, lineHeight));
 
-        this.setLayout(new GridLayout(4, 1));
+        this.setLayout(new GridLayout(5, 1));
+        this.add(toPanel(levelLabel, targetLevel, chooseLevel));
         this.add(toPanel(worldLabel, targetDir, chooseDir));
-        this.add(toPanel(configLabel, targetConfig, loadConfig));
+        this.add(toPanel(configLabel, targetConfig, loadConfig, saveConfig));
         this.add(toPanel(coresLabel, cores));
         this.add(toPanel(ok));
     }
@@ -87,11 +104,11 @@ public class SetupWindow extends JPanel {
     private void loadLevelData(File target) {
         WorldData worldData = new WorldData(target);
         if (!worldData.validate()) {
-            errorWindow("Invalid world directory selected!", worldData.error());
+            errorWindow("Invalid level.dat selected!", worldData.error());
             return;
         }
-        this.levelFixer = new LevelFixer(worldData);
-        this.levelFixer.loadRegistry();
+        this.worldData = worldData;
+        this.worldData.loadRegistry();
     }
 
     private void loadConfig() {
@@ -106,10 +123,10 @@ public class SetupWindow extends JPanel {
         this.config = config;
     }
 
-    private ActionListener choose(JTextField updateField) {
+    private ActionListener choose(JTextField updateField, int mode, Predicate<File> fileFilter, Consumer<File> action) {
         return e -> {
             JFileChooser dirChooser = new JFileChooser();
-            dirChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+            dirChooser.setFileSelectionMode(mode);
             dirChooser.setFileHidingEnabled(false);
             dirChooser.ensureFileIsVisible(WORKING_DIR);
             dirChooser.setSelectedFile(WORKING_DIR);
@@ -117,8 +134,10 @@ public class SetupWindow extends JPanel {
             switch (response) {
                 case JFileChooser.APPROVE_OPTION:
                     File target = dirChooser.getSelectedFile();
-                    updateField.setText(target.getAbsolutePath());
-                    loadLevelData(target);
+                    if (fileFilter.test(target)) {
+                        updateField.setText(target.getAbsolutePath());
+                        action.accept(target);
+                    }
                     break;
                 default:
                     break;
@@ -128,7 +147,7 @@ public class SetupWindow extends JPanel {
 
     private ActionListener loadConfig(JTextField configField) {
         return e -> {
-            if (this.levelFixer == null) {
+            if (this.worldData == null) {
                 errorWindow("Invalid world directory selected!", "");
                 return;
             }
@@ -145,21 +164,45 @@ public class SetupWindow extends JPanel {
         };
     }
 
+    private ActionListener saveConfig() {
+        return e -> {
+            JFileChooser dirChooser = new JFileChooser();
+            dirChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+            dirChooser.setFileHidingEnabled(false);
+            dirChooser.ensureFileIsVisible(WORKING_DIR);
+            dirChooser.setSelectedFile(WORKING_DIR);
+            int response = dirChooser.showOpenDialog(SetupWindow.this);
+            switch (response) {
+                case JFileChooser.APPROVE_OPTION:
+                    File target = dirChooser.getSelectedFile();
+                    File out = new File(target, "config.json");
+                    Node node = NodeTypeAdapters.of(Config.class).toNode(config);
+                    NodeAdapter.json().to(node, out);
+                    break;
+                default:
+                    break;
+            }
+        };
+    }
+
     private ActionListener ok() {
         return e -> {
-            if (this.levelFixer == null) {
-                errorWindow("World directory not loaded correctly!", "");
+            if (this.worldData == null) {
+                errorWindow("World data not loaded correctly!", "");
                 return;
             }
+
+            if (this.worldDir == null) {
+                errorWindow("No world directory selected!", "");
+                return;
+            }
+
             if (this.config == null) {
                 loadConfig();
             }
 
-            this.levelFixer.removeBlocks(config.removeBlocks.keySet());
-            this.levelFixer.writeChanges();
-
             try {
-                BlockFixer blockFixer = new BlockFixer(config, levelFixer.worldData, cores.getValue());
+                WorldModifier blockFixer = new WorldModifier(config, worldData, worldDir, cores.getValue());
 
                 JProgressBar progressBar = new JProgressBar();
                 progressBar.setPreferredSize(new Dimension(250, 30));
