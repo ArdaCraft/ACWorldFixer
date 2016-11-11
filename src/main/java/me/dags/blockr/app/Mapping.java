@@ -9,18 +9,20 @@ import java.awt.event.ActionListener;
 
 public class Mapping extends JPanel {
 
-    private static final Dimension NAME = new Dimension(185, 25);
+    private static final Dimension NAME = new Dimension(175, 25);
     private static final Dimension DATA = new Dimension(50, 25);
 
     BlockInfo blockInfo;
-    final String[] blocks;
+    final String[] fromBlocks;
+    final String[] toBlocks;
     private final MappingWindow parent;
     private JPanel row = new JPanel();
 
-    public Mapping(MappingWindow parent, BlockInfo blockInfo, String[] blocks) {
+    public Mapping(MappingWindow parent, BlockInfo blockInfo, String[] from, String[] to) {
         this.parent = parent;
         this.blockInfo = blockInfo;
-        this.blocks = blocks;
+        this.fromBlocks = from;
+        this.toBlocks = to;
         add(row = row(blockInfo));
         this.setAlignmentY(TOP_ALIGNMENT);
         this.setMinimumSize(new Dimension(800, 45));
@@ -39,6 +41,7 @@ public class Mapping extends JPanel {
 
         JLabel from = new JLabel(info.name);
         from.setPreferredSize(NAME);
+        JLabel fromId = new JLabel("(" + parent.setup.fromWorld.blockRegistry.getId(info.name) + ")");
 
         JLabel biome = new JLabel("biome: " + (info.biome < 0 ? "-" : info.biome));
         biome.setPreferredSize(DATA);
@@ -48,6 +51,7 @@ public class Mapping extends JPanel {
 
         JLabel to = new JLabel(info.to.present() ? info.to.name : info.name);
         to.setPreferredSize(NAME);
+        JLabel toId = new JLabel("(" + parent.setup.toWorld.blockRegistry.getId(to.getText()) + ")");
 
         JLabel data = new JLabel("meta: " + (info.to.min < 0 ? "-" : info.to.min));
         data.setPreferredSize(DATA);
@@ -61,10 +65,12 @@ public class Mapping extends JPanel {
         JButton remove = new JButton("Remove");
         remove.addActionListener(e -> parent.removeMapping(this));
 
+        row.add(fromId);
         row.add(from);
         row.add(biome);
         row.add(meta);
-        row.add(new JLabel("---->"));
+        row.add(new JLabel("-->"));
+        row.add(toId);
         row.add(to);
         row.add(data);
         row.add(edit);

@@ -10,11 +10,15 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * @author dags <dags@dags.me>
@@ -23,15 +27,17 @@ public class WorldModifier {
 
     private static volatile boolean finished = false;
 
-    private final WorldData worldData;
+    private final WorldData fromWorld;
+    private final WorldData toWorld;
     private final Config config;
     private final File worldIn;
     private final File worldOut;
     private final File regionsIn;
     private final int cores;
 
-    public WorldModifier(Config config, WorldData worldData, File worldDir, File outputDir, int cores) {
-        this.worldData = worldData;
+    public WorldModifier(Config config, WorldData fromWorld, WorldData toWorld, File worldDir, File outputDir, int cores) {
+        this.fromWorld = fromWorld;
+        this.toWorld = toWorld;
         this.config = config;
         this.cores = cores;
         this.worldIn = worldDir;
@@ -69,6 +75,7 @@ public class WorldModifier {
                 progressBar.repaint();
             }
         }
+        toWorld.writeLevelData(new File(worldOut, "level.dat"));
         frame.dispose();
         ChangeStats.punchOut();
         ChangeStats.displayResults(cores);
@@ -121,9 +128,12 @@ public class WorldModifier {
 
     private Replacer[][] getRules() {
         int max = 0;
+
         Map<Integer, List<Replacer>> filter = new HashMap<>();
+
+        // Loop over the config block mappings and interpret into Replacers
         for (BlockInfo blockInfo : config.blocks) {
-            Integer id = worldData.blockRegistry.getId(blockInfo.name);
+            Integer id = fromWorld.blockRegistry.getId(blockInfo.name);
             if (id == null) {
                 System.out.println("Skipping unknown block " + blockInfo.name);
                 continue;
@@ -133,16 +143,33 @@ public class WorldModifier {
             addReplacer(list, blockInfo);
             filter.put(id, list);
         }
+
+        if (Config.autoRemap()) {
+            // Search for blocks that have been mapped to different ids in each level.dat file and create
+            // a new replace rule so that they transfer properly to the 'toWorld' level.dat registry.
+            // Auto-remap rules will execute after any user defined rules
+            List<String> remappedBlocks = toWorld.blockRegistry.getRemmappedBlocks(fromWorld.blockRegistry);
+            for (String block : remappedBlocks) {
+                int fromId = fromWorld.blockRegistry.getId(block);
+                int toId = toWorld.blockRegistry.getId(block);
+                Replacer replacer = Replacers.matchTypeReplaceType(fromId, toId);
+                List<Replacer> list = filter.getOrDefault(fromId, new ArrayList<>());
+                list.add(replacer);
+                max = fromId > max ? fromId : max;
+            }
+        }
+
         Replacer[][] replacers = new Replacer[max + 1][];
         filter.entrySet().forEach(e -> {
             List<Replacer> list = filter.get(e.getKey());
             replacers[e.getKey()] = list.toArray(new Replacer[list.size()]);
         });
+
         return replacers;
     }
 
     private List<ReplaceTask> getTasks(Replacer[][] replacers) {
-        return getRegionFiles(regionsIn).stream()
+        return getRegionFiles(regionsIn)
                 .map(file -> new ReplaceTask(file, toOutputFile(file), replacers)
                         .withEntities(config.entities)
                         .withTileEntities(config.tileEntities))
@@ -150,14 +177,17 @@ public class WorldModifier {
     }
 
     private void addReplacer(List<Replacer> list, BlockInfo blockInfo) {
+        // Shouldn't occur unless user has error in config
         if (!blockInfo.present() || blockInfo.to == null) {
-            System.out.println("Skipping " + blockInfo);
             return;
         }
-        int fromId = worldData.blockRegistry.getId(blockInfo.name);
-        int toId = worldData.blockRegistry.getId(blockInfo.to.name);
+
+        int fromId = fromWorld.blockRegistry.getId(blockInfo.name);
+        int toId = toWorld.blockRegistry.getId(blockInfo.to.name);
         int toData = blockInfo.to.min;
+
         Replacer replacer;
+
         if (blockInfo.min == blockInfo.max) { // match one specific meta data value
             if (toData == blockInfo.min) { // only change block's id
                 replacer = Replacers.matchTypeAndDataReplaceType(fromId, toId, blockInfo.min);
@@ -174,6 +204,7 @@ public class WorldModifier {
             }
         }
 
+        // if a biome id is defined, link the currently interpreted replacer to a biome replacer
         if (blockInfo.biome >= 0) {
             replacer = Replacers.matchBiomeWithReplacer(blockInfo.biome, replacer);
         }
@@ -181,17 +212,11 @@ public class WorldModifier {
         list.add(replacer);
     }
 
-    private static List<File> getRegionFiles(File region) {
+    private static Stream<File> getRegionFiles(File region) {
         File[] files = region.listFiles();
         if (files != null && files.length > 0) {
-            List<File> mca_files = new ArrayList<>();
-            for (File f : files) {
-                if (f.getName().endsWith(".mca")) {
-                    mca_files.add(f);
-                }
-            }
-            return mca_files;
+            return Stream.of(files).filter(file -> file.getName().endsWith(".mca"));
         }
-        return Collections.emptyList();
+        return Stream.empty();
     }
 }

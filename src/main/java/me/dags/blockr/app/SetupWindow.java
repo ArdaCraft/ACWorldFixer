@@ -25,7 +25,8 @@ public class SetupWindow extends JPanel {
     Config config = null;
     File worldDir = null;
     File outputDir = null;
-    WorldData worldData = null;
+    WorldData fromWorld = null;
+    WorldData toWorld = null;
 
     SetupWindow() {
         int fullWidth = 425;
@@ -39,7 +40,10 @@ public class SetupWindow extends JPanel {
         targetLevel.setText(WORKING_DIR.getAbsolutePath());
         JButton chooseLevel = new JButton("Choose");
         chooseLevel.setPreferredSize(new Dimension(buttonWidth, lineHeight));
-        chooseLevel.addActionListener(choose(targetLevel, JFileChooser.FILES_ONLY, f -> f.getName().endsWith(".dat"), this::loadLevelData));
+        chooseLevel.addActionListener(choose(targetLevel, JFileChooser.FILES_ONLY, f -> f.getName().endsWith(".dat"), f -> {
+            Consumer<WorldData> consumer = worldData -> this.toWorld = worldData;
+            this.loadLevelData(f, consumer);
+        }));
 
         // world dir
         JTextField worldDir = new JTextField();
@@ -48,7 +52,11 @@ public class SetupWindow extends JPanel {
 
         JButton chooseDir = new JButton("Choose");
         chooseDir.setPreferredSize(new Dimension(buttonWidth, lineHeight));
-        chooseDir.addActionListener(choose(worldDir, JFileChooser.DIRECTORIES_ONLY, f -> true, f -> this.worldDir = f));
+        chooseDir.addActionListener(choose(worldDir, JFileChooser.DIRECTORIES_ONLY, f -> true, f -> {
+            Consumer<WorldData> consumer = worldData -> this.fromWorld = worldData;
+            this.loadLevelData(new File(f, "level.dat"), consumer);
+            this.worldDir = f;
+        }));
 
         // output dir
         JTextField outputDir = new JTextField();
@@ -82,11 +90,15 @@ public class SetupWindow extends JPanel {
         cores.setPaintTicks(true);
         cores.setPaintTrack(true);
 
+        JCheckBox remap = new JCheckBox("Auto-Remap");
+        remap.setSelected(false);
+        remap.addActionListener(e -> Config.setAutoRemap(remap.isSelected()));
+
         JButton ok = new JButton("Ok");
         ok.setPreferredSize(new Dimension(buttonWidth, lineHeight));
         ok.addActionListener(ok());
 
-        JLabel levelLabel = new JLabel("Level.dat File:");
+        JLabel levelLabel = new JLabel("Level File:");
         levelLabel.setPreferredSize(new Dimension(labelWidth, lineHeight));
         JLabel worldLabel = new JLabel("World Dir:");
         worldLabel.setPreferredSize(new Dimension(labelWidth, lineHeight));
@@ -101,7 +113,7 @@ public class SetupWindow extends JPanel {
         this.add(toPanel(outputLabel, outputDir, chooseOutput));
         this.add(toPanel(chooseConfig, editConfig, saveConfig));
         this.add(toPanel(coresLabel, cores));
-        this.add(toPanel(ok));
+        this.add(toPanel(remap, ok));
     }
 
     public void updateConfig(Config config) {
@@ -116,15 +128,15 @@ public class SetupWindow extends JPanel {
         return panel;
     }
 
-    private void loadLevelData(File target) {
+    private void loadLevelData(File target, Consumer<WorldData> consumer) {
         WorldData worldData = new WorldData(target);
         if (!worldData.validate()) {
             errorWindow("Invalid level.dat selected!", worldData.error());
             return;
         }
         try {
-            this.worldData = worldData;
-            this.worldData.loadRegistry();
+            worldData.loadRegistry();
+            consumer.accept(worldData);
         } catch (Exception e) {
             errorWindow("An error occurred whilst reading the level data", worldData.error());
         }
@@ -162,8 +174,12 @@ public class SetupWindow extends JPanel {
 
     private ActionListener editConfig() {
         return e -> {
-            if (this.worldData == null) {
-                errorWindow("WorldData not initialized. Have you selected a level.dat file?", "");
+            if (this.fromWorld == null) {
+                errorWindow("World directory not selected!", "");
+                return;
+            }
+            if (this.toWorld == null) {
+                errorWindow("level.dat not selected!", "");
                 return;
             }
             if (config == null) {
@@ -204,8 +220,13 @@ public class SetupWindow extends JPanel {
 
     private ActionListener ok() {
         return e -> {
-            if (this.worldData == null) {
+            if (this.fromWorld == null) {
                 errorWindow("World data not loaded correctly!", "");
+                return;
+            }
+
+            if (this.toWorld == null) {
+                errorWindow("level.dat not loaded correctly!", "");
                 return;
             }
 
@@ -220,7 +241,7 @@ public class SetupWindow extends JPanel {
             }
 
             try {
-                WorldModifier blockFixer = new WorldModifier(config, worldData, worldDir, outputDir, cores.getValue());
+                WorldModifier blockFixer = new WorldModifier(config, fromWorld, toWorld, worldDir, outputDir, cores.getValue());
 
                 JProgressBar progressBar = new JProgressBar();
                 progressBar.setPreferredSize(new Dimension(250, 30));

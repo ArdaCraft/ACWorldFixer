@@ -9,10 +9,20 @@ import java.util.*;
  */
 public class Config {
 
+    private static transient boolean auto_remap = false;
+
     public final List<BlockInfo> blocks = new ArrayList<>();
     public final Map<String, Integer> removeBlocks = new HashMap<>();
     public final Set<String> entities = new HashSet<>();
     public final Set<String> tileEntities = new HashSet<>();
+
+    public static boolean autoRemap() {
+        return Config.auto_remap;
+    }
+
+    public static void setAutoRemap(boolean b) {
+        Config.auto_remap = b;
+    }
 
     public static class Adapter implements NodeTypeAdapter<Config> {
 

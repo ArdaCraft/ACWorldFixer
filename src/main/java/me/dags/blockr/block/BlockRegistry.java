@@ -22,8 +22,22 @@ public class BlockRegistry {
         System.out.println();
     }
 
+    public List<String> getRemmappedBlocks(BlockRegistry from) {
+        return from.blockIds.entrySet().stream()
+                .filter(e -> {
+                    Integer id = this.blockIds.get(e.getKey());
+                    return id != null && id.intValue() != e.getValue().intValue();
+                })
+                .map(Map.Entry::getKey)
+                .collect(Collectors.toList());
+    }
+
     public Integer getId(String block) {
         return blockIds.get(block);
+    }
+
+    public boolean has(String block) {
+        return blockIds.containsKey(block);
     }
 
     public String[] blockNames() {

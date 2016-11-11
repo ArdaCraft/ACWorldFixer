@@ -14,7 +14,8 @@ public class MappingWindow extends JPanel {
     final JFrame parent;
     final JPanel content = new JPanel();
     final Config config;
-    final String[] blockNames;
+    final String[] fromBlockNames;
+    final String[] toBlockNames;
     final List<Mapping> mappings = new ArrayList<>();
     final JScrollPane scrollPane = new JScrollPane(content);
 
@@ -22,11 +23,12 @@ public class MappingWindow extends JPanel {
         this.parent = parent;
         this.setup = setup;
         this.config = setup.config;
-        this.blockNames = setup.worldData.blockRegistry.blockNames();
+        this.fromBlockNames = setup.fromWorld.blockRegistry.blockNames();
+        this.toBlockNames = setup.toWorld.blockRegistry.blockNames();
 
         content.setLayout(new BoxLayout(content, BoxLayout.Y_AXIS));
         scrollPane.setAutoscrolls(true);
-        scrollPane.setPreferredSize(new Dimension(850, 600));
+        scrollPane.setPreferredSize(new Dimension(900, 600));
         scrollPane.getVerticalScrollBar().setUnitIncrement(100);
 
         JPanel container = new JPanel();
@@ -51,8 +53,11 @@ public class MappingWindow extends JPanel {
         this.add(all);
 
         for (BlockInfo info : config.blocks) {
-            if (setup.worldData.blockRegistry.getId(info.name) != null) {
-                Mapping mapping = new Mapping(this, info, blockNames);
+            if (info.to == null) {
+                continue;
+            }
+            if (setup.fromWorld.blockRegistry.has(info.name) && setup.toWorld.blockRegistry.has(info.to.name)) {
+                Mapping mapping = new Mapping(this, info, fromBlockNames, toBlockNames);
                 mappings.add(mapping);
                 content.add(mapping);
             }
@@ -62,7 +67,7 @@ public class MappingWindow extends JPanel {
     private void create() {
         BlockInfo to = new BlockInfo("minecraft:air", -1, 0, 0, BlockInfo.EMPTY);
         BlockInfo from = new BlockInfo(to.name, -1, 0, 0, BlockInfo.EMPTY);
-        Mapping mapping = new Mapping(this, from, blockNames);
+        Mapping mapping = new Mapping(this, from, fromBlockNames, toBlockNames);
         mappings.add(mapping);
         refresh();
     }
@@ -93,7 +98,7 @@ public class MappingWindow extends JPanel {
     }
 
     public void copyMapping(Mapping mapping) {
-        Mapping newMapping = new Mapping(this, mapping.blockInfo.copy(), blockNames);
+        Mapping newMapping = new Mapping(this, mapping.blockInfo.copy(), fromBlockNames, toBlockNames);
         mappings.add(mappings.indexOf(mapping) + 1, newMapping);
         refresh();
     }

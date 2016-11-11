@@ -20,7 +20,7 @@ public class MappingPopup extends JPanel {
     public MappingPopup(Frame parent, Mapping mapping) {
         this.parent = parent;
         this.mapping = mapping;
-        from = new JComboBox<>(mapping.blocks);
+        from = new JComboBox<>(mapping.fromBlocks);
         from.setSelectedItem(mapping.blockInfo.name);
 
         SpinnerModel biomeModel = new SpinnerNumberModel(Math.max(mapping.blockInfo.biome, 0), 0, 100, 1);
@@ -37,7 +37,7 @@ public class MappingPopup extends JPanel {
         SpinnerModel maxModel = new SpinnerNumberModel(Math.max(mapping.blockInfo.max, 0), 0, 16, 1);
         max = new JSpinner(maxModel);
 
-        to = new JComboBox<>(mapping.blocks);
+        to = new JComboBox<>(mapping.toBlocks);
         to.setSelectedItem(mapping.blockInfo.to.name);
 
         SpinnerModel dataModel = new SpinnerNumberModel(Math.max(mapping.blockInfo.to.min, 0), 0, 16, 1);
