@@ -7,4 +7,4 @@
 |Edit Config|Open the configuration editor where you can add/remove/change block conversion rules|
 |Save Config|Save your current set of block conversion rules to a file so that they can be re-used in the future|
 |CPU Cores|Set the maximum number of threads the converter can use. The more cores allowed, the faster the overall conversion should be (may slow down computer performance for other programs whilst the conversion is underway)|
-|Auto-Remap|Where blocks exist with one block id ('A') in the world save, and a different block id ('B') in the 'Level File', replace all instances of that block from ID 'A' to ID 'B'. Metadata values are not touched. User defined conversions take precedence over auto-remaps|
+|Auto-Remap|Where blocks exist with one block id ('A') in the world save, and a different block id ('B') in the 'Level File', all instances of that block will be changed from id 'A' to id 'B'. (**Metadata values are not touched. User defined conversions take precedence over auto-remap conversions**)|
