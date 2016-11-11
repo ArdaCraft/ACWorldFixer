@@ -1,9 +1,9 @@
-package me.dags.worldfixer;
+package me.dags.blockr;
 
-import me.dags.worldfixer.block.ChangeStats;
-import me.dags.worldfixer.block.ReplaceTask;
-import me.dags.worldfixer.block.replacers.Replacer;
-import me.dags.worldfixer.block.replacers.Replacers;
+import me.dags.blockr.block.ChangeStats;
+import me.dags.blockr.block.ReplaceTask;
+import me.dags.blockr.block.replacers.Replacer;
+import me.dags.blockr.block.replacers.Replacers;
 
 import javax.swing.*;
 import java.io.File;
@@ -65,7 +65,7 @@ public class WorldModifier {
                 time = System.currentTimeMillis();
                 int complete = ChangeStats.getProgress();
                 progressBar.setValue(complete);
-                progressBar.setString(String.format("Processed %s of %s regionsIn!", complete, total));
+                progressBar.setString(String.format("Processed %s of %s regions!", complete, total));
                 progressBar.repaint();
             }
         }

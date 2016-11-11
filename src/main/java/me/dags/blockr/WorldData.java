@@ -1,6 +1,6 @@
-package me.dags.worldfixer;
+package me.dags.blockr;
 
-import me.dags.worldfixer.block.BlockRegistry;
+import me.dags.blockr.block.BlockRegistry;
 import org.jnbt.*;
 import org.pepsoft.minecraft.Block;
 

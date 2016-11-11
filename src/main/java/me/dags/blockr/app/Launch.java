@@ -1,8 +1,8 @@
-package me.dags.app;
+package me.dags.blockr.app;
 
+import me.dags.blockr.BlockInfo;
+import me.dags.blockr.Config;
 import me.dags.data.node.NodeTypeAdapters;
-import me.dags.worldfixer.BlockInfo;
-import me.dags.worldfixer.Config;
 
 import javax.swing.*;
 import java.awt.*;
@@ -23,7 +23,7 @@ public class Launch {
         NodeTypeAdapters.register(Config.class, new Config.Adapter());
 
         JFrame frame = new JFrame();
-        frame.setTitle("ACWorldFixer");
+        frame.setTitle("MassBlockr");
         frame.setLayout(new GridBagLayout());
         frame.add(new SetupWindow());
         frame.pack();

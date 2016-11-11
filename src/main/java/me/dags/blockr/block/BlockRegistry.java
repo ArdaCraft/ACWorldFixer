@@ -1,4 +1,4 @@
-package me.dags.worldfixer.block;
+package me.dags.blockr.block;
 
 import java.util.HashMap;
 import java.util.List;
@@ -18,7 +18,8 @@ public class BlockRegistry {
 
     public void register(String block, int id) {
         blockIds.put(block.trim(), id);
-        System.out.printf("Registering %s:%s\n", block, id);
+        System.out.printf("%s=%s", block, id);
+        System.out.println();
     }
 
     public Integer getId(String block) {

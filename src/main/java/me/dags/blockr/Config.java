@@ -1,10 +1,6 @@
-package me.dags.worldfixer;
+package me.dags.blockr;
 
-import me.dags.data.NodeAdapter;
-import me.dags.data.node.Node;
-import me.dags.data.node.NodeArray;
-import me.dags.data.node.NodeObject;
-import me.dags.data.node.NodeTypeAdapter;
+import me.dags.data.node.*;
 
 import java.util.*;
 
@@ -50,22 +46,22 @@ public class Config {
             if (node.isNodeObject()) {
                 NodeObject object = node.asNodeObject();
                 if (object.contains("blocks")) {
-                    NodeArray array = object.get("blocks").asNodeArray();
+                    NodeArray array = object.getArray("blocks");
                     array.values().stream()
-                            .map(n ->  NodeAdapter.json().from(n, BlockInfo.class))
+                            .map(n -> NodeTypeAdapters.of(BlockInfo.class).fromNode(n))
                             .filter(b -> b != null)
                             .forEach(config.blocks::add);
                 }
                 if (object.contains("remove_blocks")) {
-                    NodeObject remove = object.get("remove_blocks").asNodeObject();
+                    NodeObject remove = object.getObject("remove_blocks");
                     remove.entries().forEach(e -> config.removeBlocks.put(e.getKey().asString(), e.getValue().asNumber().intValue()));
                 }
                 if (object.contains("entities")) {
-                    NodeArray array = object.get("entities").asNodeArray();
+                    NodeArray array = object.getArray("entities");
                     array.values().stream().map(n -> n.asString().toLowerCase()).forEach(config.entities::add);
                 }
                 if (object.contains("tile_entities")) {
-                    NodeArray array = object.get("tile_entities").asNodeArray();
+                    NodeArray array = object.getArray("tile_entities");
                     array.values().stream().map(n -> n.asString().toLowerCase()).forEach(config.tileEntities::add);
                 }
             }

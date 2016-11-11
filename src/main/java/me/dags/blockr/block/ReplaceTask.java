@@ -1,6 +1,6 @@
-package me.dags.worldfixer.block;
+package me.dags.blockr.block;
 
-import me.dags.worldfixer.block.replacers.Replacer;
+import me.dags.blockr.block.replacers.Replacer;
 import org.jnbt.CompoundTag;
 import org.jnbt.NBTInputStream;
 import org.jnbt.NBTOutputStream;

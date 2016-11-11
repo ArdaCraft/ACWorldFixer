@@ -1,4 +1,4 @@
-package me.dags.worldfixer;
+package me.dags.blockr;
 
 import me.dags.data.node.Node;
 import me.dags.data.node.NodeObject;
@@ -74,6 +74,7 @@ public class BlockInfo {
 
         @Override
         public BlockInfo fromNode(Node node) {
+            System.out.println(node);
             if (node.isNodeObject()) {
                 String name = node.asNodeObject().get("name").asString();
                 int min = node.asNodeObject().get("min").asNumber().intValue();

@@ -1,4 +1,4 @@
-package me.dags.worldfixer.block.replacers;
+package me.dags.blockr.block.replacers;
 
 /**
  * @author dags <dags@dags.me>

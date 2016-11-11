@@ -1,4 +1,4 @@
-package me.dags.worldfixer.block;
+package me.dags.blockr.block;
 
 import javax.swing.*;
 import java.awt.*;

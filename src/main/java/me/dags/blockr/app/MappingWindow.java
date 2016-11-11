@@ -1,7 +1,7 @@
-package me.dags.app;
+package me.dags.blockr.app;
 
-import me.dags.worldfixer.BlockInfo;
-import me.dags.worldfixer.Config;
+import me.dags.blockr.BlockInfo;
+import me.dags.blockr.Config;
 
 import javax.swing.*;
 import java.awt.*;

@@ -1,11 +1,11 @@
-package me.dags.app;
+package me.dags.blockr.app;
 
+import me.dags.blockr.Config;
+import me.dags.blockr.WorldData;
+import me.dags.blockr.WorldModifier;
 import me.dags.data.NodeAdapter;
 import me.dags.data.node.Node;
 import me.dags.data.node.NodeTypeAdapters;
-import me.dags.worldfixer.Config;
-import me.dags.worldfixer.WorldData;
-import me.dags.worldfixer.WorldModifier;
 
 import javax.swing.*;
 import java.awt.*;
@@ -133,7 +133,7 @@ public class SetupWindow extends JPanel {
     private void loadConfig(File targetConfig) {
         Config config = null;
         try {
-            config = NodeAdapter.json().from(targetConfig, Config.class);
+            config = NodeTypeAdapters.of(Config.class).fromNode(NodeAdapter.json().from(targetConfig));
         } catch (Exception ex) {
         }
         if (config == null) {
