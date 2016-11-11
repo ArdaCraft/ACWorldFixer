@@ -1,5 +1,5 @@
-|Options |Description|
-|--|--|
+|Options|Description|
+|---|---|
 |Level File|A level.dat file that stores the block registry that will be used in the final converted world|
 |World Dir|The world save folder that will be converted|
 |Output Dir|The directory where the converted world will be saved to|
