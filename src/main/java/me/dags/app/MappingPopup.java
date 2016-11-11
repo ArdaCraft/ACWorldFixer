@@ -46,18 +46,19 @@ public class MappingPopup extends JPanel {
         JButton done = new JButton("Done");
         done.addActionListener(e -> updateMapping());
 
-        this.add(from);
-        this.add(matchBiome);
-        this.add(biome);
-        this.add(new JLabel(" Match Meta(s):"));
-        this.add(min);
-        this.add(new JLabel(" to "));
-        this.add(max);
-        this.add(new JLabel(" Convert To ==>"));
-        this.add(to);
-        this.add(new JLabel("  Meta:"));
-        this.add(data);
-        this.add(done);
+        this.setLayout(new GridLayout(4, 1));
+        this.add(row(from, matchBiome, biome, new JLabel(" Match Meta(s):"), min, new JLabel(" to "), max));
+        this.add(row(new JLabel("Convert To:")));
+        this.add(row(to, new JLabel("  Meta:"), data));
+        this.add(row(done));
+    }
+
+    private JPanel row(Component... child) {
+        JPanel row = new JPanel();
+        for (Component panel : child) {
+            row.add(panel);
+        }
+        return row;
     }
 
     public void updateMapping() {

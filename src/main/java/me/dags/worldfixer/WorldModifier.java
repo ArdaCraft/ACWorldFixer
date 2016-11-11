@@ -7,6 +7,9 @@ import me.dags.worldfixer.block.replacers.Replacers;
 
 import javax.swing.*;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -22,17 +25,26 @@ public class WorldModifier {
 
     private final WorldData worldData;
     private final Config config;
-    private final File regions;
+    private final File worldIn;
+    private final File worldOut;
+    private final File regionsIn;
     private final int cores;
 
-    public WorldModifier(Config config, WorldData worldData, File worldDir, int cores) {
+    public WorldModifier(Config config, WorldData worldData, File worldDir, File outputDir, int cores) {
         this.worldData = worldData;
         this.config = config;
         this.cores = cores;
-        this.regions = new File(worldDir, "regions");
+        this.worldIn = worldDir;
+        this.worldOut = new File(outputDir, worldDir.getName());
+        this.regionsIn = new File(worldIn, "region");
     }
 
     public void run(JFrame frame, JProgressBar progressBar) {
+        try {
+            copy(worldIn);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         Replacer[][] replacers = getRules();
         List<ReplaceTask> tasks = getTasks(replacers);
         submitTasks(tasks, frame, progressBar);
@@ -53,7 +65,8 @@ public class WorldModifier {
                 time = System.currentTimeMillis();
                 int complete = ChangeStats.getProgress();
                 progressBar.setValue(complete);
-                progressBar.setString(String.format("Processed %s of %s regions!", complete, total));
+                progressBar.setString(String.format("Processed %s of %s regionsIn!", complete, total));
+                progressBar.repaint();
             }
         }
         frame.dispose();
@@ -64,7 +77,7 @@ public class WorldModifier {
     private void execute(List<ReplaceTask> tasks, int cores) {
         new Thread(() -> {
             ExecutorService service = Executors.newFixedThreadPool(cores);
-            tasks.forEach(service::submit);
+            tasks.forEach(service::execute);
             service.shutdown();
             while (!service.isTerminated()) {
                 try {
@@ -75,6 +88,35 @@ public class WorldModifier {
             }
             finished = true;
         }).start();
+    }
+
+    private void copy(File in) throws IOException {
+        if (in.isDirectory()) {
+            if (in.equals(regionsIn)) {
+                toOutputFile(in).mkdirs();
+                return;
+            }
+            File[] files = in.listFiles();
+            if (files != null) {
+                for (File file : files) {
+                    if (file.isDirectory()) {
+                        System.out.println(file);
+                    }
+                    copy(file);
+                }
+            }
+        } else {
+            File out = toOutputFile(in);
+            out.getParentFile().mkdirs();
+            try (FileInputStream from = new FileInputStream(in); FileOutputStream to = new FileOutputStream(out)) {
+                from.getChannel().transferTo(0, Long.MAX_VALUE, to.getChannel());
+            }
+        }
+    }
+
+    private File toOutputFile(File in) {
+        String path = in.getAbsolutePath().substring(worldIn.getAbsolutePath().length());
+        return new File(worldOut, path);
     }
 
     private Replacer[][] getRules() {
@@ -100,22 +142,23 @@ public class WorldModifier {
     }
 
     private List<ReplaceTask> getTasks(Replacer[][] replacers) {
-        return getRegionFiles(regions).stream()
-                .map(file -> new ReplaceTask(file, replacers)
+        return getRegionFiles(regionsIn).stream()
+                .map(file -> new ReplaceTask(file, toOutputFile(file), replacers)
                         .withEntities(config.entities)
                         .withTileEntities(config.tileEntities))
                 .collect(Collectors.toList());
     }
 
     private void addReplacer(List<Replacer> list, BlockInfo blockInfo) {
-        if (blockInfo.to == null) {
+        if (!blockInfo.present() || blockInfo.to == null) {
+            System.out.println("Skipping " + blockInfo);
             return;
         }
         int fromId = worldData.blockRegistry.getId(blockInfo.name);
         int toId = worldData.blockRegistry.getId(blockInfo.to.name);
         int toData = blockInfo.to.min;
         Replacer replacer;
-        if (blockInfo.min == blockInfo.max) { // matching specific meta data value
+        if (blockInfo.min == blockInfo.max) { // match one specific meta data value
             if (toData == blockInfo.min) { // only change block's id
                 replacer = Replacers.matchTypeAndDataReplaceType(fromId, toId, blockInfo.min);
             } else if (toId == fromId) { // only change block's meta data
@@ -123,11 +166,11 @@ public class WorldModifier {
             } else { // change both id and data
                 replacer = Replacers.matchTypeAndDataReplaceTypeAndData(fromId, toId, blockInfo.min, toData);
             }
-        } else { // matching a range of meta data values
+        } else { // match a range of meta data values
             if (toId == fromId) { // not changing block's id
                 replacer = Replacers.rangeMatchTypeReplaceData(fromId, blockInfo.min, blockInfo.max, toData);
             } else { // change both id and data
-                replacer = Replacers.matchTypeAndDataReplaceTypeAndData(fromId, toId, blockInfo.min, toData);
+                replacer = Replacers.rangeMatchTypeReplaceTypeAndData(fromId, toId, blockInfo.min, blockInfo.max, toData);
             }
         }
 

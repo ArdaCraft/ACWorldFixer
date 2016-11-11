@@ -7,11 +7,9 @@ import org.pepsoft.minecraft.Chunk;
  */
 public class BiomeReplacer implements Replacer {
 
-    // TODO: Map biome names to biome ids?
     private final int biomeId;
     private final Replacer replacer;
 
-    // TODDO: Modify config to
     BiomeReplacer(int biomeId, Replacer replacer) {
         this.biomeId = biomeId;
         this.replacer = replacer;

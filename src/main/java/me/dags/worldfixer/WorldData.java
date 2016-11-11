@@ -8,8 +8,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.*;
-import java.util.function.Consumer;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
 
@@ -18,28 +16,30 @@ import java.util.zip.GZIPOutputStream;
  */
 public class WorldData {
 
-    private final File level;
+    private final File levelIn;
     private CompoundTag cachedLevel;
     public final BlockRegistry blockRegistry = new BlockRegistry();
 
-    // NOTE! this expects an old level.dat format, needs to be updated to suited Forge's newer scheme
-    public WorldData(File level) {
-        this.level = level;
+    public WorldData(File levelIn) {
+        this.levelIn = levelIn;
     }
 
     public void loadRegistry() {
         if (getLevelData().containsTag("FML")) {
             CompoundTag FML = (CompoundTag) getLevelData().getTag("FML");
             if (FML.containsTag("ItemData")) {
+                System.out.println("Loading legacy FML level.dat");
                 ListTag repaired = ((ListTag) FML.getTag("ItemData"));
                 repaired.getValue().forEach(this::register);
             } else if (FML.containsTag("Registries")) {
+                System.out.println("Loading FML level.dat");
                 CompoundTag registries = (CompoundTag) FML.getTag("Registries");
                 CompoundTag blocks = (CompoundTag) registries.getTag("minecraft:blocks");
                 ListTag ids = (ListTag) blocks.getTag("ids");
                 ids.getValue().forEach(this::register);
             }
         } else {
+            System.out.println("Loading Vanilla level.dat");
             for (Block block : Block.BLOCKS) {
                 if (block.name == null) continue;
                 String name = "minecraft:" + block.name.toLowerCase().replace(' ', '_');
@@ -52,7 +52,7 @@ public class WorldData {
         if (cachedLevel != null) {
             return cachedLevel;
         }
-        try (NBTInputStream out = new NBTInputStream(new GZIPInputStream(new FileInputStream(level)))) {
+        try (NBTInputStream out = new NBTInputStream(new GZIPInputStream(new FileInputStream(levelIn)))) {
             Tag tag = out.readTag();
             if (tag instanceof CompoundTag) {
                 return cachedLevel = (CompoundTag) tag;
@@ -63,6 +63,15 @@ public class WorldData {
         }
     }
 
+    public void writeLevelData(File output) {
+        try (NBTOutputStream out = new NBTOutputStream(new GZIPOutputStream(new FileOutputStream(output)))) {
+            out.writeTag(cachedLevel);
+            out.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     private void register(Tag tag) {
         CompoundTag mapping = (CompoundTag) tag;
         String name = mapping.getTag("K").getValue().toString().trim();
@@ -70,21 +79,13 @@ public class WorldData {
         blockRegistry.register(name, id);
     }
 
-    public void writeLevelData() {
-        try (NBTOutputStream out = new NBTOutputStream(new GZIPOutputStream(new FileOutputStream(level)))) {
-            out.writeTag(cachedLevel);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
     public boolean validate() {
-        return level.exists();
+        return levelIn.exists();
     }
 
     public String error() {
-        if (!level.exists()) {
-            return "level.dat is missing!";
+        if (!levelIn.exists()) {
+            return "levelIn.dat is missing!";
         }
         return "region directory is missing!";
     }

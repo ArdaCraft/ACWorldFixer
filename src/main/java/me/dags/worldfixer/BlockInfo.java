@@ -49,6 +49,11 @@ public class BlockInfo {
         return present() ? new BlockInfo(name, biome, min, max, (to.present() ? new BlockInfo(to) : EMPTY)) : EMPTY;
     }
 
+    @Override
+    public String toString() {
+        return "from=" + name + " to=" + to;
+    }
+
     public static class Adapter implements NodeTypeAdapter<BlockInfo> {
 
         @Override

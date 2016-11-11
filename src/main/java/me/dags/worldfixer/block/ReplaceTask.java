@@ -6,10 +6,7 @@ import org.jnbt.NBTInputStream;
 import org.jnbt.NBTOutputStream;
 import org.pepsoft.minecraft.*;
 
-import java.io.DataOutputStream;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -23,10 +20,12 @@ public class ReplaceTask implements Runnable {
     private final Replacer[][] replacers;
     private final Set<String> entities = new HashSet<>();
     private final Set<String> tileEntities = new HashSet<>();
-    private final File regionFile;
+    private final File inputFile;
+    private final File outputFile;
 
-    public ReplaceTask(File regionFile, Replacer[][] replacers) {
-        this.regionFile = regionFile;
+    public ReplaceTask(File inputFile, File outputFile, Replacer[][] replacers) {
+        this.inputFile = inputFile;
+        this.outputFile = outputFile;
         this.replacers = replacers;
     }
 
@@ -43,7 +42,12 @@ public class ReplaceTask implements Runnable {
     @Override
     public void run() {
         try {
-            RegionFile region = loadRegionFile();
+            RandomAccessFile from = new RandomAccessFile(inputFile, "rw");
+            RandomAccessFile to = new RandomAccessFile(outputFile, "rw");
+            from.getChannel().transferTo(0, Long.MAX_VALUE, to.getChannel());
+
+            RegionFile region = new RegionFile(outputFile);
+
             for (int x = 0; x < 32; x++) {
                 for (int z = 0; z < 32; z++) {
                     Chunk chunk = readChunk(region, x, z);
@@ -51,18 +55,14 @@ public class ReplaceTask implements Runnable {
                         continue;
                     }
                     processChunk(chunk);
-                    ChangeStats.incChunkCount();
                     writeChunk(region, chunk, x, z);
+                    ChangeStats.incChunkCount();
                 }
             }
             ChangeStats.incRegionsCount();
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    private RegionFile loadRegionFile() throws IOException {
-        return new RegionFile(regionFile);
     }
 
     private Chunk readChunk(RegionFile region, int i, int j) throws IOException {
@@ -78,13 +78,14 @@ public class ReplaceTask implements Runnable {
     }
 
     private void writeChunk(RegionFile region, Chunk chunk, int x, int z) throws IOException {
-        DataOutputStream outputStream = region.getChunkDataOutputStream(x, z);
-        if (outputStream == null) {
-            return;
+        try (DataOutputStream outputStream = region.getChunkDataOutputStream(x, z)) {
+            if (outputStream == null) {
+                return;
+            }
+            NBTOutputStream nbt = new NBTOutputStream(outputStream);
+            nbt.writeTag(chunk.toNBT());
+            nbt.close();
         }
-        NBTOutputStream nbt = new NBTOutputStream(outputStream);
-        nbt.writeTag(chunk.toNBT());
-        nbt.close();
     }
 
     private void processChunk(Chunk chunk) {
@@ -106,14 +107,16 @@ public class ReplaceTask implements Runnable {
             for (int x = 0; x < 16; x++) {
                 for (int z = 0; z < 16; z++) {
                     int id = chunk.getBlockType(x, y, z);
-                    Replacer[] replacers = this.replacers[id];
-                    if (replacers == null) {
-                        continue;
-                    }
-                    for (Replacer replacer : replacers) {
-                        if (replacer.apply(chunk, id, x, y, z)) {
-                            ChangeStats.incBlockCount();
-                            break;
+                    if (id >= 0 && id < this.replacers.length) {
+                        Replacer[] replacers = this.replacers[id];
+                        if (replacers == null) {
+                            continue;
+                        }
+                        for (Replacer replacer : replacers) {
+                            if (replacer.apply(chunk, id, x, y, z)) {
+                                ChangeStats.incBlockCount();
+                                break;
+                            }
                         }
                     }
                 }

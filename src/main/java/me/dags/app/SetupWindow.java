@@ -4,14 +4,13 @@ import me.dags.data.NodeAdapter;
 import me.dags.data.node.Node;
 import me.dags.data.node.NodeTypeAdapters;
 import me.dags.worldfixer.Config;
-import me.dags.worldfixer.WorldModifier;
 import me.dags.worldfixer.WorldData;
+import me.dags.worldfixer.WorldModifier;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.net.URL;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 
@@ -21,42 +20,57 @@ import java.util.function.Predicate;
 public class SetupWindow extends JPanel {
 
     private static final File WORKING_DIR = new File(new File("").getAbsolutePath());
-    private final JTextField targetLevel = new JTextField();
-    private final JTextField targetDir = new JTextField();
-    private final JTextField targetConfig = new JTextField();
     private final JSlider cores = new JSlider(SwingConstants.HORIZONTAL);
 
     Config config = null;
     File worldDir = null;
+    File outputDir = null;
     WorldData worldData = null;
 
     SetupWindow() {
         int fullWidth = 425;
         int buttonWidth = 100;
-        int labelWidth = 65;
+        int labelWidth = 75;
         int lineHeight = 25;
 
+        // level.dat
+        JTextField targetLevel = new JTextField();
         targetLevel.setPreferredSize(new Dimension(fullWidth - buttonWidth, lineHeight));
         targetLevel.setText(WORKING_DIR.getAbsolutePath());
         JButton chooseLevel = new JButton("Choose");
         chooseLevel.setPreferredSize(new Dimension(buttonWidth, lineHeight));
         chooseLevel.addActionListener(choose(targetLevel, JFileChooser.FILES_ONLY, f -> f.getName().endsWith(".dat"), this::loadLevelData));
 
-        targetDir.setPreferredSize(new Dimension(fullWidth - buttonWidth, lineHeight));
-        targetDir.setText(WORKING_DIR.getAbsolutePath());
+        // world dir
+        JTextField worldDir = new JTextField();
+        worldDir.setPreferredSize(new Dimension(fullWidth - buttonWidth, lineHeight));
+        worldDir.setText(WORKING_DIR.getAbsolutePath());
 
         JButton chooseDir = new JButton("Choose");
         chooseDir.setPreferredSize(new Dimension(buttonWidth, lineHeight));
-        chooseDir.addActionListener(choose(targetDir, JFileChooser.DIRECTORIES_ONLY, f -> true, f -> worldDir = f));
+        chooseDir.addActionListener(choose(worldDir, JFileChooser.DIRECTORIES_ONLY, f -> true, f -> this.worldDir = f));
 
-        targetConfig.setPreferredSize(new Dimension(fullWidth - buttonWidth - buttonWidth, lineHeight));
-        targetConfig.setText("");
+        // output dir
+        JTextField outputDir = new JTextField();
+        outputDir.setPreferredSize(new Dimension(fullWidth - buttonWidth, lineHeight));
+        outputDir.setText(WORKING_DIR.getAbsolutePath());
 
-        JButton loadConfig = new JButton("Modify");
-        loadConfig.setPreferredSize(new Dimension(buttonWidth, lineHeight));
-        loadConfig.addActionListener(loadConfig(targetConfig));
+        JButton chooseOutput = new JButton("Choose");
+        chooseOutput.setPreferredSize(new Dimension(buttonWidth, lineHeight));
+        chooseOutput.addActionListener(choose(outputDir, JFileChooser.DIRECTORIES_ONLY, File::isDirectory, f -> this.outputDir = f));
 
-        JButton saveConfig = new JButton("Save");
+        // load config
+        JButton chooseConfig = new JButton("Load Config");
+        chooseConfig.setPreferredSize(new Dimension(buttonWidth, lineHeight));
+        chooseConfig.addActionListener(choose(new JTextField(), JFileChooser.FILES_ONLY, f -> f.getName().endsWith(".json"), this::loadConfig));
+
+        // edit config
+        JButton editConfig = new JButton("Edit Config");
+        editConfig.addActionListener(editConfig());
+        editConfig.setPreferredSize(new Dimension(buttonWidth, lineHeight));
+
+        // save config
+        JButton saveConfig = new JButton("Save Config");
         saveConfig.setPreferredSize(new Dimension(buttonWidth, lineHeight));
         saveConfig.addActionListener(saveConfig());
 
@@ -72,19 +86,20 @@ public class SetupWindow extends JPanel {
         ok.setPreferredSize(new Dimension(buttonWidth, lineHeight));
         ok.addActionListener(ok());
 
-        JLabel levelLabel = new JLabel("Level File:");
+        JLabel levelLabel = new JLabel("Level.dat File:");
         levelLabel.setPreferredSize(new Dimension(labelWidth, lineHeight));
         JLabel worldLabel = new JLabel("World Dir:");
         worldLabel.setPreferredSize(new Dimension(labelWidth, lineHeight));
-        JLabel configLabel = new JLabel("Config URL:");
-        configLabel.setPreferredSize(new Dimension(labelWidth, lineHeight));
+        JLabel outputLabel = new JLabel("Output Dir:");
+        outputLabel.setPreferredSize(new Dimension(labelWidth, lineHeight));
         JLabel coresLabel = new JLabel("CPU Cores:");
         coresLabel.setPreferredSize(new Dimension(labelWidth, lineHeight));
 
-        this.setLayout(new GridLayout(5, 1));
+        this.setLayout(new GridLayout(6, 1));
         this.add(toPanel(levelLabel, targetLevel, chooseLevel));
-        this.add(toPanel(worldLabel, targetDir, chooseDir));
-        this.add(toPanel(configLabel, targetConfig, loadConfig, saveConfig));
+        this.add(toPanel(worldLabel, worldDir, chooseDir));
+        this.add(toPanel(outputLabel, outputDir, chooseOutput));
+        this.add(toPanel(chooseConfig, editConfig, saveConfig));
         this.add(toPanel(coresLabel, cores));
         this.add(toPanel(ok));
     }
@@ -107,14 +122,18 @@ public class SetupWindow extends JPanel {
             errorWindow("Invalid level.dat selected!", worldData.error());
             return;
         }
-        this.worldData = worldData;
-        this.worldData.loadRegistry();
+        try {
+            this.worldData = worldData;
+            this.worldData.loadRegistry();
+        } catch (Exception e) {
+            errorWindow("An error occurred whilst reading the level data", worldData.error());
+        }
     }
 
-    private void loadConfig() {
+    private void loadConfig(File targetConfig) {
         Config config = null;
         try {
-            config = NodeAdapter.json().from(new URL(targetConfig.getText()), Config.class);
+            config = NodeAdapter.json().from(targetConfig, Config.class);
         } catch (Exception ex) {
         }
         if (config == null) {
@@ -125,33 +144,31 @@ public class SetupWindow extends JPanel {
 
     private ActionListener choose(JTextField updateField, int mode, Predicate<File> fileFilter, Consumer<File> action) {
         return e -> {
-            JFileChooser dirChooser = new JFileChooser();
-            dirChooser.setFileSelectionMode(mode);
-            dirChooser.setFileHidingEnabled(false);
-            dirChooser.ensureFileIsVisible(WORKING_DIR);
-            dirChooser.setSelectedFile(WORKING_DIR);
-            int response = dirChooser.showOpenDialog(SetupWindow.this);
-            switch (response) {
-                case JFileChooser.APPROVE_OPTION:
-                    File target = dirChooser.getSelectedFile();
-                    if (fileFilter.test(target)) {
-                        updateField.setText(target.getAbsolutePath());
-                        action.accept(target);
-                    }
-                    break;
-                default:
-                    break;
+            JFileChooser chooser = new JFileChooser();
+            chooser.setFileSelectionMode(mode);
+            chooser.setFileHidingEnabled(false);
+            chooser.ensureFileIsVisible(WORKING_DIR);
+            chooser.setSelectedFile(WORKING_DIR);
+            int response = chooser.showOpenDialog(SetupWindow.this);
+            if (response == JFileChooser.APPROVE_OPTION) {
+                File target = chooser.getSelectedFile();
+                if (fileFilter.test(target)) {
+                    updateField.setText(target.getAbsolutePath());
+                    action.accept(target);
+                }
             }
         };
     }
 
-    private ActionListener loadConfig(JTextField configField) {
+    private ActionListener editConfig() {
         return e -> {
             if (this.worldData == null) {
-                errorWindow("Invalid world directory selected!", "");
+                errorWindow("WorldData not initialized. Have you selected a level.dat file?", "");
                 return;
             }
-            loadConfig();
+            if (config == null) {
+                config = new Config();
+            }
             JFrame frame = new JFrame();
             frame.setTitle("Remapper");
             frame.setLayout(new GridBagLayout());
@@ -176,7 +193,7 @@ public class SetupWindow extends JPanel {
                 case JFileChooser.APPROVE_OPTION:
                     File target = dirChooser.getSelectedFile();
                     File out = new File(target, "config.json");
-                    Node node = NodeTypeAdapters.of(Config.class).toNode(config);
+                    Node node = NodeTypeAdapters.of(Config.class).toNode(config != null ? config : new Config());
                     NodeAdapter.json().to(node, out);
                     break;
                 default:
@@ -198,11 +215,12 @@ public class SetupWindow extends JPanel {
             }
 
             if (this.config == null) {
-                loadConfig();
+                errorWindow("No config has been loaded or set up!", "");
+                return;
             }
 
             try {
-                WorldModifier blockFixer = new WorldModifier(config, worldData, worldDir, cores.getValue());
+                WorldModifier blockFixer = new WorldModifier(config, worldData, worldDir, outputDir, cores.getValue());
 
                 JProgressBar progressBar = new JProgressBar();
                 progressBar.setPreferredSize(new Dimension(250, 30));
