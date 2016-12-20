@@ -46,7 +46,7 @@ public class MappingWindow extends JPanel {
 
         JPanel all = new JPanel();
         all.setLayout(new BoxLayout(all, BoxLayout.Y_AXIS));
-        all.setPreferredSize(new Dimension(850, 600));
+        all.setPreferredSize(new Dimension(900, 600));
         all.add(scrollPane);
         all.add(container);
 

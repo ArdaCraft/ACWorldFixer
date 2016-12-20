@@ -9,9 +9,6 @@ import java.awt.event.ActionListener;
 
 public class Mapping extends JPanel {
 
-    private static final Dimension NAME = new Dimension(175, 25);
-    private static final Dimension DATA = new Dimension(50, 25);
-
     BlockInfo blockInfo;
     final String[] fromBlocks;
     final String[] toBlocks;
@@ -25,8 +22,6 @@ public class Mapping extends JPanel {
         this.toBlocks = to;
         add(row = row(blockInfo));
         this.setAlignmentY(TOP_ALIGNMENT);
-        this.setMinimumSize(new Dimension(800, 45));
-        this.setMaximumSize(new Dimension(900, 45));
     }
 
     public void update() {
@@ -36,66 +31,55 @@ public class Mapping extends JPanel {
     }
 
     private JPanel row(BlockInfo info) {
-        JPanel row = new JPanel();
-        row.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.BLACK));
+        int fromId = parent.setup.fromWorld.blockRegistry.getId(info.name);
+        JLabel from = from(fromId, info);
+        from.setMaximumSize(new Dimension(350, 20));
 
-        JLabel from = new JLabel(info.name);
-        from.setPreferredSize(NAME);
-        JLabel fromId = new JLabel("(" + parent.setup.fromWorld.blockRegistry.getId(info.name) + ")");
+        int toId = parent.setup.toWorld.blockRegistry.getId(info.to.present() ? info.to.name : info.name);
+        JLabel to = to(toId, info.to.present() ? info.to : info);
+        to.setMaximumSize(new Dimension(325, 20));
 
-        JLabel biome = new JLabel("biome: " + (info.biome < 0 ? "-" : info.biome));
-        biome.setPreferredSize(DATA);
-
-        JLabel meta = new JLabel("meta(s): " + info.min + " to " + info.max);
-        meta.setPreferredSize(new Dimension(85, 25));
-
-        JLabel to = new JLabel(info.to.present() ? info.to.name : info.name);
-        to.setPreferredSize(NAME);
-        JLabel toId = new JLabel("(" + parent.setup.toWorld.blockRegistry.getId(to.getText()) + ")");
-
-        JLabel data = new JLabel("meta: " + (info.to.min < 0 ? "-" : info.to.min));
-        data.setPreferredSize(DATA);
+        JPanel description = new JPanel();
+        description.setLayout(new GridLayout(1, 2));
+        description.setPreferredSize(new Dimension(675, 35));
+        description.add(from);
+        description.add(to);
 
         JButton edit = new JButton("Edit");
         edit.addActionListener(e -> edit(this));
-
         JButton copy = new JButton("Copy");
         copy.addActionListener(e -> parent.copyMapping(this));
-
         JButton remove = new JButton("Remove");
         remove.addActionListener(e -> parent.removeMapping(this));
 
-        row.add(fromId);
-        row.add(from);
-        row.add(biome);
-        row.add(meta);
-        row.add(new JLabel("-->"));
-        row.add(toId);
-        row.add(to);
-        row.add(data);
-        row.add(edit);
-        row.add(copy);
-        row.add(remove);
+        JPanel buttons = new JPanel();
+        buttons.setPreferredSize(new Dimension(200, 35));
+        buttons.add(edit);
+        buttons.add(copy);
+        buttons.add(remove);
+
+        GridBagLayout layout = new GridBagLayout();
+
+        JPanel row = new JPanel();
+        row.setLayout(layout);
+        row.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.BLACK));
+        row.add(description);
+        row.add(buttons);
+
         return row;
     }
 
-    private ActionListener copy() {
-        return new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                parent.copyMapping(Mapping.this);
-            }
-
-        };
+    private JLabel from(int id, BlockInfo info) {
+        String biome = info.biome < 0 ? "-" : "" + info.biome;
+        return blockLabel("(%s) %s[%s:%s] biome:%s", id, info.name, info.min, info.max, biome);
     }
 
-    private void copy(Mapping mapping) {
-        parent.copyMapping(mapping);
+    private JLabel to(int id, BlockInfo info) {
+        return blockLabel(" --->  (%s) %s[%s:%s]", id, info.name, info.min, info.max);
     }
 
-    private void remove(Mapping mapping) {
-        parent.removeMapping(mapping);
+    private JLabel blockLabel(String fmt, Object... args) {
+        return new JLabel(String.format(fmt, args));
     }
 
     private static void edit(Mapping mapping) {

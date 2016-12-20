@@ -183,25 +183,41 @@ public class WorldModifier {
         }
 
         int fromId = fromWorld.blockRegistry.getId(blockInfo.name);
+        int fromMinData = blockInfo.min;
+        int fromMaxData = blockInfo.max;
+
         int toId = toWorld.blockRegistry.getId(blockInfo.to.name);
-        int toData = blockInfo.to.min;
+        int toMinData = blockInfo.to.min;
+        int toMaxData = blockInfo.to.max;
 
-        Replacer replacer;
+        Replacer replacer = null;
 
-        if (blockInfo.min == blockInfo.max) { // match one specific meta data value
-            if (toData == blockInfo.min) { // only change block's id
-                replacer = Replacers.matchTypeAndDataReplaceType(fromId, toId, blockInfo.min);
+        if (fromMinData == fromMaxData) { // match one specific meta data value
+            if (toMinData == fromMinData) { // only change block's id
+                replacer = Replacers.matchTypeAndDataReplaceType(fromId, toId, fromMinData);
             } else if (toId == fromId) { // only change block's meta data
-                replacer = Replacers.matchTypeAndDataReplaceData(fromId, blockInfo.min, toData);
+                replacer = Replacers.matchTypeAndDataReplaceData(fromId, fromMinData, toMinData);
             } else { // change both id and data
-                replacer = Replacers.matchTypeAndDataReplaceTypeAndData(fromId, toId, blockInfo.min, toData);
+                replacer = Replacers.matchTypeAndDataReplaceTypeAndData(fromId, toId, blockInfo.min, toMinData);
             }
         } else { // match a range of meta data values
-            if (toId == fromId) { // not changing block's id
-                replacer = Replacers.rangeMatchTypeReplaceData(fromId, blockInfo.min, blockInfo.max, toData);
-            } else { // change both id and data
-                replacer = Replacers.rangeMatchTypeReplaceTypeAndData(fromId, toId, blockInfo.min, blockInfo.max, toData);
+            if (toId == fromId) { // only change meta data
+                if (toMinData == toMaxData) { // convert range to single meta value
+                    replacer = Replacers.rangeMatchTypeReplaceData(fromId, fromMinData, fromMaxData, toMinData);
+                } else if (blockInfo.to.validRange() && blockInfo.dataRange() == blockInfo.to.dataRange()) { // convert range to another range
+                    replacer = Replacers.rangeMatchTypeReplaceDataRange(fromId, fromMinData, fromMaxData, toMinData);
+                }
+            } else {
+                if (toMinData == toMaxData) { // convert range to single meta value
+                    replacer = Replacers.rangeMatchTypeReplaceTypeAndData(fromId, toId, fromMinData, fromMaxData, toMinData);
+                } else if (blockInfo.to.validRange() && blockInfo.dataRange() == blockInfo.to.dataRange()) { // convert range to another range
+                    replacer = Replacers.rangeMatchTypeReplaceTypeAndDataRange(fromId, toId, fromMinData, fromMaxData, toMinData);
+                }
             }
+        }
+
+        if (replacer == null) {
+            return;
         }
 
         // if a biome id is defined, link the currently interpreted replacer to a biome replacer

@@ -37,16 +37,24 @@ public class Replacers {
         return new SimpleReplacer(typeFrom, typeTo, dataFrom, dataTo, matchTypeAndData, replaceTypeAndData);
     }
 
-    public static RangeReplacer rangeMatchTypeReplaceType(int typeFrom, int typeTo, int minData, int maxData) {
-        return new RangeReplacer(typeFrom, typeTo, minData, maxData, -1, replaceType);
+    public static RangeToOneReplacer rangeMatchTypeReplaceType(int typeFrom, int typeTo, int minData, int maxData) {
+        return new RangeToOneReplacer(typeFrom, typeTo, minData, maxData, -1, replaceType);
     }
 
-    public static RangeReplacer rangeMatchTypeReplaceData(int typeFrom, int minData, int maxData, int dataTo) {
-        return new RangeReplacer(typeFrom, typeFrom, minData, maxData, dataTo, replaceData);
+    public static RangeToOneReplacer rangeMatchTypeReplaceData(int typeFrom, int minData, int maxData, int dataTo) {
+        return new RangeToOneReplacer(typeFrom, typeFrom, minData, maxData, dataTo, replaceData);
     }
 
-    public static RangeReplacer rangeMatchTypeReplaceTypeAndData(int typeFrom, int typeTo, int minData, int maxData, int dataTo) {
-        return new RangeReplacer(typeFrom, typeTo, minData, maxData, dataTo, replaceTypeAndData);
+    public static RangeToOneReplacer rangeMatchTypeReplaceTypeAndData(int typeFrom, int typeTo, int minData, int maxData, int dataTo) {
+        return new RangeToOneReplacer(typeFrom, typeTo, minData, maxData, dataTo, replaceTypeAndData);
+    }
+
+    public static RangeToRangeReplacer rangeMatchTypeReplaceDataRange(int typeFrom, int minData, int maxData, int toMinData) {
+        return new RangeToRangeReplacer(typeFrom, typeFrom, minData, maxData, toMinData, replaceData);
+    }
+
+    public static RangeToRangeReplacer rangeMatchTypeReplaceTypeAndDataRange(int typeFrom, int typeTo, int minData, int maxData, int toMinData) {
+        return new RangeToRangeReplacer(typeFrom, typeTo, minData, maxData, toMinData, replaceData);
     }
 
     public static BiomeReplacer matchBiomeWithReplacer(int biomeId, Replacer replacer) {

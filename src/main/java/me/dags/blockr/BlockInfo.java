@@ -41,6 +41,14 @@ public class BlockInfo {
         this.biome = biome;
     }
 
+    public int dataRange() {
+        return max - min;
+    }
+
+    public boolean validRange() {
+        return min + dataRange() < 16;
+    }
+
     public boolean present() {
         return this != EMPTY;
     }

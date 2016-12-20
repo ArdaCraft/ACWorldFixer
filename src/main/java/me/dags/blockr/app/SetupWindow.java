@@ -192,7 +192,6 @@ public class SetupWindow extends JPanel {
             frame.pack();
             frame.setLocationRelativeTo(null);
             frame.setVisible(true);
-            frame.setResizable(false);
             frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         };
     }
