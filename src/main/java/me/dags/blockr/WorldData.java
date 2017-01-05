@@ -52,21 +52,25 @@ public class WorldData {
         if (cachedLevel != null) {
             return cachedLevel;
         }
-        try (NBTInputStream out = new NBTInputStream(new GZIPInputStream(new FileInputStream(levelIn)))) {
-            Tag tag = out.readTag();
-            if (tag instanceof CompoundTag) {
-                return cachedLevel = (CompoundTag) tag;
+        try (FileInputStream input = new FileInputStream(levelIn)){
+            try (NBTInputStream out = new NBTInputStream(new GZIPInputStream(input))) {
+                Tag tag = out.readTag();
+                if (tag instanceof CompoundTag) {
+                    return cachedLevel = (CompoundTag) tag;
+                }
+                return null;
             }
-            return null;
         } catch (IOException e) {
             return null;
         }
     }
 
-    public void writeLevelData(File output) {
-        try (NBTOutputStream out = new NBTOutputStream(new GZIPOutputStream(new FileOutputStream(output)))) {
-            out.writeTag(cachedLevel);
-            out.close();
+    public void writeLevelData(File outFile) {
+        try (FileOutputStream output = new FileOutputStream(outFile)) {
+            try (NBTOutputStream out = new NBTOutputStream(new GZIPOutputStream(output))) {
+                out.writeTag(cachedLevel);
+                out.close();
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -85,7 +89,7 @@ public class WorldData {
 
     public String error() {
         if (!levelIn.exists()) {
-            return "levelIn.dat is missing!";
+            return "level.dat is missing!";
         }
         return "region directory is missing!";
     }

@@ -2,7 +2,7 @@ package me.dags.blockr.app;
 
 import me.dags.blockr.Config;
 import me.dags.blockr.WorldData;
-import me.dags.blockr.WorldModifier;
+import me.dags.blockr.world.World;
 import me.dags.data.NodeAdapter;
 import me.dags.data.node.Node;
 import me.dags.data.node.NodeTypeAdapters;
@@ -27,6 +27,7 @@ public class SetupWindow extends JPanel {
     File outputDir = null;
     WorldData fromWorld = null;
     WorldData toWorld = null;
+    private final JButton ok = new JButton("Ok");
 
     SetupWindow() {
         int fullWidth = 425;
@@ -92,19 +93,23 @@ public class SetupWindow extends JPanel {
 
         JCheckBox remap = new JCheckBox("Auto-Remap");
         remap.setSelected(false);
+        remap.setToolTipText("Detect and remap blocks if they exist in the world and the level.dat but have different IDs");
         remap.addActionListener(e -> Config.setAutoRemap(remap.isSelected()));
 
-        JButton ok = new JButton("Ok");
         ok.setPreferredSize(new Dimension(buttonWidth, lineHeight));
         ok.addActionListener(ok());
 
         JLabel levelLabel = new JLabel("Level File:");
+        levelLabel.setToolTipText("The level.dat file to be used in the final converted world");
         levelLabel.setPreferredSize(new Dimension(labelWidth, lineHeight));
         JLabel worldLabel = new JLabel("World Dir:");
+        worldLabel.setToolTipText("The world to be converted");
         worldLabel.setPreferredSize(new Dimension(labelWidth, lineHeight));
         JLabel outputLabel = new JLabel("Output Dir:");
+        outputLabel.setToolTipText("The directory where the converted world will be exported");
         outputLabel.setPreferredSize(new Dimension(labelWidth, lineHeight));
         JLabel coresLabel = new JLabel("CPU Cores:");
+        coresLabel.setToolTipText("The number of CPU cores the converter should use");
         coresLabel.setPreferredSize(new Dimension(labelWidth, lineHeight));
 
         this.setLayout(new GridLayout(6, 1));
@@ -240,26 +245,13 @@ public class SetupWindow extends JPanel {
             }
 
             try {
-                WorldModifier blockFixer = new WorldModifier(config, fromWorld, toWorld, worldDir, outputDir, cores.getValue());
-
-                JProgressBar progressBar = new JProgressBar();
-                progressBar.setPreferredSize(new Dimension(250, 30));
-                progressBar.setVisible(true);
-                progressBar.setStringPainted(true);
-
-                JFrame frame = new JFrame();
-                frame.setLayout(new GridBagLayout());
-                frame.add(progressBar);
-
-                progressBar.setPreferredSize(new Dimension(250, 30));
-
-                frame.pack();
-                frame.setLocationRelativeTo(null);
-                frame.setVisible(true);
-                frame.setResizable(false);
-                frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-
-                new Thread(() -> blockFixer.run(frame, progressBar)).start();
+                final World world = new World(worldDir, outputDir, fromWorld, toWorld, config, cores.getValue());
+                new Thread() {
+                    public void run() {
+                        world.convert();
+                    }
+                }.start();
+                ok.setEnabled(false);
             } catch (Exception ex) {
                 errorWindow("Error occurred whilst processing region files", ex.getMessage());
             }
@@ -267,20 +259,6 @@ public class SetupWindow extends JPanel {
     }
 
     private static void errorWindow(String label, String error) {
-        JFrame frame = new JFrame();
-
-        JTextArea log = new JTextArea();
-        log.setText(label + "\n\n" + error);
-        log.setEditable(false);
-
-        JScrollPane pane = new JScrollPane();
-        pane.setPreferredSize(new Dimension(300, 300));
-        pane.getViewport().add(log);
-
-        frame.add(pane);
-        frame.pack();
-        frame.setLocationRelativeTo(null);
-        frame.setVisible(true);
-        frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        JOptionPane.showMessageDialog(null, label, error, JOptionPane.ERROR_MESSAGE);
     }
 }

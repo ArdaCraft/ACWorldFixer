@@ -1,7 +1,8 @@
-package me.dags.blockr.block;
+package me.dags.blockr.world;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.Dimension;
 import java.text.NumberFormat;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -76,31 +77,31 @@ public class ChangeStats {
 
         panel.setLayout(new GridLayout(14, 1));
         JLabel rp = new JLabel(" Regions processed: " + numFormat(getProgress()));
-        rp.setPreferredSize(new Dimension(250, 25));
+        rp.setPreferredSize(new java.awt.Dimension(250, 25));
 
         JLabel cp = new JLabel(" Chunks processed: " + numFormat(chunks));
-        cp.setPreferredSize(new Dimension(250, 25));
+        cp.setPreferredSize(new java.awt.Dimension(250, 25));
 
         JLabel bp = new JLabel(" Blocks processed: " + numFormat(totalBlocks));
-        bp.setPreferredSize(new Dimension(250, 25));
+        bp.setPreferredSize(new java.awt.Dimension(250, 25));
 
         JLabel bc = new JLabel(" Blocks changed: " + numFormat(blocks));
-        bc.setPreferredSize(new Dimension(250, 25));
+        bc.setPreferredSize(new java.awt.Dimension(250, 25));
 
         JLabel er = new JLabel(" Entities removed: " + numFormat(entities));
-        er.setPreferredSize(new Dimension(250, 25));
+        er.setPreferredSize(new java.awt.Dimension(250, 25));
 
         JLabel tr = new JLabel(" TileEntities removed: " + numFormat(tileEntities));
-        tr.setPreferredSize(new Dimension(250, 25));
+        tr.setPreferredSize(new java.awt.Dimension(250, 25));
 
         JLabel tt = new JLabel(" Time taken: " + numFormat(time) + "s");
-        tt.setPreferredSize(new Dimension(250, 25));
+        tt.setPreferredSize(new java.awt.Dimension(250, 25));
 
         JLabel bPS = new JLabel(" Blocks per second: " + numFormat(bps));
-        bPS.setPreferredSize(new Dimension(250, 25));
+        bPS.setPreferredSize(new java.awt.Dimension(250, 25));
 
         JLabel rPS = new JLabel(" Regions per second: " + numFormat(rps));
-        rPS.setPreferredSize(new Dimension(250, 25));
+        rPS.setPreferredSize(new java.awt.Dimension(250, 25));
 
         JLabel cU = new JLabel(" Cores used: " + cores);
         cU.setPreferredSize(new Dimension(250, 25));

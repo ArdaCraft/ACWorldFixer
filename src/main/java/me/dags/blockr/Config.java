@@ -1,5 +1,6 @@
 package me.dags.blockr;
 
+import me.dags.blockr.block.BlockInfo;
 import me.dags.data.node.*;
 
 import java.util.*;
@@ -36,14 +37,6 @@ public class Config {
             NodeObject removeBlocks = new NodeObject();
             config.removeBlocks.entrySet().forEach(e -> removeBlocks.put(e.getKey(), e.getValue()));
             object.put("remove_blocks", removeBlocks);
-
-            NodeArray entities = new NodeArray();
-            config.entities.forEach(entities::add);
-            object.put("entities", entities);
-
-            NodeArray tileEntities = new NodeArray();
-            config.tileEntities.forEach(tileEntities::add);
-            object.put("tile_entities", tileEntities);
             return object;
         }
 
@@ -61,18 +54,6 @@ public class Config {
                             .map(n -> NodeTypeAdapters.of(BlockInfo.class).fromNode(n))
                             .filter(b -> b != null)
                             .forEach(config.blocks::add);
-                }
-                if (object.contains("remove_blocks")) {
-                    NodeObject remove = object.getObject("remove_blocks");
-                    remove.entries().forEach(e -> config.removeBlocks.put(e.getKey().asString(), e.getValue().asNumber().intValue()));
-                }
-                if (object.contains("entities")) {
-                    NodeArray array = object.getArray("entities");
-                    array.values().stream().map(n -> n.asString().toLowerCase()).forEach(config.entities::add);
-                }
-                if (object.contains("tile_entities")) {
-                    NodeArray array = object.getArray("tile_entities");
-                    array.values().stream().map(n -> n.asString().toLowerCase()).forEach(config.tileEntities::add);
                 }
             }
             return config;

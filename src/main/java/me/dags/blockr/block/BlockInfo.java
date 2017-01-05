@@ -1,4 +1,4 @@
-package me.dags.blockr;
+package me.dags.blockr.block;
 
 import me.dags.data.node.Node;
 import me.dags.data.node.NodeObject;

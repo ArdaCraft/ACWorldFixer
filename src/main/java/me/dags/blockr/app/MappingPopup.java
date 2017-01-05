@@ -1,6 +1,6 @@
 package me.dags.blockr.app;
 
-import me.dags.blockr.BlockInfo;
+import me.dags.blockr.block.BlockInfo;
 
 import javax.swing.*;
 import java.awt.*;
@@ -23,38 +23,64 @@ public class MappingPopup extends JPanel {
         this.mapping = mapping;
         fromName = new JComboBox<>(mapping.fromBlocks);
         fromName.setSelectedItem(mapping.blockInfo.name);
+        fromName.setAlignmentX(LEFT_ALIGNMENT);
 
         SpinnerModel biomeModel = new SpinnerNumberModel(Math.max(mapping.blockInfo.biome, 0), 0, 100, 1);
         biome = new JSpinner(biomeModel);
         biome.setEnabled(mapping.blockInfo.biome >= 0);
+        biome.setAlignmentX(LEFT_ALIGNMENT);
 
         doMatchBiome = new JCheckBox(" Match BiomeID:");
         doMatchBiome.addActionListener(e -> biome.setEnabled(doMatchBiome.isSelected()));
         doMatchBiome.setSelected(biome.isEnabled());
+        doMatchBiome.setAlignmentX(LEFT_ALIGNMENT);
 
         SpinnerModel minModel = new SpinnerNumberModel(Math.max(mapping.blockInfo.min, 0), 0, 16, 1);
         fromMin = new JSpinner(minModel);
+        fromMin.setAlignmentX(LEFT_ALIGNMENT);
+
         SpinnerModel maxModel = new SpinnerNumberModel(Math.max(mapping.blockInfo.max, 0), 0, 16, 1);
         fromMax = new JSpinner(maxModel);
+        fromMin.setAlignmentX(LEFT_ALIGNMENT);
         linkSpinners(fromMin, fromMax);
 
         toName = new JComboBox<>(mapping.toBlocks);
         toName.setSelectedItem(mapping.blockInfo.to.name);
+        toName.setAlignmentX(LEFT_ALIGNMENT);
 
         SpinnerModel toMinModel = new SpinnerNumberModel(Math.max(mapping.blockInfo.to.min, 0), 0, 16, 1);
         toMin = new JSpinner(toMinModel);
+        toMin.setAlignmentX(LEFT_ALIGNMENT);
+
         SpinnerModel toMaxModel = new SpinnerNumberModel(Math.max(mapping.blockInfo.to.max, 0), 0, 16, 1);
         toMax = new JSpinner(toMaxModel);
+        toMax.setAlignmentX(LEFT_ALIGNMENT);
         linkSpinners(toMin, toMax);
 
         JButton done = new JButton("Done");
         done.addActionListener(e -> updateMapping());
 
-        this.setLayout(new GridLayout(4, 1));
-        this.add(row(fromName, doMatchBiome, biome, new JLabel(" Match Meta(s):"), fromMin, new JLabel(" to "), fromMax));
-        this.add(row(new JLabel("Convert To:")));
-        this.add(row(toName, new JLabel("  Meta:"), toMin, new JLabel(" to "), toMax));
-        this.add(row(done));
+        GridLayout layout = new GridLayout(5, 2);
+        layout.setVgap(5);
+        layout.setHgap(5);
+
+        this.setLayout(layout);
+        this.setAlignmentX(LEFT_ALIGNMENT);
+
+        this.add(new JLabel("Match Block"));
+        this.add(new JLabel("Replace With"));
+
+        this.add(row(new JLabel("Block: "), fromName));
+        this.add(row(new JLabel("Block: "), toName));
+
+        this.add(row(new JLabel("Meta(s): "), fromMin, new JLabel(" to "), fromMax));
+        this.add(row(new JLabel("Meta(s): "), toMin, new JLabel(" to "), toMax));
+
+        this.add(row(new JLabel("Biome: "), doMatchBiome, new JLabel(" ID: "), biome));
+        this.add(new JPanel());
+
+        this.add(new JPanel());
+        this.add(done);
     }
 
     private void linkSpinners(JSpinner min, JSpinner max) {
@@ -70,8 +96,11 @@ public class MappingPopup extends JPanel {
         });
     }
 
-    private JPanel row(Component... child) {
+    private JPanel row(JComponent... child) {
         JPanel row = new JPanel();
+        BoxLayout layout = new BoxLayout(row, BoxLayout.X_AXIS);
+        row.setLayout(layout);
+        row.setAlignmentX(LEFT_ALIGNMENT);
         for (Component panel : child) {
             row.add(panel);
         }

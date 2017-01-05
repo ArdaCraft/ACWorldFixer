@@ -1,6 +1,6 @@
 package me.dags.blockr.app;
 
-import me.dags.blockr.BlockInfo;
+import me.dags.blockr.block.BlockInfo;
 import me.dags.blockr.Config;
 
 import javax.swing.*;
@@ -27,28 +27,29 @@ public class MappingWindow extends JPanel {
         this.toBlockNames = setup.toWorld.blockRegistry.blockNames();
 
         content.setLayout(new BoxLayout(content, BoxLayout.Y_AXIS));
+
         scrollPane.setAutoscrolls(true);
         scrollPane.setPreferredSize(new Dimension(900, 600));
         scrollPane.getVerticalScrollBar().setUnitIncrement(100);
 
-        JPanel container = new JPanel();
-        container.setPreferredSize(new Dimension(90, 50));
-
         JButton create = new JButton("New");
-        container.add(create);
         create.setAlignmentX(Component.CENTER_ALIGNMENT);
         create.addActionListener(e -> create());
 
         JButton done = new JButton("Done");
-        container.add(done);
         done.setAlignmentX(Component.CENTER_ALIGNMENT);
         done.addActionListener(e -> done());
+
+        JPanel buttons = new JPanel();
+        buttons.setPreferredSize(new Dimension(90, 50));
+        buttons.add(create);
+        buttons.add(done);
 
         JPanel all = new JPanel();
         all.setLayout(new BoxLayout(all, BoxLayout.Y_AXIS));
         all.setPreferredSize(new Dimension(900, 600));
         all.add(scrollPane);
-        all.add(container);
+        all.add(buttons);
 
         this.add(all);
 

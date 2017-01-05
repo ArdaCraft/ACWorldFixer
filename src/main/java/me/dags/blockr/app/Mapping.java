@@ -1,11 +1,9 @@
 package me.dags.blockr.app;
 
-import me.dags.blockr.BlockInfo;
+import me.dags.blockr.block.BlockInfo;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class Mapping extends JPanel {
 
@@ -13,37 +11,46 @@ public class Mapping extends JPanel {
     final String[] fromBlocks;
     final String[] toBlocks;
     private final MappingWindow parent;
-    private JPanel row = new JPanel();
 
     public Mapping(MappingWindow parent, BlockInfo blockInfo, String[] from, String[] to) {
         this.parent = parent;
         this.blockInfo = blockInfo;
         this.fromBlocks = from;
         this.toBlocks = to;
-        add(row = row(blockInfo));
-        this.setAlignmentY(TOP_ALIGNMENT);
+        this.update();
+        this.setPreferredSize(new Dimension(850, 35));
+        this.setMaximumSize(new Dimension(850, 40));
     }
 
     public void update() {
-        remove(row);
-        add(row = row(blockInfo));
-        parent.refresh();
-    }
+        this.removeAll();
 
-    private JPanel row(BlockInfo info) {
+        BlockInfo info = blockInfo;
+
         int fromId = parent.setup.fromWorld.blockRegistry.getId(info.name);
-        JLabel from = from(fromId, info);
-        from.setMaximumSize(new Dimension(350, 20));
-
         int toId = parent.setup.toWorld.blockRegistry.getId(info.to.present() ? info.to.name : info.name);
-        JLabel to = to(toId, info.to.present() ? info.to : info);
-        to.setMaximumSize(new Dimension(325, 20));
 
-        JPanel description = new JPanel();
-        description.setLayout(new GridLayout(1, 2));
-        description.setPreferredSize(new Dimension(675, 35));
-        description.add(from);
-        description.add(to);
+        this.setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
+
+        JPanel from = new JPanel();
+        from.add(from(fromId, info));
+        from.setPreferredSize(new Dimension(300, 35));
+        from.setMinimumSize(new Dimension(300, 35));
+        from.setAlignmentX(LEFT_ALIGNMENT);
+        this.add(from);
+
+        JPanel arrow = new JPanel();
+        arrow.add(new JLabel(" -> "));
+        arrow.setPreferredSize(new Dimension(10, 35));
+        arrow.setMaximumSize(new Dimension(10, 35));
+        this.add(arrow);
+
+        JPanel to = new JPanel();
+        to.add(to(toId, info.to.present() ? info.to : info));
+        to.setPreferredSize(new Dimension(300, 35));
+        to.setMinimumSize(new Dimension(300, 35));
+        to.setAlignmentX(LEFT_ALIGNMENT);
+        this.add(to);
 
         JButton edit = new JButton("Edit");
         edit.addActionListener(e -> edit(this));
@@ -54,19 +61,14 @@ public class Mapping extends JPanel {
 
         JPanel buttons = new JPanel();
         buttons.setPreferredSize(new Dimension(200, 35));
+        buttons.setMaximumSize(new Dimension(200, 35));
         buttons.add(edit);
         buttons.add(copy);
         buttons.add(remove);
 
-        GridBagLayout layout = new GridBagLayout();
+        this.add(buttons);
 
-        JPanel row = new JPanel();
-        row.setLayout(layout);
-        row.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.BLACK));
-        row.add(description);
-        row.add(buttons);
-
-        return row;
+        parent.refresh();
     }
 
     private JLabel from(int id, BlockInfo info) {
@@ -75,7 +77,7 @@ public class Mapping extends JPanel {
     }
 
     private JLabel to(int id, BlockInfo info) {
-        return blockLabel(" --->  (%s) %s[%s:%s]", id, info.name, info.min, info.max);
+        return blockLabel("(%s) %s[%s:%s]", id, info.name, info.min, info.max);
     }
 
     private JLabel blockLabel(String fmt, Object... args) {
@@ -84,7 +86,6 @@ public class Mapping extends JPanel {
 
     private static void edit(Mapping mapping) {
         JFrame frame = new JFrame();
-        frame.setLayout(new GridBagLayout());
         frame.add(new MappingPopup(frame, mapping));
         frame.pack();
         frame.setLocationRelativeTo(null);

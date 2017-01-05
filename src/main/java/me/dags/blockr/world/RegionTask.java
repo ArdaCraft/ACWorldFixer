@@ -1,4 +1,4 @@
-package me.dags.blockr.block;
+package me.dags.blockr.world;
 
 import me.dags.blockr.block.replacers.Replacer;
 import org.jnbt.CompoundTag;
@@ -7,36 +7,30 @@ import org.jnbt.NBTOutputStream;
 import org.pepsoft.minecraft.*;
 
 import java.io.*;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
+import java.util.concurrent.Callable;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * @author dags <dags@dags.me>
  */
-public class ReplaceTask implements Runnable {
+public class RegionTask implements Runnable, Callable<Object> {
 
-    private final Replacer[][] replacers;
-    private final Set<String> entities = new HashSet<>();
-    private final Set<String> tileEntities = new HashSet<>();
     private final File inputFile;
     private final File outputFile;
+    private final AtomicInteger counter;
+    private final Replacer[][] replacers;
 
-    public ReplaceTask(File inputFile, File outputFile, Replacer[][] replacers) {
+    public RegionTask(File inputFile, File outputFile, Replacer[][] replacers, AtomicInteger counter) {
         this.inputFile = inputFile;
         this.outputFile = outputFile;
         this.replacers = replacers;
+        this.counter = counter;
     }
 
-    public ReplaceTask withEntities(Collection<String> entities) {
-        entities.stream().map(String::toLowerCase).forEach(this.entities::add);
-        return this;
-    }
-
-    public ReplaceTask withTileEntities(Collection<String> tileEntities) {
-        tileEntities.stream().map(String::toLowerCase).forEach(this.tileEntities::add);
-        return this;
+    @Override
+    public Object call() throws Exception {
+        this.run();
+        return true;
     }
 
     @Override
@@ -56,12 +50,12 @@ public class ReplaceTask implements Runnable {
                     }
                     processChunk(chunk);
                     writeChunk(region, chunk, x, z);
-                    ChangeStats.incChunkCount();
                 }
             }
-            ChangeStats.incRegionsCount();
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            counter.getAndAdd(1);
         }
     }
 
@@ -92,14 +86,6 @@ public class ReplaceTask implements Runnable {
         if (replacers.length > 0) {
             processBlocks(chunk);
         }
-
-        if (entities.size() > 0) {
-            processEntities(chunk);
-        }
-
-        if (tileEntities.size() > 0) {
-            processTileEntities(chunk);
-        }
     }
 
     private void processBlocks(Chunk chunk) {
@@ -120,28 +106,6 @@ public class ReplaceTask implements Runnable {
                         }
                     }
                 }
-            }
-        }
-    }
-
-    private void processEntities(Chunk chunk) {
-        Iterator<Entity> eIterator = chunk.getEntities().iterator();
-        while (eIterator.hasNext()) {
-            Entity entity = eIterator.next();
-            if (entities.contains(entity.getId().toLowerCase())) {
-                ChangeStats.incEntityCount();
-                eIterator.remove();
-            }
-        }
-    }
-
-    private void processTileEntities(Chunk chunk) {
-        Iterator<TileEntity> tEIterator = chunk.getTileEntities().iterator();
-        while (tEIterator.hasNext()) {
-            TileEntity entity = tEIterator.next();
-            if (tileEntities.contains(entity.getId().toLowerCase())) {
-                ChangeStats.incTileEntityCount();
-                tEIterator.remove();
             }
         }
     }

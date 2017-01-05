@@ -22,7 +22,7 @@ public class BlockRegistry {
         System.out.println();
     }
 
-    public List<String> getRemmappedBlocks(BlockRegistry from) {
+    public List<String> getRemappedBlocks(BlockRegistry from) {
         return from.blockIds.entrySet().stream()
                 .filter(e -> {
                     Integer id = this.blockIds.get(e.getKey());
