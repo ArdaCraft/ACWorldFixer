@@ -66,10 +66,16 @@ public class WorldData {
     }
 
     public void writeLevelData(File outFile) {
-        try (FileOutputStream output = new FileOutputStream(outFile)) {
-            try (NBTOutputStream out = new NBTOutputStream(new GZIPOutputStream(output))) {
-                out.writeTag(cachedLevel);
-                out.close();
+        try {
+            if (!outFile.exists()) {
+                outFile.getParentFile().mkdirs();
+                outFile.createNewFile();
+            }
+            try (FileOutputStream output = new FileOutputStream(outFile)) {
+                try (NBTOutputStream out = new NBTOutputStream(new GZIPOutputStream(output))) {
+                    out.writeTag(cachedLevel);
+                    out.close();
+                }
             }
         } catch (IOException e) {
             e.printStackTrace();

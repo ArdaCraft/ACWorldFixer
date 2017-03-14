@@ -34,6 +34,10 @@ public class Dimension {
         this.replacers = replacers;
     }
 
+    public File getOutputLevelFile() {
+        return new File(dimensionOut, "level.dat");
+    }
+
     public File getOutputDirectory() {
         return dimensionOut;
     }

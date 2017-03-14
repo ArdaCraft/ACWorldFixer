@@ -21,13 +21,14 @@ public class SetupWindow extends JPanel {
 
     private static final File WORKING_DIR = new File(new File("").getAbsolutePath());
     private final JSlider cores = new JSlider(SwingConstants.HORIZONTAL);
+    private final JButton ok = new JButton("Ok");
+
+    private File worldDir = null;
+    private File outputDir = null;
 
     Config config = null;
-    File worldDir = null;
-    File outputDir = null;
     WorldData fromWorld = null;
     WorldData toWorld = null;
-    private final JButton ok = new JButton("Ok");
 
     SetupWindow() {
         int fullWidth = 425;
@@ -225,17 +226,12 @@ public class SetupWindow extends JPanel {
     private ActionListener ok() {
         return e -> {
             if (this.fromWorld == null) {
-                errorWindow("World data not loaded correctly!", "");
+                errorWindow("'From' world data not loaded correctly!", "");
                 return;
             }
 
             if (this.toWorld == null) {
-                errorWindow("level.dat not loaded correctly!", "");
-                return;
-            }
-
-            if (this.worldDir == null) {
-                errorWindow("No world directory selected!", "");
+                errorWindow("'To' world data not loaded correctly!", "");
                 return;
             }
 
@@ -244,13 +240,25 @@ public class SetupWindow extends JPanel {
                 return;
             }
 
+            if (this.worldDir == null) {
+                errorWindow("No world directory selected!", "");
+                return;
+            }
+
+            if (this.outputDir == null) {
+                errorWindow("No output directory selected!", "");
+                return;
+            }
+
             try {
                 final World world = new World(worldDir, outputDir, fromWorld, toWorld, config, cores.getValue());
+
                 new Thread() {
                     public void run() {
                         world.convert();
                     }
                 }.start();
+
                 ok.setEnabled(false);
             } catch (Exception ex) {
                 errorWindow("Error occurred whilst processing region files", ex.getMessage());

@@ -1,8 +1,8 @@
 package me.dags.blockr.world;
 
-import me.dags.blockr.block.BlockInfo;
 import me.dags.blockr.Config;
 import me.dags.blockr.WorldData;
+import me.dags.blockr.block.BlockInfo;
 import me.dags.blockr.block.replacers.Replacer;
 import me.dags.blockr.block.replacers.Replacers;
 
@@ -26,6 +26,7 @@ public class World {
     private final File outputDirRoot;
     private final WorldData fromWorld;
     private final WorldData toWorld;
+    private final Dimension main;
     private final List<Dimension> dimensions = new ArrayList<>();
     private final int cores;
 
@@ -39,7 +40,7 @@ public class World {
         Replacer[][] conversions = getRules(config);
 
         // Add main world
-        Dimension main = new Dimension(sourceDir, outputDir, sourceDir.getName() + "-converted", conversions);
+        main = new Dimension(sourceDir, outputDir, sourceDir.getName() + "-converted", conversions);
         dimensions.add(main);
 
         // Look for other dimensions within the main world dir
@@ -123,6 +124,8 @@ public class World {
                 e.printStackTrace();
             }
         }
+
+        toWorld.writeLevelData(main.getOutputLevelFile());
 
         try {
             Thread.sleep(1000L);
