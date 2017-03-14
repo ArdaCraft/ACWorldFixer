@@ -1,14 +1,9 @@
 package org.pepsoft.minecraft;
 
-import static org.pepsoft.minecraft.Constants.BLK_AIR;
-import static org.pepsoft.minecraft.Constants.BLK_LAVA;
-import static org.pepsoft.minecraft.Constants.BLK_STATIONARY_LAVA;
-import static org.pepsoft.minecraft.Constants.BLK_STATIONARY_WATER;
-import static org.pepsoft.minecraft.Constants.BLK_WATER;
-import static org.pepsoft.minecraft.Constants.HIGHEST_KNOWN_BLOCK_ID;
-
 import java.io.ObjectStreamException;
 import java.io.Serializable;
+
+import static org.pepsoft.minecraft.Constants.*;
 
 /**
  * A database of Minecraft block information. Accessed by using the block ID as

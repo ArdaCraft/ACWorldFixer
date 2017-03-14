@@ -4,13 +4,13 @@
  */
 package org.pepsoft.minecraft;
 
-import static org.pepsoft.minecraft.Block.BLOCK_TYPE_NAMES;
-import static org.pepsoft.minecraft.Constants.*;
-
-import java.awt.Graphics2D;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.ObjectStreamException;
 import java.io.Serializable;
+
+import static org.pepsoft.minecraft.Block.BLOCK_TYPE_NAMES;
+import static org.pepsoft.minecraft.Constants.*;
 
 /**
  *

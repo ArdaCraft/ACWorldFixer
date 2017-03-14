@@ -4,14 +4,9 @@
  */
 package org.pepsoft.minecraft;
 
-import static org.pepsoft.minecraft.Constants.ID_PAINTING;
-import static org.pepsoft.minecraft.Constants.TAG_DIR;
-import static org.pepsoft.minecraft.Constants.TAG_MOTIVE;
-import static org.pepsoft.minecraft.Constants.TAG_TILE_X;
-import static org.pepsoft.minecraft.Constants.TAG_TILE_Y;
-import static org.pepsoft.minecraft.Constants.TAG_TILE_Z;
-
 import org.jnbt.CompoundTag;
+
+import static org.pepsoft.minecraft.Constants.*;
 
 /**
  *

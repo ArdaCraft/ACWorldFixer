@@ -5,17 +5,12 @@
 
 package org.pepsoft.minecraft;
 
-import static org.pepsoft.minecraft.Constants.ID_CHEST;
-import static org.pepsoft.minecraft.Constants.ID_SIGN;
-import static org.pepsoft.minecraft.Constants.TAG_ID;
-import static org.pepsoft.minecraft.Constants.TAG_X;
-import static org.pepsoft.minecraft.Constants.TAG_Y;
-import static org.pepsoft.minecraft.Constants.TAG_Z;
+import org.jnbt.CompoundTag;
+import org.jnbt.StringTag;
 
 import java.util.HashMap;
 
-import org.jnbt.CompoundTag;
-import org.jnbt.StringTag;
+import static org.pepsoft.minecraft.Constants.*;
 
 /**
  *

@@ -5,15 +5,12 @@
 
 package org.pepsoft.minecraft;
 
-import static org.pepsoft.minecraft.Constants.ID_PLAYER;
-import static org.pepsoft.minecraft.Constants.TAG_DIMENSION;
-import static org.pepsoft.minecraft.Constants.TAG_INVENTORY;
-import static org.pepsoft.minecraft.Constants.TAG_SCORE;
+import org.jnbt.CompoundTag;
+import org.jnbt.Tag;
 
 import java.util.Collections;
 
-import org.jnbt.CompoundTag;
-import org.jnbt.Tag;
+import static org.pepsoft.minecraft.Constants.*;
 
 /**
  *

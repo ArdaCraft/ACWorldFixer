@@ -5,14 +5,11 @@
 
 package org.pepsoft.minecraft;
 
-import static org.pepsoft.minecraft.Constants.TAG_COUNT;
-import static org.pepsoft.minecraft.Constants.TAG_DAMAGE;
-import static org.pepsoft.minecraft.Constants.TAG_ID;
-import static org.pepsoft.minecraft.Constants.TAG_SLOT;
+import org.jnbt.CompoundTag;
 
 import java.util.HashMap;
 
-import org.jnbt.CompoundTag;
+import static org.pepsoft.minecraft.Constants.*;
 
 /**
  *

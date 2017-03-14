@@ -5,28 +5,17 @@
 
 package org.pepsoft.minecraft;
 
-import static org.pepsoft.minecraft.Constants.TAG_BLOCKS;
-import static org.pepsoft.minecraft.Constants.TAG_BLOCK_LIGHT;
-import static org.pepsoft.minecraft.Constants.TAG_DATA;
-import static org.pepsoft.minecraft.Constants.TAG_ENTITIES;
-import static org.pepsoft.minecraft.Constants.TAG_HEIGHT_MAP;
-import static org.pepsoft.minecraft.Constants.TAG_LAST_UPDATE;
-import static org.pepsoft.minecraft.Constants.TAG_LEVEL;
-import static org.pepsoft.minecraft.Constants.TAG_SKY_LIGHT;
-import static org.pepsoft.minecraft.Constants.TAG_TERRAIN_POPULATED;
-import static org.pepsoft.minecraft.Constants.TAG_TILE_ENTITIES;
-import static org.pepsoft.minecraft.Constants.TAG_X_POS;
-import static org.pepsoft.minecraft.Constants.TAG_Z_POS;
+import org.jnbt.CompoundTag;
+import org.jnbt.Tag;
 
-import java.awt.Point;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.jnbt.CompoundTag;
-import org.jnbt.Tag;
+import static org.pepsoft.minecraft.Constants.*;
 
 /**
  * An "MCRegion" chunk.

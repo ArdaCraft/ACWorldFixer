@@ -48,6 +48,12 @@ public class WorldData {
         }
     }
 
+    public void copyRegistries(WorldData from) {
+        CompoundTag FML = (CompoundTag) from.getLevelData().getTag("FML");
+        CompoundTag registries = (CompoundTag) FML.getTag("Registries");
+        ((CompoundTag) getLevelData().getTag("FML")).setTag("Registries", registries);
+    }
+
     public CompoundTag getLevelData() {
         if (cachedLevel != null) {
             return cachedLevel;

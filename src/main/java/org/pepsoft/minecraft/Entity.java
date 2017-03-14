@@ -5,21 +5,12 @@
 
 package org.pepsoft.minecraft;
 
-import static org.pepsoft.minecraft.Constants.ID_PAINTING;
-import static org.pepsoft.minecraft.Constants.ID_PLAYER;
-import static org.pepsoft.minecraft.Constants.ID_VILLAGER;
-import static org.pepsoft.minecraft.Constants.TAG_AIR;
-import static org.pepsoft.minecraft.Constants.TAG_FIRE;
-import static org.pepsoft.minecraft.Constants.TAG_ID;
-import static org.pepsoft.minecraft.Constants.TAG_MOTION;
-import static org.pepsoft.minecraft.Constants.TAG_ON_GROUND;
-import static org.pepsoft.minecraft.Constants.TAG_POS;
-import static org.pepsoft.minecraft.Constants.TAG_ROTATION;
+import org.jnbt.CompoundTag;
+import org.jnbt.StringTag;
 
 import java.util.HashMap;
 
-import org.jnbt.CompoundTag;
-import org.jnbt.StringTag;
+import static org.pepsoft.minecraft.Constants.*;
 
 /**
  *

@@ -108,6 +108,8 @@ public class World {
 
         final ExecutorService service = Executors.newFixedThreadPool(cores);
 
+        ChangeStats.punchIn();
+
         for (Dimension dimension : dimensions) {
             try {
                 regionProgress.set(0);
@@ -125,7 +127,12 @@ public class World {
             }
         }
 
-        toWorld.writeLevelData(main.getOutputLevelFile());
+        // Replace 'from' world's registeries with 'to' world's
+        fromWorld.copyRegistries(toWorld);
+        fromWorld.writeLevelData(main.getOutputLevelFile());
+
+        ChangeStats.punchOut();
+        ChangeStats.displayResults(cores);
 
         try {
             Thread.sleep(1000L);

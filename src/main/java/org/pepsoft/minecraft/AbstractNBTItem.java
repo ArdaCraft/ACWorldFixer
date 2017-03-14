@@ -5,22 +5,11 @@
 
 package org.pepsoft.minecraft;
 
+import org.jnbt.*;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.jnbt.ByteArrayTag;
-import org.jnbt.ByteTag;
-import org.jnbt.CompoundTag;
-import org.jnbt.DoubleTag;
-import org.jnbt.FloatTag;
-import org.jnbt.IntArrayTag;
-import org.jnbt.IntTag;
-import org.jnbt.ListTag;
-import org.jnbt.LongTag;
-import org.jnbt.ShortTag;
-import org.jnbt.StringTag;
-import org.jnbt.Tag;
 
 /**
  * A data structure based on an NBT tag or hierarchy of tags.

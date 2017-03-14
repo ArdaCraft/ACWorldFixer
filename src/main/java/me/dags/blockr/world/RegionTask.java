@@ -4,7 +4,9 @@ import me.dags.blockr.block.replacers.Replacer;
 import org.jnbt.CompoundTag;
 import org.jnbt.NBTInputStream;
 import org.jnbt.NBTOutputStream;
-import org.pepsoft.minecraft.*;
+import org.pepsoft.minecraft.Chunk;
+import org.pepsoft.minecraft.ChunkImpl2;
+import org.pepsoft.minecraft.RegionFile;
 
 import java.io.*;
 import java.util.concurrent.Callable;
@@ -56,6 +58,7 @@ public class RegionTask implements Runnable, Callable<Object> {
             e.printStackTrace();
         } finally {
             counter.getAndAdd(1);
+            ChangeStats.incRegionsCount();
         }
     }
 
@@ -86,6 +89,7 @@ public class RegionTask implements Runnable, Callable<Object> {
         if (replacers.length > 0) {
             processBlocks(chunk);
         }
+        ChangeStats.incChunkCount();
     }
 
     private void processBlocks(Chunk chunk) {

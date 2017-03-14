@@ -1,26 +1,26 @@
 package me.dags.blockr.world;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.Dimension;
+import java.awt.*;
 import java.text.NumberFormat;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicLong;
 
 /**
  * @author dags <dags@dags.me>
  */
 public class ChangeStats {
 
-    private static final AtomicInteger regionsComplete = new AtomicInteger(0);
-    private static final AtomicInteger chunksComplete = new AtomicInteger(0);
-    private static final AtomicInteger blockChanges = new AtomicInteger(0);
-    private static final AtomicInteger entitiesRemoved = new AtomicInteger(0);
-    private static final AtomicInteger tileEntitiesRemoved = new AtomicInteger(0);
+    private static final AtomicLong regionsComplete = new AtomicLong(0);
+    private static final AtomicLong chunksComplete = new AtomicLong(0);
+    private static final AtomicLong blockChanges = new AtomicLong(0);
+    private static final AtomicLong entitiesRemoved = new AtomicLong(0);
+    private static final AtomicLong tileEntitiesRemoved = new AtomicLong(0);
 
     private static long start = 0L;
     private static long finish = 0L;
 
-    public static int getProgress() {
+    public static long getProgress() {
         return regionsComplete.get();
     }
 
@@ -63,15 +63,15 @@ public class ChangeStats {
     }
 
     private static JPanel getStats(int cores) {
-        int chunks = chunksComplete.get();
-        int blocks = blockChanges.get();
-        int entities = entitiesRemoved.get();
-        int tileEntities = tileEntitiesRemoved.get();
-        int totalBlocks = chunks * 16 * 16 * 256;
+        long chunks = Math.abs(chunksComplete.get());
+        long blocks = Math.abs(blockChanges.get());
+        long entities = Math.abs(entitiesRemoved.get());
+        long tileEntities = Math.abs(tileEntitiesRemoved.get());
+        long totalBlocks = Math.abs(chunks * 16 * 16 * 256);
 
-        double time = (finish - start) / 1000D;
-        double bps = totalBlocks / time;
-        double rps = getProgress() / time;
+        Double time = (finish - start) / 1000D;
+        Double bps = totalBlocks / time;
+        Double rps = getProgress() / time;
 
         JPanel panel = new JPanel();
 
@@ -124,6 +124,9 @@ public class ChangeStats {
 
     private static String numFormat(Number in) {
         String s = NumberFormat.getInstance().format(in);
-        return s.length() > 15 ? s.substring(0, 15) : s;
+        if (in instanceof Double) {
+            return s.length() > 15 ? s.substring(0, 15) : s;
+        }
+        return s;
     }
 }

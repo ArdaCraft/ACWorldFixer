@@ -5,7 +5,7 @@
 
 package org.pepsoft.minecraft;
 
-import java.awt.Point;
+import java.awt.*;
 import java.util.List;
 
 /**

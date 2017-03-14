@@ -5,12 +5,9 @@
 
 package org.pepsoft.minecraft;
 
-import static org.pepsoft.minecraft.Constants.TAG_ATTACK_TIME;
-import static org.pepsoft.minecraft.Constants.TAG_DEATH_TIME;
-import static org.pepsoft.minecraft.Constants.TAG_HEALTH;
-import static org.pepsoft.minecraft.Constants.TAG_HURT_TIME;
-
 import org.jnbt.CompoundTag;
+
+import static org.pepsoft.minecraft.Constants.*;
 
 /**
  *
