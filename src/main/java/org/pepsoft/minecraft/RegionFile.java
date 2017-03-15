@@ -64,7 +64,7 @@ import java.util.zip.DeflaterOutputStream;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.InflaterInputStream;
 
-public final class RegionFile {
+public final class RegionFile implements AutoCloseable {
 
     private static final int VERSION_GZIP = 1;
     private static final int VERSION_DEFLATE = 2;

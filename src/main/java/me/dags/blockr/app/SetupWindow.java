@@ -20,8 +20,8 @@ import java.util.function.Predicate;
 public class SetupWindow extends JPanel {
 
     private static final File WORKING_DIR = new File(new File("").getAbsolutePath());
+    public static final JButton ok = new JButton("Ok");
     private final JSlider cores = new JSlider(SwingConstants.HORIZONTAL);
-    private final JButton ok = new JButton("Ok");
 
     private File worldDir = null;
     private File outputDir = null;
@@ -39,7 +39,7 @@ public class SetupWindow extends JPanel {
         // level.dat
         JTextField targetLevel = new JTextField();
         targetLevel.setPreferredSize(new Dimension(fullWidth - buttonWidth, lineHeight));
-        targetLevel.setText(WORKING_DIR.getAbsolutePath());
+        // targetLevel.setText(WORKING_DIR.getAbsolutePath());
         JButton chooseLevel = new JButton("Choose");
         chooseLevel.setPreferredSize(new Dimension(buttonWidth, lineHeight));
         chooseLevel.addActionListener(choose(targetLevel, JFileChooser.FILES_ONLY, f -> f.getName().endsWith(".dat"), f -> {
@@ -50,7 +50,7 @@ public class SetupWindow extends JPanel {
         // world dir
         JTextField worldDir = new JTextField();
         worldDir.setPreferredSize(new Dimension(fullWidth - buttonWidth, lineHeight));
-        worldDir.setText(WORKING_DIR.getAbsolutePath());
+        // worldDir.setText(WORKING_DIR.getAbsolutePath());
 
         JButton chooseDir = new JButton("Choose");
         chooseDir.setPreferredSize(new Dimension(buttonWidth, lineHeight));
@@ -63,7 +63,7 @@ public class SetupWindow extends JPanel {
         // output dir
         JTextField outputDir = new JTextField();
         outputDir.setPreferredSize(new Dimension(fullWidth - buttonWidth, lineHeight));
-        outputDir.setText(WORKING_DIR.getAbsolutePath());
+        // outputDir.setText(WORKING_DIR.getAbsolutePath());
 
         JButton chooseOutput = new JButton("Choose");
         chooseOutput.setPreferredSize(new Dimension(buttonWidth, lineHeight));
@@ -86,7 +86,8 @@ public class SetupWindow extends JPanel {
 
         cores.setPreferredSize(new Dimension(fullWidth, 35));
         cores.setMinimum(1);
-        cores.setMaximum(Runtime.getRuntime().availableProcessors());
+        cores.setMaximum(Runtime.getRuntime().availableProcessors() * 2);
+        cores.setValue(Runtime.getRuntime().availableProcessors());
         cores.setMajorTickSpacing(1);
         cores.setPaintLabels(true);
         cores.setPaintTicks(true);
@@ -109,8 +110,8 @@ public class SetupWindow extends JPanel {
         JLabel outputLabel = new JLabel("Output Dir:");
         outputLabel.setToolTipText("The directory where the converted world will be exported");
         outputLabel.setPreferredSize(new Dimension(labelWidth, lineHeight));
-        JLabel coresLabel = new JLabel("CPU Cores:");
-        coresLabel.setToolTipText("The number of CPU cores the converter should use");
+        JLabel coresLabel = new JLabel("Threads:");
+        coresLabel.setToolTipText("The number of Threads the converter should use");
         coresLabel.setPreferredSize(new Dimension(labelWidth, lineHeight));
 
         this.setLayout(new GridLayout(6, 1));
@@ -166,7 +167,7 @@ public class SetupWindow extends JPanel {
             chooser.setFileSelectionMode(mode);
             chooser.setFileHidingEnabled(false);
             chooser.ensureFileIsVisible(WORKING_DIR);
-            chooser.setSelectedFile(WORKING_DIR);
+            chooser.setCurrentDirectory(WORKING_DIR);
             int response = chooser.showOpenDialog(SetupWindow.this);
             if (response == JFileChooser.APPROVE_OPTION) {
                 File target = chooser.getSelectedFile();

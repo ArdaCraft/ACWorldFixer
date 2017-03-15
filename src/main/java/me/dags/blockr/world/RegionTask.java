@@ -37,12 +37,11 @@ public class RegionTask implements Runnable, Callable<Object> {
 
     @Override
     public void run() {
-        try {
-            RandomAccessFile from = new RandomAccessFile(inputFile, "rw");
-            RandomAccessFile to = new RandomAccessFile(outputFile, "rw");
-            from.getChannel().transferTo(0, Long.MAX_VALUE, to.getChannel());
+        try (RandomAccessFile from = new RandomAccessFile(inputFile, "rw");
+             RandomAccessFile to = new RandomAccessFile(outputFile, "rw");
+             RegionFile region = new RegionFile(outputFile)) {
 
-            RegionFile region = new RegionFile(outputFile);
+            from.getChannel().transferTo(0, Long.MAX_VALUE, to.getChannel());
 
             for (int x = 0; x < 32; x++) {
                 for (int z = 0; z < 32; z++) {
@@ -63,7 +62,7 @@ public class RegionTask implements Runnable, Callable<Object> {
     }
 
     private Chunk readChunk(RegionFile region, int i, int j) throws IOException {
-        try (InputStream input = region.getChunkDataInputStream(i,  j)) {
+        try (InputStream input = region.getChunkDataInputStream(i, j)) {
             if (input == null) {
                 return null;
             }

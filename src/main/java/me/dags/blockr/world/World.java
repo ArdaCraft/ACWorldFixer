@@ -2,6 +2,7 @@ package me.dags.blockr.world;
 
 import me.dags.blockr.Config;
 import me.dags.blockr.WorldData;
+import me.dags.blockr.app.SetupWindow;
 import me.dags.blockr.block.BlockInfo;
 import me.dags.blockr.block.replacers.Replacer;
 import me.dags.blockr.block.replacers.Replacers;
@@ -14,8 +15,6 @@ import java.util.*;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * @author dags <dags@dags.me>
@@ -54,31 +53,30 @@ public class World {
     }
 
     public void convert() {
-        AtomicBoolean running = new AtomicBoolean(true);
-        AtomicInteger regionCount = new AtomicInteger(0);
-        AtomicInteger regionProgress = new AtomicInteger(0);
-        AtomicInteger dimensionProgress = new AtomicInteger(0);
+        final JLabel overallLabel = new JLabel();
+        overallLabel.setText("Overall:");
 
         final JLabel dimensionLabel = new JLabel();
-        dimensionLabel.setText("Overall:");
+        dimensionLabel.setText("World:");
+        dimensionLabel.setPreferredSize(new java.awt.Dimension(100, 30));
 
-        final JProgressBar dimensionBar = new JProgressBar();
-        dimensionBar.setPreferredSize(new java.awt.Dimension(200, 30));
-        dimensionBar.setValue(0);
-        dimensionBar.setMinimum(0);
-        dimensionBar.setMaximum(dimensions.size());
+        final JProgressBar overallProgress = new JProgressBar();
+        overallProgress.setPreferredSize(new java.awt.Dimension(200, 30));
+        overallProgress.setValue(0);
+        overallProgress.setMinimum(0);
+        overallProgress.setMaximum(dimensions.size());
 
-        final JProgressBar regionBar = new JProgressBar();
-        regionBar.setPreferredSize(new java.awt.Dimension(200, 30));
-        regionBar.setValue(0);
-        regionBar.setMinimum(0);
-        regionBar.setMaximum(1);
+        final JProgressBar currentProgress = new JProgressBar();
+        currentProgress.setPreferredSize(new java.awt.Dimension(200, 30));
+        currentProgress.setValue(0);
+        currentProgress.setMinimum(0);
+        currentProgress.setMaximum(1);
 
         final JPanel panel = new JPanel();
+        panel.add(overallLabel);
+        panel.add(overallProgress);
         panel.add(dimensionLabel);
-        panel.add(dimensionBar);
-        panel.add(new JLabel("Regions:"));
-        panel.add(regionBar);
+        panel.add(currentProgress);
 
         final JFrame frame = new JFrame();
         frame.add(panel);
@@ -89,13 +87,18 @@ public class World {
 
         new Thread() {
             public void run() {
-                while (running.get()) {
-                    regionBar.setMaximum(regionCount.get());
-                    regionBar.setValue(regionProgress.get());
-                    dimensionBar.setValue(dimensionProgress.get());
+                while (ChangeStats.running.get()) {
+                    currentProgress.setMaximum(ChangeStats.regionCount.get());
+                    currentProgress.setValue(ChangeStats.regionProgress.get());
 
-                    regionBar.repaint();
-                    dimensionBar.repaint();
+                    overallProgress.setMaximum(ChangeStats.overallRegionCount.get());
+                    overallProgress.setValue(ChangeStats.getProgress());
+
+                    currentProgress.repaint();
+                    overallProgress.repaint();
+
+                    float progress = 100F * ChangeStats.getProgress() / (float) ChangeStats.overallRegionCount.get();
+                    frame.setTitle(String.format("%.2f%%", progress));
 
                     try {
                         Thread.sleep(100L);
@@ -108,31 +111,35 @@ public class World {
 
         final ExecutorService service = Executors.newFixedThreadPool(cores);
 
+        for (Dimension dimension : dimensions) {
+            ChangeStats.overallRegionCount.getAndAdd(dimension.countRegionFiles());
+        }
+
         ChangeStats.punchIn();
 
         for (Dimension dimension : dimensions) {
             try {
-                regionProgress.set(0);
+                ChangeStats.regionProgress.set(0);
+                dimensionLabel.setText(dimension.getName());
 
-                List<RegionTask> tasks = dimension.getRegionTasks(regionProgress);
-                regionCount.set(tasks.size());
+                List<RegionTask> tasks = dimension.getRegionTasks(ChangeStats.regionProgress);
+                ChangeStats.regionCount.set(tasks.size());
 
                 dimension.mkdirs();
                 service.invokeAll(tasks);
                 dimension.copyData();
 
-                dimensionProgress.getAndAdd(1);
+                ChangeStats.incDimensionCount();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
 
-        // Replace 'from' world's registeries with 'to' world's
+        // Replace 'from' world's registries with 'to' world's
         fromWorld.copyRegistries(toWorld);
         fromWorld.writeLevelData(main.getOutputLevelFile());
 
         ChangeStats.punchOut();
-        ChangeStats.displayResults(cores);
 
         try {
             Thread.sleep(1000L);
@@ -140,8 +147,8 @@ public class World {
             e.printStackTrace();
         }
 
-        running.set(false);
-
+        ChangeStats.running.set(false);
+        ChangeStats.displayResults(cores);
         JOptionPane.showMessageDialog(null, "Conversion Complete!");
         frame.dispose();
 
@@ -150,6 +157,8 @@ public class World {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        SetupWindow.ok.setEnabled(true);
     }
 
     private Replacer[][] getRules(Config config) {

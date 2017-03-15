@@ -4,6 +4,8 @@ import javax.swing.*;
 import java.awt.Dimension;
 import java.awt.*;
 import java.text.NumberFormat;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
 
 /**
@@ -11,17 +13,23 @@ import java.util.concurrent.atomic.AtomicLong;
  */
 public class ChangeStats {
 
-    private static final AtomicLong regionsComplete = new AtomicLong(0);
+    private static final AtomicInteger dimensionsComplete = new AtomicInteger(0);
+    private static final AtomicInteger overallRegionProgress = new AtomicInteger(0);
     private static final AtomicLong chunksComplete = new AtomicLong(0);
     private static final AtomicLong blockChanges = new AtomicLong(0);
     private static final AtomicLong entitiesRemoved = new AtomicLong(0);
     private static final AtomicLong tileEntitiesRemoved = new AtomicLong(0);
 
+    static final AtomicBoolean running = new AtomicBoolean(true);
+    static final AtomicInteger regionCount = new AtomicInteger(0);
+    static final AtomicInteger regionProgress = new AtomicInteger(0);
+    static final AtomicInteger overallRegionCount = new AtomicInteger(0);
+
     private static long start = 0L;
     private static long finish = 0L;
 
-    public static long getProgress() {
-        return regionsComplete.get();
+    public static int getProgress() {
+        return overallRegionProgress.get();
     }
 
     public static void punchIn() {
@@ -32,8 +40,12 @@ public class ChangeStats {
         finish = System.currentTimeMillis();
     }
 
+    static void incDimensionCount() {
+        dimensionsComplete.getAndAdd(1);
+    }
+
     static void incRegionsCount() {
-        regionsComplete.addAndGet(1);
+        overallRegionProgress.addAndGet(1);
     }
 
     static void incChunkCount() {
@@ -63,6 +75,7 @@ public class ChangeStats {
     }
 
     private static JPanel getStats(int cores) {
+        int dimensions = dimensionsComplete.get();
         long chunks = Math.abs(chunksComplete.get());
         long blocks = Math.abs(blockChanges.get());
         long entities = Math.abs(entitiesRemoved.get());
@@ -74,8 +87,11 @@ public class ChangeStats {
         Double rps = getProgress() / time;
 
         JPanel panel = new JPanel();
-
         panel.setLayout(new GridLayout(14, 1));
+
+        JLabel dp = new JLabel(" Dimensions processed: " + numFormat(dimensions));
+        dp.setPreferredSize(new java.awt.Dimension(250, 25));
+
         JLabel rp = new JLabel(" Regions processed: " + numFormat(getProgress()));
         rp.setPreferredSize(new java.awt.Dimension(250, 25));
 
@@ -106,6 +122,7 @@ public class ChangeStats {
         JLabel cU = new JLabel(" Cores used: " + cores);
         cU.setPreferredSize(new Dimension(250, 25));
 
+        panel.add(dp);
         panel.add(rp);
         panel.add(cp);
         panel.add(bp);

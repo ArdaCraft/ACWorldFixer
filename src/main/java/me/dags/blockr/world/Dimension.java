@@ -57,6 +57,16 @@ public class Dimension {
         }
     }
 
+    public int countRegionFiles() {
+        int count = 0;
+        for (File regionIn : World.listDir(regionsIn)) {
+            if (regionIn.getName().endsWith(".mca")) {
+                count++;
+            }
+        }
+        return count;
+    }
+
     public List<RegionTask> getRegionTasks(final AtomicInteger progress) {
         List<RegionTask> tasks = new ArrayList<>();
         for (File regionIn : World.listDir(regionsIn)) {
