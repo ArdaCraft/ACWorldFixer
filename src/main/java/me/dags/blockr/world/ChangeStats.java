@@ -119,7 +119,7 @@ public class ChangeStats {
         JLabel rPS = new JLabel(" Regions per second: " + numFormat(rps));
         rPS.setPreferredSize(new java.awt.Dimension(250, 25));
 
-        JLabel cU = new JLabel(" Cores used: " + cores);
+        JLabel cU = new JLabel(" Threads used: " + cores);
         cU.setPreferredSize(new Dimension(250, 25));
 
         panel.add(dp);

@@ -98,7 +98,7 @@ public class World {
                     overallProgress.repaint();
 
                     float progress = 100F * ChangeStats.getProgress() / (float) ChangeStats.overallRegionCount.get();
-                    frame.setTitle(String.format("%.2f%%", progress));
+                    frame.setTitle(String.format("Converting: %.2f%%", progress));
 
                     try {
                         Thread.sleep(100L);
@@ -120,7 +120,7 @@ public class World {
         for (Dimension dimension : dimensions) {
             try {
                 ChangeStats.regionProgress.set(0);
-                dimensionLabel.setText(dimension.getName());
+                dimensionLabel.setText(String.format("Dim: %s", dimension.getName()));
 
                 List<RegionTask> tasks = dimension.getRegionTasks(ChangeStats.regionProgress);
                 ChangeStats.regionCount.set(tasks.size());

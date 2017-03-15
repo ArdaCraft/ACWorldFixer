@@ -38,21 +38,23 @@ public class RegionTask implements Runnable, Callable<Object> {
     @Override
     public void run() {
         try (RandomAccessFile from = new RandomAccessFile(inputFile, "rw");
-             RandomAccessFile to = new RandomAccessFile(outputFile, "rw");
-             RegionFile region = new RegionFile(outputFile)) {
+            RandomAccessFile to = new RandomAccessFile(outputFile, "rw")) {
 
             from.getChannel().transferTo(0, Long.MAX_VALUE, to.getChannel());
 
-            for (int x = 0; x < 32; x++) {
-                for (int z = 0; z < 32; z++) {
-                    Chunk chunk = readChunk(region, x, z);
-                    if (chunk == null) {
-                        continue;
+            try (RegionFile region = new RegionFile(outputFile)) {
+                for (int x = 0; x < 32; x++) {
+                    for (int z = 0; z < 32; z++) {
+                        Chunk chunk = readChunk(region, x, z);
+                        if (chunk == null) {
+                            continue;
+                        }
+                        processChunk(chunk);
+                        writeChunk(region, chunk, x, z);
                     }
-                    processChunk(chunk);
-                    writeChunk(region, chunk, x, z);
                 }
             }
+
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
