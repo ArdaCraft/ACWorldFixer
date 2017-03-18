@@ -68071,6 +68071,16 @@
             }
         },
         {
+            "name": "minecraft:log",
+            "min": 15,
+            "max": 15,
+            "biome": -1,
+            "to": {
+                "name": "conquest:wood_full_8",
+                "data": 14
+            }
+        },
+        {
             "name": "minecraft:sponge",
             "min": 0,
             "max": 0,
