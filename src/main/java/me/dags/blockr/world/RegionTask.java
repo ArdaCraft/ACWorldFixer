@@ -100,6 +100,7 @@ public class RegionTask implements Runnable, Callable<Object> {
                     int id = chunk.getBlockType(x, y, z);
                     if (id >= 0 && id < this.replacers.length) {
                         Replacer[] replacers = this.replacers[id];
+
                         if (replacers == null) {
                             continue;
                         }

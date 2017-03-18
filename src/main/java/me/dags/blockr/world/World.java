@@ -21,7 +21,6 @@ import java.util.concurrent.Executors;
  */
 public class World {
 
-    private final File sourceDirRoot;
     private final File outputDirRoot;
     private final WorldData fromWorld;
     private final WorldData toWorld;
@@ -30,7 +29,6 @@ public class World {
     private final int cores;
 
     public World(File sourceDir, File outputDir, WorldData fromWorld, WorldData toWorld, Config config, int cores) {
-        this.sourceDirRoot = sourceDir;
         this.outputDirRoot = outputDir;
         this.fromWorld = fromWorld;
         this.toWorld = toWorld;
@@ -53,6 +51,8 @@ public class World {
     }
 
     public void convert() {
+        final ExecutorService service = Executors.newFixedThreadPool(cores);
+
         final JLabel overallLabel = new JLabel();
         overallLabel.setText("Overall:");
 
@@ -84,32 +84,34 @@ public class World {
         frame.setResizable(false);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
+        frame.addWindowStateListener(e -> {
+            if (!e.getWindow().isVisible()) {
+                System.out.println("Shutting down...");
+                service.shutdownNow();
+            }
+        });
 
-        new Thread() {
-            public void run() {
-                while (ChangeStats.running.get()) {
-                    currentProgress.setMaximum(ChangeStats.regionCount.get());
-                    currentProgress.setValue(ChangeStats.regionProgress.get());
+        new Thread(() -> {
+            while (ChangeStats.running.get()) {
+                currentProgress.setMaximum(ChangeStats.regionCount.get());
+                currentProgress.setValue(ChangeStats.regionProgress.get());
 
-                    overallProgress.setMaximum(ChangeStats.overallRegionCount.get());
-                    overallProgress.setValue(ChangeStats.getProgress());
+                overallProgress.setMaximum(ChangeStats.overallRegionCount.get());
+                overallProgress.setValue(ChangeStats.getProgress());
 
-                    currentProgress.repaint();
-                    overallProgress.repaint();
+                currentProgress.repaint();
+                overallProgress.repaint();
 
-                    float progress = 100F * ChangeStats.getProgress() / (float) ChangeStats.overallRegionCount.get();
-                    frame.setTitle(String.format("Converting: %.2f%%", progress));
+                float progress = 100F * ChangeStats.getProgress() / (float) ChangeStats.overallRegionCount.get();
+                frame.setTitle(String.format("Converting: %.2f%%", progress));
 
-                    try {
-                        Thread.sleep(100L);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                try {
+                    Thread.sleep(100L);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
             }
-        }.start();
-
-        final ExecutorService service = Executors.newFixedThreadPool(cores);
+        }).start();
 
         for (Dimension dimension : dimensions) {
             ChangeStats.overallRegionCount.getAndAdd(dimension.countRegionFiles());
@@ -166,6 +168,18 @@ public class World {
 
         Map<Integer, List<Replacer>> filter = new HashMap<>();
 
+        for (BlockInfo block: config.copyBelow) {
+            int id = fromWorld.blockRegistry.getId(block.name);
+            int fromMin = block.min;
+            int fromMax = 15;
+
+            List<Replacer> list = filter.getOrDefault(id, new ArrayList<>());
+            list.add(Replacers.matchTypeAndDataReplaceWithBelow(id, fromMin, fromMax));
+            filter.put(id, list);
+
+            System.out.println(String.format("Creating copy-below replacer for %s -> %s[%s:%s]", block.name, id, fromMin, fromMax));
+        }
+
         // Loop over the config block mappings and interpret into Replacers
         for (BlockInfo blockInfo : config.blocks) {
             Integer id = fromWorld.blockRegistry.getId(blockInfo.name);
@@ -175,7 +189,7 @@ public class World {
             }
             max = id > max ? id : max;
             List<Replacer> list = filter.getOrDefault(id, new ArrayList<>());
-            addReplacer(list, blockInfo);
+            addReplacer(list, blockInfo, config);
             filter.put(id, list);
         }
 
@@ -190,7 +204,9 @@ public class World {
                 Replacer replacer = Replacers.matchTypeReplaceType(fromId, toId);
                 List<Replacer> list = filter.getOrDefault(fromId, new ArrayList<>());
                 list.add(replacer);
+                filter.put(fromId, list);
                 max = fromId > max ? fromId : max;
+                System.out.println(String.format("Auto-remapping blockid for %s [%s -> %s]", block, fromId, toId));
             }
         }
 
@@ -203,7 +219,7 @@ public class World {
         return replacers;
     }
 
-    private void addReplacer(List<Replacer> list, BlockInfo blockInfo) {
+    private void addReplacer(List<Replacer> list, BlockInfo blockInfo, Config config) {
         // Shouldn't occur unless user has error in config
         if (!blockInfo.present() || blockInfo.to == null) {
             return;

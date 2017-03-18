@@ -97,7 +97,7 @@ public class BlockInfo {
                     int toMin = toObject.get("data").asNumber().intValue();
                     return new BlockInfo(name, biome, min, max, new BlockInfo(toName, -1, toMin, toMin, EMPTY));
                 }
-                return new BlockInfo(name, biome, min, min, EMPTY);
+                return new BlockInfo(name, biome, min, max, EMPTY);
             }
             return null;
         }

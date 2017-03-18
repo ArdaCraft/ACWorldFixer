@@ -28536,8 +28536,8 @@
             "max": 0,
             "biome": -1,
             "to": {
-                "name": "conquest:stone_smallpillar_11",
-                "data": 1
+                "name": "conquest:stone_fence_2",
+                "data": 8
             }
         },
         {
@@ -37326,7 +37326,7 @@
             "max": 0,
             "biome": -1,
             "to": {
-                "name": "conquest:wood_full_4",
+                "name": "conquest:wood_full_6",
                 "data": 4
             }
         },
@@ -50376,8 +50376,8 @@
             "max": 0,
             "biome": -1,
             "to": {
-                "name": "minecraft:air",
-                "data": 0
+                "name": "conquest:stone_pillar_7",
+                "data": 10
             }
         },
         {
@@ -50436,8 +50436,8 @@
             "max": 0,
             "biome": -1,
             "to": {
-                "name": "minecraft:air",
-                "data": 0
+                "name": "conquest:stone_smallpillar_7",
+                "data": 4
             }
         },
         {
@@ -53247,7 +53247,7 @@
             "biome": -1,
             "to": {
                 "name": "conquest:stone_trapdoormodel_95",
-                "data": 3
+                "data": 2
             }
         },
         {
@@ -53256,7 +53256,7 @@
             "max": 0,
             "biome": -1,
             "to": {
-                "name": "conquest:stone_stairs_111",
+                "name": "conquest:stone_anvil_19",
                 "data": 11
             }
         },
@@ -53266,7 +53266,7 @@
             "max": 1,
             "biome": -1,
             "to": {
-                "name": "conquest:stone_stairs_111",
+                "name": "conquest:stone_anvil_19",
                 "data": 7
             }
         },
@@ -53276,7 +53276,7 @@
             "max": 2,
             "biome": -1,
             "to": {
-                "name": "conquest:stone_stairs_111",
+                "name": "conquest:stone_anvil_19",
                 "data": 11
             }
         },
@@ -53286,7 +53286,7 @@
             "max": 3,
             "biome": -1,
             "to": {
-                "name": "conquest:stone_stairs_111",
+                "name": "conquest:stone_anvil_19",
                 "data": 7
             }
         },
@@ -53296,7 +53296,7 @@
             "max": 4,
             "biome": -1,
             "to": {
-                "name": "conquest:stone_stairs_111",
+                "name": "conquest:stone_anvil_19",
                 "data": 11
             }
         },
@@ -53306,7 +53306,7 @@
             "max": 5,
             "biome": -1,
             "to": {
-                "name": "conquest:stone_stairs_111",
+                "name": "conquest:stone_anvil_19",
                 "data": 7
             }
         },
@@ -53316,7 +53316,7 @@
             "max": 6,
             "biome": -1,
             "to": {
-                "name": "conquest:stone_stairs_111",
+                "name": "conquest:stone_anvil_19",
                 "data": 11
             }
         },
@@ -53326,7 +53326,7 @@
             "max": 7,
             "biome": -1,
             "to": {
-                "name": "conquest:stone_stairs_111",
+                "name": "conquest:stone_anvil_19",
                 "data": 7
             }
         },
@@ -53336,7 +53336,7 @@
             "max": 8,
             "biome": -1,
             "to": {
-                "name": "conquest:stone_stairs_111",
+                "name": "conquest:stone_anvil_19",
                 "data": 11
             }
         },
@@ -53346,7 +53346,7 @@
             "max": 9,
             "biome": -1,
             "to": {
-                "name": "conquest:stone_stairs_111",
+                "name": "conquest:stone_anvil_19",
                 "data": 7
             }
         },
@@ -53356,7 +53356,7 @@
             "max": 10,
             "biome": -1,
             "to": {
-                "name": "conquest:stone_stairs_111",
+                "name": "conquest:stone_anvil_19",
                 "data": 11
             }
         },
@@ -53366,7 +53366,7 @@
             "max": 11,
             "biome": -1,
             "to": {
-                "name": "conquest:stone_stairs_111",
+                "name": "conquest:stone_anvil_19",
                 "data": 7
             }
         },
@@ -55256,7 +55256,7 @@
             "max": 0,
             "biome": -1,
             "to": {
-                "name": "minecraft:air",
+                "name": "conquest:stone_fencegate_1",
                 "data": 0
             }
         },
@@ -55266,8 +55266,8 @@
             "max": 1,
             "biome": -1,
             "to": {
-                "name": "minecraft:air",
-                "data": 0
+                "name": "conquest:stone_fencegate_1",
+                "data": 2
             }
         },
         {
@@ -55276,8 +55276,8 @@
             "max": 2,
             "biome": -1,
             "to": {
-                "name": "minecraft:air",
-                "data": 0
+                "name": "conquest:stone_fencegate_1",
+                "data": 4
             }
         },
         {
@@ -55286,8 +55286,8 @@
             "max": 3,
             "biome": -1,
             "to": {
-                "name": "minecraft:air",
-                "data": 0
+                "name": "conquest:stone_fencegate_1",
+                "data": 6
             }
         },
         {
@@ -55296,8 +55296,8 @@
             "max": 4,
             "biome": -1,
             "to": {
-                "name": "minecraft:air",
-                "data": 0
+                "name": "conquest:stone_fencegate_1",
+                "data": 8
             }
         },
         {
@@ -55306,8 +55306,8 @@
             "max": 5,
             "biome": -1,
             "to": {
-                "name": "minecraft:air",
-                "data": 0
+                "name": "conquest:stone_fencegate_1",
+                "data": 10
             }
         },
         {
@@ -55316,8 +55316,8 @@
             "max": 6,
             "biome": -1,
             "to": {
-                "name": "minecraft:air",
-                "data": 0
+                "name": "conquest:stone_fencegate_1",
+                "data": 12
             }
         },
         {
@@ -55326,8 +55326,8 @@
             "max": 7,
             "biome": -1,
             "to": {
-                "name": "minecraft:air",
-                "data": 0
+                "name": "conquest:stone_fencegate_1",
+                "data": 14
             }
         },
         {
@@ -55336,7 +55336,7 @@
             "max": 8,
             "biome": -1,
             "to": {
-                "name": "minecraft:air",
+                "name": "conquest:stone_fencegate_1",
                 "data": 0
             }
         },
@@ -55346,8 +55346,8 @@
             "max": 9,
             "biome": -1,
             "to": {
-                "name": "minecraft:air",
-                "data": 0
+                "name": "conquest:stone_fencegate_1",
+                "data": 2
             }
         },
         {
@@ -55356,8 +55356,8 @@
             "max": 10,
             "biome": -1,
             "to": {
-                "name": "minecraft:air",
-                "data": 0
+                "name": "conquest:stone_fencegate_1",
+                "data": 4
             }
         },
         {
@@ -55366,8 +55366,8 @@
             "max": 11,
             "biome": -1,
             "to": {
-                "name": "minecraft:air",
-                "data": 0
+                "name": "conquest:stone_fencegate_1",
+                "data": 6
             }
         },
         {
@@ -55376,8 +55376,8 @@
             "max": 12,
             "biome": -1,
             "to": {
-                "name": "minecraft:air",
-                "data": 0
+                "name": "conquest:stone_fencegate_1",
+                "data": 8
             }
         },
         {
@@ -55386,8 +55386,8 @@
             "max": 13,
             "biome": -1,
             "to": {
-                "name": "minecraft:air",
-                "data": 0
+                "name": "conquest:stone_fencegate_1",
+                "data": 10
             }
         },
         {
@@ -55396,8 +55396,8 @@
             "max": 14,
             "biome": -1,
             "to": {
-                "name": "minecraft:air",
-                "data": 0
+                "name": "conquest:stone_fencegate_1",
+                "data": 12
             }
         },
         {
@@ -55406,8 +55406,8 @@
             "max": 15,
             "biome": -1,
             "to": {
-                "name": "minecraft:air",
-                "data": 0
+                "name": "conquest:stone_fencegate_1",
+                "data": 14
             }
         },
         {
@@ -55536,8 +55536,8 @@
             "max": 0,
             "biome": -1,
             "to": {
-                "name": "conquest:stone_smallpillar_3",
-                "data": 1
+                "name": "conquest:stone_fence_2",
+                "data": 2
             }
         },
         {
@@ -55847,7 +55847,7 @@
             "biome": -1,
             "to": {
                 "name": "conquest:stone_fencegate_1",
-                "data": 8
+                "data": 0
             }
         },
         {
@@ -55857,7 +55857,7 @@
             "biome": -1,
             "to": {
                 "name": "conquest:stone_fencegate_1",
-                "data": 4
+                "data": 2
             }
         },
         {
@@ -55867,7 +55867,7 @@
             "biome": -1,
             "to": {
                 "name": "conquest:stone_fencegate_1",
-                "data": 8
+                "data": 4
             }
         },
         {
@@ -55877,7 +55877,7 @@
             "biome": -1,
             "to": {
                 "name": "conquest:stone_fencegate_1",
-                "data": 4
+                "data": 6
             }
         },
         {
@@ -55897,7 +55897,7 @@
             "biome": -1,
             "to": {
                 "name": "conquest:stone_fencegate_1",
-                "data": 4
+                "data": 10
             }
         },
         {
@@ -55907,7 +55907,7 @@
             "biome": -1,
             "to": {
                 "name": "conquest:stone_fencegate_1",
-                "data": 8
+                "data": 12
             }
         },
         {
@@ -55917,7 +55917,7 @@
             "biome": -1,
             "to": {
                 "name": "conquest:stone_fencegate_1",
-                "data": 4
+                "data": 14
             }
         },
         {
@@ -55927,7 +55927,7 @@
             "biome": -1,
             "to": {
                 "name": "conquest:stone_fencegate_1",
-                "data": 8
+                "data": 0
             }
         },
         {
@@ -55937,7 +55937,7 @@
             "biome": -1,
             "to": {
                 "name": "conquest:stone_fencegate_1",
-                "data": 4
+                "data": 2
             }
         },
         {
@@ -55947,7 +55947,7 @@
             "biome": -1,
             "to": {
                 "name": "conquest:stone_fencegate_1",
-                "data": 8
+                "data": 4
             }
         },
         {
@@ -55957,7 +55957,7 @@
             "biome": -1,
             "to": {
                 "name": "conquest:stone_fencegate_1",
-                "data": 4
+                "data": 6
             }
         },
         {
@@ -55977,7 +55977,7 @@
             "biome": -1,
             "to": {
                 "name": "conquest:stone_fencegate_1",
-                "data": 4
+                "data": 10
             }
         },
         {
@@ -55987,7 +55987,7 @@
             "biome": -1,
             "to": {
                 "name": "conquest:stone_fencegate_1",
-                "data": 8
+                "data": 12
             }
         },
         {
@@ -55997,7 +55997,7 @@
             "biome": -1,
             "to": {
                 "name": "conquest:stone_fencegate_1",
-                "data": 4
+                "data": 14
             }
         },
         {
@@ -57916,7 +57916,7 @@
             "max": 0,
             "biome": -1,
             "to": {
-                "name": "conquest:stone_trapdoormodel_98",
+                "name": "conquest:stone_trapdoormodel_195",
                 "data": 2
             }
         },
@@ -57926,7 +57926,7 @@
             "max": 1,
             "biome": -1,
             "to": {
-                "name": "conquest:stone_trapdoormodel_98",
+                "name": "conquest:stone_trapdoormodel_195",
                 "data": 2
             }
         },
@@ -57936,7 +57936,7 @@
             "max": 2,
             "biome": -1,
             "to": {
-                "name": "conquest:stone_trapdoormodel_98",
+                "name": "conquest:stone_trapdoormodel_195",
                 "data": 2
             }
         },
@@ -57946,7 +57946,7 @@
             "max": 3,
             "biome": -1,
             "to": {
-                "name": "conquest:stone_trapdoormodel_98",
+                "name": "conquest:stone_trapdoormodel_195",
                 "data": 2
             }
         },
@@ -57956,7 +57956,7 @@
             "max": 4,
             "biome": -1,
             "to": {
-                "name": "conquest:stone_trapdoormodel_98",
+                "name": "conquest:stone_trapdoormodel_195",
                 "data": 4
             }
         },
@@ -57966,7 +57966,7 @@
             "max": 5,
             "biome": -1,
             "to": {
-                "name": "conquest:stone_trapdoormodel_98",
+                "name": "conquest:stone_trapdoormodel_195",
                 "data": 6
             }
         },
@@ -57976,7 +57976,7 @@
             "max": 6,
             "biome": -1,
             "to": {
-                "name": "conquest:stone_trapdoormodel_98",
+                "name": "conquest:stone_trapdoormodel_195",
                 "data": 8
             }
         },
@@ -57986,7 +57986,7 @@
             "max": 7,
             "biome": -1,
             "to": {
-                "name": "conquest:stone_trapdoormodel_98",
+                "name": "conquest:stone_trapdoormodel_195",
                 "data": 10
             }
         },
@@ -57996,7 +57996,7 @@
             "max": 8,
             "biome": -1,
             "to": {
-                "name": "conquest:stone_trapdoormodel_98",
+                "name": "conquest:stone_trapdoormodel_195",
                 "data": 0
             }
         },
@@ -58006,7 +58006,7 @@
             "max": 9,
             "biome": -1,
             "to": {
-                "name": "conquest:stone_trapdoormodel_98",
+                "name": "conquest:stone_trapdoormodel_195",
                 "data": 0
             }
         },
@@ -58016,7 +58016,7 @@
             "max": 10,
             "biome": -1,
             "to": {
-                "name": "conquest:stone_trapdoormodel_98",
+                "name": "conquest:stone_trapdoormodel_195",
                 "data": 0
             }
         },
@@ -58026,7 +58026,7 @@
             "max": 11,
             "biome": -1,
             "to": {
-                "name": "conquest:stone_trapdoormodel_98",
+                "name": "conquest:stone_trapdoormodel_195",
                 "data": 0
             }
         },
@@ -58036,7 +58036,7 @@
             "max": 12,
             "biome": -1,
             "to": {
-                "name": "conquest:stone_trapdoormodel_98",
+                "name": "conquest:stone_trapdoormodel_195",
                 "data": 4
             }
         },
@@ -58046,7 +58046,7 @@
             "max": 13,
             "biome": -1,
             "to": {
-                "name": "conquest:stone_trapdoormodel_98",
+                "name": "conquest:stone_trapdoormodel_195",
                 "data": 6
             }
         },
@@ -58056,7 +58056,7 @@
             "max": 14,
             "biome": -1,
             "to": {
-                "name": "conquest:stone_trapdoormodel_98",
+                "name": "conquest:stone_trapdoormodel_195",
                 "data": 8
             }
         },
@@ -58066,7 +58066,7 @@
             "max": 15,
             "biome": -1,
             "to": {
-                "name": "conquest:stone_trapdoormodel_98",
+                "name": "conquest:stone_trapdoormodel_195",
                 "data": 10
             }
         },
@@ -59956,8 +59956,8 @@
             "max": 0,
             "biome": -1,
             "to": {
-                "name": "conquest:wood_trapdoormodel_52",
-                "data": 3
+                "name": "conquest:woodenboard",
+                "data": 0
             }
         },
         {
@@ -59966,8 +59966,8 @@
             "max": 1,
             "biome": -1,
             "to": {
-                "name": "conquest:wood_trapdoormodel_52",
-                "data": 3
+                "name": "conquest:woodenboard",
+                "data": 1
             }
         },
         {
@@ -59976,8 +59976,8 @@
             "max": 2,
             "biome": -1,
             "to": {
-                "name": "conquest:wood_trapdoormodel_52",
-                "data": 3
+                "name": "conquest:woodenboard",
+                "data": 2
             }
         },
         {
@@ -59986,7 +59986,7 @@
             "max": 3,
             "biome": -1,
             "to": {
-                "name": "conquest:wood_trapdoormodel_52",
+                "name": "conquest:woodenboard",
                 "data": 3
             }
         },
@@ -59996,8 +59996,8 @@
             "max": 4,
             "biome": -1,
             "to": {
-                "name": "conquest:wood_trapdoormodel_52",
-                "data": 5
+                "name": "conquest:woodenboard",
+                "data": 4
             }
         },
         {
@@ -60006,8 +60006,8 @@
             "max": 5,
             "biome": -1,
             "to": {
-                "name": "conquest:wood_trapdoormodel_52",
-                "data": 7
+                "name": "conquest:woodenboard",
+                "data": 5
             }
         },
         {
@@ -60016,8 +60016,8 @@
             "max": 6,
             "biome": -1,
             "to": {
-                "name": "conquest:wood_trapdoormodel_52",
-                "data": 9
+                "name": "conquest:woodenboard",
+                "data": 6
             }
         },
         {
@@ -60026,8 +60026,8 @@
             "max": 7,
             "biome": -1,
             "to": {
-                "name": "conquest:wood_trapdoormodel_52",
-                "data": 11
+                "name": "conquest:woodenboard",
+                "data": 7
             }
         },
         {
@@ -60036,8 +60036,8 @@
             "max": 8,
             "biome": -1,
             "to": {
-                "name": "conquest:wood_trapdoormodel_52",
-                "data": 1
+                "name": "conquest:woodenboard",
+                "data": 8
             }
         },
         {
@@ -60046,8 +60046,8 @@
             "max": 9,
             "biome": -1,
             "to": {
-                "name": "conquest:wood_trapdoormodel_52",
-                "data": 1
+                "name": "conquest:woodenboard",
+                "data": 9
             }
         },
         {
@@ -60056,8 +60056,8 @@
             "max": 10,
             "biome": -1,
             "to": {
-                "name": "conquest:wood_trapdoormodel_52",
-                "data": 1
+                "name": "conquest:woodenboard",
+                "data": 10
             }
         },
         {
@@ -60066,8 +60066,8 @@
             "max": 11,
             "biome": -1,
             "to": {
-                "name": "conquest:wood_trapdoormodel_52",
-                "data": 1
+                "name": "conquest:woodenboard",
+                "data": 11
             }
         },
         {
@@ -60076,8 +60076,8 @@
             "max": 12,
             "biome": -1,
             "to": {
-                "name": "conquest:wood_trapdoormodel_52",
-                "data": 5
+                "name": "conquest:woodenboard",
+                "data": 12
             }
         },
         {
@@ -60086,8 +60086,8 @@
             "max": 13,
             "biome": -1,
             "to": {
-                "name": "conquest:wood_trapdoormodel_52",
-                "data": 7
+                "name": "conquest:woodenboard",
+                "data": 13
             }
         },
         {
@@ -60096,8 +60096,8 @@
             "max": 14,
             "biome": -1,
             "to": {
-                "name": "conquest:wood_trapdoormodel_52",
-                "data": 9
+                "name": "conquest:woodenboard",
+                "data": 14
             }
         },
         {
@@ -60106,8 +60106,8 @@
             "max": 15,
             "biome": -1,
             "to": {
-                "name": "conquest:wood_trapdoormodel_52",
-                "data": 11
+                "name": "conquest:woodenboard",
+                "data": 15
             }
         },
         {
@@ -63726,7 +63726,7 @@
             "max": 0,
             "biome": -1,
             "to": {
-                "name": "conquest:wood_stairs_4",
+                "name": "conquest:wood_stairs_14",
                 "data": 7
             }
         },
@@ -63736,7 +63736,7 @@
             "max": 1,
             "biome": -1,
             "to": {
-                "name": "conquest:wood_stairs_4",
+                "name": "conquest:wood_stairs_14",
                 "data": 3
             }
         },
@@ -63746,7 +63746,7 @@
             "max": 2,
             "biome": -1,
             "to": {
-                "name": "conquest:wood_stairs_4",
+                "name": "conquest:wood_stairs_14",
                 "data": 1
             }
         },
@@ -63756,7 +63756,7 @@
             "max": 3,
             "biome": -1,
             "to": {
-                "name": "conquest:wood_stairs_4",
+                "name": "conquest:wood_stairs_14",
                 "data": 5
             }
         },
@@ -63766,7 +63766,7 @@
             "max": 4,
             "biome": -1,
             "to": {
-                "name": "conquest:wood_stairs_4",
+                "name": "conquest:wood_stairs_14",
                 "data": 15
             }
         },
@@ -63776,7 +63776,7 @@
             "max": 5,
             "biome": -1,
             "to": {
-                "name": "conquest:wood_stairs_4",
+                "name": "conquest:wood_stairs_14",
                 "data": 11
             }
         },
@@ -63786,7 +63786,7 @@
             "max": 6,
             "biome": -1,
             "to": {
-                "name": "conquest:wood_stairs_4",
+                "name": "conquest:wood_stairs_14",
                 "data": 9
             }
         },
@@ -63796,7 +63796,7 @@
             "max": 7,
             "biome": -1,
             "to": {
-                "name": "conquest:wood_stairs_4",
+                "name": "conquest:wood_stairs_14",
                 "data": 13
             }
         },
@@ -66616,7 +66616,7 @@
             "max": 0,
             "biome": -1,
             "to": {
-                "name": "conquest:wood_ironbar_1",
+                "name": "conquest:trapdoor_whiteshutter",
                 "data": 0
             }
         },
@@ -66626,7 +66626,7 @@
             "max": 1,
             "biome": -1,
             "to": {
-                "name": "conquest:wood_ironbar_1",
+                "name": "conquest:trapdoor_whiteshutter",
                 "data": 1
             }
         },
@@ -66636,7 +66636,7 @@
             "max": 2,
             "biome": -1,
             "to": {
-                "name": "conquest:wood_ironbar_1",
+                "name": "conquest:trapdoor_whiteshutter",
                 "data": 2
             }
         },
@@ -66646,7 +66646,7 @@
             "max": 3,
             "biome": -1,
             "to": {
-                "name": "conquest:wood_ironbar_1",
+                "name": "conquest:trapdoor_whiteshutter",
                 "data": 3
             }
         },
@@ -66656,7 +66656,7 @@
             "max": 4,
             "biome": -1,
             "to": {
-                "name": "conquest:wood_ironbar_1",
+                "name": "conquest:trapdoor_whiteshutter",
                 "data": 4
             }
         },
@@ -66666,7 +66666,7 @@
             "max": 5,
             "biome": -1,
             "to": {
-                "name": "conquest:wood_ironbar_1",
+                "name": "conquest:trapdoor_whiteshutter",
                 "data": 5
             }
         },
@@ -66676,7 +66676,7 @@
             "max": 6,
             "biome": -1,
             "to": {
-                "name": "conquest:wood_ironbar_1",
+                "name": "conquest:trapdoor_whiteshutter",
                 "data": 6
             }
         },
@@ -66686,7 +66686,7 @@
             "max": 7,
             "biome": -1,
             "to": {
-                "name": "conquest:wood_ironbar_1",
+                "name": "conquest:trapdoor_whiteshutter",
                 "data": 7
             }
         },
@@ -66696,7 +66696,7 @@
             "max": 8,
             "biome": -1,
             "to": {
-                "name": "conquest:wood_ironbar_1",
+                "name": "conquest:trapdoor_whiteshutter",
                 "data": 8
             }
         },
@@ -66706,7 +66706,7 @@
             "max": 9,
             "biome": -1,
             "to": {
-                "name": "conquest:wood_ironbar_1",
+                "name": "conquest:trapdoor_whiteshutter",
                 "data": 9
             }
         },
@@ -66716,7 +66716,7 @@
             "max": 10,
             "biome": -1,
             "to": {
-                "name": "conquest:wood_ironbar_1",
+                "name": "conquest:trapdoor_whiteshutter",
                 "data": 10
             }
         },
@@ -66726,7 +66726,7 @@
             "max": 11,
             "biome": -1,
             "to": {
-                "name": "conquest:wood_ironbar_1",
+                "name": "conquest:trapdoor_whiteshutter",
                 "data": 11
             }
         },
@@ -66736,7 +66736,7 @@
             "max": 12,
             "biome": -1,
             "to": {
-                "name": "conquest:wood_ironbar_1",
+                "name": "conquest:trapdoor_whiteshutter",
                 "data": 12
             }
         },
@@ -66746,7 +66746,7 @@
             "max": 13,
             "biome": -1,
             "to": {
-                "name": "conquest:wood_ironbar_1",
+                "name": "conquest:trapdoor_whiteshutter",
                 "data": 13
             }
         },
@@ -66756,7 +66756,7 @@
             "max": 14,
             "biome": -1,
             "to": {
-                "name": "conquest:wood_ironbar_1",
+                "name": "conquest:trapdoor_whiteshutter",
                 "data": 14
             }
         },
@@ -66766,7 +66766,7 @@
             "max": 15,
             "biome": -1,
             "to": {
-                "name": "conquest:wood_ironbar_1",
+                "name": "conquest:trapdoor_whiteshutter",
                 "data": 15
             }
         },
@@ -66777,7 +66777,7 @@
             "biome": -1,
             "to": {
                 "name": "conquest:stone_trapdoormodel_3",
-                "data": 0
+                "data": 2
             }
         },
         {
@@ -66787,7 +66787,7 @@
             "biome": -1,
             "to": {
                 "name": "conquest:stone_trapdoormodel_3",
-                "data": 1
+                "data": 2
             }
         },
         {
@@ -66807,7 +66807,7 @@
             "biome": -1,
             "to": {
                 "name": "conquest:stone_trapdoormodel_3",
-                "data": 3
+                "data": 2
             }
         },
         {
@@ -66827,7 +66827,7 @@
             "biome": -1,
             "to": {
                 "name": "conquest:stone_trapdoormodel_3",
-                "data": 5
+                "data": 6
             }
         },
         {
@@ -66837,7 +66837,7 @@
             "biome": -1,
             "to": {
                 "name": "conquest:stone_trapdoormodel_3",
-                "data": 6
+                "data": 8
             }
         },
         {
@@ -66847,7 +66847,7 @@
             "biome": -1,
             "to": {
                 "name": "conquest:stone_trapdoormodel_3",
-                "data": 7
+                "data": 10
             }
         },
         {
@@ -66857,7 +66857,7 @@
             "biome": -1,
             "to": {
                 "name": "conquest:stone_trapdoormodel_3",
-                "data": 8
+                "data": 0
             }
         },
         {
@@ -66867,7 +66867,7 @@
             "biome": -1,
             "to": {
                 "name": "conquest:stone_trapdoormodel_3",
-                "data": 9
+                "data": 0
             }
         },
         {
@@ -66877,7 +66877,7 @@
             "biome": -1,
             "to": {
                 "name": "conquest:stone_trapdoormodel_3",
-                "data": 10
+                "data": 0
             }
         },
         {
@@ -66887,7 +66887,7 @@
             "biome": -1,
             "to": {
                 "name": "conquest:stone_trapdoormodel_3",
-                "data": 11
+                "data": 0
             }
         },
         {
@@ -66897,7 +66897,7 @@
             "biome": -1,
             "to": {
                 "name": "conquest:stone_trapdoormodel_3",
-                "data": 12
+                "data": 4
             }
         },
         {
@@ -66907,7 +66907,7 @@
             "biome": -1,
             "to": {
                 "name": "conquest:stone_trapdoormodel_3",
-                "data": 13
+                "data": 6
             }
         },
         {
@@ -66917,7 +66917,7 @@
             "biome": -1,
             "to": {
                 "name": "conquest:stone_trapdoormodel_3",
-                "data": 14
+                "data": 8
             }
         },
         {
@@ -66927,7 +66927,7 @@
             "biome": -1,
             "to": {
                 "name": "conquest:stone_trapdoormodel_3",
-                "data": 15
+                "data": 10
             }
         },
         {
@@ -68009,6 +68009,1294 @@
                 "name": "conquest:wood_trapdoormodel_61",
                 "data": 11
             }
+        },
+        {
+            "name": "minecraft:bedrock",
+            "min": 0,
+            "max": 0,
+            "biome": -1,
+            "to": {
+                "name": "conquest:stone_full_13",
+                "data": 4
+            }
+        },
+        {
+            "name": "minecraft:iron_ore",
+            "min": 0,
+            "max": 0,
+            "biome": -1,
+            "to": {
+                "name": "conquest:stone_full_2",
+                "data": 7
+            }
+        },
+        {
+            "name": "minecraft:coal_ore",
+            "min": 0,
+            "max": 0,
+            "biome": -1,
+            "to": {
+                "name": "conquest:wood_full_6",
+                "data": 8
+            }
+        },
+        {
+            "name": "minecraft:log",
+            "min": 3,
+            "max": 3,
+            "biome": -1,
+            "to": {
+                "name": "conquest:wood_log_7",
+                "data": 0
+            }
+        },
+        {
+            "name": "minecraft:log",
+            "min": 7,
+            "max": 7,
+            "biome": -1,
+            "to": {
+                "name": "conquest:wood_log_7",
+                "data": 4
+            }
+        },
+        {
+            "name": "minecraft:log",
+            "min": 11,
+            "max": 11,
+            "biome": -1,
+            "to": {
+                "name": "conquest:wood_log_7",
+                "data": 8
+            }
+        },
+        {
+            "name": "minecraft:sponge",
+            "min": 0,
+            "max": 0,
+            "biome": -1,
+            "to": {
+                "name": "conquest:ground_full_2",
+                "data": 2
+            }
+        },
+        {
+            "name": "minecraft:sponge",
+            "min": 1,
+            "max": 1,
+            "biome": -1,
+            "to": {
+                "name": "conquest:ground_full_2",
+                "data": 2
+            }
+        },
+        {
+            "name": "minecraft:lapis_ore",
+            "min": 0,
+            "max": 0,
+            "biome": -1,
+            "to": {
+                "name": "conquest:wood_full_5",
+                "data": 10
+            }
+        },
+        {
+            "name": "minecraft:sandstone",
+            "min": 0,
+            "max": 0,
+            "biome": -1,
+            "to": {
+                "name": "conquest:stone_full_25",
+                "data": 3
+            }
+        },
+        {
+            "name": "minecraft:diamond_ore",
+            "min": 0,
+            "max": 0,
+            "biome": -1,
+            "to": {
+                "name": "conquest:stone_full_2",
+                "data": 15
+            }
+        },
+        {
+            "name": "minecraft:melon_block",
+            "min": 0,
+            "max": 0,
+            "biome": -1,
+            "to": {
+                "name": "conquest:wood_full_8",
+                "data": 13
+            }
+        },
+        {
+            "name": "minecraft:double_stone_slab",
+            "min": 1,
+            "max": 1,
+            "biome": -1,
+            "to": {
+                "name": "conquest:stone_full_25",
+                "data": 3
+            }
+        },
+        {
+            "name": "minecraft:double_stone_slab",
+            "min": 9,
+            "max": 9,
+            "biome": -1,
+            "to": {
+                "name": "conquest:stone_full_25",
+                "data": 3
+            }
+        },
+        {
+            "name": "minecraft:stone_slab",
+            "min": 1,
+            "max": 1,
+            "biome": -1,
+            "to": {
+                "name": "conquest:stone_slab_26",
+                "data": 0
+            }
+        },
+        {
+            "name": "minecraft:stone_slab",
+            "min": 9,
+            "max": 9,
+            "biome": -1,
+            "to": {
+                "name": "conquest:stone_slab_26",
+                "data": 8
+            }
+        },
+        {
+            "name": "minecraft:sandstone_stairs",
+            "min": 0,
+            "max": 0,
+            "biome": -1,
+            "to": {
+                "name": "conquest:stone_stairs_38",
+                "data": 6
+            }
+        },
+        {
+            "name": "minecraft:sandstone_stairs",
+            "min": 1,
+            "max": 1,
+            "biome": -1,
+            "to": {
+                "name": "conquest:stone_stairs_38",
+                "data": 2
+            }
+        },
+        {
+            "name": "minecraft:sandstone_stairs",
+            "min": 2,
+            "max": 2,
+            "biome": -1,
+            "to": {
+                "name": "conquest:stone_stairs_38",
+                "data": 0
+            }
+        },
+        {
+            "name": "minecraft:sandstone_stairs",
+            "min": 3,
+            "max": 3,
+            "biome": -1,
+            "to": {
+                "name": "conquest:stone_stairs_38",
+                "data": 4
+            }
+        },
+        {
+            "name": "minecraft:sandstone_stairs",
+            "min": 4,
+            "max": 4,
+            "biome": -1,
+            "to": {
+                "name": "conquest:stone_stairs_38",
+                "data": 14
+            }
+        },
+        {
+            "name": "minecraft:sandstone_stairs",
+            "min": 5,
+            "max": 5,
+            "biome": -1,
+            "to": {
+                "name": "conquest:stone_stairs_38",
+                "data": 10
+            }
+        },
+        {
+            "name": "minecraft:sandstone_stairs",
+            "min": 6,
+            "max": 6,
+            "biome": -1,
+            "to": {
+                "name": "conquest:stone_stairs_38",
+                "data": 8
+            }
+        },
+        {
+            "name": "minecraft:sandstone_stairs",
+            "min": 7,
+            "max": 7,
+            "biome": -1,
+            "to": {
+                "name": "conquest:stone_stairs_38",
+                "data": 12
+            }
+        },
+        {
+            "name": "minecraft:mycelium",
+            "min": 0,
+            "max": 0,
+            "biome": -1,
+            "to": {
+                "name": "conquest:ground_full_2",
+                "data": 3
+            }
+        },
+        {
+            "name": "minecraft:emerald_ore",
+            "min": 0,
+            "max": 0,
+            "biome": -1,
+            "to": {
+                "name": "conquest:stone_full_18",
+                "data": 2
+            }
+        },
+        {
+            "name": "minecraft:quartz_ore",
+            "min": 0,
+            "max": 0,
+            "biome": -1,
+            "to": {
+                "name": "conquest:stone_full_18",
+                "data": 2
+            }
+        },
+        {
+            "name": "minecraft:stained_hardened_clay",
+            "min": 0,
+            "max": 0,
+            "biome": -1,
+            "to": {
+                "name": "conquest:stone_full_10",
+                "data": 14
+            }
+        },
+        {
+            "name": "minecraft:stained_hardened_clay",
+            "min": 1,
+            "max": 1,
+            "biome": -1,
+            "to": {
+                "name": "conquest:stone_full_18",
+                "data": 3
+            }
+        },
+        {
+            "name": "minecraft:stained_hardened_clay",
+            "min": 2,
+            "max": 2,
+            "biome": -1,
+            "to": {
+                "name": "conquest:stone_full_14",
+                "data": 7
+            }
+        },
+        {
+            "name": "minecraft:stained_hardened_clay",
+            "min": 3,
+            "max": 3,
+            "biome": -1,
+            "to": {
+                "name": "conquest:stone_full_14",
+                "data": 6
+            }
+        },
+        {
+            "name": "minecraft:stained_hardened_clay",
+            "min": 4,
+            "max": 4,
+            "biome": -1,
+            "to": {
+                "name": "conquest:stone_full_11",
+                "data": 1
+            }
+        },
+        {
+            "name": "minecraft:stained_hardened_clay",
+            "min": 5,
+            "max": 5,
+            "biome": -1,
+            "to": {
+                "name": "conquest:wood_full_1",
+                "data": 14
+            }
+        },
+        {
+            "name": "minecraft:stained_hardened_clay",
+            "min": 6,
+            "max": 6,
+            "biome": -1,
+            "to": {
+                "name": "conquest:stone_full_18",
+                "data": 4
+            }
+        },
+        {
+            "name": "minecraft:stained_hardened_clay",
+            "min": 7,
+            "max": 7,
+            "biome": -1,
+            "to": {
+                "name": "conquest:stone_full_18",
+                "data": 5
+            }
+        },
+        {
+            "name": "minecraft:stained_hardened_clay",
+            "min": 9,
+            "max": 9,
+            "biome": -1,
+            "to": {
+                "name": "conquest:wood_full_1",
+                "data": 2
+            }
+        },
+        {
+            "name": "minecraft:stained_hardened_clay",
+            "min": 10,
+            "max": 10,
+            "biome": -1,
+            "to": {
+                "name": "conquest:stone_full_2",
+                "data": 1
+            }
+        },
+        {
+            "name": "minecraft:stained_hardened_clay",
+            "min": 11,
+            "max": 11,
+            "biome": -1,
+            "to": {
+                "name": "minecraft:stone",
+                "data": 5
+            }
+        },
+        {
+            "name": "minecraft:stained_hardened_clay",
+            "min": 12,
+            "max": 12,
+            "biome": -1,
+            "to": {
+                "name": "conquest:stone_full_18",
+                "data": 6
+            }
+        },
+        {
+            "name": "minecraft:stained_hardened_clay",
+            "min": 13,
+            "max": 13,
+            "biome": -1,
+            "to": {
+                "name": "minecraft:stone",
+                "data": 3
+            }
+        },
+        {
+            "name": "minecraft:stained_hardened_clay",
+            "min": 14,
+            "max": 14,
+            "biome": -1,
+            "to": {
+                "name": "conquest:stone_full_18",
+                "data": 7
+            }
+        },
+        {
+            "name": "minecraft:stained_hardened_clay",
+            "min": 15,
+            "max": 15,
+            "biome": -1,
+            "to": {
+                "name": "conquest:stone_full_18",
+                "data": 8
+            }
+        },
+        {
+            "name": "minecraft:prismarine",
+            "min": 0,
+            "max": 0,
+            "biome": -1,
+            "to": {
+                "name": "conquest:stone_full_18",
+                "data": 9
+            }
+        },
+        {
+            "name": "minecraft:prismarine",
+            "min": 1,
+            "max": 1,
+            "biome": -1,
+            "to": {
+                "name": "conquest:stone_full_18",
+                "data": 10
+            }
+        },
+        {
+            "name": "minecraft:prismarine",
+            "min": 2,
+            "max": 2,
+            "biome": -1,
+            "to": {
+                "name": "conquest:stone_full_18",
+                "data": 11
+            }
+        },
+        {
+            "name": "minecraft:red_flower",
+            "min": 1,
+            "max": 1,
+            "biome": -1,
+            "to": {
+                "name": "conquest:plants_nocollision_2",
+                "data": 12
+            }
+        },
+        {
+            "name": "minecraft:red_flower",
+            "min": 2,
+            "max": 2,
+            "biome": -1,
+            "to": {
+                "name": "conquest:plants_nocollision_2",
+                "data": 13
+            }
+        },
+        {
+            "name": "minecraft:red_flower",
+            "min": 4,
+            "max": 4,
+            "biome": -1,
+            "to": {
+                "name": "conquest:plants_nocollision_3",
+                "data": 1
+            }
+        },
+        {
+            "name": "minecraft:red_flower",
+            "min": 5,
+            "max": 5,
+            "biome": -1,
+            "to": {
+                "name": "conquest:plants_nocollision_3",
+                "data": 2
+            }
+        },
+        {
+            "name": "minecraft:red_flower",
+            "min": 6,
+            "max": 6,
+            "biome": -1,
+            "to": {
+                "name": "conquest:plants_nocollision_1",
+                "data": 8
+            }
+        },
+        {
+            "name": "minecraft:red_flower",
+            "min": 7,
+            "max": 7,
+            "biome": -1,
+            "to": {
+                "name": "conquest:plants_nocollision_1",
+                "data": 10
+            }
+        },
+        {
+            "name": "minecraft:double_plant",
+            "min": 1,
+            "max": 1,
+            "biome": -1,
+            "to": {
+                "name": "conquest:plants_nocollision_3",
+                "data": 5
+            }
+        },
+        {
+            "name": "minecraft:double_plant",
+            "min": 5,
+            "max": 5,
+            "biome": -1,
+            "to": {
+                "name": "conquest:plants_nocollision_5",
+                "data": 0
+            }
+        },
+        {
+            "name": "minecraft:coal_block",
+            "min": 0,
+            "max": 0,
+            "biome": -1,
+            "to": {
+                "name": "conquest:ground_full_2",
+                "data": 4
+            }
+        },
+        {
+            "name": "minecraft:double_stone_slab",
+            "min": 5,
+            "max": 5,
+            "biome": -1,
+            "to": {
+                "name": "minecraft:stonebrick",
+                "data": 2
+            }
+        },
+        {
+            "name": "minecraft:double_stone_slab",
+            "min": 13,
+            "max": 13,
+            "biome": -1,
+            "to": {
+                "name": "minecraft:stonebrick",
+                "data": 2
+            }
+        },
+        {
+            "name": "minecraft:stone_slab",
+            "min": 5,
+            "max": 5,
+            "biome": -1,
+            "to": {
+                "name": "conquest:stone_slab_14",
+                "data": 1
+            }
+        },
+        {
+            "name": "minecraft:stone_slab",
+            "min": 13,
+            "max": 13,
+            "biome": -1,
+            "to": {
+                "name": "conquest:stone_slab_14",
+                "data": 9
+            }
+        },
+        {
+            "name": "minecraft:stone_brick_stairs",
+            "min": 0,
+            "max": 0,
+            "biome": -1,
+            "to": {
+                "name": "conquest:stone_stairs_44",
+                "data": 7
+            }
+        },
+        {
+            "name": "minecraft:stone_brick_stairs",
+            "min": 1,
+            "max": 1,
+            "biome": -1,
+            "to": {
+                "name": "conquest:stone_stairs_44",
+                "data": 3
+            }
+        },
+        {
+            "name": "minecraft:stone_brick_stairs",
+            "min": 2,
+            "max": 2,
+            "biome": -1,
+            "to": {
+                "name": "conquest:stone_stairs_44",
+                "data": 1
+            }
+        },
+        {
+            "name": "minecraft:stone_brick_stairs",
+            "min": 3,
+            "max": 3,
+            "biome": -1,
+            "to": {
+                "name": "conquest:stone_stairs_44",
+                "data": 5
+            }
+        },
+        {
+            "name": "minecraft:stone_brick_stairs",
+            "min": 4,
+            "max": 4,
+            "biome": -1,
+            "to": {
+                "name": "conquest:stone_stairs_44",
+                "data": 15
+            }
+        },
+        {
+            "name": "minecraft:stone_brick_stairs",
+            "min": 5,
+            "max": 5,
+            "biome": -1,
+            "to": {
+                "name": "conquest:stone_stairs_44",
+                "data": 11
+            }
+        },
+        {
+            "name": "minecraft:stone_brick_stairs",
+            "min": 6,
+            "max": 6,
+            "biome": -1,
+            "to": {
+                "name": "conquest:stone_stairs_44",
+                "data": 9
+            }
+        },
+        {
+            "name": "minecraft:stone_brick_stairs",
+            "min": 7,
+            "max": 7,
+            "biome": -1,
+            "to": {
+                "name": "conquest:stone_stairs_44",
+                "data": 13
+            }
+        },
+        {
+            "name": "minecraft:stonebrick",
+            "min": 0,
+            "max": 0,
+            "biome": -1,
+            "to": {
+                "name": "minecraft:stonebrick",
+                "data": 2
+            }
+        },
+        {
+            "name": "minecraft:double_wooden_slab",
+            "min": 2,
+            "max": 2,
+            "biome": -1,
+            "to": {
+                "name": "conquest:wood_full_6",
+                "data": 10
+            }
+        },
+        {
+            "name": "minecraft:double_wooden_slab",
+            "min": 10,
+            "max": 10,
+            "biome": -1,
+            "to": {
+                "name": "conquest:wood_full_6",
+                "data": 10
+            }
+        },
+        {
+            "name": "minecraft:wooden_slab",
+            "min": 2,
+            "max": 2,
+            "biome": -1,
+            "to": {
+                "name": "conquest:wood_slab_8",
+                "data": 2
+            }
+        },
+        {
+            "name": "minecraft:wooden_slab",
+            "min": 10,
+            "max": 10,
+            "biome": -1,
+            "to": {
+                "name": "conquest:wood_slab_8",
+                "data": 10
+            }
+        },
+        {
+            "name": "minecraft:birch_stairs",
+            "min": 0,
+            "max": 0,
+            "biome": -1,
+            "to": {
+                "name": "conquest:wood_stairs_29",
+                "data": 6
+            }
+        },
+        {
+            "name": "minecraft:birch_stairs",
+            "min": 1,
+            "max": 1,
+            "biome": -1,
+            "to": {
+                "name": "conquest:wood_stairs_29",
+                "data": 2
+            }
+        },
+        {
+            "name": "minecraft:birch_stairs",
+            "min": 2,
+            "max": 2,
+            "biome": -1,
+            "to": {
+                "name": "conquest:wood_stairs_29",
+                "data": 0
+            }
+        },
+        {
+            "name": "minecraft:birch_stairs",
+            "min": 3,
+            "max": 3,
+            "biome": -1,
+            "to": {
+                "name": "conquest:wood_stairs_29",
+                "data": 4
+            }
+        },
+        {
+            "name": "minecraft:birch_stairs",
+            "min": 4,
+            "max": 4,
+            "biome": -1,
+            "to": {
+                "name": "conquest:wood_stairs_29",
+                "data": 14
+            }
+        },
+        {
+            "name": "minecraft:birch_stairs",
+            "min": 5,
+            "max": 5,
+            "biome": -1,
+            "to": {
+                "name": "conquest:wood_stairs_29",
+                "data": 10
+            }
+        },
+        {
+            "name": "minecraft:birch_stairs",
+            "min": 6,
+            "max": 6,
+            "biome": -1,
+            "to": {
+                "name": "conquest:wood_stairs_29",
+                "data": 8
+            }
+        },
+        {
+            "name": "minecraft:birch_stairs",
+            "min": 7,
+            "max": 7,
+            "biome": -1,
+            "to": {
+                "name": "conquest:wood_stairs_29",
+                "data": 12
+            }
+        },
+        {
+            "name": "minecraft:planks",
+            "min": 2,
+            "max": 2,
+            "biome": -1,
+            "to": {
+                "name": "conquest:wood_full_6",
+                "data": 10
+            }
+        },
+        {
+            "name": "minecraft:double_wooden_slab",
+            "min": 3,
+            "max": 3,
+            "biome": -1,
+            "to": {
+                "name": "conquest:wood_full_6",
+                "data": 11
+            }
+        },
+        {
+            "name": "minecraft:double_wooden_slab",
+            "min": 11,
+            "max": 11,
+            "biome": -1,
+            "to": {
+                "name": "conquest:wood_full_6",
+                "data": 11
+            }
+        },
+        {
+            "name": "minecraft:wooden_slab",
+            "min": 3,
+            "max": 3,
+            "biome": -1,
+            "to": {
+                "name": "conquest:wood_slab_8",
+                "data": 3
+            }
+        },
+        {
+            "name": "minecraft:wooden_slab",
+            "min": 11,
+            "max": 11,
+            "biome": -1,
+            "to": {
+                "name": "conquest:wood_slab_8",
+                "data": 11
+            }
+        },
+        {
+            "name": "minecraft:jungle_stairs",
+            "min": 0,
+            "max": 0,
+            "biome": -1,
+            "to": {
+                "name": "conquest:wood_stairs_29",
+                "data": 7
+            }
+        },
+        {
+            "name": "minecraft:jungle_stairs",
+            "min": 1,
+            "max": 1,
+            "biome": -1,
+            "to": {
+                "name": "conquest:wood_stairs_29",
+                "data": 3
+            }
+        },
+        {
+            "name": "minecraft:jungle_stairs",
+            "min": 2,
+            "max": 2,
+            "biome": -1,
+            "to": {
+                "name": "conquest:wood_stairs_29",
+                "data": 1
+            }
+        },
+        {
+            "name": "minecraft:jungle_stairs",
+            "min": 3,
+            "max": 3,
+            "biome": -1,
+            "to": {
+                "name": "conquest:wood_stairs_29",
+                "data": 5
+            }
+        },
+        {
+            "name": "minecraft:jungle_stairs",
+            "min": 4,
+            "max": 4,
+            "biome": -1,
+            "to": {
+                "name": "conquest:wood_stairs_29",
+                "data": 15
+            }
+        },
+        {
+            "name": "minecraft:jungle_stairs",
+            "min": 5,
+            "max": 5,
+            "biome": -1,
+            "to": {
+                "name": "conquest:wood_stairs_29",
+                "data": 11
+            }
+        },
+        {
+            "name": "minecraft:jungle_stairs",
+            "min": 6,
+            "max": 6,
+            "biome": -1,
+            "to": {
+                "name": "conquest:wood_stairs_29",
+                "data": 9
+            }
+        },
+        {
+            "name": "minecraft:jungle_stairs",
+            "min": 7,
+            "max": 7,
+            "biome": -1,
+            "to": {
+                "name": "conquest:wood_stairs_29",
+                "data": 13
+            }
+        },
+        {
+            "name": "minecraft:planks",
+            "min": 3,
+            "max": 3,
+            "biome": -1,
+            "to": {
+                "name": "conquest:wood_full_6",
+                "data": 11
+            }
+        },
+        {
+            "name": "minecraft:double_wooden_slab",
+            "min": 5,
+            "max": 5,
+            "biome": -1,
+            "to": {
+                "name": "conquest:wood_full_6",
+                "data": 9
+            }
+        },
+        {
+            "name": "minecraft:double_wooden_slab",
+            "min": 13,
+            "max": 13,
+            "biome": -1,
+            "to": {
+                "name": "conquest:wood_full_6",
+                "data": 9
+            }
+        },
+        {
+            "name": "minecraft:wooden_slab",
+            "min": 5,
+            "max": 5,
+            "biome": -1,
+            "to": {
+                "name": "conquest:wood_slab_8",
+                "data": 1
+            }
+        },
+        {
+            "name": "minecraft:wooden_slab",
+            "min": 13,
+            "max": 13,
+            "biome": -1,
+            "to": {
+                "name": "conquest:wood_slab_8",
+                "data": 9
+            }
+        },
+        {
+            "name": "minecraft:dark_oak_stairs",
+            "min": 0,
+            "max": 0,
+            "biome": -1,
+            "to": {
+                "name": "conquest:wood_stairs_28",
+                "data": 7
+            }
+        },
+        {
+            "name": "minecraft:dark_oak_stairs",
+            "min": 1,
+            "max": 1,
+            "biome": -1,
+            "to": {
+                "name": "conquest:wood_stairs_28",
+                "data": 3
+            }
+        },
+        {
+            "name": "minecraft:dark_oak_stairs",
+            "min": 2,
+            "max": 2,
+            "biome": -1,
+            "to": {
+                "name": "conquest:wood_stairs_28",
+                "data": 1
+            }
+        },
+        {
+            "name": "minecraft:dark_oak_stairs",
+            "min": 3,
+            "max": 3,
+            "biome": -1,
+            "to": {
+                "name": "conquest:wood_stairs_28",
+                "data": 5
+            }
+        },
+        {
+            "name": "minecraft:dark_oak_stairs",
+            "min": 4,
+            "max": 4,
+            "biome": -1,
+            "to": {
+                "name": "conquest:wood_stairs_28",
+                "data": 15
+            }
+        },
+        {
+            "name": "minecraft:dark_oak_stairs",
+            "min": 5,
+            "max": 5,
+            "biome": -1,
+            "to": {
+                "name": "conquest:wood_stairs_28",
+                "data": 11
+            }
+        },
+        {
+            "name": "minecraft:dark_oak_stairs",
+            "min": 6,
+            "max": 6,
+            "biome": -1,
+            "to": {
+                "name": "conquest:wood_stairs_28",
+                "data": 9
+            }
+        },
+        {
+            "name": "minecraft:dark_oak_stairs",
+            "min": 7,
+            "max": 7,
+            "biome": -1,
+            "to": {
+                "name": "conquest:wood_stairs_28",
+                "data": 13
+            }
+        },
+        {
+            "name": "minecraft:planks",
+            "min": 5,
+            "max": 5,
+            "biome": -1,
+            "to": {
+                "name": "conquest:wood_full_6",
+                "data": 9
+            }
+        },
+        {
+            "name": "minecraft:dirt",
+            "min": 1,
+            "max": 1,
+            "biome": -1,
+            "to": {
+                "name": "conquest:ground_full_1",
+                "data": 10
+            }
+        },
+        {
+            "name": "minecraft:dirt",
+            "min": 2,
+            "max": 2,
+            "biome": -1,
+            "to": {
+                "name": "conquest:ground_full_1",
+                "data": 13
+            }
+        },
+        {
+            "name": "minecraft:stone",
+            "min": 2,
+            "max": 2,
+            "biome": -1,
+            "to": {
+                "name": "conquest:stone_full_14",
+                "data": 7
+            }
+        },
+        {
+            "name": "minecraft:stone",
+            "min": 4,
+            "max": 4,
+            "biome": -1,
+            "to": {
+                "name": "conquest:stone_full_6",
+                "data": 5
+            }
+        },
+        {
+            "name": "minecraft:stone",
+            "min": 6,
+            "max": 6,
+            "biome": -1,
+            "to": {
+                "name": "minecraft:stone",
+                "data": 3
+            }
+        },
+        {
+            "name": "minecraft:birch_fence",
+            "min": 0,
+            "max": 0,
+            "biome": -1,
+            "to": {
+                "name": "conquest:wood_fence_3",
+                "data": 14
+            }
+        },
+        {
+            "name": "minecraft:rail",
+            "min": 0,
+            "max": 0,
+            "biome": -1,
+            "to": {
+                "name": "conquest:rope_rail",
+                "data": 0
+            }
+        },
+        {
+            "name": "minecraft:rail",
+            "min": 1,
+            "max": 1,
+            "biome": -1,
+            "to": {
+                "name": "conquest:rope_rail",
+                "data": 1
+            }
+        },
+        {
+            "name": "minecraft:rail",
+            "min": 2,
+            "max": 2,
+            "biome": -1,
+            "to": {
+                "name": "conquest:rope_rail",
+                "data": 2
+            }
+        },
+        {
+            "name": "minecraft:rail",
+            "min": 3,
+            "max": 3,
+            "biome": -1,
+            "to": {
+                "name": "conquest:rope_rail",
+                "data": 3
+            }
+        },
+        {
+            "name": "minecraft:rail",
+            "min": 4,
+            "max": 4,
+            "biome": -1,
+            "to": {
+                "name": "conquest:rope_rail",
+                "data": 4
+            }
+        },
+        {
+            "name": "minecraft:rail",
+            "min": 5,
+            "max": 5,
+            "biome": -1,
+            "to": {
+                "name": "conquest:rope_rail",
+                "data": 5
+            }
+        },
+        {
+            "name": "minecraft:rail",
+            "min": 6,
+            "max": 6,
+            "biome": -1,
+            "to": {
+                "name": "conquest:rope_rail",
+                "data": 6
+            }
+        },
+        {
+            "name": "minecraft:rail",
+            "min": 7,
+            "max": 7,
+            "biome": -1,
+            "to": {
+                "name": "conquest:rope_rail",
+                "data": 7
+            }
+        },
+        {
+            "name": "minecraft:rail",
+            "min": 8,
+            "max": 8,
+            "biome": -1,
+            "to": {
+                "name": "conquest:rope_rail",
+                "data": 8
+            }
+        },
+        {
+            "name": "minecraft:rail",
+            "min": 9,
+            "max": 9,
+            "biome": -1,
+            "to": {
+                "name": "conquest:rope_rail",
+                "data": 9
+            }
+        },
+        {
+            "name": "minecraft:carpet",
+            "min": 0,
+            "max": 0,
+            "biome": -1,
+            "to": {
+                "name": "conquest:cloth_nocollision_1",
+                "data": 7
+            }
+        },
+        {
+            "name": "minecraft:carpet",
+            "min": 4,
+            "max": 4,
+            "biome": -1,
+            "to": {
+                "name": "conquest:cloth_nocollision_1",
+                "data": 8
+            }
+        },
+        {
+            "name": "minecraft:carpet",
+            "min": 8,
+            "max": 8,
+            "biome": -1,
+            "to": {
+                "name": "conquest:cloth_nocollision_1",
+                "data": 6
+            }
+        },
+        {
+            "name": "minecraft:carpet",
+            "min": 12,
+            "max": 12,
+            "biome": -1,
+            "to": {
+                "name": "conquest:cloth_nocollision_1",
+                "data": 4
+            }
+        },
+        {
+            "name": "minecraft:carpet",
+            "min": 13,
+            "max": 13,
+            "biome": -1,
+            "to": {
+                "name": "conquest:plants_nocollision_6",
+                "data": 2
+            }
+        },
+        {
+            "name": "minecraft:log",
+            "min": 14,
+            "max": 14,
+            "biome": -1,
+            "to": {
+                "name": "conquest:wood_wall_1",
+                "data": 2
+            }
+        }
+    ],
+    "copy_below": [
+        {
+            "name": "minecraft:double_plant",
+            "min": 8,
+            "max": 15,
+            "biome": -1
         }
     ],
     "remove_blocks": {}

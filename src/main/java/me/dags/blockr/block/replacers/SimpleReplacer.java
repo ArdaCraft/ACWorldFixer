@@ -13,6 +13,7 @@ public class SimpleReplacer implements Replacer {
     final int dataTo;
     final BlockPredicate rule;
     final BlockChangeApplier consumer;
+    final boolean log;
 
     SimpleReplacer(int typeFrom, int typeTo, int dataFrom, int dataTo, BlockPredicate blockPredicate, BlockChangeApplier consumer) {
         this.typeFrom = typeFrom;
@@ -21,6 +22,17 @@ public class SimpleReplacer implements Replacer {
         this.dataTo = dataTo;
         this.rule = blockPredicate;
         this.consumer = consumer;
+        this.log = false;
+    }
+
+    SimpleReplacer(int typeFrom, int typeTo, int dataFrom, int dataTo, BlockPredicate blockPredicate, BlockChangeApplier consumer, boolean log) {
+        this.typeFrom = typeFrom;
+        this.typeTo = typeTo;
+        this.dataFrom = dataFrom;
+        this.dataTo = dataTo;
+        this.rule = blockPredicate;
+        this.consumer = consumer;
+        this.log = log;
     }
 
     @Override
@@ -32,16 +44,23 @@ public class SimpleReplacer implements Replacer {
         return false;
     }
 
-    boolean typeMatches(int type) {
+    @Override
+    public boolean typeMatches(int type) {
         return typeFrom == type;
     }
 
-    boolean dataMatches(int data) {
+    @Override
+    public boolean dataMatches(int data) {
         return dataFrom == data;
     }
 
     @Override
     public SimpleReplacer clone() {
         return new SimpleReplacer(typeFrom, typeTo, dataFrom, dataTo, rule, consumer);
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%s:%s => %s:%s", typeFrom, dataFrom, typeTo, dataTo);
     }
 }

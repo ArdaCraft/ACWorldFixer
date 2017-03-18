@@ -17,6 +17,10 @@ public class Replacers {
         return new SimpleReplacer(typeFrom, typeTo, -1, -1, matchType, replaceType);
     }
 
+    public static SimpleReplacer printMatchTypeReplaceType(int typeFrom, int typeTo) {
+        return new SimpleReplacer(typeFrom, typeTo, -1, -1, matchType, replaceType, true);
+    }
+
     public static SimpleReplacer matchTypeReplaceData(int typeFrom, int dataTo) {
         return new SimpleReplacer(typeFrom, typeFrom, -1, dataTo, matchType, replaceData);
     }
@@ -59,5 +63,9 @@ public class Replacers {
 
     public static BiomeReplacer matchBiomeWithReplacer(int biomeId, Replacer replacer) {
         return new BiomeReplacer(biomeId, replacer);
+    }
+
+    public static CopyBelowReplacer matchTypeAndDataReplaceWithBelow(int fromId, int minData, int maxData) {
+        return new CopyBelowReplacer(fromId, minData, maxData, matchTypeAndData);
     }
 }

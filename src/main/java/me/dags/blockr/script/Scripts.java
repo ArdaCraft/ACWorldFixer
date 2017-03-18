@@ -22,15 +22,17 @@ public class Scripts {
 
         File root = new File("").getAbsoluteFile();
 
-        File ardaDump = new File(root, "arda_mappings.txt");
-        File crDump = new File(root, "conquest_mappings.txt");
-        File script = new File(root, "cr_script.sour");
+        File ardaDump = new File(root, "from_mappings.txt");
+        File crDump = new File(root, "to_mappings.txt");
+        File script = new File(root, "script.sour");
         File output = new File(root, "mappings.json");
 
         Map<Integer, String> arda = loadMappings(ardaDump);
         Map<Integer, String> cr = loadMappings(crDump);
 
         Config config = convertScript(script, arda, cr);
+        config.copyBelow.add(new BlockInfo("minecraft:double_plant", -1, 8, 15, BlockInfo.EMPTY));
+
         Node node = NodeTypeAdapters.serialize(config);
         NodeAdapter.json().to(node, output);
     }

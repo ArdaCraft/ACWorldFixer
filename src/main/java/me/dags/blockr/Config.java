@@ -13,6 +13,7 @@ public class Config {
     private static transient boolean auto_remap = false;
 
     public final List<BlockInfo> blocks = new ArrayList<>();
+    public final List<BlockInfo> copyBelow = new ArrayList<>();
     public final Map<String, Integer> removeBlocks = new HashMap<>();
     public final Set<String> entities = new HashSet<>();
     public final Set<String> tileEntities = new HashSet<>();
@@ -34,6 +35,10 @@ public class Config {
             config.blocks.forEach(blocks::add);
             object.put("blocks", blocks);
 
+            NodeArray belowBlocks = new NodeArray();
+            config.copyBelow.forEach(belowBlocks::add);
+            object.put("copy_below", belowBlocks);
+
             NodeObject removeBlocks = new NodeObject();
             config.removeBlocks.entrySet().forEach(e -> removeBlocks.put(e.getKey(), e.getValue()));
             object.put("remove_blocks", removeBlocks);
@@ -52,8 +57,15 @@ public class Config {
                     NodeArray array = object.getArray("blocks");
                     array.values().stream()
                             .map(n -> NodeTypeAdapters.of(BlockInfo.class).fromNode(n))
-                            .filter(b -> b != null)
+                            .filter(Objects::nonNull)
                             .forEach(config.blocks::add);
+                }
+                if (object.contains("copy_below")) {
+                    NodeArray below = object.getArray("copy_below");
+                    below.values().stream()
+                            .map(n -> NodeTypeAdapters.of(BlockInfo.class).fromNode(n))
+                            .filter(Objects::nonNull)
+                            .forEach(config.copyBelow::add);
                 }
             }
             return config;

@@ -1,3 +1,1397 @@
+minecraft:air, id=0, meta=0,
+minecraft:stone, id=1, meta=0, variant:stone
+minecraft:stone, id=1, meta=1, variant:granite
+minecraft:stone, id=1, meta=2, variant:smooth_granite
+minecraft:stone, id=1, meta=3, variant:diorite
+minecraft:stone, id=1, meta=4, variant:smooth_diorite
+minecraft:stone, id=1, meta=5, variant:andesite
+minecraft:stone, id=1, meta=6, variant:smooth_andesite
+minecraft:grass, id=2, meta=0, snowy:true
+minecraft:dirt, id=3, meta=0, snowy:true, variant:dirt
+minecraft:dirt, id=3, meta=1, snowy:true, variant:coarse_dirt
+minecraft:dirt, id=3, meta=2, snowy:true, variant:podzol
+minecraft:cobblestone, id=4, meta=0,
+minecraft:planks, id=5, meta=0, variant:oak
+minecraft:planks, id=5, meta=1, variant:spruce
+minecraft:planks, id=5, meta=2, variant:birch
+minecraft:planks, id=5, meta=3, variant:jungle
+minecraft:planks, id=5, meta=4, variant:acacia
+minecraft:planks, id=5, meta=5, variant:dark_oak
+minecraft:sapling, id=6, meta=0, stage:0, type:oak
+minecraft:sapling, id=6, meta=1, stage:0, type:spruce
+minecraft:sapling, id=6, meta=2, stage:0, type:birch
+minecraft:sapling, id=6, meta=3, stage:0, type:jungle
+minecraft:sapling, id=6, meta=4, stage:0, type:acacia
+minecraft:sapling, id=6, meta=5, stage:0, type:dark_oak
+minecraft:sapling, id=6, meta=8, stage:1, type:oak
+minecraft:sapling, id=6, meta=9, stage:1, type:spruce
+minecraft:sapling, id=6, meta=10, stage:1, type:birch
+minecraft:sapling, id=6, meta=11, stage:1, type:jungle
+minecraft:sapling, id=6, meta=12, stage:1, type:acacia
+minecraft:sapling, id=6, meta=13, stage:1, type:dark_oak
+minecraft:bedrock, id=7, meta=0,
+minecraft:flowing_water, id=8, meta=0, level:0
+minecraft:flowing_water, id=8, meta=1, level:1
+minecraft:flowing_water, id=8, meta=2, level:2
+minecraft:flowing_water, id=8, meta=3, level:3
+minecraft:flowing_water, id=8, meta=4, level:4
+minecraft:flowing_water, id=8, meta=5, level:5
+minecraft:flowing_water, id=8, meta=6, level:6
+minecraft:flowing_water, id=8, meta=7, level:7
+minecraft:flowing_water, id=8, meta=8, level:8
+minecraft:flowing_water, id=8, meta=9, level:9
+minecraft:flowing_water, id=8, meta=10, level:10
+minecraft:flowing_water, id=8, meta=11, level:11
+minecraft:flowing_water, id=8, meta=12, level:12
+minecraft:flowing_water, id=8, meta=13, level:13
+minecraft:flowing_water, id=8, meta=14, level:14
+minecraft:flowing_water, id=8, meta=15, level:15
+minecraft:water, id=9, meta=0, level:0
+minecraft:water, id=9, meta=1, level:1
+minecraft:water, id=9, meta=2, level:2
+minecraft:water, id=9, meta=3, level:3
+minecraft:water, id=9, meta=4, level:4
+minecraft:water, id=9, meta=5, level:5
+minecraft:water, id=9, meta=6, level:6
+minecraft:water, id=9, meta=7, level:7
+minecraft:water, id=9, meta=8, level:8
+minecraft:water, id=9, meta=9, level:9
+minecraft:water, id=9, meta=10, level:10
+minecraft:water, id=9, meta=11, level:11
+minecraft:water, id=9, meta=12, level:12
+minecraft:water, id=9, meta=13, level:13
+minecraft:water, id=9, meta=14, level:14
+minecraft:water, id=9, meta=15, level:15
+minecraft:flowing_lava, id=10, meta=0, level:0
+minecraft:flowing_lava, id=10, meta=1, level:1
+minecraft:flowing_lava, id=10, meta=2, level:2
+minecraft:flowing_lava, id=10, meta=3, level:3
+minecraft:flowing_lava, id=10, meta=4, level:4
+minecraft:flowing_lava, id=10, meta=5, level:5
+minecraft:flowing_lava, id=10, meta=6, level:6
+minecraft:flowing_lava, id=10, meta=7, level:7
+minecraft:flowing_lava, id=10, meta=8, level:8
+minecraft:flowing_lava, id=10, meta=9, level:9
+minecraft:flowing_lava, id=10, meta=10, level:10
+minecraft:flowing_lava, id=10, meta=11, level:11
+minecraft:flowing_lava, id=10, meta=12, level:12
+minecraft:flowing_lava, id=10, meta=13, level:13
+minecraft:flowing_lava, id=10, meta=14, level:14
+minecraft:flowing_lava, id=10, meta=15, level:15
+minecraft:lava, id=11, meta=0, level:0
+minecraft:lava, id=11, meta=1, level:1
+minecraft:lava, id=11, meta=2, level:2
+minecraft:lava, id=11, meta=3, level:3
+minecraft:lava, id=11, meta=4, level:4
+minecraft:lava, id=11, meta=5, level:5
+minecraft:lava, id=11, meta=6, level:6
+minecraft:lava, id=11, meta=7, level:7
+minecraft:lava, id=11, meta=8, level:8
+minecraft:lava, id=11, meta=9, level:9
+minecraft:lava, id=11, meta=10, level:10
+minecraft:lava, id=11, meta=11, level:11
+minecraft:lava, id=11, meta=12, level:12
+minecraft:lava, id=11, meta=13, level:13
+minecraft:lava, id=11, meta=14, level:14
+minecraft:lava, id=11, meta=15, level:15
+minecraft:sand, id=12, meta=0, variant:sand
+minecraft:sand, id=12, meta=1, variant:red_sand
+minecraft:gravel, id=13, meta=0,
+minecraft:gold_ore, id=14, meta=0,
+minecraft:iron_ore, id=15, meta=0,
+minecraft:coal_ore, id=16, meta=0,
+minecraft:log, id=17, meta=0, axis:y, variant:oak
+minecraft:log, id=17, meta=1, axis:y, variant:spruce
+minecraft:log, id=17, meta=2, axis:y, variant:birch
+minecraft:log, id=17, meta=3, axis:y, variant:jungle
+minecraft:log, id=17, meta=4, axis:x, variant:oak
+minecraft:log, id=17, meta=5, axis:x, variant:spruce
+minecraft:log, id=17, meta=6, axis:x, variant:birch
+minecraft:log, id=17, meta=7, axis:x, variant:jungle
+minecraft:log, id=17, meta=8, axis:z, variant:oak
+minecraft:log, id=17, meta=9, axis:z, variant:spruce
+minecraft:log, id=17, meta=10, axis:z, variant:birch
+minecraft:log, id=17, meta=11, axis:z, variant:jungle
+minecraft:log, id=17, meta=12, axis:none, variant:oak
+minecraft:log, id=17, meta=13, axis:none, variant:spruce
+minecraft:log, id=17, meta=14, axis:none, variant:birch
+minecraft:log, id=17, meta=15, axis:none, variant:jungle
+minecraft:leaves, id=18, meta=0, check_decay:false, decayable:true, variant:oak
+minecraft:leaves, id=18, meta=1, check_decay:false, decayable:true, variant:spruce
+minecraft:leaves, id=18, meta=2, check_decay:false, decayable:true, variant:birch
+minecraft:leaves, id=18, meta=3, check_decay:false, decayable:true, variant:jungle
+minecraft:leaves, id=18, meta=4, check_decay:false, decayable:false, variant:oak
+minecraft:leaves, id=18, meta=5, check_decay:false, decayable:false, variant:spruce
+minecraft:leaves, id=18, meta=6, check_decay:false, decayable:false, variant:birch
+minecraft:leaves, id=18, meta=7, check_decay:false, decayable:false, variant:jungle
+minecraft:leaves, id=18, meta=8, check_decay:true, decayable:true, variant:oak
+minecraft:leaves, id=18, meta=9, check_decay:true, decayable:true, variant:spruce
+minecraft:leaves, id=18, meta=10, check_decay:true, decayable:true, variant:birch
+minecraft:leaves, id=18, meta=11, check_decay:true, decayable:true, variant:jungle
+minecraft:leaves, id=18, meta=12, check_decay:true, decayable:false, variant:oak
+minecraft:leaves, id=18, meta=13, check_decay:true, decayable:false, variant:spruce
+minecraft:leaves, id=18, meta=14, check_decay:true, decayable:false, variant:birch
+minecraft:leaves, id=18, meta=15, check_decay:true, decayable:false, variant:jungle
+minecraft:sponge, id=19, meta=0, wet:false
+minecraft:sponge, id=19, meta=1, wet:true
+minecraft:glass, id=20, meta=0,
+minecraft:lapis_ore, id=21, meta=0,
+minecraft:lapis_block, id=22, meta=0,
+minecraft:dispenser, id=23, meta=0, facing:down, triggered:false
+minecraft:dispenser, id=23, meta=1, facing:up, triggered:false
+minecraft:dispenser, id=23, meta=2, facing:north, triggered:false
+minecraft:dispenser, id=23, meta=3, facing:south, triggered:false
+minecraft:dispenser, id=23, meta=4, facing:west, triggered:false
+minecraft:dispenser, id=23, meta=5, facing:east, triggered:false
+minecraft:dispenser, id=23, meta=8, facing:down, triggered:true
+minecraft:dispenser, id=23, meta=9, facing:up, triggered:true
+minecraft:dispenser, id=23, meta=10, facing:north, triggered:true
+minecraft:dispenser, id=23, meta=11, facing:south, triggered:true
+minecraft:dispenser, id=23, meta=12, facing:west, triggered:true
+minecraft:dispenser, id=23, meta=13, facing:east, triggered:true
+minecraft:sandstone, id=24, meta=0, type:sandstone
+minecraft:sandstone, id=24, meta=1, type:chiseled_sandstone
+minecraft:sandstone, id=24, meta=2, type:smooth_sandstone
+minecraft:noteblock, id=25, meta=0,
+minecraft:bed, id=26, meta=0, facing:south, occupied:true, part:foot
+minecraft:bed, id=26, meta=1, facing:west, occupied:true, part:foot
+minecraft:bed, id=26, meta=2, facing:north, occupied:true, part:foot
+minecraft:bed, id=26, meta=3, facing:east, occupied:true, part:foot
+minecraft:bed, id=26, meta=8, facing:south, occupied:false, part:head
+minecraft:bed, id=26, meta=9, facing:west, occupied:false, part:head
+minecraft:bed, id=26, meta=10, facing:north, occupied:false, part:head
+minecraft:bed, id=26, meta=11, facing:east, occupied:false, part:head
+minecraft:bed, id=26, meta=12, facing:south, occupied:true, part:head
+minecraft:bed, id=26, meta=13, facing:west, occupied:true, part:head
+minecraft:bed, id=26, meta=14, facing:north, occupied:true, part:head
+minecraft:bed, id=26, meta=15, facing:east, occupied:true, part:head
+minecraft:golden_rail, id=27, meta=0, powered:false, shape:north_south
+minecraft:golden_rail, id=27, meta=1, powered:false, shape:east_west
+minecraft:golden_rail, id=27, meta=2, powered:false, shape:ascending_east
+minecraft:golden_rail, id=27, meta=3, powered:false, shape:ascending_west
+minecraft:golden_rail, id=27, meta=4, powered:false, shape:ascending_north
+minecraft:golden_rail, id=27, meta=5, powered:false, shape:ascending_south
+minecraft:golden_rail, id=27, meta=8, powered:true, shape:north_south
+minecraft:golden_rail, id=27, meta=9, powered:true, shape:east_west
+minecraft:golden_rail, id=27, meta=10, powered:true, shape:ascending_east
+minecraft:golden_rail, id=27, meta=11, powered:true, shape:ascending_west
+minecraft:golden_rail, id=27, meta=12, powered:true, shape:ascending_north
+minecraft:golden_rail, id=27, meta=13, powered:true, shape:ascending_south
+minecraft:detector_rail, id=28, meta=0, powered:false, shape:north_south
+minecraft:detector_rail, id=28, meta=1, powered:false, shape:east_west
+minecraft:detector_rail, id=28, meta=2, powered:false, shape:ascending_east
+minecraft:detector_rail, id=28, meta=3, powered:false, shape:ascending_west
+minecraft:detector_rail, id=28, meta=4, powered:false, shape:ascending_north
+minecraft:detector_rail, id=28, meta=5, powered:false, shape:ascending_south
+minecraft:detector_rail, id=28, meta=8, powered:true, shape:north_south
+minecraft:detector_rail, id=28, meta=9, powered:true, shape:east_west
+minecraft:detector_rail, id=28, meta=10, powered:true, shape:ascending_east
+minecraft:detector_rail, id=28, meta=11, powered:true, shape:ascending_west
+minecraft:detector_rail, id=28, meta=12, powered:true, shape:ascending_north
+minecraft:detector_rail, id=28, meta=13, powered:true, shape:ascending_south
+minecraft:sticky_piston, id=29, meta=0, extended:false, facing:down
+minecraft:sticky_piston, id=29, meta=1, extended:false, facing:up
+minecraft:sticky_piston, id=29, meta=2, extended:false, facing:north
+minecraft:sticky_piston, id=29, meta=3, extended:false, facing:south
+minecraft:sticky_piston, id=29, meta=4, extended:false, facing:west
+minecraft:sticky_piston, id=29, meta=5, extended:false, facing:east
+minecraft:sticky_piston, id=29, meta=8, extended:true, facing:down
+minecraft:sticky_piston, id=29, meta=9, extended:true, facing:up
+minecraft:sticky_piston, id=29, meta=10, extended:true, facing:north
+minecraft:sticky_piston, id=29, meta=11, extended:true, facing:south
+minecraft:sticky_piston, id=29, meta=12, extended:true, facing:west
+minecraft:sticky_piston, id=29, meta=13, extended:true, facing:east
+minecraft:web, id=30, meta=0,
+minecraft:tallgrass, id=31, meta=0, type:dead_bush
+minecraft:tallgrass, id=31, meta=1, type:tall_grass
+minecraft:tallgrass, id=31, meta=2, type:fern
+minecraft:deadbush, id=32, meta=0,
+minecraft:piston, id=33, meta=0, extended:false, facing:down
+minecraft:piston, id=33, meta=1, extended:false, facing:up
+minecraft:piston, id=33, meta=2, extended:false, facing:north
+minecraft:piston, id=33, meta=3, extended:false, facing:south
+minecraft:piston, id=33, meta=4, extended:false, facing:west
+minecraft:piston, id=33, meta=5, extended:false, facing:east
+minecraft:piston, id=33, meta=8, extended:true, facing:down
+minecraft:piston, id=33, meta=9, extended:true, facing:up
+minecraft:piston, id=33, meta=10, extended:true, facing:north
+minecraft:piston, id=33, meta=11, extended:true, facing:south
+minecraft:piston, id=33, meta=12, extended:true, facing:west
+minecraft:piston, id=33, meta=13, extended:true, facing:east
+minecraft:piston_head, id=34, meta=0, facing:down, short:true, type:normal
+minecraft:piston_head, id=34, meta=1, facing:up, short:true, type:normal
+minecraft:piston_head, id=34, meta=2, facing:north, short:true, type:normal
+minecraft:piston_head, id=34, meta=3, facing:south, short:true, type:normal
+minecraft:piston_head, id=34, meta=4, facing:west, short:true, type:normal
+minecraft:piston_head, id=34, meta=5, facing:east, short:true, type:normal
+minecraft:piston_head, id=34, meta=8, facing:down, short:true, type:sticky
+minecraft:piston_head, id=34, meta=9, facing:up, short:true, type:sticky
+minecraft:piston_head, id=34, meta=10, facing:north, short:true, type:sticky
+minecraft:piston_head, id=34, meta=11, facing:south, short:true, type:sticky
+minecraft:piston_head, id=34, meta=12, facing:west, short:true, type:sticky
+minecraft:piston_head, id=34, meta=13, facing:east, short:true, type:sticky
+minecraft:wool, id=35, meta=0, color:white
+minecraft:wool, id=35, meta=1, color:orange
+minecraft:wool, id=35, meta=2, color:magenta
+minecraft:wool, id=35, meta=3, color:lightBlue
+minecraft:wool, id=35, meta=4, color:yellow
+minecraft:wool, id=35, meta=5, color:lime
+minecraft:wool, id=35, meta=6, color:pink
+minecraft:wool, id=35, meta=7, color:gray
+minecraft:wool, id=35, meta=8, color:silver
+minecraft:wool, id=35, meta=9, color:cyan
+minecraft:wool, id=35, meta=10, color:purple
+minecraft:wool, id=35, meta=11, color:blue
+minecraft:wool, id=35, meta=12, color:brown
+minecraft:wool, id=35, meta=13, color:green
+minecraft:wool, id=35, meta=14, color:red
+minecraft:wool, id=35, meta=15, color:black
+minecraft:piston_extension, id=36, meta=0, facing:down, type:normal
+minecraft:piston_extension, id=36, meta=1, facing:up, type:normal
+minecraft:piston_extension, id=36, meta=2, facing:north, type:normal
+minecraft:piston_extension, id=36, meta=3, facing:south, type:normal
+minecraft:piston_extension, id=36, meta=4, facing:west, type:normal
+minecraft:piston_extension, id=36, meta=5, facing:east, type:normal
+minecraft:piston_extension, id=36, meta=8, facing:down, type:sticky
+minecraft:piston_extension, id=36, meta=9, facing:up, type:sticky
+minecraft:piston_extension, id=36, meta=10, facing:north, type:sticky
+minecraft:piston_extension, id=36, meta=11, facing:south, type:sticky
+minecraft:piston_extension, id=36, meta=12, facing:west, type:sticky
+minecraft:piston_extension, id=36, meta=13, facing:east, type:sticky
+minecraft:yellow_flower, id=37, meta=0, type:dandelion
+minecraft:red_flower, id=38, meta=0, type:poppy
+minecraft:red_flower, id=38, meta=1, type:blue_orchid
+minecraft:red_flower, id=38, meta=2, type:allium
+minecraft:red_flower, id=38, meta=3, type:houstonia
+minecraft:red_flower, id=38, meta=4, type:red_tulip
+minecraft:red_flower, id=38, meta=5, type:orange_tulip
+minecraft:red_flower, id=38, meta=6, type:white_tulip
+minecraft:red_flower, id=38, meta=7, type:pink_tulip
+minecraft:red_flower, id=38, meta=8, type:oxeye_daisy
+minecraft:brown_mushroom, id=39, meta=0,
+minecraft:red_mushroom, id=40, meta=0,
+minecraft:gold_block, id=41, meta=0,
+minecraft:iron_block, id=42, meta=0,
+minecraft:double_stone_slab, id=43, meta=0, seamless:false, variant:stone
+minecraft:double_stone_slab, id=43, meta=1, seamless:false, variant:sandstone
+minecraft:double_stone_slab, id=43, meta=2, seamless:false, variant:wood_old
+minecraft:double_stone_slab, id=43, meta=3, seamless:false, variant:cobblestone
+minecraft:double_stone_slab, id=43, meta=4, seamless:false, variant:brick
+minecraft:double_stone_slab, id=43, meta=5, seamless:false, variant:stone_brick
+minecraft:double_stone_slab, id=43, meta=6, seamless:false, variant:nether_brick
+minecraft:double_stone_slab, id=43, meta=7, seamless:false, variant:quartz
+minecraft:double_stone_slab, id=43, meta=8, seamless:true, variant:stone
+minecraft:double_stone_slab, id=43, meta=9, seamless:true, variant:sandstone
+minecraft:double_stone_slab, id=43, meta=10, seamless:true, variant:wood_old
+minecraft:double_stone_slab, id=43, meta=11, seamless:true, variant:cobblestone
+minecraft:double_stone_slab, id=43, meta=12, seamless:true, variant:brick
+minecraft:double_stone_slab, id=43, meta=13, seamless:true, variant:stone_brick
+minecraft:double_stone_slab, id=43, meta=14, seamless:true, variant:nether_brick
+minecraft:double_stone_slab, id=43, meta=15, seamless:true, variant:quartz
+minecraft:stone_slab, id=44, meta=0, half:bottom, variant:stone
+minecraft:stone_slab, id=44, meta=1, half:bottom, variant:sandstone
+minecraft:stone_slab, id=44, meta=2, half:bottom, variant:wood_old
+minecraft:stone_slab, id=44, meta=3, half:bottom, variant:cobblestone
+minecraft:stone_slab, id=44, meta=4, half:bottom, variant:brick
+minecraft:stone_slab, id=44, meta=5, half:bottom, variant:stone_brick
+minecraft:stone_slab, id=44, meta=6, half:bottom, variant:nether_brick
+minecraft:stone_slab, id=44, meta=7, half:bottom, variant:quartz
+minecraft:stone_slab, id=44, meta=8, half:top, variant:stone
+minecraft:stone_slab, id=44, meta=9, half:top, variant:sandstone
+minecraft:stone_slab, id=44, meta=10, half:top, variant:wood_old
+minecraft:stone_slab, id=44, meta=11, half:top, variant:cobblestone
+minecraft:stone_slab, id=44, meta=12, half:top, variant:brick
+minecraft:stone_slab, id=44, meta=13, half:top, variant:stone_brick
+minecraft:stone_slab, id=44, meta=14, half:top, variant:nether_brick
+minecraft:stone_slab, id=44, meta=15, half:top, variant:quartz
+minecraft:brick_block, id=45, meta=0,
+minecraft:tnt, id=46, meta=0, explode:false
+minecraft:tnt, id=46, meta=1, explode:true
+minecraft:bookshelf, id=47, meta=0,
+minecraft:mossy_cobblestone, id=48, meta=0,
+minecraft:obsidian, id=49, meta=0,
+minecraft:torch, id=50, meta=1, facing:east
+minecraft:torch, id=50, meta=2, facing:west
+minecraft:torch, id=50, meta=3, facing:south
+minecraft:torch, id=50, meta=4, facing:north
+minecraft:torch, id=50, meta=5, facing:up
+minecraft:fire, id=51, meta=0, age:0, alt:true, east:true, flip:true, north:true, south:true, upper:0, west:true
+minecraft:fire, id=51, meta=1, age:1, alt:true, east:true, flip:true, north:true, south:true, upper:0, west:true
+minecraft:fire, id=51, meta=2, age:2, alt:true, east:true, flip:true, north:true, south:true, upper:0, west:true
+minecraft:fire, id=51, meta=3, age:3, alt:true, east:true, flip:true, north:true, south:true, upper:0, west:true
+minecraft:fire, id=51, meta=4, age:4, alt:true, east:true, flip:true, north:true, south:true, upper:0, west:true
+minecraft:fire, id=51, meta=5, age:5, alt:true, east:true, flip:true, north:true, south:true, upper:0, west:true
+minecraft:fire, id=51, meta=6, age:6, alt:true, east:true, flip:true, north:true, south:true, upper:0, west:true
+minecraft:fire, id=51, meta=7, age:7, alt:true, east:true, flip:true, north:true, south:true, upper:0, west:true
+minecraft:fire, id=51, meta=8, age:8, alt:true, east:true, flip:true, north:true, south:true, upper:0, west:true
+minecraft:fire, id=51, meta=9, age:9, alt:true, east:true, flip:true, north:true, south:true, upper:0, west:true
+minecraft:fire, id=51, meta=10, age:10, alt:true, east:true, flip:true, north:true, south:true, upper:0, west:true
+minecraft:fire, id=51, meta=11, age:11, alt:true, east:true, flip:true, north:true, south:true, upper:0, west:true
+minecraft:fire, id=51, meta=12, age:12, alt:true, east:true, flip:true, north:true, south:true, upper:0, west:true
+minecraft:fire, id=51, meta=13, age:13, alt:true, east:true, flip:true, north:true, south:true, upper:0, west:true
+minecraft:fire, id=51, meta=14, age:14, alt:true, east:true, flip:true, north:true, south:true, upper:0, west:true
+minecraft:fire, id=51, meta=15, age:15, alt:true, east:true, flip:true, north:true, south:true, upper:0, west:true
+minecraft:mob_spawner, id=52, meta=0,
+minecraft:oak_stairs, id=53, meta=0, facing:east, half:bottom, shape:straight
+minecraft:oak_stairs, id=53, meta=1, facing:west, half:bottom, shape:straight
+minecraft:oak_stairs, id=53, meta=2, facing:south, half:bottom, shape:straight
+minecraft:oak_stairs, id=53, meta=3, facing:north, half:bottom, shape:straight
+minecraft:oak_stairs, id=53, meta=4, facing:east, half:top, shape:straight
+minecraft:oak_stairs, id=53, meta=5, facing:west, half:top, shape:straight
+minecraft:oak_stairs, id=53, meta=6, facing:south, half:top, shape:straight
+minecraft:oak_stairs, id=53, meta=7, facing:north, half:top, shape:straight
+minecraft:chest, id=54, meta=2, facing:north
+minecraft:chest, id=54, meta=3, facing:south
+minecraft:chest, id=54, meta=4, facing:west
+minecraft:chest, id=54, meta=5, facing:east
+minecraft:redstone_wire, id=55, meta=0, east:up, north:up, power:0, south:up, west:up
+minecraft:redstone_wire, id=55, meta=1, east:up, north:up, power:1, south:up, west:up
+minecraft:redstone_wire, id=55, meta=2, east:up, north:up, power:2, south:up, west:up
+minecraft:redstone_wire, id=55, meta=3, east:up, north:up, power:3, south:up, west:up
+minecraft:redstone_wire, id=55, meta=4, east:up, north:up, power:4, south:up, west:up
+minecraft:redstone_wire, id=55, meta=5, east:up, north:up, power:5, south:up, west:up
+minecraft:redstone_wire, id=55, meta=6, east:up, north:up, power:6, south:up, west:up
+minecraft:redstone_wire, id=55, meta=7, east:up, north:up, power:7, south:up, west:up
+minecraft:redstone_wire, id=55, meta=8, east:up, north:up, power:8, south:up, west:up
+minecraft:redstone_wire, id=55, meta=9, east:up, north:up, power:9, south:up, west:up
+minecraft:redstone_wire, id=55, meta=10, east:up, north:up, power:10, south:up, west:up
+minecraft:redstone_wire, id=55, meta=11, east:up, north:up, power:11, south:up, west:up
+minecraft:redstone_wire, id=55, meta=12, east:up, north:up, power:12, south:up, west:up
+minecraft:redstone_wire, id=55, meta=13, east:up, north:up, power:13, south:up, west:up
+minecraft:redstone_wire, id=55, meta=14, east:up, north:up, power:14, south:up, west:up
+minecraft:redstone_wire, id=55, meta=15, east:up, north:up, power:15, south:up, west:up
+minecraft:diamond_ore, id=56, meta=0,
+minecraft:diamond_block, id=57, meta=0,
+minecraft:crafting_table, id=58, meta=0,
+minecraft:wheat, id=59, meta=0, age:0
+minecraft:wheat, id=59, meta=1, age:1
+minecraft:wheat, id=59, meta=2, age:2
+minecraft:wheat, id=59, meta=3, age:3
+minecraft:wheat, id=59, meta=4, age:4
+minecraft:wheat, id=59, meta=5, age:5
+minecraft:wheat, id=59, meta=6, age:6
+minecraft:wheat, id=59, meta=7, age:7
+minecraft:farmland, id=60, meta=0, moisture:0
+minecraft:farmland, id=60, meta=1, moisture:1
+minecraft:farmland, id=60, meta=2, moisture:2
+minecraft:farmland, id=60, meta=3, moisture:3
+minecraft:farmland, id=60, meta=4, moisture:4
+minecraft:farmland, id=60, meta=5, moisture:5
+minecraft:farmland, id=60, meta=6, moisture:6
+minecraft:farmland, id=60, meta=7, moisture:7
+minecraft:furnace, id=61, meta=2, facing:north
+minecraft:furnace, id=61, meta=3, facing:south
+minecraft:furnace, id=61, meta=4, facing:west
+minecraft:furnace, id=61, meta=5, facing:east
+minecraft:lit_furnace, id=62, meta=2, facing:north
+minecraft:lit_furnace, id=62, meta=3, facing:south
+minecraft:lit_furnace, id=62, meta=4, facing:west
+minecraft:lit_furnace, id=62, meta=5, facing:east
+minecraft:standing_sign, id=63, meta=0, rotation:0
+minecraft:standing_sign, id=63, meta=1, rotation:1
+minecraft:standing_sign, id=63, meta=2, rotation:2
+minecraft:standing_sign, id=63, meta=3, rotation:3
+minecraft:standing_sign, id=63, meta=4, rotation:4
+minecraft:standing_sign, id=63, meta=5, rotation:5
+minecraft:standing_sign, id=63, meta=6, rotation:6
+minecraft:standing_sign, id=63, meta=7, rotation:7
+minecraft:standing_sign, id=63, meta=8, rotation:8
+minecraft:standing_sign, id=63, meta=9, rotation:9
+minecraft:standing_sign, id=63, meta=10, rotation:10
+minecraft:standing_sign, id=63, meta=11, rotation:11
+minecraft:standing_sign, id=63, meta=12, rotation:12
+minecraft:standing_sign, id=63, meta=13, rotation:13
+minecraft:standing_sign, id=63, meta=14, rotation:14
+minecraft:standing_sign, id=63, meta=15, rotation:15
+minecraft:wooden_door, id=64, meta=0, facing:east, half:lower, hinge:left, open:false, powered:true
+minecraft:wooden_door, id=64, meta=1, facing:south, half:lower, hinge:left, open:false, powered:true
+minecraft:wooden_door, id=64, meta=2, facing:west, half:lower, hinge:left, open:false, powered:true
+minecraft:wooden_door, id=64, meta=3, facing:north, half:lower, hinge:left, open:false, powered:true
+minecraft:wooden_door, id=64, meta=4, facing:east, half:lower, hinge:left, open:true, powered:true
+minecraft:wooden_door, id=64, meta=5, facing:south, half:lower, hinge:left, open:true, powered:true
+minecraft:wooden_door, id=64, meta=6, facing:west, half:lower, hinge:left, open:true, powered:true
+minecraft:wooden_door, id=64, meta=7, facing:north, half:lower, hinge:left, open:true, powered:true
+minecraft:wooden_door, id=64, meta=8, facing:north, half:upper, hinge:left, open:true, powered:false
+minecraft:wooden_door, id=64, meta=9, facing:north, half:upper, hinge:right, open:true, powered:false
+minecraft:wooden_door, id=64, meta=10, facing:north, half:upper, hinge:left, open:true, powered:true
+minecraft:wooden_door, id=64, meta=11, facing:north, half:upper, hinge:right, open:true, powered:true
+minecraft:ladder, id=65, meta=2, facing:north
+minecraft:ladder, id=65, meta=3, facing:south
+minecraft:ladder, id=65, meta=4, facing:west
+minecraft:ladder, id=65, meta=5, facing:east
+minecraft:rail, id=66, meta=0, shape:north_south
+minecraft:rail, id=66, meta=1, shape:east_west
+minecraft:rail, id=66, meta=2, shape:ascending_east
+minecraft:rail, id=66, meta=3, shape:ascending_west
+minecraft:rail, id=66, meta=4, shape:ascending_north
+minecraft:rail, id=66, meta=5, shape:ascending_south
+minecraft:rail, id=66, meta=6, shape:south_east
+minecraft:rail, id=66, meta=7, shape:south_west
+minecraft:rail, id=66, meta=8, shape:north_west
+minecraft:rail, id=66, meta=9, shape:north_east
+minecraft:stone_stairs, id=67, meta=0, facing:east, half:bottom, shape:straight
+minecraft:stone_stairs, id=67, meta=1, facing:west, half:bottom, shape:straight
+minecraft:stone_stairs, id=67, meta=2, facing:south, half:bottom, shape:straight
+minecraft:stone_stairs, id=67, meta=3, facing:north, half:bottom, shape:straight
+minecraft:stone_stairs, id=67, meta=4, facing:east, half:top, shape:straight
+minecraft:stone_stairs, id=67, meta=5, facing:west, half:top, shape:straight
+minecraft:stone_stairs, id=67, meta=6, facing:south, half:top, shape:straight
+minecraft:stone_stairs, id=67, meta=7, facing:north, half:top, shape:straight
+minecraft:wall_sign, id=68, meta=2, facing:north
+minecraft:wall_sign, id=68, meta=3, facing:south
+minecraft:wall_sign, id=68, meta=4, facing:west
+minecraft:wall_sign, id=68, meta=5, facing:east
+minecraft:lever, id=69, meta=0, facing:down_x, powered:false
+minecraft:lever, id=69, meta=1, facing:east, powered:false
+minecraft:lever, id=69, meta=2, facing:west, powered:false
+minecraft:lever, id=69, meta=3, facing:south, powered:false
+minecraft:lever, id=69, meta=4, facing:north, powered:false
+minecraft:lever, id=69, meta=5, facing:up_z, powered:false
+minecraft:lever, id=69, meta=6, facing:up_x, powered:false
+minecraft:lever, id=69, meta=7, facing:down_z, powered:false
+minecraft:lever, id=69, meta=8, facing:down_x, powered:true
+minecraft:lever, id=69, meta=9, facing:east, powered:true
+minecraft:lever, id=69, meta=10, facing:west, powered:true
+minecraft:lever, id=69, meta=11, facing:south, powered:true
+minecraft:lever, id=69, meta=12, facing:north, powered:true
+minecraft:lever, id=69, meta=13, facing:up_z, powered:true
+minecraft:lever, id=69, meta=14, facing:up_x, powered:true
+minecraft:lever, id=69, meta=15, facing:down_z, powered:true
+minecraft:stone_pressure_plate, id=70, meta=0, powered:false
+minecraft:stone_pressure_plate, id=70, meta=1, powered:true
+minecraft:iron_door, id=71, meta=0, facing:east, half:lower, hinge:left, open:false, powered:true
+minecraft:iron_door, id=71, meta=1, facing:south, half:lower, hinge:left, open:false, powered:true
+minecraft:iron_door, id=71, meta=2, facing:west, half:lower, hinge:left, open:false, powered:true
+minecraft:iron_door, id=71, meta=3, facing:north, half:lower, hinge:left, open:false, powered:true
+minecraft:iron_door, id=71, meta=4, facing:east, half:lower, hinge:left, open:true, powered:true
+minecraft:iron_door, id=71, meta=5, facing:south, half:lower, hinge:left, open:true, powered:true
+minecraft:iron_door, id=71, meta=6, facing:west, half:lower, hinge:left, open:true, powered:true
+minecraft:iron_door, id=71, meta=7, facing:north, half:lower, hinge:left, open:true, powered:true
+minecraft:iron_door, id=71, meta=8, facing:north, half:upper, hinge:left, open:true, powered:false
+minecraft:iron_door, id=71, meta=9, facing:north, half:upper, hinge:right, open:true, powered:false
+minecraft:iron_door, id=71, meta=10, facing:north, half:upper, hinge:left, open:true, powered:true
+minecraft:iron_door, id=71, meta=11, facing:north, half:upper, hinge:right, open:true, powered:true
+minecraft:wooden_pressure_plate, id=72, meta=0, powered:false
+minecraft:wooden_pressure_plate, id=72, meta=1, powered:true
+minecraft:redstone_ore, id=73, meta=0,
+minecraft:lit_redstone_ore, id=74, meta=0,
+minecraft:unlit_redstone_torch, id=75, meta=1, facing:east
+minecraft:unlit_redstone_torch, id=75, meta=2, facing:west
+minecraft:unlit_redstone_torch, id=75, meta=3, facing:south
+minecraft:unlit_redstone_torch, id=75, meta=4, facing:north
+minecraft:unlit_redstone_torch, id=75, meta=5, facing:up
+minecraft:redstone_torch, id=76, meta=1, facing:east
+minecraft:redstone_torch, id=76, meta=2, facing:west
+minecraft:redstone_torch, id=76, meta=3, facing:south
+minecraft:redstone_torch, id=76, meta=4, facing:north
+minecraft:redstone_torch, id=76, meta=5, facing:up
+minecraft:stone_button, id=77, meta=0, facing:down, powered:false
+minecraft:stone_button, id=77, meta=1, facing:east, powered:false
+minecraft:stone_button, id=77, meta=2, facing:west, powered:false
+minecraft:stone_button, id=77, meta=3, facing:south, powered:false
+minecraft:stone_button, id=77, meta=4, facing:north, powered:false
+minecraft:stone_button, id=77, meta=5, facing:up, powered:false
+minecraft:stone_button, id=77, meta=8, facing:down, powered:true
+minecraft:stone_button, id=77, meta=9, facing:east, powered:true
+minecraft:stone_button, id=77, meta=10, facing:west, powered:true
+minecraft:stone_button, id=77, meta=11, facing:south, powered:true
+minecraft:stone_button, id=77, meta=12, facing:north, powered:true
+minecraft:stone_button, id=77, meta=13, facing:up, powered:true
+minecraft:snow_layer, id=78, meta=0, layers:1
+minecraft:snow_layer, id=78, meta=1, layers:2
+minecraft:snow_layer, id=78, meta=2, layers:3
+minecraft:snow_layer, id=78, meta=3, layers:4
+minecraft:snow_layer, id=78, meta=4, layers:5
+minecraft:snow_layer, id=78, meta=5, layers:6
+minecraft:snow_layer, id=78, meta=6, layers:7
+minecraft:snow_layer, id=78, meta=7, layers:8
+minecraft:ice, id=79, meta=0,
+minecraft:snow, id=80, meta=0,
+minecraft:cactus, id=81, meta=0, age:0
+minecraft:cactus, id=81, meta=1, age:1
+minecraft:cactus, id=81, meta=2, age:2
+minecraft:cactus, id=81, meta=3, age:3
+minecraft:cactus, id=81, meta=4, age:4
+minecraft:cactus, id=81, meta=5, age:5
+minecraft:cactus, id=81, meta=6, age:6
+minecraft:cactus, id=81, meta=7, age:7
+minecraft:cactus, id=81, meta=8, age:8
+minecraft:cactus, id=81, meta=9, age:9
+minecraft:cactus, id=81, meta=10, age:10
+minecraft:cactus, id=81, meta=11, age:11
+minecraft:cactus, id=81, meta=12, age:12
+minecraft:cactus, id=81, meta=13, age:13
+minecraft:cactus, id=81, meta=14, age:14
+minecraft:cactus, id=81, meta=15, age:15
+minecraft:clay, id=82, meta=0,
+minecraft:reeds, id=83, meta=0, age:0
+minecraft:reeds, id=83, meta=1, age:1
+minecraft:reeds, id=83, meta=2, age:2
+minecraft:reeds, id=83, meta=3, age:3
+minecraft:reeds, id=83, meta=4, age:4
+minecraft:reeds, id=83, meta=5, age:5
+minecraft:reeds, id=83, meta=6, age:6
+minecraft:reeds, id=83, meta=7, age:7
+minecraft:reeds, id=83, meta=8, age:8
+minecraft:reeds, id=83, meta=9, age:9
+minecraft:reeds, id=83, meta=10, age:10
+minecraft:reeds, id=83, meta=11, age:11
+minecraft:reeds, id=83, meta=12, age:12
+minecraft:reeds, id=83, meta=13, age:13
+minecraft:reeds, id=83, meta=14, age:14
+minecraft:reeds, id=83, meta=15, age:15
+minecraft:jukebox, id=84, meta=0, has_record:false
+minecraft:jukebox, id=84, meta=1, has_record:true
+minecraft:fence, id=85, meta=0, east:true, north:true, south:true, west:true
+minecraft:pumpkin, id=86, meta=0, facing:south
+minecraft:pumpkin, id=86, meta=1, facing:west
+minecraft:pumpkin, id=86, meta=2, facing:north
+minecraft:pumpkin, id=86, meta=3, facing:east
+minecraft:netherrack, id=87, meta=0,
+minecraft:soul_sand, id=88, meta=0,
+minecraft:glowstone, id=89, meta=0,
+minecraft:portal, id=90, meta=1, axis:x
+minecraft:portal, id=90, meta=2, axis:z
+minecraft:lit_pumpkin, id=91, meta=0, facing:south
+minecraft:lit_pumpkin, id=91, meta=1, facing:west
+minecraft:lit_pumpkin, id=91, meta=2, facing:north
+minecraft:lit_pumpkin, id=91, meta=3, facing:east
+minecraft:cake, id=92, meta=0, bites:0
+minecraft:cake, id=92, meta=1, bites:1
+minecraft:cake, id=92, meta=2, bites:2
+minecraft:cake, id=92, meta=3, bites:3
+minecraft:cake, id=92, meta=4, bites:4
+minecraft:cake, id=92, meta=5, bites:5
+minecraft:cake, id=92, meta=6, bites:6
+minecraft:unpowered_repeater, id=93, meta=0, delay:1, facing:south, locked:true
+minecraft:unpowered_repeater, id=93, meta=1, delay:1, facing:west, locked:true
+minecraft:unpowered_repeater, id=93, meta=2, delay:1, facing:north, locked:true
+minecraft:unpowered_repeater, id=93, meta=3, delay:1, facing:east, locked:true
+minecraft:unpowered_repeater, id=93, meta=4, delay:2, facing:south, locked:true
+minecraft:unpowered_repeater, id=93, meta=5, delay:2, facing:west, locked:true
+minecraft:unpowered_repeater, id=93, meta=6, delay:2, facing:north, locked:true
+minecraft:unpowered_repeater, id=93, meta=7, delay:2, facing:east, locked:true
+minecraft:unpowered_repeater, id=93, meta=8, delay:3, facing:south, locked:true
+minecraft:unpowered_repeater, id=93, meta=9, delay:3, facing:west, locked:true
+minecraft:unpowered_repeater, id=93, meta=10, delay:3, facing:north, locked:true
+minecraft:unpowered_repeater, id=93, meta=11, delay:3, facing:east, locked:true
+minecraft:unpowered_repeater, id=93, meta=12, delay:4, facing:south, locked:true
+minecraft:unpowered_repeater, id=93, meta=13, delay:4, facing:west, locked:true
+minecraft:unpowered_repeater, id=93, meta=14, delay:4, facing:north, locked:true
+minecraft:unpowered_repeater, id=93, meta=15, delay:4, facing:east, locked:true
+minecraft:powered_repeater, id=94, meta=0, delay:1, facing:south, locked:true
+minecraft:powered_repeater, id=94, meta=1, delay:1, facing:west, locked:true
+minecraft:powered_repeater, id=94, meta=2, delay:1, facing:north, locked:true
+minecraft:powered_repeater, id=94, meta=3, delay:1, facing:east, locked:true
+minecraft:powered_repeater, id=94, meta=4, delay:2, facing:south, locked:true
+minecraft:powered_repeater, id=94, meta=5, delay:2, facing:west, locked:true
+minecraft:powered_repeater, id=94, meta=6, delay:2, facing:north, locked:true
+minecraft:powered_repeater, id=94, meta=7, delay:2, facing:east, locked:true
+minecraft:powered_repeater, id=94, meta=8, delay:3, facing:south, locked:true
+minecraft:powered_repeater, id=94, meta=9, delay:3, facing:west, locked:true
+minecraft:powered_repeater, id=94, meta=10, delay:3, facing:north, locked:true
+minecraft:powered_repeater, id=94, meta=11, delay:3, facing:east, locked:true
+minecraft:powered_repeater, id=94, meta=12, delay:4, facing:south, locked:true
+minecraft:powered_repeater, id=94, meta=13, delay:4, facing:west, locked:true
+minecraft:powered_repeater, id=94, meta=14, delay:4, facing:north, locked:true
+minecraft:powered_repeater, id=94, meta=15, delay:4, facing:east, locked:true
+minecraft:stained_glass, id=95, meta=0, color:white
+minecraft:stained_glass, id=95, meta=1, color:orange
+minecraft:stained_glass, id=95, meta=2, color:magenta
+minecraft:stained_glass, id=95, meta=3, color:lightBlue
+minecraft:stained_glass, id=95, meta=4, color:yellow
+minecraft:stained_glass, id=95, meta=5, color:lime
+minecraft:stained_glass, id=95, meta=6, color:pink
+minecraft:stained_glass, id=95, meta=7, color:gray
+minecraft:stained_glass, id=95, meta=8, color:silver
+minecraft:stained_glass, id=95, meta=9, color:cyan
+minecraft:stained_glass, id=95, meta=10, color:purple
+minecraft:stained_glass, id=95, meta=11, color:blue
+minecraft:stained_glass, id=95, meta=12, color:brown
+minecraft:stained_glass, id=95, meta=13, color:green
+minecraft:stained_glass, id=95, meta=14, color:red
+minecraft:stained_glass, id=95, meta=15, color:black
+minecraft:trapdoor, id=96, meta=0, facing:north, half:bottom, open:false
+minecraft:trapdoor, id=96, meta=1, facing:south, half:bottom, open:false
+minecraft:trapdoor, id=96, meta=2, facing:west, half:bottom, open:false
+minecraft:trapdoor, id=96, meta=3, facing:east, half:bottom, open:false
+minecraft:trapdoor, id=96, meta=4, facing:north, half:bottom, open:true
+minecraft:trapdoor, id=96, meta=5, facing:south, half:bottom, open:true
+minecraft:trapdoor, id=96, meta=6, facing:west, half:bottom, open:true
+minecraft:trapdoor, id=96, meta=7, facing:east, half:bottom, open:true
+minecraft:trapdoor, id=96, meta=8, facing:north, half:top, open:false
+minecraft:trapdoor, id=96, meta=9, facing:south, half:top, open:false
+minecraft:trapdoor, id=96, meta=10, facing:west, half:top, open:false
+minecraft:trapdoor, id=96, meta=11, facing:east, half:top, open:false
+minecraft:trapdoor, id=96, meta=12, facing:north, half:top, open:true
+minecraft:trapdoor, id=96, meta=13, facing:south, half:top, open:true
+minecraft:trapdoor, id=96, meta=14, facing:west, half:top, open:true
+minecraft:trapdoor, id=96, meta=15, facing:east, half:top, open:true
+minecraft:monster_egg, id=97, meta=0, variant:stone
+minecraft:monster_egg, id=97, meta=1, variant:cobblestone
+minecraft:monster_egg, id=97, meta=2, variant:stone_brick
+minecraft:monster_egg, id=97, meta=3, variant:mossy_brick
+minecraft:monster_egg, id=97, meta=4, variant:cracked_brick
+minecraft:monster_egg, id=97, meta=5, variant:chiseled_brick
+minecraft:stonebrick, id=98, meta=0, variant:stonebrick
+minecraft:stonebrick, id=98, meta=1, variant:mossy_stonebrick
+minecraft:stonebrick, id=98, meta=2, variant:cracked_stonebrick
+minecraft:stonebrick, id=98, meta=3, variant:chiseled_stonebrick
+minecraft:brown_mushroom_block, id=99, meta=0, variant:all_inside
+minecraft:brown_mushroom_block, id=99, meta=1, variant:north_west
+minecraft:brown_mushroom_block, id=99, meta=2, variant:north
+minecraft:brown_mushroom_block, id=99, meta=3, variant:north_east
+minecraft:brown_mushroom_block, id=99, meta=4, variant:west
+minecraft:brown_mushroom_block, id=99, meta=5, variant:center
+minecraft:brown_mushroom_block, id=99, meta=6, variant:east
+minecraft:brown_mushroom_block, id=99, meta=7, variant:south_west
+minecraft:brown_mushroom_block, id=99, meta=8, variant:south
+minecraft:brown_mushroom_block, id=99, meta=9, variant:south_east
+minecraft:brown_mushroom_block, id=99, meta=10, variant:stem
+minecraft:brown_mushroom_block, id=99, meta=14, variant:all_outside
+minecraft:brown_mushroom_block, id=99, meta=15, variant:all_stem
+minecraft:red_mushroom_block, id=100, meta=0, variant:all_inside
+minecraft:red_mushroom_block, id=100, meta=1, variant:north_west
+minecraft:red_mushroom_block, id=100, meta=2, variant:north
+minecraft:red_mushroom_block, id=100, meta=3, variant:north_east
+minecraft:red_mushroom_block, id=100, meta=4, variant:west
+minecraft:red_mushroom_block, id=100, meta=5, variant:center
+minecraft:red_mushroom_block, id=100, meta=6, variant:east
+minecraft:red_mushroom_block, id=100, meta=7, variant:south_west
+minecraft:red_mushroom_block, id=100, meta=8, variant:south
+minecraft:red_mushroom_block, id=100, meta=9, variant:south_east
+minecraft:red_mushroom_block, id=100, meta=10, variant:stem
+minecraft:red_mushroom_block, id=100, meta=14, variant:all_outside
+minecraft:red_mushroom_block, id=100, meta=15, variant:all_stem
+minecraft:iron_bars, id=101, meta=0, east:true, north:true, south:true, west:true
+minecraft:glass_pane, id=102, meta=0, east:true, north:true, south:true, west:true
+minecraft:melon_block, id=103, meta=0,
+minecraft:pumpkin_stem, id=104, meta=0, age:0, facing:up
+minecraft:pumpkin_stem, id=104, meta=1, age:1, facing:up
+minecraft:pumpkin_stem, id=104, meta=2, age:2, facing:up
+minecraft:pumpkin_stem, id=104, meta=3, age:3, facing:up
+minecraft:pumpkin_stem, id=104, meta=4, age:4, facing:up
+minecraft:pumpkin_stem, id=104, meta=5, age:5, facing:up
+minecraft:pumpkin_stem, id=104, meta=6, age:6, facing:up
+minecraft:pumpkin_stem, id=104, meta=7, age:7, facing:up
+minecraft:melon_stem, id=105, meta=0, age:0, facing:up
+minecraft:melon_stem, id=105, meta=1, age:1, facing:up
+minecraft:melon_stem, id=105, meta=2, age:2, facing:up
+minecraft:melon_stem, id=105, meta=3, age:3, facing:up
+minecraft:melon_stem, id=105, meta=4, age:4, facing:up
+minecraft:melon_stem, id=105, meta=5, age:5, facing:up
+minecraft:melon_stem, id=105, meta=6, age:6, facing:up
+minecraft:melon_stem, id=105, meta=7, age:7, facing:up
+minecraft:vine, id=106, meta=0, east:false, north:false, south:false, up:true, west:false
+minecraft:vine, id=106, meta=1, east:false, north:false, south:true, up:true, west:false
+minecraft:vine, id=106, meta=2, east:false, north:false, south:false, up:true, west:true
+minecraft:vine, id=106, meta=3, east:false, north:false, south:true, up:true, west:true
+minecraft:vine, id=106, meta=4, east:false, north:true, south:false, up:true, west:false
+minecraft:vine, id=106, meta=5, east:false, north:true, south:true, up:true, west:false
+minecraft:vine, id=106, meta=6, east:false, north:true, south:false, up:true, west:true
+minecraft:vine, id=106, meta=7, east:false, north:true, south:true, up:true, west:true
+minecraft:vine, id=106, meta=8, east:true, north:false, south:false, up:true, west:false
+minecraft:vine, id=106, meta=9, east:true, north:false, south:true, up:true, west:false
+minecraft:vine, id=106, meta=10, east:true, north:false, south:false, up:true, west:true
+minecraft:vine, id=106, meta=11, east:true, north:false, south:true, up:true, west:true
+minecraft:vine, id=106, meta=12, east:true, north:true, south:false, up:true, west:false
+minecraft:vine, id=106, meta=13, east:true, north:true, south:true, up:true, west:false
+minecraft:vine, id=106, meta=14, east:true, north:true, south:false, up:true, west:true
+minecraft:vine, id=106, meta=15, east:true, north:true, south:true, up:true, west:true
+minecraft:fence_gate, id=107, meta=0, facing:south, in_wall:true, open:false, powered:false
+minecraft:fence_gate, id=107, meta=1, facing:west, in_wall:true, open:false, powered:false
+minecraft:fence_gate, id=107, meta=2, facing:north, in_wall:true, open:false, powered:false
+minecraft:fence_gate, id=107, meta=3, facing:east, in_wall:true, open:false, powered:false
+minecraft:fence_gate, id=107, meta=4, facing:south, in_wall:true, open:true, powered:false
+minecraft:fence_gate, id=107, meta=5, facing:west, in_wall:true, open:true, powered:false
+minecraft:fence_gate, id=107, meta=6, facing:north, in_wall:true, open:true, powered:false
+minecraft:fence_gate, id=107, meta=7, facing:east, in_wall:true, open:true, powered:false
+minecraft:fence_gate, id=107, meta=8, facing:south, in_wall:true, open:false, powered:true
+minecraft:fence_gate, id=107, meta=9, facing:west, in_wall:true, open:false, powered:true
+minecraft:fence_gate, id=107, meta=10, facing:north, in_wall:true, open:false, powered:true
+minecraft:fence_gate, id=107, meta=11, facing:east, in_wall:true, open:false, powered:true
+minecraft:fence_gate, id=107, meta=12, facing:south, in_wall:true, open:true, powered:true
+minecraft:fence_gate, id=107, meta=13, facing:west, in_wall:true, open:true, powered:true
+minecraft:fence_gate, id=107, meta=14, facing:north, in_wall:true, open:true, powered:true
+minecraft:fence_gate, id=107, meta=15, facing:east, in_wall:true, open:true, powered:true
+minecraft:brick_stairs, id=108, meta=0, facing:east, half:bottom, shape:straight
+minecraft:brick_stairs, id=108, meta=1, facing:west, half:bottom, shape:straight
+minecraft:brick_stairs, id=108, meta=2, facing:south, half:bottom, shape:straight
+minecraft:brick_stairs, id=108, meta=3, facing:north, half:bottom, shape:straight
+minecraft:brick_stairs, id=108, meta=4, facing:east, half:top, shape:straight
+minecraft:brick_stairs, id=108, meta=5, facing:west, half:top, shape:straight
+minecraft:brick_stairs, id=108, meta=6, facing:south, half:top, shape:straight
+minecraft:brick_stairs, id=108, meta=7, facing:north, half:top, shape:straight
+minecraft:stone_brick_stairs, id=109, meta=0, facing:east, half:bottom, shape:straight
+minecraft:stone_brick_stairs, id=109, meta=1, facing:west, half:bottom, shape:straight
+minecraft:stone_brick_stairs, id=109, meta=2, facing:south, half:bottom, shape:straight
+minecraft:stone_brick_stairs, id=109, meta=3, facing:north, half:bottom, shape:straight
+minecraft:stone_brick_stairs, id=109, meta=4, facing:east, half:top, shape:straight
+minecraft:stone_brick_stairs, id=109, meta=5, facing:west, half:top, shape:straight
+minecraft:stone_brick_stairs, id=109, meta=6, facing:south, half:top, shape:straight
+minecraft:stone_brick_stairs, id=109, meta=7, facing:north, half:top, shape:straight
+minecraft:mycelium, id=110, meta=0, snowy:true
+minecraft:waterlily, id=111, meta=0,
+minecraft:nether_brick, id=112, meta=0,
+minecraft:nether_brick_fence, id=113, meta=0, east:true, north:true, south:true, west:true
+minecraft:nether_brick_stairs, id=114, meta=0, facing:east, half:bottom, shape:straight
+minecraft:nether_brick_stairs, id=114, meta=1, facing:west, half:bottom, shape:straight
+minecraft:nether_brick_stairs, id=114, meta=2, facing:south, half:bottom, shape:straight
+minecraft:nether_brick_stairs, id=114, meta=3, facing:north, half:bottom, shape:straight
+minecraft:nether_brick_stairs, id=114, meta=4, facing:east, half:top, shape:straight
+minecraft:nether_brick_stairs, id=114, meta=5, facing:west, half:top, shape:straight
+minecraft:nether_brick_stairs, id=114, meta=6, facing:south, half:top, shape:straight
+minecraft:nether_brick_stairs, id=114, meta=7, facing:north, half:top, shape:straight
+minecraft:nether_wart, id=115, meta=0, age:0
+minecraft:nether_wart, id=115, meta=1, age:1
+minecraft:nether_wart, id=115, meta=2, age:2
+minecraft:nether_wart, id=115, meta=3, age:3
+minecraft:enchanting_table, id=116, meta=0,
+minecraft:brewing_stand, id=117, meta=0, has_bottle_0:false, has_bottle_1:false, has_bottle_2:false
+minecraft:brewing_stand, id=117, meta=1, has_bottle_0:true, has_bottle_1:false, has_bottle_2:false
+minecraft:brewing_stand, id=117, meta=2, has_bottle_0:false, has_bottle_1:true, has_bottle_2:false
+minecraft:brewing_stand, id=117, meta=3, has_bottle_0:true, has_bottle_1:true, has_bottle_2:false
+minecraft:brewing_stand, id=117, meta=4, has_bottle_0:false, has_bottle_1:false, has_bottle_2:true
+minecraft:brewing_stand, id=117, meta=5, has_bottle_0:true, has_bottle_1:false, has_bottle_2:true
+minecraft:brewing_stand, id=117, meta=6, has_bottle_0:false, has_bottle_1:true, has_bottle_2:true
+minecraft:brewing_stand, id=117, meta=7, has_bottle_0:true, has_bottle_1:true, has_bottle_2:true
+minecraft:cauldron, id=118, meta=0, level:0
+minecraft:cauldron, id=118, meta=1, level:1
+minecraft:cauldron, id=118, meta=2, level:2
+minecraft:cauldron, id=118, meta=3, level:3
+minecraft:end_portal, id=119, meta=0,
+minecraft:end_portal_frame, id=120, meta=0, eye:false, facing:south
+minecraft:end_portal_frame, id=120, meta=1, eye:false, facing:west
+minecraft:end_portal_frame, id=120, meta=2, eye:false, facing:north
+minecraft:end_portal_frame, id=120, meta=3, eye:false, facing:east
+minecraft:end_portal_frame, id=120, meta=4, eye:true, facing:south
+minecraft:end_portal_frame, id=120, meta=5, eye:true, facing:west
+minecraft:end_portal_frame, id=120, meta=6, eye:true, facing:north
+minecraft:end_portal_frame, id=120, meta=7, eye:true, facing:east
+minecraft:end_stone, id=121, meta=0,
+minecraft:dragon_egg, id=122, meta=0,
+minecraft:redstone_lamp, id=123, meta=0,
+minecraft:lit_redstone_lamp, id=124, meta=0,
+minecraft:double_wooden_slab, id=125, meta=0, variant:oak
+minecraft:double_wooden_slab, id=125, meta=1, variant:spruce
+minecraft:double_wooden_slab, id=125, meta=2, variant:birch
+minecraft:double_wooden_slab, id=125, meta=3, variant:jungle
+minecraft:double_wooden_slab, id=125, meta=4, variant:acacia
+minecraft:double_wooden_slab, id=125, meta=5, variant:dark_oak
+minecraft:wooden_slab, id=126, meta=0, half:bottom, variant:oak
+minecraft:wooden_slab, id=126, meta=1, half:bottom, variant:spruce
+minecraft:wooden_slab, id=126, meta=2, half:bottom, variant:birch
+minecraft:wooden_slab, id=126, meta=3, half:bottom, variant:jungle
+minecraft:wooden_slab, id=126, meta=4, half:bottom, variant:acacia
+minecraft:wooden_slab, id=126, meta=5, half:bottom, variant:dark_oak
+minecraft:wooden_slab, id=126, meta=8, half:top, variant:oak
+minecraft:wooden_slab, id=126, meta=9, half:top, variant:spruce
+minecraft:wooden_slab, id=126, meta=10, half:top, variant:birch
+minecraft:wooden_slab, id=126, meta=11, half:top, variant:jungle
+minecraft:wooden_slab, id=126, meta=12, half:top, variant:acacia
+minecraft:wooden_slab, id=126, meta=13, half:top, variant:dark_oak
+minecraft:cocoa, id=127, meta=0, age:0, facing:south
+minecraft:cocoa, id=127, meta=1, age:0, facing:west
+minecraft:cocoa, id=127, meta=2, age:0, facing:north
+minecraft:cocoa, id=127, meta=3, age:0, facing:east
+minecraft:cocoa, id=127, meta=4, age:1, facing:south
+minecraft:cocoa, id=127, meta=5, age:1, facing:west
+minecraft:cocoa, id=127, meta=6, age:1, facing:north
+minecraft:cocoa, id=127, meta=7, age:1, facing:east
+minecraft:cocoa, id=127, meta=8, age:2, facing:south
+minecraft:cocoa, id=127, meta=9, age:2, facing:west
+minecraft:cocoa, id=127, meta=10, age:2, facing:north
+minecraft:cocoa, id=127, meta=11, age:2, facing:east
+minecraft:sandstone_stairs, id=128, meta=0, facing:east, half:bottom, shape:straight
+minecraft:sandstone_stairs, id=128, meta=1, facing:west, half:bottom, shape:straight
+minecraft:sandstone_stairs, id=128, meta=2, facing:south, half:bottom, shape:straight
+minecraft:sandstone_stairs, id=128, meta=3, facing:north, half:bottom, shape:straight
+minecraft:sandstone_stairs, id=128, meta=4, facing:east, half:top, shape:straight
+minecraft:sandstone_stairs, id=128, meta=5, facing:west, half:top, shape:straight
+minecraft:sandstone_stairs, id=128, meta=6, facing:south, half:top, shape:straight
+minecraft:sandstone_stairs, id=128, meta=7, facing:north, half:top, shape:straight
+minecraft:emerald_ore, id=129, meta=0,
+minecraft:ender_chest, id=130, meta=2, facing:north
+minecraft:ender_chest, id=130, meta=3, facing:south
+minecraft:ender_chest, id=130, meta=4, facing:west
+minecraft:ender_chest, id=130, meta=5, facing:east
+minecraft:tripwire_hook, id=131, meta=0, attached:false, facing:south, powered:false, suspended:true
+minecraft:tripwire_hook, id=131, meta=1, attached:false, facing:west, powered:false, suspended:true
+minecraft:tripwire_hook, id=131, meta=2, attached:false, facing:north, powered:false, suspended:true
+minecraft:tripwire_hook, id=131, meta=3, attached:false, facing:east, powered:false, suspended:true
+minecraft:tripwire_hook, id=131, meta=4, attached:true, facing:south, powered:false, suspended:true
+minecraft:tripwire_hook, id=131, meta=5, attached:true, facing:west, powered:false, suspended:true
+minecraft:tripwire_hook, id=131, meta=6, attached:true, facing:north, powered:false, suspended:true
+minecraft:tripwire_hook, id=131, meta=7, attached:true, facing:east, powered:false, suspended:true
+minecraft:tripwire_hook, id=131, meta=8, attached:false, facing:south, powered:true, suspended:true
+minecraft:tripwire_hook, id=131, meta=9, attached:false, facing:west, powered:true, suspended:true
+minecraft:tripwire_hook, id=131, meta=10, attached:false, facing:north, powered:true, suspended:true
+minecraft:tripwire_hook, id=131, meta=11, attached:false, facing:east, powered:true, suspended:true
+minecraft:tripwire_hook, id=131, meta=12, attached:true, facing:south, powered:true, suspended:true
+minecraft:tripwire_hook, id=131, meta=13, attached:true, facing:west, powered:true, suspended:true
+minecraft:tripwire_hook, id=131, meta=14, attached:true, facing:north, powered:true, suspended:true
+minecraft:tripwire_hook, id=131, meta=15, attached:true, facing:east, powered:true, suspended:true
+minecraft:tripwire, id=132, meta=0, attached:false, disarmed:false, east:true, north:true, powered:false, south:true, suspended:false, west:true
+minecraft:tripwire, id=132, meta=1, attached:false, disarmed:false, east:true, north:true, powered:true, south:true, suspended:false, west:true
+minecraft:tripwire, id=132, meta=2, attached:false, disarmed:false, east:true, north:true, powered:false, south:true, suspended:true, west:true
+minecraft:tripwire, id=132, meta=3, attached:false, disarmed:false, east:true, north:true, powered:true, south:true, suspended:true, west:true
+minecraft:tripwire, id=132, meta=4, attached:true, disarmed:false, east:true, north:true, powered:false, south:true, suspended:false, west:true
+minecraft:tripwire, id=132, meta=5, attached:true, disarmed:false, east:true, north:true, powered:true, south:true, suspended:false, west:true
+minecraft:tripwire, id=132, meta=6, attached:true, disarmed:false, east:true, north:true, powered:false, south:true, suspended:true, west:true
+minecraft:tripwire, id=132, meta=7, attached:true, disarmed:false, east:true, north:true, powered:true, south:true, suspended:true, west:true
+minecraft:tripwire, id=132, meta=8, attached:false, disarmed:true, east:true, north:true, powered:false, south:true, suspended:false, west:true
+minecraft:tripwire, id=132, meta=9, attached:false, disarmed:true, east:true, north:true, powered:true, south:true, suspended:false, west:true
+minecraft:tripwire, id=132, meta=10, attached:false, disarmed:true, east:true, north:true, powered:false, south:true, suspended:true, west:true
+minecraft:tripwire, id=132, meta=11, attached:false, disarmed:true, east:true, north:true, powered:true, south:true, suspended:true, west:true
+minecraft:tripwire, id=132, meta=12, attached:true, disarmed:true, east:true, north:true, powered:false, south:true, suspended:false, west:true
+minecraft:tripwire, id=132, meta=13, attached:true, disarmed:true, east:true, north:true, powered:true, south:true, suspended:false, west:true
+minecraft:tripwire, id=132, meta=14, attached:true, disarmed:true, east:true, north:true, powered:false, south:true, suspended:true, west:true
+minecraft:tripwire, id=132, meta=15, attached:true, disarmed:true, east:true, north:true, powered:true, south:true, suspended:true, west:true
+minecraft:emerald_block, id=133, meta=0,
+minecraft:spruce_stairs, id=134, meta=0, facing:east, half:bottom, shape:straight
+minecraft:spruce_stairs, id=134, meta=1, facing:west, half:bottom, shape:straight
+minecraft:spruce_stairs, id=134, meta=2, facing:south, half:bottom, shape:straight
+minecraft:spruce_stairs, id=134, meta=3, facing:north, half:bottom, shape:straight
+minecraft:spruce_stairs, id=134, meta=4, facing:east, half:top, shape:straight
+minecraft:spruce_stairs, id=134, meta=5, facing:west, half:top, shape:straight
+minecraft:spruce_stairs, id=134, meta=6, facing:south, half:top, shape:straight
+minecraft:spruce_stairs, id=134, meta=7, facing:north, half:top, shape:straight
+minecraft:birch_stairs, id=135, meta=0, facing:east, half:bottom, shape:straight
+minecraft:birch_stairs, id=135, meta=1, facing:west, half:bottom, shape:straight
+minecraft:birch_stairs, id=135, meta=2, facing:south, half:bottom, shape:straight
+minecraft:birch_stairs, id=135, meta=3, facing:north, half:bottom, shape:straight
+minecraft:birch_stairs, id=135, meta=4, facing:east, half:top, shape:straight
+minecraft:birch_stairs, id=135, meta=5, facing:west, half:top, shape:straight
+minecraft:birch_stairs, id=135, meta=6, facing:south, half:top, shape:straight
+minecraft:birch_stairs, id=135, meta=7, facing:north, half:top, shape:straight
+minecraft:jungle_stairs, id=136, meta=0, facing:east, half:bottom, shape:straight
+minecraft:jungle_stairs, id=136, meta=1, facing:west, half:bottom, shape:straight
+minecraft:jungle_stairs, id=136, meta=2, facing:south, half:bottom, shape:straight
+minecraft:jungle_stairs, id=136, meta=3, facing:north, half:bottom, shape:straight
+minecraft:jungle_stairs, id=136, meta=4, facing:east, half:top, shape:straight
+minecraft:jungle_stairs, id=136, meta=5, facing:west, half:top, shape:straight
+minecraft:jungle_stairs, id=136, meta=6, facing:south, half:top, shape:straight
+minecraft:jungle_stairs, id=136, meta=7, facing:north, half:top, shape:straight
+minecraft:command_block, id=137, meta=0, triggered:false
+minecraft:command_block, id=137, meta=1, triggered:true
+minecraft:beacon, id=138, meta=0,
+minecraft:cobblestone_wall, id=139, meta=0, east:true, north:true, south:true, up:true, variant:cobblestone, west:true
+minecraft:cobblestone_wall, id=139, meta=1, east:true, north:true, south:true, up:true, variant:mossy_cobblestone, west:true
+minecraft:flower_pot, id=140, meta=0, contents:empty, legacy_data:0
+minecraft:flower_pot, id=140, meta=1, contents:empty, legacy_data:1
+minecraft:flower_pot, id=140, meta=2, contents:empty, legacy_data:2
+minecraft:flower_pot, id=140, meta=3, contents:empty, legacy_data:3
+minecraft:flower_pot, id=140, meta=4, contents:empty, legacy_data:4
+minecraft:flower_pot, id=140, meta=5, contents:empty, legacy_data:5
+minecraft:flower_pot, id=140, meta=6, contents:empty, legacy_data:6
+minecraft:flower_pot, id=140, meta=7, contents:empty, legacy_data:7
+minecraft:flower_pot, id=140, meta=8, contents:empty, legacy_data:8
+minecraft:flower_pot, id=140, meta=9, contents:empty, legacy_data:9
+minecraft:flower_pot, id=140, meta=10, contents:empty, legacy_data:10
+minecraft:flower_pot, id=140, meta=11, contents:empty, legacy_data:11
+minecraft:flower_pot, id=140, meta=12, contents:empty, legacy_data:12
+minecraft:flower_pot, id=140, meta=13, contents:empty, legacy_data:13
+minecraft:flower_pot, id=140, meta=14, contents:empty, legacy_data:14
+minecraft:flower_pot, id=140, meta=15, contents:empty, legacy_data:15
+minecraft:carrots, id=141, meta=0, age:0
+minecraft:carrots, id=141, meta=1, age:1
+minecraft:carrots, id=141, meta=2, age:2
+minecraft:carrots, id=141, meta=3, age:3
+minecraft:carrots, id=141, meta=4, age:4
+minecraft:carrots, id=141, meta=5, age:5
+minecraft:carrots, id=141, meta=6, age:6
+minecraft:carrots, id=141, meta=7, age:7
+minecraft:potatoes, id=142, meta=0, age:0
+minecraft:potatoes, id=142, meta=1, age:1
+minecraft:potatoes, id=142, meta=2, age:2
+minecraft:potatoes, id=142, meta=3, age:3
+minecraft:potatoes, id=142, meta=4, age:4
+minecraft:potatoes, id=142, meta=5, age:5
+minecraft:potatoes, id=142, meta=6, age:6
+minecraft:potatoes, id=142, meta=7, age:7
+minecraft:wooden_button, id=143, meta=0, facing:down, powered:false
+minecraft:wooden_button, id=143, meta=1, facing:east, powered:false
+minecraft:wooden_button, id=143, meta=2, facing:west, powered:false
+minecraft:wooden_button, id=143, meta=3, facing:south, powered:false
+minecraft:wooden_button, id=143, meta=4, facing:north, powered:false
+minecraft:wooden_button, id=143, meta=5, facing:up, powered:false
+minecraft:wooden_button, id=143, meta=8, facing:down, powered:true
+minecraft:wooden_button, id=143, meta=9, facing:east, powered:true
+minecraft:wooden_button, id=143, meta=10, facing:west, powered:true
+minecraft:wooden_button, id=143, meta=11, facing:south, powered:true
+minecraft:wooden_button, id=143, meta=12, facing:north, powered:true
+minecraft:wooden_button, id=143, meta=13, facing:up, powered:true
+minecraft:skull, id=144, meta=0, facing:down, nodrop:false
+minecraft:skull, id=144, meta=1, facing:up, nodrop:false
+minecraft:skull, id=144, meta=2, facing:north, nodrop:false
+minecraft:skull, id=144, meta=3, facing:south, nodrop:false
+minecraft:skull, id=144, meta=4, facing:west, nodrop:false
+minecraft:skull, id=144, meta=5, facing:east, nodrop:false
+minecraft:skull, id=144, meta=8, facing:down, nodrop:true
+minecraft:skull, id=144, meta=9, facing:up, nodrop:true
+minecraft:skull, id=144, meta=10, facing:north, nodrop:true
+minecraft:skull, id=144, meta=11, facing:south, nodrop:true
+minecraft:skull, id=144, meta=12, facing:west, nodrop:true
+minecraft:skull, id=144, meta=13, facing:east, nodrop:true
+minecraft:anvil, id=145, meta=0, damage:0, facing:south
+minecraft:anvil, id=145, meta=1, damage:0, facing:west
+minecraft:anvil, id=145, meta=2, damage:0, facing:north
+minecraft:anvil, id=145, meta=3, damage:0, facing:east
+minecraft:anvil, id=145, meta=4, damage:1, facing:south
+minecraft:anvil, id=145, meta=5, damage:1, facing:west
+minecraft:anvil, id=145, meta=6, damage:1, facing:north
+minecraft:anvil, id=145, meta=7, damage:1, facing:east
+minecraft:anvil, id=145, meta=8, damage:2, facing:south
+minecraft:anvil, id=145, meta=9, damage:2, facing:west
+minecraft:anvil, id=145, meta=10, damage:2, facing:north
+minecraft:anvil, id=145, meta=11, damage:2, facing:east
+minecraft:trapped_chest, id=146, meta=2, facing:north
+minecraft:trapped_chest, id=146, meta=3, facing:south
+minecraft:trapped_chest, id=146, meta=4, facing:west
+minecraft:trapped_chest, id=146, meta=5, facing:east
+minecraft:light_weighted_pressure_plate, id=147, meta=0, power:0
+minecraft:light_weighted_pressure_plate, id=147, meta=1, power:1
+minecraft:light_weighted_pressure_plate, id=147, meta=2, power:2
+minecraft:light_weighted_pressure_plate, id=147, meta=3, power:3
+minecraft:light_weighted_pressure_plate, id=147, meta=4, power:4
+minecraft:light_weighted_pressure_plate, id=147, meta=5, power:5
+minecraft:light_weighted_pressure_plate, id=147, meta=6, power:6
+minecraft:light_weighted_pressure_plate, id=147, meta=7, power:7
+minecraft:light_weighted_pressure_plate, id=147, meta=8, power:8
+minecraft:light_weighted_pressure_plate, id=147, meta=9, power:9
+minecraft:light_weighted_pressure_plate, id=147, meta=10, power:10
+minecraft:light_weighted_pressure_plate, id=147, meta=11, power:11
+minecraft:light_weighted_pressure_plate, id=147, meta=12, power:12
+minecraft:light_weighted_pressure_plate, id=147, meta=13, power:13
+minecraft:light_weighted_pressure_plate, id=147, meta=14, power:14
+minecraft:light_weighted_pressure_plate, id=147, meta=15, power:15
+minecraft:heavy_weighted_pressure_plate, id=148, meta=0, power:0
+minecraft:heavy_weighted_pressure_plate, id=148, meta=1, power:1
+minecraft:heavy_weighted_pressure_plate, id=148, meta=2, power:2
+minecraft:heavy_weighted_pressure_plate, id=148, meta=3, power:3
+minecraft:heavy_weighted_pressure_plate, id=148, meta=4, power:4
+minecraft:heavy_weighted_pressure_plate, id=148, meta=5, power:5
+minecraft:heavy_weighted_pressure_plate, id=148, meta=6, power:6
+minecraft:heavy_weighted_pressure_plate, id=148, meta=7, power:7
+minecraft:heavy_weighted_pressure_plate, id=148, meta=8, power:8
+minecraft:heavy_weighted_pressure_plate, id=148, meta=9, power:9
+minecraft:heavy_weighted_pressure_plate, id=148, meta=10, power:10
+minecraft:heavy_weighted_pressure_plate, id=148, meta=11, power:11
+minecraft:heavy_weighted_pressure_plate, id=148, meta=12, power:12
+minecraft:heavy_weighted_pressure_plate, id=148, meta=13, power:13
+minecraft:heavy_weighted_pressure_plate, id=148, meta=14, power:14
+minecraft:heavy_weighted_pressure_plate, id=148, meta=15, power:15
+minecraft:unpowered_comparator, id=149, meta=0, facing:south, mode:compare, powered:false
+minecraft:unpowered_comparator, id=149, meta=1, facing:west, mode:compare, powered:false
+minecraft:unpowered_comparator, id=149, meta=2, facing:north, mode:compare, powered:false
+minecraft:unpowered_comparator, id=149, meta=3, facing:east, mode:compare, powered:false
+minecraft:unpowered_comparator, id=149, meta=4, facing:south, mode:subtract, powered:false
+minecraft:unpowered_comparator, id=149, meta=5, facing:west, mode:subtract, powered:false
+minecraft:unpowered_comparator, id=149, meta=6, facing:north, mode:subtract, powered:false
+minecraft:unpowered_comparator, id=149, meta=7, facing:east, mode:subtract, powered:false
+minecraft:unpowered_comparator, id=149, meta=8, facing:south, mode:compare, powered:true
+minecraft:unpowered_comparator, id=149, meta=9, facing:west, mode:compare, powered:true
+minecraft:unpowered_comparator, id=149, meta=10, facing:north, mode:compare, powered:true
+minecraft:unpowered_comparator, id=149, meta=11, facing:east, mode:compare, powered:true
+minecraft:unpowered_comparator, id=149, meta=12, facing:south, mode:subtract, powered:true
+minecraft:unpowered_comparator, id=149, meta=13, facing:west, mode:subtract, powered:true
+minecraft:unpowered_comparator, id=149, meta=14, facing:north, mode:subtract, powered:true
+minecraft:unpowered_comparator, id=149, meta=15, facing:east, mode:subtract, powered:true
+minecraft:powered_comparator, id=150, meta=0, facing:south, mode:compare, powered:false
+minecraft:powered_comparator, id=150, meta=1, facing:west, mode:compare, powered:false
+minecraft:powered_comparator, id=150, meta=2, facing:north, mode:compare, powered:false
+minecraft:powered_comparator, id=150, meta=3, facing:east, mode:compare, powered:false
+minecraft:powered_comparator, id=150, meta=4, facing:south, mode:subtract, powered:false
+minecraft:powered_comparator, id=150, meta=5, facing:west, mode:subtract, powered:false
+minecraft:powered_comparator, id=150, meta=6, facing:north, mode:subtract, powered:false
+minecraft:powered_comparator, id=150, meta=7, facing:east, mode:subtract, powered:false
+minecraft:powered_comparator, id=150, meta=8, facing:south, mode:compare, powered:true
+minecraft:powered_comparator, id=150, meta=9, facing:west, mode:compare, powered:true
+minecraft:powered_comparator, id=150, meta=10, facing:north, mode:compare, powered:true
+minecraft:powered_comparator, id=150, meta=11, facing:east, mode:compare, powered:true
+minecraft:powered_comparator, id=150, meta=12, facing:south, mode:subtract, powered:true
+minecraft:powered_comparator, id=150, meta=13, facing:west, mode:subtract, powered:true
+minecraft:powered_comparator, id=150, meta=14, facing:north, mode:subtract, powered:true
+minecraft:powered_comparator, id=150, meta=15, facing:east, mode:subtract, powered:true
+minecraft:daylight_detector, id=151, meta=0, power:0
+minecraft:daylight_detector, id=151, meta=1, power:1
+minecraft:daylight_detector, id=151, meta=2, power:2
+minecraft:daylight_detector, id=151, meta=3, power:3
+minecraft:daylight_detector, id=151, meta=4, power:4
+minecraft:daylight_detector, id=151, meta=5, power:5
+minecraft:daylight_detector, id=151, meta=6, power:6
+minecraft:daylight_detector, id=151, meta=7, power:7
+minecraft:daylight_detector, id=151, meta=8, power:8
+minecraft:daylight_detector, id=151, meta=9, power:9
+minecraft:daylight_detector, id=151, meta=10, power:10
+minecraft:daylight_detector, id=151, meta=11, power:11
+minecraft:daylight_detector, id=151, meta=12, power:12
+minecraft:daylight_detector, id=151, meta=13, power:13
+minecraft:daylight_detector, id=151, meta=14, power:14
+minecraft:daylight_detector, id=151, meta=15, power:15
+minecraft:redstone_block, id=152, meta=0,
+minecraft:quartz_ore, id=153, meta=0,
+minecraft:hopper, id=154, meta=0, enabled:true, facing:down
+minecraft:hopper, id=154, meta=2, enabled:true, facing:north
+minecraft:hopper, id=154, meta=3, enabled:true, facing:south
+minecraft:hopper, id=154, meta=4, enabled:true, facing:west
+minecraft:hopper, id=154, meta=5, enabled:true, facing:east
+minecraft:hopper, id=154, meta=8, enabled:false, facing:down
+minecraft:hopper, id=154, meta=10, enabled:false, facing:north
+minecraft:hopper, id=154, meta=11, enabled:false, facing:south
+minecraft:hopper, id=154, meta=12, enabled:false, facing:west
+minecraft:hopper, id=154, meta=13, enabled:false, facing:east
+minecraft:quartz_block, id=155, meta=0, variant:default
+minecraft:quartz_block, id=155, meta=1, variant:chiseled
+minecraft:quartz_block, id=155, meta=2, variant:lines
+minecraft:quartz_block, id=155, meta=3, variant:lines
+minecraft:quartz_block, id=155, meta=4, variant:lines
+minecraft:quartz_stairs, id=156, meta=0, facing:east, half:bottom, shape:straight
+minecraft:quartz_stairs, id=156, meta=1, facing:west, half:bottom, shape:straight
+minecraft:quartz_stairs, id=156, meta=2, facing:south, half:bottom, shape:straight
+minecraft:quartz_stairs, id=156, meta=3, facing:north, half:bottom, shape:straight
+minecraft:quartz_stairs, id=156, meta=4, facing:east, half:top, shape:straight
+minecraft:quartz_stairs, id=156, meta=5, facing:west, half:top, shape:straight
+minecraft:quartz_stairs, id=156, meta=6, facing:south, half:top, shape:straight
+minecraft:quartz_stairs, id=156, meta=7, facing:north, half:top, shape:straight
+minecraft:activator_rail, id=157, meta=0, powered:false, shape:north_south
+minecraft:activator_rail, id=157, meta=1, powered:false, shape:east_west
+minecraft:activator_rail, id=157, meta=2, powered:false, shape:ascending_east
+minecraft:activator_rail, id=157, meta=3, powered:false, shape:ascending_west
+minecraft:activator_rail, id=157, meta=4, powered:false, shape:ascending_north
+minecraft:activator_rail, id=157, meta=5, powered:false, shape:ascending_south
+minecraft:activator_rail, id=157, meta=8, powered:true, shape:north_south
+minecraft:activator_rail, id=157, meta=9, powered:true, shape:east_west
+minecraft:activator_rail, id=157, meta=10, powered:true, shape:ascending_east
+minecraft:activator_rail, id=157, meta=11, powered:true, shape:ascending_west
+minecraft:activator_rail, id=157, meta=12, powered:true, shape:ascending_north
+minecraft:activator_rail, id=157, meta=13, powered:true, shape:ascending_south
+minecraft:dropper, id=158, meta=0, facing:down, triggered:false
+minecraft:dropper, id=158, meta=1, facing:up, triggered:false
+minecraft:dropper, id=158, meta=2, facing:north, triggered:false
+minecraft:dropper, id=158, meta=3, facing:south, triggered:false
+minecraft:dropper, id=158, meta=4, facing:west, triggered:false
+minecraft:dropper, id=158, meta=5, facing:east, triggered:false
+minecraft:dropper, id=158, meta=8, facing:down, triggered:true
+minecraft:dropper, id=158, meta=9, facing:up, triggered:true
+minecraft:dropper, id=158, meta=10, facing:north, triggered:true
+minecraft:dropper, id=158, meta=11, facing:south, triggered:true
+minecraft:dropper, id=158, meta=12, facing:west, triggered:true
+minecraft:dropper, id=158, meta=13, facing:east, triggered:true
+minecraft:stained_hardened_clay, id=159, meta=0, color:white
+minecraft:stained_hardened_clay, id=159, meta=1, color:orange
+minecraft:stained_hardened_clay, id=159, meta=2, color:magenta
+minecraft:stained_hardened_clay, id=159, meta=3, color:lightBlue
+minecraft:stained_hardened_clay, id=159, meta=4, color:yellow
+minecraft:stained_hardened_clay, id=159, meta=5, color:lime
+minecraft:stained_hardened_clay, id=159, meta=6, color:pink
+minecraft:stained_hardened_clay, id=159, meta=7, color:gray
+minecraft:stained_hardened_clay, id=159, meta=8, color:silver
+minecraft:stained_hardened_clay, id=159, meta=9, color:cyan
+minecraft:stained_hardened_clay, id=159, meta=10, color:purple
+minecraft:stained_hardened_clay, id=159, meta=11, color:blue
+minecraft:stained_hardened_clay, id=159, meta=12, color:brown
+minecraft:stained_hardened_clay, id=159, meta=13, color:green
+minecraft:stained_hardened_clay, id=159, meta=14, color:red
+minecraft:stained_hardened_clay, id=159, meta=15, color:black
+minecraft:stained_glass_pane, id=160, meta=0, color:white, east:true, north:true, south:true, west:true
+minecraft:stained_glass_pane, id=160, meta=1, color:orange, east:true, north:true, south:true, west:true
+minecraft:stained_glass_pane, id=160, meta=2, color:magenta, east:true, north:true, south:true, west:true
+minecraft:stained_glass_pane, id=160, meta=3, color:lightBlue, east:true, north:true, south:true, west:true
+minecraft:stained_glass_pane, id=160, meta=4, color:yellow, east:true, north:true, south:true, west:true
+minecraft:stained_glass_pane, id=160, meta=5, color:lime, east:true, north:true, south:true, west:true
+minecraft:stained_glass_pane, id=160, meta=6, color:pink, east:true, north:true, south:true, west:true
+minecraft:stained_glass_pane, id=160, meta=7, color:gray, east:true, north:true, south:true, west:true
+minecraft:stained_glass_pane, id=160, meta=8, color:silver, east:true, north:true, south:true, west:true
+minecraft:stained_glass_pane, id=160, meta=9, color:cyan, east:true, north:true, south:true, west:true
+minecraft:stained_glass_pane, id=160, meta=10, color:purple, east:true, north:true, south:true, west:true
+minecraft:stained_glass_pane, id=160, meta=11, color:blue, east:true, north:true, south:true, west:true
+minecraft:stained_glass_pane, id=160, meta=12, color:brown, east:true, north:true, south:true, west:true
+minecraft:stained_glass_pane, id=160, meta=13, color:green, east:true, north:true, south:true, west:true
+minecraft:stained_glass_pane, id=160, meta=14, color:red, east:true, north:true, south:true, west:true
+minecraft:stained_glass_pane, id=160, meta=15, color:black, east:true, north:true, south:true, west:true
+minecraft:leaves2, id=161, meta=0, check_decay:false, decayable:true, variant:acacia
+minecraft:leaves2, id=161, meta=1, check_decay:false, decayable:true, variant:dark_oak
+minecraft:leaves2, id=161, meta=4, check_decay:false, decayable:false, variant:acacia
+minecraft:leaves2, id=161, meta=5, check_decay:false, decayable:false, variant:dark_oak
+minecraft:leaves2, id=161, meta=8, check_decay:true, decayable:true, variant:acacia
+minecraft:leaves2, id=161, meta=9, check_decay:true, decayable:true, variant:dark_oak
+minecraft:leaves2, id=161, meta=12, check_decay:true, decayable:false, variant:acacia
+minecraft:leaves2, id=161, meta=13, check_decay:true, decayable:false, variant:dark_oak
+minecraft:log2, id=162, meta=0, axis:y, variant:acacia
+minecraft:log2, id=162, meta=1, axis:y, variant:dark_oak
+minecraft:log2, id=162, meta=4, axis:x, variant:acacia
+minecraft:log2, id=162, meta=5, axis:x, variant:dark_oak
+minecraft:log2, id=162, meta=8, axis:z, variant:acacia
+minecraft:log2, id=162, meta=9, axis:z, variant:dark_oak
+minecraft:log2, id=162, meta=12, axis:none, variant:acacia
+minecraft:log2, id=162, meta=13, axis:none, variant:dark_oak
+minecraft:acacia_stairs, id=163, meta=0, facing:east, half:bottom, shape:straight
+minecraft:acacia_stairs, id=163, meta=1, facing:west, half:bottom, shape:straight
+minecraft:acacia_stairs, id=163, meta=2, facing:south, half:bottom, shape:straight
+minecraft:acacia_stairs, id=163, meta=3, facing:north, half:bottom, shape:straight
+minecraft:acacia_stairs, id=163, meta=4, facing:east, half:top, shape:straight
+minecraft:acacia_stairs, id=163, meta=5, facing:west, half:top, shape:straight
+minecraft:acacia_stairs, id=163, meta=6, facing:south, half:top, shape:straight
+minecraft:acacia_stairs, id=163, meta=7, facing:north, half:top, shape:straight
+minecraft:dark_oak_stairs, id=164, meta=0, facing:east, half:bottom, shape:straight
+minecraft:dark_oak_stairs, id=164, meta=1, facing:west, half:bottom, shape:straight
+minecraft:dark_oak_stairs, id=164, meta=2, facing:south, half:bottom, shape:straight
+minecraft:dark_oak_stairs, id=164, meta=3, facing:north, half:bottom, shape:straight
+minecraft:dark_oak_stairs, id=164, meta=4, facing:east, half:top, shape:straight
+minecraft:dark_oak_stairs, id=164, meta=5, facing:west, half:top, shape:straight
+minecraft:dark_oak_stairs, id=164, meta=6, facing:south, half:top, shape:straight
+minecraft:dark_oak_stairs, id=164, meta=7, facing:north, half:top, shape:straight
+minecraft:slime, id=165, meta=0,
+minecraft:barrier, id=166, meta=0,
+minecraft:iron_trapdoor, id=167, meta=0, facing:north, half:bottom, open:false
+minecraft:iron_trapdoor, id=167, meta=1, facing:south, half:bottom, open:false
+minecraft:iron_trapdoor, id=167, meta=2, facing:west, half:bottom, open:false
+minecraft:iron_trapdoor, id=167, meta=3, facing:east, half:bottom, open:false
+minecraft:iron_trapdoor, id=167, meta=4, facing:north, half:bottom, open:true
+minecraft:iron_trapdoor, id=167, meta=5, facing:south, half:bottom, open:true
+minecraft:iron_trapdoor, id=167, meta=6, facing:west, half:bottom, open:true
+minecraft:iron_trapdoor, id=167, meta=7, facing:east, half:bottom, open:true
+minecraft:iron_trapdoor, id=167, meta=8, facing:north, half:top, open:false
+minecraft:iron_trapdoor, id=167, meta=9, facing:south, half:top, open:false
+minecraft:iron_trapdoor, id=167, meta=10, facing:west, half:top, open:false
+minecraft:iron_trapdoor, id=167, meta=11, facing:east, half:top, open:false
+minecraft:iron_trapdoor, id=167, meta=12, facing:north, half:top, open:true
+minecraft:iron_trapdoor, id=167, meta=13, facing:south, half:top, open:true
+minecraft:iron_trapdoor, id=167, meta=14, facing:west, half:top, open:true
+minecraft:iron_trapdoor, id=167, meta=15, facing:east, half:top, open:true
+minecraft:prismarine, id=168, meta=0, variant:prismarine
+minecraft:prismarine, id=168, meta=1, variant:prismarine_bricks
+minecraft:prismarine, id=168, meta=2, variant:dark_prismarine
+minecraft:sea_lantern, id=169, meta=0,
+minecraft:hay_block, id=170, meta=0, axis:y
+minecraft:hay_block, id=170, meta=4, axis:x
+minecraft:hay_block, id=170, meta=8, axis:z
+minecraft:carpet, id=171, meta=0, color:white
+minecraft:carpet, id=171, meta=1, color:orange
+minecraft:carpet, id=171, meta=2, color:magenta
+minecraft:carpet, id=171, meta=3, color:lightBlue
+minecraft:carpet, id=171, meta=4, color:yellow
+minecraft:carpet, id=171, meta=5, color:lime
+minecraft:carpet, id=171, meta=6, color:pink
+minecraft:carpet, id=171, meta=7, color:gray
+minecraft:carpet, id=171, meta=8, color:silver
+minecraft:carpet, id=171, meta=9, color:cyan
+minecraft:carpet, id=171, meta=10, color:purple
+minecraft:carpet, id=171, meta=11, color:blue
+minecraft:carpet, id=171, meta=12, color:brown
+minecraft:carpet, id=171, meta=13, color:green
+minecraft:carpet, id=171, meta=14, color:red
+minecraft:carpet, id=171, meta=15, color:black
+minecraft:hardened_clay, id=172, meta=0,
+minecraft:coal_block, id=173, meta=0,
+minecraft:packed_ice, id=174, meta=0,
+minecraft:double_plant, id=175, meta=0, facing:north, half:lower, variant:sunflower
+minecraft:double_plant, id=175, meta=1, facing:north, half:lower, variant:syringa
+minecraft:double_plant, id=175, meta=2, facing:north, half:lower, variant:double_grass
+minecraft:double_plant, id=175, meta=3, facing:north, half:lower, variant:double_fern
+minecraft:double_plant, id=175, meta=4, facing:north, half:lower, variant:double_rose
+minecraft:double_plant, id=175, meta=5, facing:north, half:lower, variant:paeonia
+minecraft:double_plant, id=175, meta=8, facing:south, half:upper, variant:sunflower
+minecraft:double_plant, id=175, meta=9, facing:west, half:upper, variant:sunflower
+minecraft:double_plant, id=175, meta=10, facing:north, half:upper, variant:sunflower
+minecraft:double_plant, id=175, meta=11, facing:east, half:upper, variant:sunflower
+minecraft:standing_banner, id=176, meta=0, rotation:0
+minecraft:standing_banner, id=176, meta=1, rotation:1
+minecraft:standing_banner, id=176, meta=2, rotation:2
+minecraft:standing_banner, id=176, meta=3, rotation:3
+minecraft:standing_banner, id=176, meta=4, rotation:4
+minecraft:standing_banner, id=176, meta=5, rotation:5
+minecraft:standing_banner, id=176, meta=6, rotation:6
+minecraft:standing_banner, id=176, meta=7, rotation:7
+minecraft:standing_banner, id=176, meta=8, rotation:8
+minecraft:standing_banner, id=176, meta=9, rotation:9
+minecraft:standing_banner, id=176, meta=10, rotation:10
+minecraft:standing_banner, id=176, meta=11, rotation:11
+minecraft:standing_banner, id=176, meta=12, rotation:12
+minecraft:standing_banner, id=176, meta=13, rotation:13
+minecraft:standing_banner, id=176, meta=14, rotation:14
+minecraft:standing_banner, id=176, meta=15, rotation:15
+minecraft:wall_banner, id=177, meta=2, facing:north
+minecraft:wall_banner, id=177, meta=3, facing:south
+minecraft:wall_banner, id=177, meta=4, facing:west
+minecraft:wall_banner, id=177, meta=5, facing:east
+minecraft:daylight_detector_inverted, id=178, meta=0, power:0
+minecraft:daylight_detector_inverted, id=178, meta=1, power:1
+minecraft:daylight_detector_inverted, id=178, meta=2, power:2
+minecraft:daylight_detector_inverted, id=178, meta=3, power:3
+minecraft:daylight_detector_inverted, id=178, meta=4, power:4
+minecraft:daylight_detector_inverted, id=178, meta=5, power:5
+minecraft:daylight_detector_inverted, id=178, meta=6, power:6
+minecraft:daylight_detector_inverted, id=178, meta=7, power:7
+minecraft:daylight_detector_inverted, id=178, meta=8, power:8
+minecraft:daylight_detector_inverted, id=178, meta=9, power:9
+minecraft:daylight_detector_inverted, id=178, meta=10, power:10
+minecraft:daylight_detector_inverted, id=178, meta=11, power:11
+minecraft:daylight_detector_inverted, id=178, meta=12, power:12
+minecraft:daylight_detector_inverted, id=178, meta=13, power:13
+minecraft:daylight_detector_inverted, id=178, meta=14, power:14
+minecraft:daylight_detector_inverted, id=178, meta=15, power:15
+minecraft:red_sandstone, id=179, meta=0, type:red_sandstone
+minecraft:red_sandstone, id=179, meta=1, type:chiseled_red_sandstone
+minecraft:red_sandstone, id=179, meta=2, type:smooth_red_sandstone
+minecraft:red_sandstone_stairs, id=180, meta=0, facing:east, half:bottom, shape:straight
+minecraft:red_sandstone_stairs, id=180, meta=1, facing:west, half:bottom, shape:straight
+minecraft:red_sandstone_stairs, id=180, meta=2, facing:south, half:bottom, shape:straight
+minecraft:red_sandstone_stairs, id=180, meta=3, facing:north, half:bottom, shape:straight
+minecraft:red_sandstone_stairs, id=180, meta=4, facing:east, half:top, shape:straight
+minecraft:red_sandstone_stairs, id=180, meta=5, facing:west, half:top, shape:straight
+minecraft:red_sandstone_stairs, id=180, meta=6, facing:south, half:top, shape:straight
+minecraft:red_sandstone_stairs, id=180, meta=7, facing:north, half:top, shape:straight
+minecraft:double_stone_slab2, id=181, meta=0, seamless:false, variant:red_sandstone
+minecraft:double_stone_slab2, id=181, meta=8, seamless:true, variant:red_sandstone
+minecraft:stone_slab2, id=182, meta=0, half:bottom, variant:red_sandstone
+minecraft:stone_slab2, id=182, meta=8, half:top, variant:red_sandstone
+minecraft:spruce_fence_gate, id=183, meta=0, facing:south, in_wall:true, open:false, powered:false
+minecraft:spruce_fence_gate, id=183, meta=1, facing:west, in_wall:true, open:false, powered:false
+minecraft:spruce_fence_gate, id=183, meta=2, facing:north, in_wall:true, open:false, powered:false
+minecraft:spruce_fence_gate, id=183, meta=3, facing:east, in_wall:true, open:false, powered:false
+minecraft:spruce_fence_gate, id=183, meta=4, facing:south, in_wall:true, open:true, powered:false
+minecraft:spruce_fence_gate, id=183, meta=5, facing:west, in_wall:true, open:true, powered:false
+minecraft:spruce_fence_gate, id=183, meta=6, facing:north, in_wall:true, open:true, powered:false
+minecraft:spruce_fence_gate, id=183, meta=7, facing:east, in_wall:true, open:true, powered:false
+minecraft:spruce_fence_gate, id=183, meta=8, facing:south, in_wall:true, open:false, powered:true
+minecraft:spruce_fence_gate, id=183, meta=9, facing:west, in_wall:true, open:false, powered:true
+minecraft:spruce_fence_gate, id=183, meta=10, facing:north, in_wall:true, open:false, powered:true
+minecraft:spruce_fence_gate, id=183, meta=11, facing:east, in_wall:true, open:false, powered:true
+minecraft:spruce_fence_gate, id=183, meta=12, facing:south, in_wall:true, open:true, powered:true
+minecraft:spruce_fence_gate, id=183, meta=13, facing:west, in_wall:true, open:true, powered:true
+minecraft:spruce_fence_gate, id=183, meta=14, facing:north, in_wall:true, open:true, powered:true
+minecraft:spruce_fence_gate, id=183, meta=15, facing:east, in_wall:true, open:true, powered:true
+minecraft:birch_fence_gate, id=184, meta=0, facing:south, in_wall:true, open:false, powered:false
+minecraft:birch_fence_gate, id=184, meta=1, facing:west, in_wall:true, open:false, powered:false
+minecraft:birch_fence_gate, id=184, meta=2, facing:north, in_wall:true, open:false, powered:false
+minecraft:birch_fence_gate, id=184, meta=3, facing:east, in_wall:true, open:false, powered:false
+minecraft:birch_fence_gate, id=184, meta=4, facing:south, in_wall:true, open:true, powered:false
+minecraft:birch_fence_gate, id=184, meta=5, facing:west, in_wall:true, open:true, powered:false
+minecraft:birch_fence_gate, id=184, meta=6, facing:north, in_wall:true, open:true, powered:false
+minecraft:birch_fence_gate, id=184, meta=7, facing:east, in_wall:true, open:true, powered:false
+minecraft:birch_fence_gate, id=184, meta=8, facing:south, in_wall:true, open:false, powered:true
+minecraft:birch_fence_gate, id=184, meta=9, facing:west, in_wall:true, open:false, powered:true
+minecraft:birch_fence_gate, id=184, meta=10, facing:north, in_wall:true, open:false, powered:true
+minecraft:birch_fence_gate, id=184, meta=11, facing:east, in_wall:true, open:false, powered:true
+minecraft:birch_fence_gate, id=184, meta=12, facing:south, in_wall:true, open:true, powered:true
+minecraft:birch_fence_gate, id=184, meta=13, facing:west, in_wall:true, open:true, powered:true
+minecraft:birch_fence_gate, id=184, meta=14, facing:north, in_wall:true, open:true, powered:true
+minecraft:birch_fence_gate, id=184, meta=15, facing:east, in_wall:true, open:true, powered:true
+minecraft:jungle_fence_gate, id=185, meta=0, facing:south, in_wall:true, open:false, powered:false
+minecraft:jungle_fence_gate, id=185, meta=1, facing:west, in_wall:true, open:false, powered:false
+minecraft:jungle_fence_gate, id=185, meta=2, facing:north, in_wall:true, open:false, powered:false
+minecraft:jungle_fence_gate, id=185, meta=3, facing:east, in_wall:true, open:false, powered:false
+minecraft:jungle_fence_gate, id=185, meta=4, facing:south, in_wall:true, open:true, powered:false
+minecraft:jungle_fence_gate, id=185, meta=5, facing:west, in_wall:true, open:true, powered:false
+minecraft:jungle_fence_gate, id=185, meta=6, facing:north, in_wall:true, open:true, powered:false
+minecraft:jungle_fence_gate, id=185, meta=7, facing:east, in_wall:true, open:true, powered:false
+minecraft:jungle_fence_gate, id=185, meta=8, facing:south, in_wall:true, open:false, powered:true
+minecraft:jungle_fence_gate, id=185, meta=9, facing:west, in_wall:true, open:false, powered:true
+minecraft:jungle_fence_gate, id=185, meta=10, facing:north, in_wall:true, open:false, powered:true
+minecraft:jungle_fence_gate, id=185, meta=11, facing:east, in_wall:true, open:false, powered:true
+minecraft:jungle_fence_gate, id=185, meta=12, facing:south, in_wall:true, open:true, powered:true
+minecraft:jungle_fence_gate, id=185, meta=13, facing:west, in_wall:true, open:true, powered:true
+minecraft:jungle_fence_gate, id=185, meta=14, facing:north, in_wall:true, open:true, powered:true
+minecraft:jungle_fence_gate, id=185, meta=15, facing:east, in_wall:true, open:true, powered:true
+minecraft:dark_oak_fence_gate, id=186, meta=0, facing:south, in_wall:true, open:false, powered:false
+minecraft:dark_oak_fence_gate, id=186, meta=1, facing:west, in_wall:true, open:false, powered:false
+minecraft:dark_oak_fence_gate, id=186, meta=2, facing:north, in_wall:true, open:false, powered:false
+minecraft:dark_oak_fence_gate, id=186, meta=3, facing:east, in_wall:true, open:false, powered:false
+minecraft:dark_oak_fence_gate, id=186, meta=4, facing:south, in_wall:true, open:true, powered:false
+minecraft:dark_oak_fence_gate, id=186, meta=5, facing:west, in_wall:true, open:true, powered:false
+minecraft:dark_oak_fence_gate, id=186, meta=6, facing:north, in_wall:true, open:true, powered:false
+minecraft:dark_oak_fence_gate, id=186, meta=7, facing:east, in_wall:true, open:true, powered:false
+minecraft:dark_oak_fence_gate, id=186, meta=8, facing:south, in_wall:true, open:false, powered:true
+minecraft:dark_oak_fence_gate, id=186, meta=9, facing:west, in_wall:true, open:false, powered:true
+minecraft:dark_oak_fence_gate, id=186, meta=10, facing:north, in_wall:true, open:false, powered:true
+minecraft:dark_oak_fence_gate, id=186, meta=11, facing:east, in_wall:true, open:false, powered:true
+minecraft:dark_oak_fence_gate, id=186, meta=12, facing:south, in_wall:true, open:true, powered:true
+minecraft:dark_oak_fence_gate, id=186, meta=13, facing:west, in_wall:true, open:true, powered:true
+minecraft:dark_oak_fence_gate, id=186, meta=14, facing:north, in_wall:true, open:true, powered:true
+minecraft:dark_oak_fence_gate, id=186, meta=15, facing:east, in_wall:true, open:true, powered:true
+minecraft:acacia_fence_gate, id=187, meta=0, facing:south, in_wall:true, open:false, powered:false
+minecraft:acacia_fence_gate, id=187, meta=1, facing:west, in_wall:true, open:false, powered:false
+minecraft:acacia_fence_gate, id=187, meta=2, facing:north, in_wall:true, open:false, powered:false
+minecraft:acacia_fence_gate, id=187, meta=3, facing:east, in_wall:true, open:false, powered:false
+minecraft:acacia_fence_gate, id=187, meta=4, facing:south, in_wall:true, open:true, powered:false
+minecraft:acacia_fence_gate, id=187, meta=5, facing:west, in_wall:true, open:true, powered:false
+minecraft:acacia_fence_gate, id=187, meta=6, facing:north, in_wall:true, open:true, powered:false
+minecraft:acacia_fence_gate, id=187, meta=7, facing:east, in_wall:true, open:true, powered:false
+minecraft:acacia_fence_gate, id=187, meta=8, facing:south, in_wall:true, open:false, powered:true
+minecraft:acacia_fence_gate, id=187, meta=9, facing:west, in_wall:true, open:false, powered:true
+minecraft:acacia_fence_gate, id=187, meta=10, facing:north, in_wall:true, open:false, powered:true
+minecraft:acacia_fence_gate, id=187, meta=11, facing:east, in_wall:true, open:false, powered:true
+minecraft:acacia_fence_gate, id=187, meta=12, facing:south, in_wall:true, open:true, powered:true
+minecraft:acacia_fence_gate, id=187, meta=13, facing:west, in_wall:true, open:true, powered:true
+minecraft:acacia_fence_gate, id=187, meta=14, facing:north, in_wall:true, open:true, powered:true
+minecraft:acacia_fence_gate, id=187, meta=15, facing:east, in_wall:true, open:true, powered:true
+minecraft:spruce_fence, id=188, meta=0, east:true, north:true, south:true, west:true
+minecraft:birch_fence, id=189, meta=0, east:true, north:true, south:true, west:true
+minecraft:jungle_fence, id=190, meta=0, east:true, north:true, south:true, west:true
+minecraft:dark_oak_fence, id=191, meta=0, east:true, north:true, south:true, west:true
+minecraft:acacia_fence, id=192, meta=0, east:true, north:true, south:true, west:true
+minecraft:spruce_door, id=193, meta=0, facing:east, half:lower, hinge:left, open:false, powered:true
+minecraft:spruce_door, id=193, meta=1, facing:south, half:lower, hinge:left, open:false, powered:true
+minecraft:spruce_door, id=193, meta=2, facing:west, half:lower, hinge:left, open:false, powered:true
+minecraft:spruce_door, id=193, meta=3, facing:north, half:lower, hinge:left, open:false, powered:true
+minecraft:spruce_door, id=193, meta=4, facing:east, half:lower, hinge:left, open:true, powered:true
+minecraft:spruce_door, id=193, meta=5, facing:south, half:lower, hinge:left, open:true, powered:true
+minecraft:spruce_door, id=193, meta=6, facing:west, half:lower, hinge:left, open:true, powered:true
+minecraft:spruce_door, id=193, meta=7, facing:north, half:lower, hinge:left, open:true, powered:true
+minecraft:spruce_door, id=193, meta=8, facing:north, half:upper, hinge:left, open:true, powered:false
+minecraft:spruce_door, id=193, meta=9, facing:north, half:upper, hinge:right, open:true, powered:false
+minecraft:spruce_door, id=193, meta=10, facing:north, half:upper, hinge:left, open:true, powered:true
+minecraft:spruce_door, id=193, meta=11, facing:north, half:upper, hinge:right, open:true, powered:true
+minecraft:birch_door, id=194, meta=0, facing:east, half:lower, hinge:left, open:false, powered:true
+minecraft:birch_door, id=194, meta=1, facing:south, half:lower, hinge:left, open:false, powered:true
+minecraft:birch_door, id=194, meta=2, facing:west, half:lower, hinge:left, open:false, powered:true
+minecraft:birch_door, id=194, meta=3, facing:north, half:lower, hinge:left, open:false, powered:true
+minecraft:birch_door, id=194, meta=4, facing:east, half:lower, hinge:left, open:true, powered:true
+minecraft:birch_door, id=194, meta=5, facing:south, half:lower, hinge:left, open:true, powered:true
+minecraft:birch_door, id=194, meta=6, facing:west, half:lower, hinge:left, open:true, powered:true
+minecraft:birch_door, id=194, meta=7, facing:north, half:lower, hinge:left, open:true, powered:true
+minecraft:birch_door, id=194, meta=8, facing:north, half:upper, hinge:left, open:true, powered:false
+minecraft:birch_door, id=194, meta=9, facing:north, half:upper, hinge:right, open:true, powered:false
+minecraft:birch_door, id=194, meta=10, facing:north, half:upper, hinge:left, open:true, powered:true
+minecraft:birch_door, id=194, meta=11, facing:north, half:upper, hinge:right, open:true, powered:true
+minecraft:jungle_door, id=195, meta=0, facing:east, half:lower, hinge:left, open:false, powered:true
+minecraft:jungle_door, id=195, meta=1, facing:south, half:lower, hinge:left, open:false, powered:true
+minecraft:jungle_door, id=195, meta=2, facing:west, half:lower, hinge:left, open:false, powered:true
+minecraft:jungle_door, id=195, meta=3, facing:north, half:lower, hinge:left, open:false, powered:true
+minecraft:jungle_door, id=195, meta=4, facing:east, half:lower, hinge:left, open:true, powered:true
+minecraft:jungle_door, id=195, meta=5, facing:south, half:lower, hinge:left, open:true, powered:true
+minecraft:jungle_door, id=195, meta=6, facing:west, half:lower, hinge:left, open:true, powered:true
+minecraft:jungle_door, id=195, meta=7, facing:north, half:lower, hinge:left, open:true, powered:true
+minecraft:jungle_door, id=195, meta=8, facing:north, half:upper, hinge:left, open:true, powered:false
+minecraft:jungle_door, id=195, meta=9, facing:north, half:upper, hinge:right, open:true, powered:false
+minecraft:jungle_door, id=195, meta=10, facing:north, half:upper, hinge:left, open:true, powered:true
+minecraft:jungle_door, id=195, meta=11, facing:north, half:upper, hinge:right, open:true, powered:true
+minecraft:acacia_door, id=196, meta=0, facing:east, half:lower, hinge:left, open:false, powered:true
+minecraft:acacia_door, id=196, meta=1, facing:south, half:lower, hinge:left, open:false, powered:true
+minecraft:acacia_door, id=196, meta=2, facing:west, half:lower, hinge:left, open:false, powered:true
+minecraft:acacia_door, id=196, meta=3, facing:north, half:lower, hinge:left, open:false, powered:true
+minecraft:acacia_door, id=196, meta=4, facing:east, half:lower, hinge:left, open:true, powered:true
+minecraft:acacia_door, id=196, meta=5, facing:south, half:lower, hinge:left, open:true, powered:true
+minecraft:acacia_door, id=196, meta=6, facing:west, half:lower, hinge:left, open:true, powered:true
+minecraft:acacia_door, id=196, meta=7, facing:north, half:lower, hinge:left, open:true, powered:true
+minecraft:acacia_door, id=196, meta=8, facing:north, half:upper, hinge:left, open:true, powered:false
+minecraft:acacia_door, id=196, meta=9, facing:north, half:upper, hinge:right, open:true, powered:false
+minecraft:acacia_door, id=196, meta=10, facing:north, half:upper, hinge:left, open:true, powered:true
+minecraft:acacia_door, id=196, meta=11, facing:north, half:upper, hinge:right, open:true, powered:true
+minecraft:dark_oak_door, id=197, meta=0, facing:east, half:lower, hinge:left, open:false, powered:true
+minecraft:dark_oak_door, id=197, meta=1, facing:south, half:lower, hinge:left, open:false, powered:true
+minecraft:dark_oak_door, id=197, meta=2, facing:west, half:lower, hinge:left, open:false, powered:true
+minecraft:dark_oak_door, id=197, meta=3, facing:north, half:lower, hinge:left, open:false, powered:true
+minecraft:dark_oak_door, id=197, meta=4, facing:east, half:lower, hinge:left, open:true, powered:true
+minecraft:dark_oak_door, id=197, meta=5, facing:south, half:lower, hinge:left, open:true, powered:true
+minecraft:dark_oak_door, id=197, meta=6, facing:west, half:lower, hinge:left, open:true, powered:true
+minecraft:dark_oak_door, id=197, meta=7, facing:north, half:lower, hinge:left, open:true, powered:true
+minecraft:dark_oak_door, id=197, meta=8, facing:north, half:upper, hinge:left, open:true, powered:false
+minecraft:dark_oak_door, id=197, meta=9, facing:north, half:upper, hinge:right, open:true, powered:false
+minecraft:dark_oak_door, id=197, meta=10, facing:north, half:upper, hinge:left, open:true, powered:true
+minecraft:dark_oak_door, id=197, meta=11, facing:north, half:upper, hinge:right, open:true, powered:true
 acblocks:dead_animal_block, id=198, meta=0,
 acblocks:rat_web, id=199, meta=0,
 acblocks:abacus_web, id=200, meta=0,

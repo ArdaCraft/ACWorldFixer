@@ -22,6 +22,16 @@ public class BiomeReplacer implements Replacer {
     }
 
     @Override
+    public boolean typeMatches(int type) {
+        return replacer.typeMatches(type);
+    }
+
+    @Override
+    public boolean dataMatches(int data) {
+        return replacer.dataMatches(data);
+    }
+
+    @Override
     public BiomeReplacer clone() {
         return new BiomeReplacer(biomeId, replacer.clone());
     }

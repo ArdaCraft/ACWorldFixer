@@ -17,7 +17,7 @@ public class RangeToRangeReplacer extends SimpleReplacer {
     }
 
     @Override
-    boolean dataMatches(int data) {
+    public boolean dataMatches(int data) {
         return min <= data && max >= data;
     }
 
