@@ -1,9 +1,7 @@
 package me.dags.blockr.world;
 
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 
 /**
  * @author dags <dags@dags.me>
@@ -27,10 +25,5 @@ public class WorldDataResource extends WorldData {
 
     InputStream getInputStream() throws IOException {
         return WorldDataResource.class.getResourceAsStream(path);
-    }
-
-    @Override
-    OutputStream getOutputStream() throws IOException {
-        return new ByteArrayOutputStream();
     }
 }

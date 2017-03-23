@@ -16,10 +16,16 @@ public class BlockRegistry {
         blockIds.put("minecraft:air", 0);
     }
 
+    public void dump() {
+        for (Map.Entry<String, Integer> e : blockIds.entrySet()) {
+            System.out.println(e);
+        }
+    }
+
     public void register(String block, int id) {
         blockIds.put(block.trim(), id);
-        System.out.printf("%s=%s", block, id);
-        System.out.println();
+        // System.out.printf("%s=%s", block, id);
+        // System.out.println();
     }
 
     public List<String> getRemappedBlocks(BlockRegistry from) {

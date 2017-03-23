@@ -45,7 +45,7 @@ public class App {
 
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
-        frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 
     private static JPanel root() {
@@ -160,13 +160,19 @@ public class App {
         try (InputStream in = App.class.getResourceAsStream("/mappings.json")) {
             File source = options.world;
             File output = new File(source.getParent());
+
             WorldData from = new WorldDataFile(new File(source, "level.dat"));
+            from.loadRegistry();
+
             WorldData to = options.level == null ? new WorldDataResource("/level.dat") : new WorldDataFile(options.level);
+            to.loadRegistry();
+
             Config config = NodeTypeAdapters.of(Config.class).fromNode(NodeAdapter.json().from(in));
             Config.do_entities = false;
             Config.auto_remap = options.remap;
             int threads = options.threads;
             World world = new World(source, output, from, to, config, threads);
+
             new Thread(world::convert).start();
         } catch (IOException e) {
             e.printStackTrace();

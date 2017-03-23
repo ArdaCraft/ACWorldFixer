@@ -4,10 +4,7 @@ import me.dags.blockr.block.BlockRegistry;
 import org.jnbt.*;
 import org.pepsoft.minecraft.Block;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
 
@@ -17,7 +14,7 @@ import java.util.zip.GZIPOutputStream;
 public abstract class WorldData {
 
     private CompoundTag cachedLevel;
-    final BlockRegistry blockRegistry = new BlockRegistry();
+    public final BlockRegistry blockRegistry = new BlockRegistry();
 
     public void loadRegistry() {
         if (getLevelData().containsTag("FML")) {
@@ -73,14 +70,16 @@ public abstract class WorldData {
     }
 
     public void writeLevelData(File outFile) {
+        System.out.println("WRITING REGISTRY TO: " + outFile);
+
         try {
             if (!outFile.exists()) {
                 outFile.getParentFile().mkdirs();
                 outFile.createNewFile();
             }
-            try (OutputStream output = getOutputStream()) {
+            try (OutputStream output = new FileOutputStream(outFile)) {
                 try (NBTOutputStream out = new NBTOutputStream(new GZIPOutputStream(output))) {
-                    out.writeTag(cachedLevel);
+                    out.writeTag(getLevelData());
                     out.close();
                 }
             }
@@ -101,6 +100,4 @@ public abstract class WorldData {
     public abstract String error();
 
     abstract InputStream getInputStream() throws IOException;
-
-    abstract OutputStream getOutputStream() throws IOException;
 }

@@ -1,6 +1,9 @@
 package me.dags.blockr.world;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 
 /**
  * @author dags <dags@dags.me>
@@ -29,10 +32,5 @@ public class WorldDataFile extends WorldData {
     @Override
     InputStream getInputStream() throws IOException {
         return new FileInputStream(level);
-    }
-
-    @Override
-    OutputStream getOutputStream() throws IOException {
-        return new FileOutputStream(level);
     }
 }
