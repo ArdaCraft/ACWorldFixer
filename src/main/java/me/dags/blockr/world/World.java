@@ -1,7 +1,6 @@
 package me.dags.blockr.world;
 
 import me.dags.blockr.Config;
-import me.dags.blockr.WorldData;
 import me.dags.blockr.app.SetupWindow;
 import me.dags.blockr.block.BlockInfo;
 import me.dags.blockr.block.replacers.Replacer;
@@ -193,7 +192,7 @@ public class World {
             filter.put(id, list);
         }
 
-        if (Config.autoRemap()) {
+        if (Config.auto_remap) {
             // Search for blocks that have been mapped to different ids in each level.dat file and create
             // a new replace rule so that they transfer properly to the 'toWorld' level.dat registry.
             // Auto-remap rules will execute after any user defined rules

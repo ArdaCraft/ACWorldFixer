@@ -17,7 +17,7 @@ public class ChangeStats {
     private static final AtomicInteger overallRegionProgress = new AtomicInteger(0);
     private static final AtomicLong chunksComplete = new AtomicLong(0);
     private static final AtomicLong blockChanges = new AtomicLong(0);
-    private static final AtomicLong entitiesRemoved = new AtomicLong(0);
+    private static final AtomicLong entitiesChanged = new AtomicLong(0);
     private static final AtomicLong tileEntitiesRemoved = new AtomicLong(0);
 
     static final AtomicBoolean running = new AtomicBoolean(true);
@@ -57,7 +57,7 @@ public class ChangeStats {
     }
 
     static void incEntityCount() {
-        entitiesRemoved.getAndAdd(1);
+        entitiesChanged.getAndAdd(1);
     }
 
     static void incTileEntityCount() {
@@ -78,7 +78,7 @@ public class ChangeStats {
         int dimensions = dimensionsComplete.get();
         long chunks = Math.abs(chunksComplete.get());
         long blocks = Math.abs(blockChanges.get());
-        long entities = Math.abs(entitiesRemoved.get());
+        long entities = Math.abs(entitiesChanged.get());
         long tileEntities = Math.abs(tileEntitiesRemoved.get());
         long totalBlocks = Math.abs(chunks * 16 * 16 * 256);
 
@@ -104,7 +104,7 @@ public class ChangeStats {
         JLabel bc = new JLabel(" Blocks changed: " + numFormat(blocks));
         bc.setPreferredSize(new java.awt.Dimension(250, 25));
 
-        JLabel er = new JLabel(" Entities removed: " + numFormat(entities));
+        JLabel er = new JLabel(" Entities changed: " + numFormat(entities));
         er.setPreferredSize(new java.awt.Dimension(250, 25));
 
         JLabel tr = new JLabel(" TileEntities removed: " + numFormat(tileEntities));

@@ -1,10 +1,10 @@
 package me.dags.blockr.app;
 
 import me.dags.blockr.Config;
-import me.dags.blockr.WorldData;
 import me.dags.blockr.world.World;
+import me.dags.blockr.world.WorldData;
+import me.dags.blockr.world.WorldDataFile;
 import me.dags.data.NodeAdapter;
-import me.dags.data.node.Node;
 import me.dags.data.node.NodeTypeAdapters;
 
 import javax.swing.*;
@@ -70,19 +70,9 @@ public class SetupWindow extends JPanel {
         chooseOutput.addActionListener(choose(outputDir, JFileChooser.DIRECTORIES_ONLY, File::isDirectory, f -> this.outputDir = f));
 
         // load config
-        JButton chooseConfig = new JButton("Load Config");
-        chooseConfig.setPreferredSize(new Dimension(buttonWidth, lineHeight));
+        JButton chooseConfig = new JButton("Load Mappings");
+        chooseConfig.setPreferredSize(new Dimension(buttonWidth + 50, lineHeight));
         chooseConfig.addActionListener(choose(new JTextField(), JFileChooser.FILES_ONLY, f -> f.getName().endsWith(".json"), this::loadConfig));
-
-        // edit config
-        JButton editConfig = new JButton("Edit Config");
-        editConfig.addActionListener(editConfig());
-        editConfig.setPreferredSize(new Dimension(buttonWidth, lineHeight));
-
-        // save config
-        JButton saveConfig = new JButton("Save Config");
-        saveConfig.setPreferredSize(new Dimension(buttonWidth, lineHeight));
-        saveConfig.addActionListener(saveConfig());
 
         cores.setPreferredSize(new Dimension(fullWidth, 35));
         cores.setMinimum(1);
@@ -96,7 +86,7 @@ public class SetupWindow extends JPanel {
         JCheckBox remap = new JCheckBox("Auto-Remap");
         remap.setSelected(false);
         remap.setToolTipText("Detect and remap blocks if they exist in the world and the level.dat but have different IDs");
-        remap.addActionListener(e -> Config.setAutoRemap(remap.isSelected()));
+        remap.addActionListener(e -> Config.auto_remap = remap.isSelected());
 
         ok.setPreferredSize(new Dimension(buttonWidth, lineHeight));
         ok.addActionListener(ok());
@@ -118,7 +108,7 @@ public class SetupWindow extends JPanel {
         this.add(toPanel(levelLabel, targetLevel, chooseLevel));
         this.add(toPanel(worldLabel, worldDir, chooseDir));
         this.add(toPanel(outputLabel, outputDir, chooseOutput));
-        this.add(toPanel(chooseConfig, editConfig, saveConfig));
+        this.add(toPanel(chooseConfig));
         this.add(toPanel(coresLabel, cores));
         this.add(toPanel(remap, ok));
     }
@@ -136,7 +126,7 @@ public class SetupWindow extends JPanel {
     }
 
     private void loadLevelData(File target, Consumer<WorldData> consumer) {
-        WorldData worldData = new WorldData(target);
+        WorldData worldData = new WorldDataFile(target);
         if (!worldData.validate()) {
             errorWindow("Invalid level.dat selected!", worldData.error());
             return;
@@ -179,51 +169,6 @@ public class SetupWindow extends JPanel {
         };
     }
 
-    private ActionListener editConfig() {
-        return e -> {
-            if (this.fromWorld == null) {
-                errorWindow("World directory not selected!", "");
-                return;
-            }
-            if (this.toWorld == null) {
-                errorWindow("level.dat not selected!", "");
-                return;
-            }
-            if (config == null) {
-                config = new Config();
-            }
-            JFrame frame = new JFrame();
-            frame.setTitle("Remapper");
-            frame.setLayout(new GridBagLayout());
-            frame.add(new MappingWindow(this, frame));
-            frame.pack();
-            frame.setLocationRelativeTo(null);
-            frame.setVisible(true);
-            frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-        };
-    }
-
-    private ActionListener saveConfig() {
-        return e -> {
-            JFileChooser dirChooser = new JFileChooser();
-            dirChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-            dirChooser.setFileHidingEnabled(false);
-            dirChooser.ensureFileIsVisible(WORKING_DIR);
-            dirChooser.setSelectedFile(WORKING_DIR);
-            int response = dirChooser.showOpenDialog(SetupWindow.this);
-            switch (response) {
-                case JFileChooser.APPROVE_OPTION:
-                    File target = dirChooser.getSelectedFile();
-                    File out = new File(target, "config.json");
-                    Node node = NodeTypeAdapters.of(Config.class).toNode(config != null ? config : new Config());
-                    NodeAdapter.json().to(node, out);
-                    break;
-                default:
-                    break;
-            }
-        };
-    }
-
     private ActionListener ok() {
         return e -> {
             if (this.fromWorld == null) {
@@ -254,11 +199,7 @@ public class SetupWindow extends JPanel {
             try {
                 final World world = new World(worldDir, outputDir, fromWorld, toWorld, config, cores.getValue());
 
-                new Thread() {
-                    public void run() {
-                        world.convert();
-                    }
-                }.start();
+                new Thread(world::convert).start();
 
                 ok.setEnabled(false);
             } catch (Exception ex) {

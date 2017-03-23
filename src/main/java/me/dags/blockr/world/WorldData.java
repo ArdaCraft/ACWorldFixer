@@ -1,28 +1,23 @@
-package me.dags.blockr;
+package me.dags.blockr.world;
 
 import me.dags.blockr.block.BlockRegistry;
 import org.jnbt.*;
 import org.pepsoft.minecraft.Block;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
 
 /**
  * @author dags <dags@dags.me>
  */
-public class WorldData {
+public abstract class WorldData {
 
-    private final File levelIn;
     private CompoundTag cachedLevel;
-    public final BlockRegistry blockRegistry = new BlockRegistry();
-
-    public WorldData(File levelIn) {
-        this.levelIn = levelIn;
-    }
+    final BlockRegistry blockRegistry = new BlockRegistry();
 
     public void loadRegistry() {
         if (getLevelData().containsTag("FML")) {
@@ -58,7 +53,7 @@ public class WorldData {
         if (cachedLevel != null) {
             return cachedLevel;
         }
-        try (FileInputStream input = new FileInputStream(levelIn)){
+        try (InputStream input = getInputStream()){
             try (NBTInputStream out = new NBTInputStream(new GZIPInputStream(input))) {
                 Tag tag = out.readTag();
                 if (tag instanceof CompoundTag) {
@@ -77,7 +72,7 @@ public class WorldData {
                 outFile.getParentFile().mkdirs();
                 outFile.createNewFile();
             }
-            try (FileOutputStream output = new FileOutputStream(outFile)) {
+            try (OutputStream output = getOutputStream()) {
                 try (NBTOutputStream out = new NBTOutputStream(new GZIPOutputStream(output))) {
                     out.writeTag(cachedLevel);
                     out.close();
@@ -95,14 +90,11 @@ public class WorldData {
         blockRegistry.register(name, id);
     }
 
-    public boolean validate() {
-        return levelIn.exists();
-    }
+    public abstract boolean validate();
 
-    public String error() {
-        if (!levelIn.exists()) {
-            return "level.dat is missing!";
-        }
-        return "region directory is missing!";
-    }
+    public abstract String error();
+
+    abstract InputStream getInputStream() throws IOException;
+
+    abstract OutputStream getOutputStream() throws IOException;
 }

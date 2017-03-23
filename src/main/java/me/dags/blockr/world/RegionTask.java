@@ -1,12 +1,11 @@
 package me.dags.blockr.world;
 
+import me.dags.blockr.Config;
 import me.dags.blockr.block.replacers.Replacer;
-import org.jnbt.CompoundTag;
-import org.jnbt.NBTInputStream;
-import org.jnbt.NBTOutputStream;
-import org.pepsoft.minecraft.Chunk;
-import org.pepsoft.minecraft.ChunkImpl2;
-import org.pepsoft.minecraft.RegionFile;
+import me.dags.blockr.extra.Art;
+import me.dags.blockr.extra.LegacyArt;
+import org.jnbt.*;
+import org.pepsoft.minecraft.*;
 
 import java.io.*;
 import java.util.concurrent.Callable;
@@ -90,6 +89,11 @@ public class RegionTask implements Runnable, Callable<Object> {
         if (replacers.length > 0) {
             processBlocks(chunk);
         }
+
+        if (Config.do_entities) {
+            processEntities(chunk);
+        }
+
         ChangeStats.incChunkCount();
     }
 
@@ -104,6 +108,7 @@ public class RegionTask implements Runnable, Callable<Object> {
                         if (replacers == null) {
                             continue;
                         }
+
                         for (Replacer replacer : replacers) {
                             if (replacer.apply(chunk, id, x, y, z)) {
                                 ChangeStats.incBlockCount();
@@ -112,6 +117,42 @@ public class RegionTask implements Runnable, Callable<Object> {
                         }
                     }
                 }
+            }
+        }
+    }
+
+    private static final byte SOUTH = 0;
+    private static final byte WEST = 1;
+
+    private void processEntities(Chunk chunk) {
+        for (Entity entity : chunk.getEntities()) {
+            String id = entity.getId();
+            if (id.startsWith("acpaintings")) {
+                CompoundTag tag = (CompoundTag) entity.toNBT();
+
+                String newId = "conquest" + id.substring("acpaintings".length());
+                tag.setTag(Constants.TAG_ID, new StringTag(Constants.TAG_ID, newId));
+                
+                String artName = tag.getTag("Name").getValue().toString();
+                LegacyArt legacyArt = LegacyArt.forName(artName);
+                Art art = legacyArt.toArt();
+                tag.setTag("Name", null);
+                tag.setTag("ArtID", new IntTag("ArtID", art.index()));
+
+                if (art.sizeX == 32 || art.sizeX == 64) {
+                    byte face = (byte) tag.getTag("Facing").getValue();
+
+                    if (face == SOUTH) {
+                        int TileX = (int) tag.getTag("TileX").getValue();
+                        tag.setTag("TileX", new IntTag("TileX", TileX + 1));
+                    } else if (face == WEST) {
+                        int TileZ = (int) tag.getTag("TileZ").getValue();
+                        tag.setTag("TileZ", new IntTag("TileZ", TileZ + 1));
+                    }
+                }
+
+
+                ChangeStats.incEntityCount();
             }
         }
     }

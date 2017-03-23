@@ -29,7 +29,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>me.dags.blockr.app.Launch</mainClass>
+                            <mainClass>me.dags.blockr.simple.App</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
