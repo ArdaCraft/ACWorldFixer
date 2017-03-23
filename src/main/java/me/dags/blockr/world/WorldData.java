@@ -46,7 +46,13 @@ public abstract class WorldData {
     public void copyRegistries(WorldData from) {
         CompoundTag FML = (CompoundTag) from.getLevelData().getTag("FML");
         CompoundTag registries = (CompoundTag) FML.getTag("Registries");
-        ((CompoundTag) getLevelData().getTag("FML")).setTag("Registries", registries);
+
+        CompoundTag toFML = (CompoundTag) getLevelData().getTag("FML");
+        if (toFML == null) {
+            getLevelData().setTag("FML", FML.clone());
+        } else {
+            toFML.setTag("Registries", registries);
+        }
     }
 
     public CompoundTag getLevelData() {

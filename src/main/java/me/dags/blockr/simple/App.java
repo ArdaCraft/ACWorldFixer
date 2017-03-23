@@ -178,6 +178,7 @@ public class App {
         chooser.setCurrentDirectory(DIR);
         chooser.setDialogTitle(title);
         chooser.setFileSelectionMode(mode);
+        chooser.setFileHidingEnabled(false);
 
         int option = chooser.showOpenDialog(parent);
 
