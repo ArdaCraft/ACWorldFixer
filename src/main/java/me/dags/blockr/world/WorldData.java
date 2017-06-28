@@ -5,6 +5,7 @@ import org.jnbt.*;
 import org.pepsoft.minecraft.Block;
 
 import java.io.*;
+import java.util.HashMap;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
 
@@ -40,18 +41,6 @@ public abstract class WorldData {
         }
     }
 
-    public void copyRegistries(WorldData from) {
-        CompoundTag FML = (CompoundTag) from.getLevelData().getTag("FML");
-        CompoundTag registries = (CompoundTag) FML.getTag("Registries");
-
-        CompoundTag toFML = (CompoundTag) getLevelData().getTag("FML");
-        if (toFML == null) {
-            getLevelData().setTag("FML", FML.clone());
-        } else {
-            toFML.setTag("Registries", registries);
-        }
-    }
-
     public CompoundTag getLevelData() {
         if (cachedLevel != null) {
             return cachedLevel;
@@ -69,8 +58,29 @@ public abstract class WorldData {
         }
     }
 
-    public void writeLevelData(File outFile) {
-        System.out.println("WRITING REGISTRY TO: " + outFile);
+    public static CompoundTag mergeLevels(WorldData oldData, WorldData newData) {
+        CompoundTag old = oldData.getLevelData().clone();
+
+        CompoundTag Data = (CompoundTag) old.getTag("Data");
+        CompoundTag FML = (CompoundTag) newData.getLevelData().getTag("FML").clone();
+        CompoundTag Forge = (CompoundTag) old.getTag("Forge");
+
+        CompoundTag oldFml = (CompoundTag) old.getTag("FML");
+        if (oldFml != null) {
+            // not sure if necessary, probably gets overwritten anyway
+            FML.setTag("ModList", oldFml.getTag("ModList").clone());
+        }
+
+        CompoundTag level = new CompoundTag("", new HashMap<>());
+        level.setTag("Data", Data);
+        level.setTag("FML", FML);
+        level.setTag("Forge", Forge);
+
+        return level;
+    }
+
+    public static void writeLevelData(Tag tag, File outFile) {
+        System.out.println("WRITING LEVEL TO: " + outFile);
 
         try {
             if (!outFile.exists()) {
@@ -79,7 +89,7 @@ public abstract class WorldData {
             }
             try (OutputStream output = new FileOutputStream(outFile)) {
                 try (NBTOutputStream out = new NBTOutputStream(new GZIPOutputStream(output))) {
-                    out.writeTag(getLevelData());
+                    out.writeTag(tag);
                     out.close();
                 }
             }
