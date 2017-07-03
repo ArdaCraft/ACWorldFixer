@@ -82,7 +82,6 @@ public class BlockInfo {
 
         @Override
         public BlockInfo fromNode(Node node) {
-            System.out.println(node);
             if (node.isNodeObject()) {
                 String name = node.asNodeObject().get("name").asString();
                 int min = node.asNodeObject().get("min").asNumber().intValue();

@@ -20,6 +20,8 @@ import java.util.concurrent.Executors;
  */
 public class World {
 
+    private static List<String> conversions = new LinkedList<>();
+
     private final File outputDirRoot;
     private final WorldData fromWorld;
     private final WorldData toWorld;
@@ -164,7 +166,6 @@ public class World {
 
     private Replacer[][] getRules(Config config) {
         int max = 0;
-
         Map<Integer, List<Replacer>> filter = new HashMap<>();
 
         for (BlockInfo block: config.copyBelow) {
@@ -175,8 +176,6 @@ public class World {
             List<Replacer> list = filter.getOrDefault(id, new ArrayList<>());
             list.add(Replacers.matchTypeAndDataReplaceWithBelow(id, fromMin, fromMax));
             filter.put(id, list);
-
-            System.out.println(String.format("Creating copy-below replacer for %s -> %s[%s:%s]", block.name, id, fromMin, fromMax));
         }
 
         // Loop over the config block mappings and interpret into Replacers
@@ -205,9 +204,13 @@ public class World {
                 list.add(replacer);
                 filter.put(fromId, list);
                 max = fromId > max ? fromId : max;
-                System.out.println(String.format("Auto-remapping blockid for %s [%s -> %s]", block, fromId, toId));
+
+                record("(Auto) ", block, block, fromId, toId, -1, -1);
             }
         }
+
+        Collections.sort(conversions);
+        conversions.forEach(System.out::println);
 
         Replacer[][] replacers = new Replacer[max + 1][];
         filter.entrySet().forEach(e -> {
@@ -231,6 +234,8 @@ public class World {
         int toId = toWorld.blockRegistry.getId(blockInfo.to.name);
         int toMinData = blockInfo.to.min;
         int toMaxData = blockInfo.to.max;
+
+        record(blockInfo, fromId, toId);
 
         Replacer replacer = null;
 
@@ -287,5 +292,13 @@ public class World {
             }
         }
         return false;
+    }
+
+    private static void record(BlockInfo info, int from, int to) {
+        conversions.add(String.format("%s (%s:%s)  ->  %s (%s:%s)", info.name, from, info.min, info.to.name, to, info.to.min));
+    }
+
+    private static void record(String pref, String fromName, String toName, int from, int to, int fromDat, int toDat) {
+        conversions.add(pref + String.format("%s (%s:%s)  ->  %s (%s:%s)", fromName, from, fromDat, toName, to, toDat));
     }
 }

@@ -46466,8 +46466,8 @@
             "max": 0,
             "biome": -1,
             "to": {
-                "name": "conquest:plants_nocollision_5",
-                "data": 12
+                "name": "minecraft:red_flower",
+                "data": 1
             }
         },
         {
@@ -53026,8 +53026,8 @@
             "max": 0,
             "biome": -1,
             "to": {
-                "name": "minecraft:stone",
-                "data": 6
+                "name": "conquest:stone_wall_7",
+                "data": 11
             }
         },
         {
@@ -58083,11 +58083,121 @@
         {
             "name": "acblocks:stone_brick_1_anvil",
             "min": 0,
-            "max": 15,
+            "max": 0,
             "biome": -1,
             "to": {
                 "name": "conquest:stone_anvil_20",
-                "data": 1
+                "data": 11
+            }
+        },
+        {
+            "name": "acblocks:stone_brick_1_anvil",
+            "min": 1,
+            "max": 1,
+            "biome": -1,
+            "to": {
+                "name": "conquest:stone_anvil_20",
+                "data": 7
+            }
+        },
+        {
+            "name": "acblocks:stone_brick_1_anvil",
+            "min": 2,
+            "max": 2,
+            "biome": -1,
+            "to": {
+                "name": "conquest:stone_anvil_20",
+                "data": 11
+            }
+        },
+        {
+            "name": "acblocks:stone_brick_1_anvil",
+            "min": 3,
+            "max": 3,
+            "biome": -1,
+            "to": {
+                "name": "conquest:stone_anvil_20",
+                "data": 7
+            }
+        },
+        {
+            "name": "acblocks:stone_brick_1_anvil",
+            "min": 4,
+            "max": 4,
+            "biome": -1,
+            "to": {
+                "name": "conquest:stone_anvil_20",
+                "data": 11
+            }
+        },
+        {
+            "name": "acblocks:stone_brick_1_anvil",
+            "min": 5,
+            "max": 5,
+            "biome": -1,
+            "to": {
+                "name": "conquest:stone_anvil_20",
+                "data": 7
+            }
+        },
+        {
+            "name": "acblocks:stone_brick_1_anvil",
+            "min": 6,
+            "max": 6,
+            "biome": -1,
+            "to": {
+                "name": "conquest:stone_anvil_20",
+                "data": 11
+            }
+        },
+        {
+            "name": "acblocks:stone_brick_1_anvil",
+            "min": 7,
+            "max": 7,
+            "biome": -1,
+            "to": {
+                "name": "conquest:stone_anvil_20",
+                "data": 7
+            }
+        },
+        {
+            "name": "acblocks:stone_brick_1_anvil",
+            "min": 8,
+            "max": 8,
+            "biome": -1,
+            "to": {
+                "name": "conquest:stone_anvil_20",
+                "data": 11
+            }
+        },
+        {
+            "name": "acblocks:stone_brick_1_anvil",
+            "min": 9,
+            "max": 9,
+            "biome": -1,
+            "to": {
+                "name": "conquest:stone_anvil_20",
+                "data": 7
+            }
+        },
+        {
+            "name": "acblocks:stone_brick_1_anvil",
+            "min": 10,
+            "max": 10,
+            "biome": -1,
+            "to": {
+                "name": "conquest:stone_anvil_20",
+                "data": 11
+            }
+        },
+        {
+            "name": "acblocks:stone_brick_1_anvil",
+            "min": 11,
+            "max": 11,
+            "biome": -1,
+            "to": {
+                "name": "conquest:stone_anvil_20",
+                "data": 7
             }
         },
         {
@@ -58377,7 +58487,7 @@
             "biome": -1,
             "to": {
                 "name": "conquest:stone_smallpillar_7",
-                "data": 11
+                "data": 13
             }
         },
         {
@@ -58396,7 +58506,7 @@
             "max": 0,
             "biome": -1,
             "to": {
-                "name": "conquest:stone_trapdoormodel_2",
+                "name": "conquest:stone_trapdoormodel_96",
                 "data": 3
             }
         },
@@ -60006,8 +60116,8 @@
             "max": 0,
             "biome": -1,
             "to": {
-                "name": "conquest:wood_full_2",
-                "data": 9
+                "name": "conquest:wood_full_8",
+                "data": 6
             }
         },
         {
@@ -68362,6 +68472,16 @@
         },
         {
             "name": "minecraft:red_flower",
+            "min": 1,
+            "max": 1,
+            "biome": -1,
+            "to": {
+                "name": "conquest:plants_nocollision_2",
+                "data": 12
+            }
+        },
+        {
+            "name": "minecraft:red_flower",
             "min": 2,
             "max": 2,
             "biome": -1,
@@ -68406,8 +68526,8 @@
             "max": 7,
             "biome": -1,
             "to": {
-                "name": "conquest:plants_nocollision_4",
-                "data": 14
+                "name": "conquest:plants_nocollision_1",
+                "data": 10
             }
         },
         {
@@ -68442,12 +68562,122 @@
         },
         {
             "name": "minecraft:double_stone_slab",
+            "min": 5,
+            "max": 5,
+            "biome": -1,
+            "to": {
+                "name": "minecraft:stonebrick",
+                "data": 2
+            }
+        },
+        {
+            "name": "minecraft:double_stone_slab",
             "min": 13,
             "max": 13,
             "biome": -1,
             "to": {
                 "name": "minecraft:stonebrick",
                 "data": 2
+            }
+        },
+        {
+            "name": "minecraft:stone_slab",
+            "min": 5,
+            "max": 5,
+            "biome": -1,
+            "to": {
+                "name": "conquest:stone_slab_14",
+                "data": 1
+            }
+        },
+        {
+            "name": "minecraft:stone_slab",
+            "min": 13,
+            "max": 13,
+            "biome": -1,
+            "to": {
+                "name": "conquest:stone_slab_14",
+                "data": 9
+            }
+        },
+        {
+            "name": "minecraft:stone_brick_stairs",
+            "min": 0,
+            "max": 0,
+            "biome": -1,
+            "to": {
+                "name": "conquest:stone_stairs_44",
+                "data": 7
+            }
+        },
+        {
+            "name": "minecraft:stone_brick_stairs",
+            "min": 1,
+            "max": 1,
+            "biome": -1,
+            "to": {
+                "name": "conquest:stone_stairs_44",
+                "data": 3
+            }
+        },
+        {
+            "name": "minecraft:stone_brick_stairs",
+            "min": 2,
+            "max": 2,
+            "biome": -1,
+            "to": {
+                "name": "conquest:stone_stairs_44",
+                "data": 1
+            }
+        },
+        {
+            "name": "minecraft:stone_brick_stairs",
+            "min": 3,
+            "max": 3,
+            "biome": -1,
+            "to": {
+                "name": "conquest:stone_stairs_44",
+                "data": 5
+            }
+        },
+        {
+            "name": "minecraft:stone_brick_stairs",
+            "min": 4,
+            "max": 4,
+            "biome": -1,
+            "to": {
+                "name": "conquest:stone_stairs_44",
+                "data": 15
+            }
+        },
+        {
+            "name": "minecraft:stone_brick_stairs",
+            "min": 5,
+            "max": 5,
+            "biome": -1,
+            "to": {
+                "name": "conquest:stone_stairs_44",
+                "data": 11
+            }
+        },
+        {
+            "name": "minecraft:stone_brick_stairs",
+            "min": 6,
+            "max": 6,
+            "biome": -1,
+            "to": {
+                "name": "conquest:stone_stairs_44",
+                "data": 9
+            }
+        },
+        {
+            "name": "minecraft:stone_brick_stairs",
+            "min": 7,
+            "max": 7,
+            "biome": -1,
+            "to": {
+                "name": "conquest:stone_stairs_44",
+                "data": 13
             }
         },
         {
@@ -69058,127 +69288,6 @@
             "to": {
                 "name": "conquest:wood_wall_1",
                 "data": 2
-            }
-        }
-        ,
-        {
-            "name": "minecraft:leaves",
-            "min": 7,
-            "max": 7,
-            "biome": -1,
-            "to": {
-                "name": "conquest:leaves_fullbiome_1",
-                "data": 0
-            }
-        },
-        {
-            "name": "minecraft:iron_bars",
-            "min": 0,
-            "max": 0,
-            "biome": -1,
-            "to": {
-                "name": "conquest:iron_ironbar_1",
-                "data": 1
-            }
-        },
-        {
-            "name": "minecraft:red_flower",
-            "min": 1,
-            "max": 1,
-            "biome": -1,
-            "to": {
-                "name": "conquest:plants_nocollision_1",
-                "data": 7
-            }
-        },
-        {
-            "name": "minecraft:soul_sand",
-            "min": 0,
-            "max": 0,
-            "biome": -1,
-            "to": {
-                "name": "conquest:ground_soulsand_1",
-                "data": 1
-            }
-        },
-        {
-            "name": "acblocks:shelves_block",
-            "min": 0,
-            "max": 15,
-            "biome": -1,
-            "to": {
-                "name": "minecraft:glowstone",
-                "data": 0
-            }
-        },
-        {
-            "name": "acblocks:drawers_block",
-            "min": 0,
-            "max": 15,
-            "biome": -1,
-            "to": {
-                "name": "minecraft:glowstone",
-                "data": 0
-            }
-        },
-        {
-            "name": "acblocks:hanging_lantern_torch_1",
-            "min": 5,
-            "max": 5,
-            "biome": -1,
-            "to": {
-                "name": "conquest:torch_8_2",
-                "data": 1
-            }
-        },
-        {
-            "name": "minecraft:golden_rail",
-            "min": 0,
-            "max": 15,
-            "biome": -1,
-            "to": {
-                "name": "minecraft:air",
-                "data": 0
-            }
-        },
-        {
-            "name": "minecraft:leaves",
-            "min": 15,
-            "max": 15,
-            "biome": -1,
-            "to": {
-                "name": "conquest:leaves_fullbiome_1",
-                "data": 0
-            }
-        },
-        {
-            "name": "acblocks:stone_brick_1_anvil",
-            "min": 15,
-            "max": 15,
-            "biome": -1,
-            "to": {
-                "name": "conquest:stone_anvil_20",
-                "data": 1
-            }
-        },
-        {
-            "name": "minecraft:log2",
-            "min": 0,
-            "max": 0,
-            "biome": -1,
-            "to": {
-                "name": "minecraft:log2",
-                "data": 12
-            }
-        },
-        {
-            "name": "minecraft:cauldron",
-            "min": 0,
-            "max": 0,
-            "biome": -1,
-            "to": {
-                "name": "conquest:cauldron",
-                "data": 0
             }
         }
     ],

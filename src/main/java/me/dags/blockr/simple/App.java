@@ -12,8 +12,9 @@ import me.dags.data.node.NodeTypeAdapters;
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
-import java.io.IOException;
 import java.io.InputStream;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 
@@ -141,7 +142,7 @@ public class App {
             options.threads = threadSlider.getValue();
             options.remap = remap.isSelected();
             start.setEnabled(false);
-            start(options);
+            startAction(frame, options);
         });
         buttons.add(cancel);
         buttons.add(start);
@@ -156,7 +157,7 @@ public class App {
         frame.pack();
     }
 
-    private static void start(Options options) {
+    private static void startAction(JFrame parent, Options options) {
         try (InputStream in = App.class.getResourceAsStream("/mappings.json")) {
             File source = options.world;
             File output = new File(source.getParent());
@@ -168,14 +169,17 @@ public class App {
             to.loadRegistry();
 
             Config config = NodeTypeAdapters.of(Config.class).fromNode(NodeAdapter.json().from(in));
-            Config.do_entities = false;
+            Config.do_entities = true;
             Config.auto_remap = options.remap;
             int threads = options.threads;
             World world = new World(source, output, from, to, config, threads);
 
             new Thread(world::convert).start();
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (Throwable t) {
+            t.printStackTrace();
+            StringWriter writer = new StringWriter();
+            t.printStackTrace(new PrintWriter(writer));
+            SwingUtilities.invokeLater(() -> JOptionPane.showMessageDialog(parent, writer, t.getMessage(), JOptionPane.ERROR_MESSAGE));
         }
     }
 

@@ -16,16 +16,12 @@ public class BlockRegistry {
         blockIds.put("minecraft:air", 0);
     }
 
-    public void dump() {
-        for (Map.Entry<String, Integer> e : blockIds.entrySet()) {
-            System.out.println(e);
-        }
-    }
-
     public void register(String block, int id) {
-        blockIds.put(block.trim(), id);
-        System.out.printf("%s=%s", block, id);
-        System.out.println();
+        Integer previous = blockIds.put(block.trim(), id);
+        if (previous != null && previous != id) {
+            String error = String.format("Invalid level.dat. Found two IDs (%s and %s) for the same block (%s)", previous, id, block);
+            throw new UnsupportedOperationException(error);
+        }
     }
 
     public List<String> getRemappedBlocks(BlockRegistry from) {

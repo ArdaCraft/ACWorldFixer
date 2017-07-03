@@ -25,7 +25,7 @@ public class Scripts {
         File fromDump = new File(root, "from_mappings.txt");
         File toDump = new File(root, "to_mappings.txt");
         File script = new File(root, "script.sour");
-        File output = new File(root, "mappings.json");
+        File output = new File(root, "conquest_mappings.json");
 
         Map<Integer, String> arda = loadMappings(fromDump);
         Map<Integer, String> cr = loadMappings(toDump);
