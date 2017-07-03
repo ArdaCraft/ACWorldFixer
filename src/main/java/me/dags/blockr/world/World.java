@@ -5,6 +5,7 @@ import me.dags.blockr.app.SetupWindow;
 import me.dags.blockr.block.BlockInfo;
 import me.dags.blockr.block.replacers.Replacer;
 import me.dags.blockr.block.replacers.Replacers;
+import org.jnbt.CompoundTag;
 
 import javax.swing.*;
 import java.awt.*;
@@ -138,9 +139,8 @@ public class World {
             }
         }
 
-        // Replace 'from' world's registries with 'to' world's
-        fromWorld.copyRegistries(toWorld);
-        fromWorld.writeLevelData(main.getOutputLevelFile());
+        CompoundTag level = WorldData.mergeLevels(fromWorld, toWorld);
+        WorldData.writeLevelData(level, main.getOutputLevelFile());
 
         ChangeStats.punchOut();
 
