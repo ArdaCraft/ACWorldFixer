@@ -36,8 +36,8 @@ public class Dimension {
         this.dimensionOut = new File(outputParentDir, name);
         this.regionsIn = new File(dimensionIn, "region");
         this.regionsOut = new File(dimensionOut, "region");
-        this.schematicsIn = new File(dimensionIn, "schematic");
-        this.schematicsOut = new File(dimensionOut, "schematic");
+        this.schematicsIn = new File(dimensionIn, "schematics");
+        this.schematicsOut = new File(dimensionOut, "schematics");
         this.replacers = replacers;
     }
 
@@ -118,7 +118,7 @@ public class Dimension {
             if (from.getName().equalsIgnoreCase("region") || World.hasRegionsDir(from)) {
                 return;
             }
-            if (from.getName().equalsIgnoreCase("schematic")) {
+            if (from.getName().equalsIgnoreCase("schematics")) {
                 return;
             }
             for (File file : World.listDir(from)) {
