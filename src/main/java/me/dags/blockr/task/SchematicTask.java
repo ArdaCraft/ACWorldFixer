@@ -17,9 +17,13 @@ public class SchematicTask extends ExtentTask<Schematic> {
 
     @Override
     public void process(File file) throws IOException {
-        Schematic schematic = new Schematic(file);
-        processExtent(schematic);
-        schematic.write();
-        ChangeStats.incBlockVisits(schematic.getSize());
+        try {
+            Schematic schematic = new Schematic(file);
+            processExtent(schematic);
+            schematic.write();
+            ChangeStats.incBlockVisits(schematic.getSize());
+        } catch (Throwable t) {
+            t.printStackTrace();
+        }
     }
 }

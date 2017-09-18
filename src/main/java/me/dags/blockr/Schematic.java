@@ -20,7 +20,7 @@ public class Schematic implements Extent {
 
     private final File file;
     private final CompoundTag root;
-    private final int width, height, length, area;
+    private final short width, height, length;
     private final int[] blocks;
     private final byte[] data;
 
@@ -29,14 +29,28 @@ public class Schematic implements Extent {
             CompoundTag root = (CompoundTag) in.readTag();
             this.file = file;
             this.root = root;
-            width = get(root, "Width", int.class, -1);
-            height = get(root, "Height", int.class, -1);
-            length = get(root, "Length", int.class, -1);
-            area = width * length;
+            this.width = get(root, "Width", Short.class, (short) -1);
+            this.height = get(root, "Height", Short.class, (short) -1);
+            this.length = get(root, "Length", Short.class, (short) -1);
+
             byte[] ids = get(root, "Blocks", byte[].class, new byte[0]);
             byte[] adds = get(root, "AddBlocks", byte[].class, new byte[0]);
-            blocks = readBlocks(ids, adds);
-            data = get(root, "Data", byte[].class, new byte[0]);
+            byte[] data = get(root, "Data", byte[].class, new byte[0]);
+            int[] blocks = new int[ids.length];
+            for (int index = 0; index < ids.length; index++) {
+                if ((index >> 1) >= adds.length) {
+                    blocks[index] = ids[index] & 0xFF;
+                } else {
+                    if ((index & 1) == 0) {
+                        blocks[index] = ((adds[index >> 1] & 0x0F) << 8) + (ids[index] & 0xFF);
+                    } else {
+                        blocks[index] = ((adds[index >> 1] & 0xF0) << 4) + (ids[index] & 0xFF);
+                    }
+                }
+            }
+
+            this.blocks = blocks;
+            this.data = data;
         }
 
         if (width * height * length != blocks.length) {
@@ -50,19 +64,19 @@ public class Schematic implements Extent {
         byte[] data = new byte[blocks.length];
 
         for (int i = 0; i < blocks.length; i++) {
-            int id = blocks[i];
+            int id = this.blocks[i];
             byte meta = this.data[i];
             if (id > 255) {
                 if (adds == null) {
                     adds = new byte[(blocks.length >> 1) + 1];
                 }
                 if ((i & 1) == 0) {
-                    adds[i >> 1] = (byte) ((adds[i >> 1] & 0xF0) | (id >> 8) & 0xF);
+                    adds[i >> 1] = (byte) (adds[i >> 1] & 0xF0 | (id >> 8) & 0xF);
                 } else {
-                    adds[i >> 1] = (byte) ((adds[i >> 1] & 0xF) | ((id >> 8) & 0xF) << 4);
+                    adds[i >> 1] = (byte) (adds[i >> 1] & 0xF | ((id >> 8) & 0xF) << 4);
                 }
             }
-            blocks[i] = (byte) i;
+            blocks[i] = (byte) id;
             data[i] = meta;
         }
 
@@ -70,6 +84,8 @@ public class Schematic implements Extent {
         root.setTag("Data", new ByteArrayTag("Data", data));
         if (adds != null) {
             root.setTag("AddBlocks", new ByteArrayTag("AddBlocks", adds));
+        } else {
+            root.setTag("Data", null);
         }
 
         try (NBTOutputStream outputStream = new NBTOutputStream(new GZIPOutputStream(new FileOutputStream(file)))) {
@@ -108,7 +124,7 @@ public class Schematic implements Extent {
 
     @Override
     public int getDataValue(int x, int y, int z) {
-        return data[getIndex(x, y, z)] & 0xFF;
+        return data[getIndex(x, y, z)];
     }
 
     @Override
@@ -127,23 +143,7 @@ public class Schematic implements Extent {
     }
 
     private int getIndex(int x, int y, int z) {
-        return (y * area) + (z * width) + x;
-    }
-
-    private static int[] readBlocks(byte[] ids, byte[] adds) {
-        int[] blocks = new int[ids.length];
-        for (int index = 0; index < ids.length; index++) {
-            if ((index >> 1) > adds.length) {
-                blocks[index] = ids[index] & 0xFF;
-            } else {
-                if ((index & 1) == 0) {
-                    blocks[index] = ((adds[index >> 1] & 0x0F) << 8) + (ids[index] & 0xFF);
-                } else {
-                    blocks[index] = ((adds[index >> 1] & 0xF0) << 4) + (ids[index] & 0xFF);
-                }
-            }
-        }
-        return blocks;
+        return y * width * length + z * width + x;
     }
 
     private static <T> T get(CompoundTag root, String key, Class<T> valType, T def) {

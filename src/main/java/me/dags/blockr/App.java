@@ -39,7 +39,7 @@ public class App {
         JFrame frame = new JFrame();
         frame.setResizable(false);
         frame.setTitle("World Converter");
-         frame.setMinimumSize(new Dimension(300, 100));
+        frame.setMinimumSize(new Dimension(300, 100));
 
         App.selectWorld(frame, new Options());
 

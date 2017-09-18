@@ -105,7 +105,7 @@ public class Dimension {
         for (File schemIn : list) {
             if (schemIn.getName().endsWith(".schematic")) {
                 String relative = schemIn.getAbsolutePath().substring(schematicsIn.getAbsolutePath().length());
-                File schemOut = new File(regionsOut, relative);
+                File schemOut = new File(schematicsOut, relative);
                 SchematicTask task = new SchematicTask(schemIn, schemOut, replacers);
                 tasks.add(task);
             }

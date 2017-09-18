@@ -38,10 +38,12 @@ public abstract class ExtentTask<T extends Extent> implements Runnable, Callable
             if (!parent.exists() && parent.mkdirs()) {
                 System.out.println("Creating dir: " + parent);
             }
-            try (RandomAccessFile to = new RandomAccessFile(outputFile, "rw")) {
-                from.getChannel().transferTo(0, Long.MAX_VALUE, to.getChannel());
-                process(outputFile);
-            }
+
+            RandomAccessFile to = new RandomAccessFile(outputFile, "rw");
+            from.getChannel().transferTo(0, Long.MAX_VALUE, to.getChannel());
+            to.close();
+
+            process(outputFile);
         } catch (IOException e) {
             e.printStackTrace();
         }

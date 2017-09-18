@@ -233,13 +233,21 @@ public class World {
             return;
         }
 
-        int fromId = fromWorld.blockRegistry.getId(blockInfo.name);
+        Integer fromId = fromWorld.blockRegistry.getId(blockInfo.name);
         int fromMinData = blockInfo.min;
         int fromMaxData = blockInfo.max;
 
-        int toId = toWorld.blockRegistry.getId(blockInfo.to.name);
+        Integer toId = toWorld.blockRegistry.getId(blockInfo.to.name);
         int toMinData = blockInfo.to.min;
         int toMaxData = blockInfo.to.max;
+
+        if (fromId == null) {
+            throw new IllegalArgumentException("Block type not found in 'from' registry: " + blockInfo.name);
+        }
+
+        if (toId == null) {
+            throw new IllegalArgumentException("Block type not found in 'to' registry: " + blockInfo.to.name);
+        }
 
         record(blockInfo, fromId, toId);
 
