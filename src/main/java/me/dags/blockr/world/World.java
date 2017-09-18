@@ -137,7 +137,10 @@ public class World {
 
                 dimension.mkdirs();
                 service.invokeAll(tasks);
-                dimension.copyData();
+
+                if (!config.schematicsOnly) {
+                    dimension.copyData();
+                }
 
                 ChangeStats.incDimensionCount();
             } catch (InterruptedException e) {

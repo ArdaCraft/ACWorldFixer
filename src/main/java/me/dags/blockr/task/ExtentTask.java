@@ -46,6 +46,8 @@ public abstract class ExtentTask<T extends Extent> implements Runnable, Callable
             process(outputFile);
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            ChangeStats.dimTaskProgress.addAndGet(1);
         }
     }
 
