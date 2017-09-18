@@ -1,6 +1,6 @@
-package me.dags.blockr.block.replacers;
+package me.dags.blockr.replacer;
 
-import org.pepsoft.minecraft.Chunk;
+import org.pepsoft.minecraft.Extent;
 
 /**
  * @author dags <dags@dags.me>
@@ -20,20 +20,20 @@ public class CopyBelowReplacer implements Replacer {
     }
 
     @Override
-    public boolean apply(Chunk chunk, int type, int x, int y, int z) {
+    public boolean apply(Extent extent, int type, int x, int y, int z) {
         // is block below
         if (y > 0) {
-            int data = chunk.getDataValue(x, y, z);
+            int data = extent.getDataValue(x, y, z);
 
             // type and data within target range
             if (type == this.type && data >= minData) {
-                int typeBelow = chunk.getBlockType(x, y - 1, z);
+                int typeBelow = extent.getBlockType(x, y - 1, z);
 
                 // block below is a different type
                 if (typeBelow != type) {
-                    int dataBelow = chunk.getDataValue(x, y - 1, z);
-                    chunk.setBlockType(x, y, z, typeBelow);
-                    chunk.setDataValue(x, y, z, dataBelow);
+                    int dataBelow = extent.getDataValue(x, y - 1, z);
+                    extent.setBlockType(x, y, z, typeBelow);
+                    extent.setDataValue(x, y, z, dataBelow);
                     return true;
                 }
             }

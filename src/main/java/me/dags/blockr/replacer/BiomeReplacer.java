@@ -1,6 +1,6 @@
-package me.dags.blockr.block.replacers;
+package me.dags.blockr.replacer;
 
-import org.pepsoft.minecraft.Chunk;
+import org.pepsoft.minecraft.Extent;
 
 /**
  * @author dags <dags@dags.me>
@@ -16,9 +16,9 @@ public class BiomeReplacer implements Replacer {
     }
 
     @Override
-    public boolean apply(Chunk chunk, int type, int x, int y, int z) {
+    public boolean apply(Extent extent, int type, int x, int y, int z) {
         // check biome at (x,z) and pass to the replacer if it's the correct biome
-        return chunk.getBiome(x, z) == biomeId && replacer.apply(chunk, type, x, y, z);
+        return extent.getBiome(x, z) == biomeId && replacer.apply(extent, type, x, y, z);
     }
 
     @Override

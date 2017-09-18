@@ -1,4 +1,4 @@
-package me.dags.blockr.block.replacers;
+package me.dags.blockr.replacer;
 
 /**
  * @author dags <dags@dags.me>

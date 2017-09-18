@@ -1,6 +1,6 @@
-package me.dags.blockr.block.replacers;
+package me.dags.blockr.replacer;
 
-import org.pepsoft.minecraft.Chunk;
+import org.pepsoft.minecraft.Extent;
 
 /**
  * @author dags <dags@dags.me>
@@ -22,11 +22,11 @@ public class RangeToRangeReplacer extends SimpleReplacer {
     }
 
     @Override
-    public boolean apply(Chunk chunk, int type, int x, int y, int z) {
-        int dataFrom = chunk.getDataValue(x, y, z);
+    public boolean apply(Extent extent, int type, int x, int y, int z) {
+        int dataFrom = extent.getDataValue(x, y, z);
         if (super.rule.test(this, type, dataFrom)) {
             int dataTo = remap(dataFrom);
-            super.consumer.accept(chunk, x, y, z, super.typeTo, dataTo);
+            super.consumer.accept(extent, x, y, z, super.typeTo, dataTo);
             return true;
         }
         return false;

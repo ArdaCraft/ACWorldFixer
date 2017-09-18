@@ -10,14 +10,15 @@ import java.util.*;
  */
 public class Config {
 
-    public static transient boolean auto_remap = false;
-    public static transient boolean do_entities = true;
-
     public final List<BlockInfo> blocks = new ArrayList<>();
     public final List<BlockInfo> copyBelow = new ArrayList<>();
     public final Map<String, Integer> removeBlocks = new HashMap<>();
     public final Set<String> entities = new HashSet<>();
     public final Set<String> tileEntities = new HashSet<>();
+
+    public transient boolean autoRemap = false;
+    public transient boolean onlyRemap = false;
+    public transient boolean schematicsOnly = false;
 
     public static class Adapter implements NodeTypeAdapter<Config> {
 

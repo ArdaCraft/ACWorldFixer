@@ -1,10 +1,11 @@
 package me.dags.blockr.world;
 
 import me.dags.blockr.Config;
-import me.dags.blockr.app.SetupWindow;
 import me.dags.blockr.block.BlockInfo;
-import me.dags.blockr.block.replacers.Replacer;
-import me.dags.blockr.block.replacers.Replacers;
+import me.dags.blockr.replacer.Replacer;
+import me.dags.blockr.replacer.Replacers;
+import me.dags.blockr.task.ChangeStats;
+import me.dags.blockr.task.ExtentTask;
 import org.jnbt.CompoundTag;
 
 import javax.swing.*;
@@ -28,6 +29,7 @@ public class World {
     private final WorldData toWorld;
     private final Dimension main;
     private final List<Dimension> dimensions = new ArrayList<>();
+    private final Config config;
     private final int cores;
 
     public World(File sourceDir, File outputDir, WorldData fromWorld, WorldData toWorld, Config config, int cores) {
@@ -35,6 +37,7 @@ public class World {
         this.fromWorld = fromWorld;
         this.toWorld = toWorld;
         this.cores = cores;
+        this.config = config;
 
         Replacer[][] conversions = getRules(config);
 
@@ -95,16 +98,16 @@ public class World {
 
         new Thread(() -> {
             while (ChangeStats.running.get()) {
-                currentProgress.setMaximum(ChangeStats.regionCount.get());
-                currentProgress.setValue(ChangeStats.regionProgress.get());
+                currentProgress.setMaximum(ChangeStats.dimTaskCount.get());
+                currentProgress.setValue(ChangeStats.dimTaskProgress.get());
 
-                overallProgress.setMaximum(ChangeStats.overallRegionCount.get());
-                overallProgress.setValue(ChangeStats.getProgress());
+                overallProgress.setMaximum(ChangeStats.overallTaskCount.get());
+                overallProgress.setValue(ChangeStats.overallTaskProgress.get());
 
                 currentProgress.repaint();
                 overallProgress.repaint();
 
-                float progress = 100F * ChangeStats.getProgress() / (float) ChangeStats.overallRegionCount.get();
+                float progress = 100F * ChangeStats.overallTaskProgress.get() / (float) ChangeStats.overallTaskCount.get();
                 frame.setTitle(String.format("Converting: %.2f%%", progress));
 
                 try {
@@ -116,18 +119,21 @@ public class World {
         }).start();
 
         for (Dimension dimension : dimensions) {
-            ChangeStats.overallRegionCount.getAndAdd(dimension.countRegionFiles());
+            ChangeStats.overallTaskCount.getAndAdd(dimension.countRegionFiles(config));
+            ChangeStats.overallTaskCount.getAndAdd(dimension.countSchematicFiles(config));
         }
 
         ChangeStats.punchIn();
 
         for (Dimension dimension : dimensions) {
             try {
-                ChangeStats.regionProgress.set(0);
+                ChangeStats.dimTaskProgress.set(0);
                 dimensionLabel.setText(String.format("Dim: %s", dimension.getName()));
 
-                List<RegionTask> tasks = dimension.getRegionTasks(ChangeStats.regionProgress);
-                ChangeStats.regionCount.set(tasks.size());
+                List<ExtentTask<?>> tasks = new LinkedList<>();
+                dimension.addRegionTasks(config, tasks);
+                dimension.addSchematicTasks(config, tasks);
+                ChangeStats.dimTaskCount.set(tasks.size());
 
                 dimension.mkdirs();
                 service.invokeAll(tasks);
@@ -160,38 +166,38 @@ public class World {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        SetupWindow.ok.setEnabled(true);
     }
 
     private Replacer[][] getRules(Config config) {
         int max = 0;
         Map<Integer, List<Replacer>> filter = new HashMap<>();
 
-        for (BlockInfo block: config.copyBelow) {
-            int id = fromWorld.blockRegistry.getId(block.name);
-            int fromMin = block.min;
-            int fromMax = 15;
+        if (!config.onlyRemap) {
+            for (BlockInfo block : config.copyBelow) {
+                int id = fromWorld.blockRegistry.getId(block.name);
+                int fromMin = block.min;
+                int fromMax = 15;
 
-            List<Replacer> list = filter.getOrDefault(id, new ArrayList<>());
-            list.add(Replacers.matchTypeAndDataReplaceWithBelow(id, fromMin, fromMax));
-            filter.put(id, list);
-        }
-
-        // Loop over the config block mappings and interpret into Replacers
-        for (BlockInfo blockInfo : config.blocks) {
-            Integer id = fromWorld.blockRegistry.getId(blockInfo.name);
-            if (id == null) {
-                System.out.println("Skipping unknown block " + blockInfo.name);
-                continue;
+                List<Replacer> list = filter.getOrDefault(id, new ArrayList<>());
+                list.add(Replacers.matchTypeAndDataReplaceWithBelow(id, fromMin, fromMax));
+                filter.put(id, list);
             }
-            max = id > max ? id : max;
-            List<Replacer> list = filter.getOrDefault(id, new ArrayList<>());
-            addReplacer(list, blockInfo, config);
-            filter.put(id, list);
+
+            // Loop over the config block mappings and interpret into Replacers
+            for (BlockInfo blockInfo : config.blocks) {
+                Integer id = fromWorld.blockRegistry.getId(blockInfo.name);
+                if (id == null) {
+                    System.out.println("Skipping unknown block " + blockInfo.name);
+                    continue;
+                }
+                max = id > max ? id : max;
+                List<Replacer> list = filter.getOrDefault(id, new ArrayList<>());
+                addReplacer(list, blockInfo, config);
+                filter.put(id, list);
+            }
         }
 
-        if (Config.auto_remap) {
+        if (config.autoRemap) {
             // Search for blocks that have been mapped to different ids in each level.dat file and create
             // a new replace rule so that they transfer properly to the 'toWorld' level.dat registry.
             // Auto-remap rules will execute after any user defined rules
@@ -283,6 +289,22 @@ public class World {
             }
         }
         return Collections.emptyList();
+    }
+
+    static void listDirRecursive(File file, List<File> collector, boolean includeDirs) {
+        if (file.isDirectory()) {
+            File[] files = file.listFiles();
+            if (files != null) {
+                for (File f : files) {
+                    listDirRecursive(f, collector, includeDirs);
+                }
+            }
+            if (includeDirs) {
+                collector.add(file);
+            }
+        } else {
+            collector.add(file);
+        }
     }
 
     static boolean hasRegionsDir(File dir) {

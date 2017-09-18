@@ -1,15 +1,18 @@
 package me.dags.blockr.world;
 
-import me.dags.blockr.block.replacers.Replacer;
+import me.dags.blockr.Config;
+import me.dags.blockr.replacer.Replacer;
+import me.dags.blockr.task.ExtentTask;
+import me.dags.blockr.task.RegionTask;
+import me.dags.blockr.task.SchematicTask;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.channels.FileChannel;
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * @author dags <dags@dags.me>
@@ -20,6 +23,8 @@ public class Dimension {
     private final File dimensionOut;
     private final File regionsIn;
     private final File regionsOut;
+    private final File schematicsIn;
+    private final File schematicsOut;
     private final Replacer[][] replacers;
 
     public Dimension(File dimensionIn, File outputParentDir, Replacer[][] replacers) {
@@ -31,6 +36,8 @@ public class Dimension {
         this.dimensionOut = new File(outputParentDir, name);
         this.regionsIn = new File(dimensionIn, "region");
         this.regionsOut = new File(dimensionOut, "region");
+        this.schematicsIn = new File(dimensionIn, "schematic");
+        this.schematicsOut = new File(dimensionOut, "schematic");
         this.replacers = replacers;
     }
 
@@ -57,32 +64,61 @@ public class Dimension {
         }
     }
 
-    public int countRegionFiles() {
+    public int countRegionFiles(Config config) {
+        if (!config.schematicsOnly) {
+            int count = 0;
+            for (File regionIn : World.listDir(regionsIn)) {
+                if (regionIn.getName().endsWith(".mca")) {
+                    count++;
+                }
+            }
+            return count;
+        }
+        return 0;
+    }
+
+    public int countSchematicFiles(Config config) {
         int count = 0;
-        for (File regionIn : World.listDir(regionsIn)) {
-            if (regionIn.getName().endsWith(".mca")) {
+        for (File schematicIn : World.listDir(schematicsIn)) {
+            if (schematicIn.getName().endsWith(".schematic")) {
                 count++;
             }
         }
         return count;
     }
 
-    public List<RegionTask> getRegionTasks(final AtomicInteger progress) {
-        List<RegionTask> tasks = new ArrayList<>();
-        for (File regionIn : World.listDir(regionsIn)) {
-            if (regionIn.getName().endsWith(".mca")) {
-                File regionOut = new File(regionsOut, regionIn.getName());
-                RegionTask task = new RegionTask(regionIn, regionOut, replacers, progress);
+    public void addRegionTasks(final Config config, final List<ExtentTask<?>> tasks) {
+        if (!config.schematicsOnly) {
+            for (File regionIn : World.listDir(regionsIn)) {
+                if (regionIn.getName().endsWith(".mca")) {
+                    File regionOut = new File(regionsOut, regionIn.getName());
+                    RegionTask task = new RegionTask(regionIn, regionOut, replacers);
+                    tasks.add(task);
+                }
+            }
+        }
+    }
+
+    public void addSchematicTasks(final Config config, final List<ExtentTask<?>> tasks) {
+        List<File> list = new LinkedList<>();
+        World.listDirRecursive(schematicsIn, list, false);
+        for (File schemIn : list) {
+            if (schemIn.getName().endsWith(".schematic")) {
+                String relative = schemIn.getAbsolutePath().substring(schematicsIn.getAbsolutePath().length());
+                File schemOut = new File(regionsOut, relative);
+                SchematicTask task = new SchematicTask(schemIn, schemOut, replacers);
                 tasks.add(task);
             }
         }
-        return tasks;
     }
 
     private static void copy(File from, File outputParent) {
         File to = new File(outputParent, from.getName());
         if (from.isDirectory()) {
             if (from.getName().equalsIgnoreCase("region") || World.hasRegionsDir(from)) {
+                return;
+            }
+            if (from.getName().equalsIgnoreCase("schematic")) {
                 return;
             }
             for (File file : World.listDir(from)) {

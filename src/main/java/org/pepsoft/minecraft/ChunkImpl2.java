@@ -330,6 +330,21 @@ public final class ChunkImpl2 extends AbstractNBTItem implements Chunk {
     }
 
     @Override
+    public int getWidth() {
+        return 16;
+    }
+
+    @Override
+    public int getHeight() {
+        return getMaxHeight();
+    }
+
+    @Override
+    public int getLength() {
+        return 16;
+    }
+
+    @Override
     public List<Entity> getEntities() {
         return entities;
     }

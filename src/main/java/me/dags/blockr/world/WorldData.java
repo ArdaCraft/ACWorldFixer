@@ -14,8 +14,8 @@ import java.util.zip.GZIPOutputStream;
  */
 public abstract class WorldData {
 
-    private CompoundTag cachedLevel;
     public final BlockRegistry blockRegistry = new BlockRegistry();
+    private CompoundTag cachedLevel;
 
     public void loadRegistry() {
         if (getLevelData().containsTag("FML")) {
@@ -34,7 +34,9 @@ public abstract class WorldData {
         } else {
             System.out.println("Loading Vanilla level.dat");
             for (Block block : Block.BLOCKS) {
-                if (block.name == null) continue;
+                if (block.name == null) {
+                    continue;
+                }
                 String name = "minecraft:" + block.name.toLowerCase().replace(' ', '_');
                 blockRegistry.register(name, block.id);
             }

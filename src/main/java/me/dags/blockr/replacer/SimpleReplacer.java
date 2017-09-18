@@ -1,6 +1,6 @@
-package me.dags.blockr.block.replacers;
+package me.dags.blockr.replacer;
 
-import org.pepsoft.minecraft.Chunk;
+import org.pepsoft.minecraft.Extent;
 
 /**
  * @author dags <dags@dags.me>
@@ -36,9 +36,9 @@ public class SimpleReplacer implements Replacer {
     }
 
     @Override
-    public boolean apply(Chunk chunk, int type, int x, int y, int z) {
-        if (rule.test(this, type, chunk.getDataValue(x, y, z))) {
-            consumer.accept(chunk, x, y, z, typeTo, dataTo);
+    public boolean apply(Extent extent, int type, int x, int y, int z) {
+        if (rule.test(this, type, extent.getDataValue(x, y, z))) {
+            consumer.accept(extent, x, y, z, typeTo, dataTo);
             return true;
         }
         return false;

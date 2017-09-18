@@ -1,6 +1,5 @@
-package me.dags.blockr.simple;
+package me.dags.blockr;
 
-import me.dags.blockr.Config;
 import me.dags.blockr.block.BlockInfo;
 import me.dags.blockr.world.World;
 import me.dags.blockr.world.WorldData;
@@ -40,7 +39,7 @@ public class App {
         JFrame frame = new JFrame();
         frame.setResizable(false);
         frame.setTitle("World Converter");
-        frame.setMinimumSize(new Dimension(300, 100));
+         frame.setMinimumSize(new Dimension(300, 100));
 
         App.selectWorld(frame, new Options());
 
@@ -127,11 +126,29 @@ public class App {
         threads.add(threadSlider);
 
         JPanel autoRemap = root();
-        autoRemap.setToolTipText(tooltips("Attempt to remap blocks with mismatching block ids."));
 
         JCheckBox remap = new JCheckBox("Auto-Remap");
+        remap.setToolTipText(tooltips("Attempt to remap blocks with mismatching block ids."));
         remap.setSelected(true);
         autoRemap.add(remap);
+
+        JCheckBox onlyRemap = new JCheckBox("Remap Only");
+        onlyRemap.setToolTipText(tooltips("Only remap mis-matching block ids."));
+        onlyRemap.setSelected(false);
+        onlyRemap.setEnabled(true);
+        autoRemap.add(onlyRemap);
+
+        remap.addActionListener(actionEvent -> {
+            onlyRemap.setEnabled(remap.isSelected());
+            if (!onlyRemap.isEnabled()) {
+                onlyRemap.setSelected(false);
+            }
+        });
+
+        JCheckBox onlySchems = new JCheckBox("Schematics Only");
+        onlySchems.setToolTipText(tooltips("Only convert schematics ignoring any region files."));
+        onlyRemap.setSelected(false);
+        autoRemap.add(onlySchems);
 
         JPanel buttons = root();
         JButton cancel = new JButton("Cancel");
@@ -141,6 +158,8 @@ public class App {
         start.addActionListener(e -> {
             options.threads = threadSlider.getValue();
             options.remap = remap.isSelected();
+            options.remapOnly = options.remap && onlyRemap.isSelected();
+            options.schemsOnly = onlySchems.isSelected();
             start.setEnabled(false);
             startAction(frame, options);
         });
@@ -169,8 +188,10 @@ public class App {
             to.loadRegistry();
 
             Config config = NodeTypeAdapters.of(Config.class).fromNode(NodeAdapter.json().from(in));
-            Config.do_entities = true;
-            Config.auto_remap = options.remap;
+            config.autoRemap = options.remap;
+            config.onlyRemap = options.remapOnly;
+            config.schematicsOnly = options.schemsOnly;
+
             int threads = options.threads;
             World world = new World(source, output, from, to, config, threads);
 
@@ -220,5 +241,7 @@ public class App {
         private File level = null;
         private int threads = 1;
         private boolean remap = true;
+        private boolean remapOnly = false;
+        private boolean schemsOnly = false;
     }
 }
