@@ -2,20 +2,15 @@ package me.dags.blockr.world;
 
 import me.dags.blockr.Config;
 import me.dags.blockr.block.BlockInfo;
+import me.dags.blockr.client.Client;
 import me.dags.blockr.replacer.Replacer;
 import me.dags.blockr.replacer.Replacers;
 import me.dags.blockr.task.ChangeStats;
 import me.dags.blockr.task.ExtentTask;
 import org.jnbt.CompoundTag;
 
-import javax.swing.*;
-import java.awt.*;
 import java.io.File;
-import java.io.IOException;
 import java.util.*;
-import java.util.List;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 /**
  * @author dags <dags@dags.me>
@@ -30,13 +25,11 @@ public class World {
     private final Dimension main;
     private final List<Dimension> dimensions = new ArrayList<>();
     private final Config config;
-    private final int cores;
 
-    public World(File sourceDir, File outputDir, WorldData fromWorld, WorldData toWorld, Config config, int cores) {
+    public World(File sourceDir, File outputDir, WorldData fromWorld, WorldData toWorld, Config config) {
         this.outputDirRoot = outputDir;
         this.fromWorld = fromWorld;
         this.toWorld = toWorld;
-        this.cores = cores;
         this.config = config;
 
         Replacer[][] conversions = getRules(config);
@@ -55,102 +48,34 @@ public class World {
         }
     }
 
-    public void convert() {
-        final ExecutorService service = Executors.newFixedThreadPool(cores);
-
-        final JLabel overallLabel = new JLabel();
-        overallLabel.setText("Overall:");
-
-        final JLabel dimensionLabel = new JLabel();
-        dimensionLabel.setText("World:");
-        dimensionLabel.setPreferredSize(new java.awt.Dimension(100, 30));
-
-        final JProgressBar overallProgress = new JProgressBar();
-        overallProgress.setPreferredSize(new java.awt.Dimension(200, 30));
-        overallProgress.setValue(0);
-        overallProgress.setMinimum(0);
-        overallProgress.setMaximum(dimensions.size());
-
-        final JProgressBar currentProgress = new JProgressBar();
-        currentProgress.setPreferredSize(new java.awt.Dimension(200, 30));
-        currentProgress.setValue(0);
-        currentProgress.setMinimum(0);
-        currentProgress.setMaximum(1);
-
-        final JPanel panel = new JPanel();
-        panel.add(overallLabel);
-        panel.add(overallProgress);
-        panel.add(dimensionLabel);
-        panel.add(currentProgress);
-
-        final JFrame frame = new JFrame();
-        frame.add(panel);
-        frame.pack();
-        frame.setResizable(false);
-        frame.setLocationRelativeTo(null);
-        frame.setVisible(true);
-        frame.addWindowStateListener(e -> {
-            if (!e.getWindow().isVisible()) {
-                System.out.println("Shutting down...");
-                service.shutdownNow();
-            }
-        });
-
-        new Thread(() -> {
-            while (ChangeStats.running.get()) {
-                currentProgress.setMaximum(ChangeStats.dimTaskCount.get());
-                currentProgress.setValue(ChangeStats.dimTaskProgress.get());
-
-                overallProgress.setMaximum(ChangeStats.overallTaskCount.get());
-                overallProgress.setValue(ChangeStats.overallTaskProgress.get());
-
-                currentProgress.repaint();
-                overallProgress.repaint();
-
-                float progress = 100F * ChangeStats.overallTaskProgress.get() / (float) ChangeStats.overallTaskCount.get();
-                frame.setTitle(String.format("Converting: %.2f%%", progress));
-
-                try {
-                    Thread.sleep(100L);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        }).start();
-
-        for (Dimension dimension : dimensions) {
-            ChangeStats.overallTaskCount.getAndAdd(dimension.countRegionFiles(config));
-            ChangeStats.overallTaskCount.getAndAdd(dimension.countSchematicFiles(config));
-        }
+    public void convert(Client client) {
+        countTasks();
+        client.setup();
+        client.start();
 
         ChangeStats.punchIn();
-
         for (Dimension dimension : dimensions) {
             try {
-                ChangeStats.dimTaskProgress.set(0);
-                dimensionLabel.setText(String.format("Dim: %s", dimension.getName()));
+                ChangeStats.dimTasksComplete.set(0);
+                client.setDimension(dimension.getName());
 
                 List<ExtentTask<?>> tasks = new LinkedList<>();
                 dimension.addRegionTasks(config, tasks);
                 dimension.addSchematicTasks(config, tasks);
-                ChangeStats.dimTaskCount.set(tasks.size());
+                ChangeStats.dimTaskTotal.set(tasks.size());
 
                 dimension.mkdirs();
-                service.invokeAll(tasks);
-
-                if (!config.schematicsOnly) {
-                    dimension.copyData();
-                }
-
-                ChangeStats.incDimensionCount();
+                client.getExecutor().invokeAll(tasks);
+                dimension.copyData();
             } catch (InterruptedException e) {
                 e.printStackTrace();
+            } finally {
+                ChangeStats.incDimensionCount();
             }
         }
 
         CompoundTag level = WorldData.mergeLevels(fromWorld, toWorld);
         WorldData.writeLevelData(level, main.getOutputLevelFile());
-
         ChangeStats.punchOut();
 
         try {
@@ -160,14 +85,13 @@ public class World {
         }
 
         ChangeStats.running.set(false);
-        ChangeStats.displayResults(cores);
-        JOptionPane.showMessageDialog(null, "Conversion Complete!");
-        frame.dispose();
+        client.finish(outputDirRoot);
+    }
 
-        try {
-            Desktop.getDesktop().open(outputDirRoot);
-        } catch (IOException e) {
-            e.printStackTrace();
+    private void countTasks() {
+        for (Dimension dimension : dimensions) {
+            ChangeStats.globalTaskTotal.getAndAdd(dimension.countRegionFiles(config));
+            ChangeStats.globalTaskTotal.getAndAdd(dimension.countSchematicFiles(config));
         }
     }
 
@@ -236,21 +160,13 @@ public class World {
             return;
         }
 
-        Integer fromId = fromWorld.blockRegistry.getId(blockInfo.name);
+        int fromId = fromWorld.blockRegistry.getId(blockInfo.name);
         int fromMinData = blockInfo.min;
         int fromMaxData = blockInfo.max;
 
-        Integer toId = toWorld.blockRegistry.getId(blockInfo.to.name);
+        int toId = toWorld.blockRegistry.getId(blockInfo.to.name);
         int toMinData = blockInfo.to.min;
         int toMaxData = blockInfo.to.max;
-
-        if (fromId == null) {
-            throw new IllegalArgumentException("Block type not found in 'from' registry: " + blockInfo.name);
-        }
-
-        if (toId == null) {
-            throw new IllegalArgumentException("Block type not found in 'to' registry: " + blockInfo.to.name);
-        }
 
         record(blockInfo, fromId, toId);
 

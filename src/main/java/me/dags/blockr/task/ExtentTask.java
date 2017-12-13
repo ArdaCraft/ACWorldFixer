@@ -47,7 +47,8 @@ public abstract class ExtentTask<T extends Extent> implements Runnable, Callable
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
-            ChangeStats.dimTaskProgress.addAndGet(1);
+            ChangeStats.dimTasksComplete.addAndGet(1);
+            ChangeStats.globalTasksComplete.addAndGet(1);
         }
     }
 
