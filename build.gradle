@@ -1,0 +1,50 @@
+buildscript {
+    repositories {
+        jcenter()
+        maven { url = "http://files.minecraftforge.net/maven" }
+    }
+
+    dependencies {
+        classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
+    }
+}
+
+plugins {
+    id "com.github.johnrengelman.shadow" version "2.0.2"
+    id 'java'
+}
+
+apply plugin: 'net.minecraftforge.gradle.forge'
+
+group 'me.dags'
+version '1.2.0-SNAPSHOT'
+sourceCompatibility = targetCompatibility = "1.8"
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    shadow 'com.google.code.gson:gson:2.8.2'
+    shadow 'com.google.guava:guava:23.5-jre'
+}
+
+minecraft {
+    version = "1.12.1-14.22.0.2459"
+    runDir = "run"
+    mappings = "snapshot_20170624"
+}
+
+processResources {
+    inputs.property "version", project.version
+    inputs.property "mcversion", project.minecraft.version
+
+    from(sourceSets.main.resources.srcDirs) {
+        include 'mcmod.info'
+        expand 'version':project.version, 'mcversion':project.minecraft.version
+    }
+
+    from(sourceSets.main.resources.srcDirs) {
+        exclude 'mcmod.info'
+    }
+}
