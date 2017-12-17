@@ -19,19 +19,20 @@ public class NewChunk implements Chunk {
     private final ByteArrayTag biomes;
     private final Palette[] palettes;
     private final int sectionCount;
-    private final int blockCount;
     private final int maxHeight;
+    private final int x, z;
 
-    public NewChunk(World world, CompoundTag chunk) {
+    public NewChunk(World world, int x, int z, CompoundTag chunk) {
         CompoundTag level = (CompoundTag) chunk.getTag("Level");
         ListTag sections = (ListTag) level.getTag("Sections");
+        this.x = x;
+        this.z = z;
         this.chunk = chunk;
         this.sectionCount = sections.getValue().size();
         this.sections = new LongArrayTag[sectionCount];
         this.palettes = new Palette[sectionCount];
         this.biomes = (ByteArrayTag) level.getTag("Biomes");
         this.maxHeight = sectionCount << 4;
-        this.blockCount = maxHeight * Chunk.SECTION_AREA;
         for (int i = 0; i < sectionCount; i++) {
             CompoundTag section = (CompoundTag) sections.getValue().get(i);
             ListTag palette = (ListTag) section.getTag("Palette");
@@ -47,18 +48,23 @@ public class NewChunk implements Chunk {
     }
 
     @Override
-    public int getMaxSectionIndex() {
+    public int getSectionCount() {
         return sectionCount;
-    }
-
-    @Override
-    public int getMaxBlockIndex() {
-        return blockCount;
     }
 
     @Override
     public CompoundTag getTag() {
         return chunk;
+    }
+
+    @Override
+    public int getX() {
+        return x;
+    }
+
+    @Override
+    public int getZ() {
+        return z;
     }
 
     @Override
@@ -122,8 +128,8 @@ public class NewChunk implements Chunk {
             return input;
         }
 
-        List<Tag> list = new ArrayList<>(input.getMaxSectionIndex());
-        for (int i = 0 ; i < input.getMaxSectionIndex(); i++) {
+        List<Tag> list = new ArrayList<>(input.getSectionCount());
+        for (int i = 0; i < input.getSectionCount(); i++) {
             list.add(i, new LongArrayTag("" + i, new long[Chunk.SECTION_AREA]));
         }
 
@@ -132,6 +138,6 @@ public class NewChunk implements Chunk {
         level.setTag("Sections", new ListTag("Sections", NBTConstants.TYPE_LONG_ARRAY, list));
 
         Chunk.shallowCopy(input.getTag(), chunk);
-        return new NewChunk(world, chunk);
+        return new NewChunk(world, input.getX(), input.getZ(), chunk);
     }
 }

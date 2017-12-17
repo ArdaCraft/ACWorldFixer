@@ -7,6 +7,7 @@ import me.dags.massblockr.minecraft.world.LegacyBlockHandler;
 import me.dags.massblockr.minecraft.world.World;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
@@ -25,16 +26,17 @@ public class LegacyChunk implements Chunk, LegacyBlockHandler {
     private final ByteArrayTag[] data;
     private final ByteArrayTag biomes;
     private final int sectionCount;
-    private final int blockCount;
     private final int maxHeight;
+    private final int x, z;
 
-    public LegacyChunk(World world, CompoundTag chunk) {
+    public LegacyChunk(World world, int x, int z, CompoundTag chunk) {
         CompoundTag level = (CompoundTag) chunk.getTag("Level");
-        ListTag sections = (ListTag) level.getTag("Section");
+        ListTag sections = (ListTag) level.getTag("Sections");
 
+        this.x = x;
+        this.z = z;
         this.chunk = chunk;
         this.sectionCount = sections.getValue().size();
-        this.blockCount = sectionCount * 16 * 16 * 16;
         this.blocks = new ByteArrayTag[sectionCount];
         this.adds = new ByteArrayTag[sectionCount];
         this.data = new ByteArrayTag[sectionCount];
@@ -56,18 +58,23 @@ public class LegacyChunk implements Chunk, LegacyBlockHandler {
     }
 
     @Override
-    public int getMaxSectionIndex() {
+    public int getSectionCount() {
         return sectionCount;
-    }
-
-    @Override
-    public int getMaxBlockIndex() {
-        return blockCount;
     }
 
     @Override
     public CompoundTag getTag() {
         return chunk;
+    }
+
+    @Override
+    public int getX() {
+        return x;
+    }
+
+    @Override
+    public int getZ() {
+        return z;
     }
 
     @Override
@@ -119,17 +126,17 @@ public class LegacyChunk implements Chunk, LegacyBlockHandler {
             return input;
         }
 
-        List<Tag> list = new ArrayList<>(input.getMaxSectionIndex());
-        for (int i = 0 ; i < input.getMaxSectionIndex(); i++) {
+        List<Tag> list = new ArrayList<>(input.getSectionCount());
+        for (int i = 0; i < input.getSectionCount(); i++) {
             list.add(i, new ByteArrayTag("" + i, new byte[256 * 16]));
         }
 
-        CompoundTag chunk = new CompoundTag("Chunk", new HashMap<>()); // name should be chunk id (x,z) ??
         CompoundTag level = new CompoundTag("Level", new HashMap<>());
         level.setTag("Sections", new ListTag("Sections", NBTConstants.TYPE_BYTE_ARRAY, list));
-        chunk.setTag("Level", level);
+
+        CompoundTag chunk = new CompoundTag("", Collections.singletonMap("Level", level)); // name should be chunk id (x,z) ??
 
         Chunk.shallowCopy(input.getTag(), chunk);
-        return new LegacyChunk(world, chunk);
+        return new LegacyChunk(world, input.getX(), input.getZ(), chunk);
     }
 }

@@ -1,4 +1,4 @@
-package me.dags.massblockr.minecraft.world.dimension;
+package me.dags.massblockr.minecraft.world.region;
 
 import me.dags.massblockr.minecraft.world.chunk.Chunk;
 

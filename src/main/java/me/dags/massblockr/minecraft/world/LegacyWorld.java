@@ -6,8 +6,7 @@ import me.dags.massblockr.jnbt.Tag;
 import me.dags.massblockr.minecraft.registry.Loader;
 import me.dags.massblockr.minecraft.registry.Registry;
 import me.dags.massblockr.minecraft.world.dimension.Dimension;
-import me.dags.massblockr.minecraft.world.dimension.RootDimension;
-import me.dags.massblockr.minecraft.world.dimension.SubDimension;
+import me.dags.massblockr.minecraft.world.dimension.WorldDimension;
 import me.dags.massblockr.util.FileUtils;
 
 import java.io.File;
@@ -55,14 +54,14 @@ public class LegacyWorld implements World {
 
     @Override
     public Dimension createDimension(String name) {
-        if (name.isEmpty()) {
-            return new RootDimension(this);
+        if (name.equalsIgnoreCase(this.getDirectory().getName())) {
+            return new WorldDimension(this);
         }
-        return new SubDimension(this, FileUtils.mustDir(worldDir, name));
+        return new WorldDimension(this, FileUtils.mustDir(worldDir, name));
     }
 
     private static ListTag loadIdRegistry(InputStream inputStream) throws IOException {
-        CompoundTag root = (CompoundTag) FileUtils.readNBT(inputStream);
+        CompoundTag root = (CompoundTag) FileUtils.readNBT(inputStream, FileUtils.VERSION_GZIP);
         Tag blocks = getTag(root, "FML", "Registries", "minecraft:blocks", "ids");
         if (blocks == null) {
             throw new IllegalArgumentException("Invalid level.dat file!");

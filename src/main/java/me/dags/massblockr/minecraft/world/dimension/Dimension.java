@@ -1,5 +1,7 @@
 package me.dags.massblockr.minecraft.world.dimension;
 
+import me.dags.massblockr.minecraft.world.region.Region;
+
 import java.io.File;
 import java.util.stream.Stream;
 
@@ -10,9 +12,13 @@ public interface Dimension {
 
     String getName();
 
-    Stream<RegionFile> getRegions();
+    int getRegionCount();
 
-    RegionFile createRegion(String name);
+    boolean isRoot();
+
+    Stream<Region> getRegions();
+
+    Region createRegion(String name);
 
     static boolean isValidDimension(File file) {
         if (!file.exists() || !file.isDirectory()) {

@@ -5,6 +5,8 @@ import me.dags.massblockr.jnbt.NBTOutputStream;
 import me.dags.massblockr.jnbt.Tag;
 
 import java.io.*;
+import java.util.zip.DeflaterInputStream;
+import java.util.zip.DeflaterOutputStream;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
 
@@ -12,6 +14,9 @@ import java.util.zip.GZIPOutputStream;
  * @author dags <dags@dags.me>
  */
 public class FileUtils {
+
+    public static final int VERSION_GZIP = 1;
+    public static final int VERSION_DEFLATE = 2;
 
     public static File mustDir(File parent, String name) {
         File file = new File(parent, name);
@@ -33,22 +38,40 @@ public class FileUtils {
     }
 
     public static Tag readNBT(File file) throws IOException {
-        return readNBT(bufferedIn(file));
+        return readNBT(bufferedIn(file), VERSION_GZIP);
     }
 
     public static void writeNBT(Tag tag, File file) throws IOException {
-        writeNBT(tag, bufferedOut(file));
+        writeNBT(tag, bufferedOut(file), VERSION_GZIP);
     }
 
     public static Tag readNBT(InputStream inputStream) throws IOException {
-        try (NBTInputStream nbt = new NBTInputStream(new GZIPInputStream(inputStream))) {
+        try (NBTInputStream nbt = new NBTInputStream(inputStream)) {
             return nbt.readTag();
         }
     }
 
-    public static void writeNBT(Tag tag, OutputStream outputStream) throws IOException {
-        try (NBTOutputStream nbt = new NBTOutputStream(new GZIPOutputStream(outputStream))) {
-            nbt.writeTag(tag);
+    public static Tag readNBT(InputStream inputStream, int type) throws IOException {
+        if (type == VERSION_GZIP) {
+            try (NBTInputStream nbt = new NBTInputStream(new GZIPInputStream(inputStream))) {
+                return nbt.readTag();
+            }
+        } else {
+            try (NBTInputStream nbt = new NBTInputStream(new DeflaterInputStream(inputStream))) {
+                return nbt.readTag();
+            }
+        }
+    }
+
+    public static void writeNBT(Tag tag, OutputStream outputStream, int type) throws IOException {
+        if (type == VERSION_GZIP) {
+            try (NBTOutputStream nbt = new NBTOutputStream(new GZIPOutputStream(outputStream))) {
+                nbt.writeTag(tag);
+            }
+        } else if (type == VERSION_DEFLATE) {
+            try (NBTOutputStream nbt = new NBTOutputStream(new DeflaterOutputStream(outputStream))) {
+                nbt.writeTag(tag);
+            }
         }
     }
 }

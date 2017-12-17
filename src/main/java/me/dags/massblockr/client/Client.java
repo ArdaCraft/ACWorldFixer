@@ -1,6 +1,6 @@
 package me.dags.massblockr.client;
 
-import me.dags.massblockr.util.Stats;
+import me.dags.massblockr.util.StatCounters;
 
 import java.io.File;
 import java.util.concurrent.ExecutorService;
@@ -26,12 +26,13 @@ public interface Client {
 
     default void start() {
         new Thread(() -> {
-            while (Stats.running.get()) {
-                setDimTaskProgress(Stats.dimTasksComplete.get(), Stats.dimTaskTotal.get());
-                setGlobalTaskProgress(Stats.globalTasksComplete.get(), Stats.globalTaskTotal.get());
+            StatCounters.running.set(true);
+            while (StatCounters.running.get()) {
+                setDimTaskProgress(StatCounters.dimTasksComplete.get(), StatCounters.dimTaskTotal.get());
+                setGlobalTaskProgress(StatCounters.globalTasksComplete.get(), StatCounters.globalTaskTotal.get());
                 update();
                 try {
-                    Thread.sleep(100L);
+                    Thread.sleep(350L);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

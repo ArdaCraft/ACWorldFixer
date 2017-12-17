@@ -1,30 +1,32 @@
 package me.dags.massblockr.client.headless;
 
+import me.dags.massblockr.util.StatCounters;
+
 /**
  * @author dags <dags@dags.me>
  */
 public class Stats {
 
     static void printStats() {
-        int dimensions = me.dags.massblockr.util.Stats.dimVisits.get();
-        long extents = Math.abs(me.dags.massblockr.util.Stats.extentVisits.get());
-        long totalBlocks = Math.abs(me.dags.massblockr.util.Stats.blockVisits.get());
-        long blockChanged = Math.abs(me.dags.massblockr.util.Stats.blockChanges.get());
-        long entities = Math.abs(me.dags.massblockr.util.Stats.entityChanges.get());
-        long tileEntities = Math.abs(me.dags.massblockr.util.Stats.tileEntityChanges.get());
+        int dimensions = StatCounters.dimVisits.get();
+        long extents = Math.abs(StatCounters.extentVisits.get());
+        long totalBlocks = Math.abs(StatCounters.blockVisits.get());
+        long blockChanged = Math.abs(StatCounters.blockChanges.get());
+        long entities = Math.abs(StatCounters.entityChanges.get());
+        long tileEntities = Math.abs(StatCounters.tileEntityChanges.get());
 
-        Double time = (me.dags.massblockr.util.Stats.finish - me.dags.massblockr.util.Stats.start) / 1000D;
+        Double time = (StatCounters.finish - StatCounters.start) / 1000D;
         Double bps = totalBlocks / time;
-        Double tps = me.dags.massblockr.util.Stats.globalTasksComplete.get() / time;
+        Double tps = StatCounters.globalTasksComplete.get() / time;
 
-        System.out.printf("Dimensions: %s\n", me.dags.massblockr.util.Stats.numFormat(dimensions));
-        System.out.printf("Regions: %s\n", me.dags.massblockr.util.Stats.numFormat(me.dags.massblockr.util.Stats.globalTasksComplete.get()));
-        System.out.printf("Extents: %s\n", me.dags.massblockr.util.Stats.numFormat(extents));
-        System.out.printf("Blocks: %s\n", me.dags.massblockr.util.Stats.numFormat(blockChanged));
-        System.out.printf("Entities: %s\n", me.dags.massblockr.util.Stats.numFormat(entities));
-        System.out.printf("TileEntities: %s\n", me.dags.massblockr.util.Stats.numFormat(tileEntities));
-        System.out.printf("Time Taken: %ss\n", me.dags.massblockr.util.Stats.numFormat(time));
-        System.out.printf("Blocks Per Sec: %s\n", me.dags.massblockr.util.Stats.numFormat(bps));
-        System.out.printf("Tasks Per Sec: %s\n", me.dags.massblockr.util.Stats.numFormat(tps));
+        System.out.printf("Dimensions: %s\n", StatCounters.numFormat(dimensions));
+        System.out.printf("Regions: %s\n", StatCounters.numFormat(StatCounters.globalTasksComplete.get()));
+        System.out.printf("Extents: %s\n", StatCounters.numFormat(extents));
+        System.out.printf("Blocks Changed: %s / %s\n", StatCounters.numFormat(blockChanged), StatCounters.numFormat(totalBlocks));
+        System.out.printf("Entities: %s\n", StatCounters.numFormat(entities));
+        System.out.printf("TileEntities: %s\n", StatCounters.numFormat(tileEntities));
+        System.out.printf("Time Taken: %ss\n", StatCounters.numFormat(time));
+        System.out.printf("Blocks Per Sec: %s\n", StatCounters.numFormat(bps));
+        System.out.printf("Tasks Per Sec: %s\n", StatCounters.numFormat(tps));
     }
 }

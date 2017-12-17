@@ -69,13 +69,13 @@ public class LegacySchematic implements Schematic, LegacyBlockHandler {
     }
 
     @Override
-    public int getMaxSectionIndex() {
+    public int getSectionCount() {
         return 0;
     }
 
     @Override
-    public int getMaxBlockIndex() {
-        return 0;
+    public int getSectionSize() {
+        return width * height * length;
     }
 
     @Override

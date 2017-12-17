@@ -17,6 +17,10 @@ public interface Chunk extends VolumeInput, VolumeOutput {
 
     CompoundTag getTag();
 
+    int getX();
+
+    int getZ();
+
     @Override
     default int getWidth() {
         return 16;
@@ -25,6 +29,10 @@ public interface Chunk extends VolumeInput, VolumeOutput {
     @Override
     default int getLength() {
         return 16;
+    }
+
+    default int getSectionSize() {
+        return 4096; // 16 ^ 3
     }
 
     @Override
@@ -42,20 +50,20 @@ public interface Chunk extends VolumeInput, VolumeOutput {
         return x | ((z | ((y & 0xF) << 4)) << 4);
     }
 
-    static void shallowCopy(Chunk in, Chunk out) {
-        if (in == out) {
-            return;
-        }
-
-        CompoundTag levelIn = (CompoundTag) in.getTag().getTag("Level");
-        CompoundTag levelOut = (CompoundTag) out.getTag().getTag("Level");
-        shallowCopy(levelIn, levelOut);
-    }
-
     static void shallowCopy(CompoundTag in, CompoundTag out) {
         if (in == out) {
             return;
         }
+
+        for (Map.Entry<String, Tag> entry : in.getValue().entrySet()) {
+            if (entry.getKey().equals("Level")) {
+                continue;
+            }
+            out.setTag(entry.getKey(), entry.getValue());
+        }
+
+        in = (CompoundTag) in.getTag("Level");
+        out = (CompoundTag) out.getTag("Level");
 
         for (Map.Entry<String, Tag> entry : in.getValue().entrySet()) {
             if (entry.getKey().equals("Sections")) {

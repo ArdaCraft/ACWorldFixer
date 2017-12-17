@@ -61,13 +61,13 @@ public class VolumeWorker<T extends VolumeInput & VolumeOutput> implements Volum
     }
 
     @Override
-    public int getMaxSectionIndex() {
-        return input.getMaxSectionIndex();
+    public int getSectionCount() {
+        return input.getSectionCount();
     }
 
     @Override
-    public int getMaxBlockIndex() {
-        return input.getMaxBlockIndex();
+    public int getSectionSize() {
+        return input.getSectionSize();
     }
 
     @Override

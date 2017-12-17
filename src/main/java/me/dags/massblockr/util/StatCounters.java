@@ -8,7 +8,7 @@ import java.util.concurrent.atomic.AtomicLong;
 /**
  * @author dags <dags@dags.me>
  */
-public class Stats {
+public class StatCounters {
 
     public static final AtomicInteger dimVisits = new AtomicInteger(0);
     public static final AtomicLong extentVisits = new AtomicLong(0);
@@ -17,7 +17,7 @@ public class Stats {
     public static final AtomicLong entityChanges = new AtomicLong(0);
     public static final AtomicLong tileEntityChanges = new AtomicLong(0);
 
-    public static final AtomicBoolean running = new AtomicBoolean(true);
+    public static final AtomicBoolean running = new AtomicBoolean(false);
     public static final AtomicInteger dimTaskTotal = new AtomicInteger(0);
     public static final AtomicInteger dimTasksComplete = new AtomicInteger(0);
     public static final AtomicInteger globalTaskTotal = new AtomicInteger(0);

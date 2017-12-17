@@ -14,9 +14,9 @@ public interface BlockVolume {
 
     int getLength();
 
-    int getMaxSectionIndex();
+    int getSectionSize();
 
-    int getMaxBlockIndex();
+    int getSectionCount();
 
     int getBiome(int biomeIndex);
 
