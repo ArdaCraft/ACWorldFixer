@@ -1,0 +1,2 @@
+minecraft:stone[variant=*] => minecraft:bedrock
+minecraft:air => minecraft:bedrock

@@ -1,5 +1,6 @@
 package me.dags.massblockr.minecraft.world.dimension;
 
+import me.dags.massblockr.minecraft.world.World;
 import me.dags.massblockr.minecraft.world.region.Region;
 
 import java.io.File;
@@ -11,6 +12,8 @@ import java.util.stream.Stream;
 public interface Dimension {
 
     String getName();
+
+    World getWorld();
 
     int getRegionCount();
 

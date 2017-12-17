@@ -72,7 +72,7 @@ public class MassBlockrMod {
 
                 writer.name(name.toString()).beginObject();
                 {
-                    Pattern pattern = Pattern.compile(".+\\[(.*?)]");
+                    Pattern pattern = Pattern.compile(".+\\[(.*?)]"); // matches `a=0,b=1,c=2` in `domain:block[a=0,b=1,c=2]`
                     List<IBlockState> variants = block.getBlockState().getValidStates();
                     for (IBlockState state : variants) {
                         Matcher matcher = pattern.matcher(state.toString());

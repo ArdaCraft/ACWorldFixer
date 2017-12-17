@@ -44,10 +44,11 @@ public class Registry {
         if (block.isAir()) {
             return BlockState.AIR;
         }
-        return block.parse(properties.getValue());
+        return block.parse(properties.getValue()).orElse(block.getDefault());
     }
 
     void register(Block block) {
         namesToBlocks.put(block.getId(), block);
+        block.forEach((i, s) -> namesToStates.put(s.toString(), s));
     }
 }

@@ -9,7 +9,7 @@ public class Stats {
 
     static void printStats() {
         int dimensions = StatCounters.dimVisits.get();
-        long extents = Math.abs(StatCounters.extentVisits.get());
+        long extents = Math.abs(StatCounters.chunkVisits.get());
         long totalBlocks = Math.abs(StatCounters.blockVisits.get());
         long blockChanged = Math.abs(StatCounters.blockChanges.get());
         long entities = Math.abs(StatCounters.entityChanges.get());

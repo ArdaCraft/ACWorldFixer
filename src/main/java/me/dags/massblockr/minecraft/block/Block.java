@@ -6,6 +6,7 @@ import me.dags.massblockr.util.OrderedMap;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.function.BiConsumer;
 
 /**
@@ -28,7 +29,7 @@ public class Block {
         int max = 0;
         for (BlockState.Builder builder : properties) {
             BlockState state = builder.build(this);
-            states.put(state.hashCode(), state);
+            states.put(state.propertyHashCode(), state);
             unique.put(state.getMeta(), state);
             max = Math.max(max, state.getMeta());
             if (def == null) {
@@ -63,9 +64,9 @@ public class Block {
         return this == AIR;
     }
 
-    public BlockState parse(Map<String, ?> properties) {
+    public Optional<BlockState> parse(Map<String, ?> properties) {
         int hash = properties.hashCode();
-        return states.getOrDefault(hash, getDefault());
+        return Optional.ofNullable(states.get(hash));
     }
 
     public String getId() {

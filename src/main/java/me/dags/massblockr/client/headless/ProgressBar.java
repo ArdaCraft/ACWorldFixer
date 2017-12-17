@@ -1,5 +1,7 @@
 package me.dags.massblockr.client.headless;
 
+import java.io.PrintStream;
+
 /**
  * @author dags <dags@dags.me>
  */
@@ -14,6 +16,12 @@ public class ProgressBar {
         this.buffer[0] = '[';
         this.buffer[1 + width] = ']';
         this.buffer[1 + width + 4] = '%';
+    }
+
+    public void write(PrintStream stream) {
+        for (char c : buffer) {
+            stream.append(c);
+        }
     }
 
     public void appendTo(StringBuilder builder) {

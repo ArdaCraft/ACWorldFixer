@@ -26,13 +26,16 @@ public interface Client {
 
     default void start() {
         new Thread(() -> {
+            System.out.println();
+            System.out.println("Progress:");
             StatCounters.running.set(true);
+
             while (StatCounters.running.get()) {
                 setDimTaskProgress(StatCounters.dimTasksComplete.get(), StatCounters.dimTaskTotal.get());
                 setGlobalTaskProgress(StatCounters.globalTasksComplete.get(), StatCounters.globalTaskTotal.get());
                 update();
                 try {
-                    Thread.sleep(350L);
+                    Thread.sleep(300L);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

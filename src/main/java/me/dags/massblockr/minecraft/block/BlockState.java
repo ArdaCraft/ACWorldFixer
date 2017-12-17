@@ -2,6 +2,8 @@ package me.dags.massblockr.minecraft.block;
 
 import me.dags.massblockr.util.OrderedMap;
 
+import java.util.function.BiConsumer;
+
 /**
  * @author dags <dags@dags.me>
  */
@@ -11,6 +13,7 @@ public class BlockState {
     public static final BlockState AIR = new BlockState(Block.AIR);
 
     private final int meta;
+    private final int hash;
     private final Block block;
     private final OrderedMap<String, Object> properties;
 
@@ -22,20 +25,50 @@ public class BlockState {
         this.meta = meta;
         this.block = block;
         this.properties = properties;
+        this.hash = 31 * block.hashCode() + properties.hashCode();
+    }
+
+    public Block getBlock() {
+        return block;
+    }
+
+    public void forEach(BiConsumer<String, Object> propertyConsumer) {
+        properties.forEach(propertyConsumer);
     }
 
     public int getMeta() {
         return meta;
     }
 
-    @Override
-    public int hashCode() {
+    public Object getProperty(String name) {
+        return properties.get(name);
+    }
+
+    public int propertyHashCode() {
         return properties.hashCode();
     }
 
     @Override
+    public boolean equals(Object other) {
+        if (other == null) {
+            return false;
+        }
+
+        if (other.getClass() != this.getClass()) {
+            return false;
+        }
+
+        return other.hashCode() == this.hashCode();
+    }
+
+    @Override
+    public int hashCode() {
+        return hash;
+    }
+
+    @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder(48);
+        StringBuilder sb = new StringBuilder(64);
         sb.append(block);
         properties.appendTo(sb);
         return sb.toString();
@@ -69,6 +102,10 @@ public class BlockState {
     }
 
     public static void parse(BlockState.Builder builder, String properties) {
+        parseProperties(properties, builder::put);
+    }
+
+    public static void parseProperties(String properties, BiConsumer<String, Object> consumer) {
         if (properties.length() == 0) {
             return;
         }
@@ -83,7 +120,7 @@ public class BlockState {
             String value = properties.substring(start, end);
             end += 1;
 
-            builder.put(key, value);
+            consumer.accept(key, value);
         }
     }
 }

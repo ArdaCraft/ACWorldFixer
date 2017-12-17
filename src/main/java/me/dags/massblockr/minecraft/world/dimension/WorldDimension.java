@@ -41,6 +41,11 @@ public class WorldDimension implements Dimension {
     }
 
     @Override
+    public World getWorld() {
+        return world;
+    }
+
+    @Override
     public int getRegionCount() {
         return files.length;
     }

@@ -11,7 +11,8 @@ import java.util.concurrent.atomic.AtomicLong;
 public class StatCounters {
 
     public static final AtomicInteger dimVisits = new AtomicInteger(0);
-    public static final AtomicLong extentVisits = new AtomicLong(0);
+    public static final AtomicLong chunkVisits = new AtomicLong(0);
+    public static final AtomicLong schemVisits = new AtomicLong(0);
     public static final AtomicLong blockVisits = new AtomicLong(0);
     public static final AtomicLong blockChanges = new AtomicLong(0);
     public static final AtomicLong entityChanges = new AtomicLong(0);
@@ -32,30 +33,6 @@ public class StatCounters {
 
     public static void punchOut() {
         finish = System.currentTimeMillis();
-    }
-
-    public static void incDimensionCount() {
-        dimVisits.getAndAdd(1);
-    }
-
-    public static void incExtentCount() {
-        extentVisits.addAndGet(1);
-    }
-
-    public static void incBlockVisits(long count) {
-        blockVisits.getAndAdd(count);
-    }
-
-    public static void incBlockChanges() {
-        blockChanges.getAndAdd(1);
-    }
-
-    public static void incEntityChanges() {
-        entityChanges.getAndAdd(1);
-    }
-
-    public static void incTileEntityChanges() {
-        tileEntityChanges.getAndAdd(1);
     }
 
     public static String numFormat(Number in) {
