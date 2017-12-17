@@ -46,7 +46,7 @@ public class RegionSpliterator implements Spliterator<Chunk> {
         if (in != null) {
             try {
                 CompoundTag tag = (CompoundTag) FileUtils.readNBT(in);
-                Chunk chunk = region.getWorld().createChunk(x, z, tag);
+                Chunk chunk = region.getWorld().readChunk(x, z, tag);
                 action.accept(chunk);
                 return true;
             } catch (IOException e) {

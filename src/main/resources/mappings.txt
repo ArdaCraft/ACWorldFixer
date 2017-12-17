@@ -1,2 +1,2 @@
-minecraft:stone[variant=*] => minecraft:bedrock
+minecraft:stone[variant=*] => minecraft:stone[variant=diorite]
 minecraft:air => minecraft:bedrock

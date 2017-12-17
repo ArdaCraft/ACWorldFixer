@@ -1,7 +1,11 @@
 package me.dags.massblockr.minecraft.block;
 
+import me.dags.massblockr.jnbt.CompoundTag;
+import me.dags.massblockr.jnbt.StringTag;
 import me.dags.massblockr.util.OrderedMap;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.function.BiConsumer;
 
 /**
@@ -10,11 +14,12 @@ import java.util.function.BiConsumer;
 public class BlockState {
 
     private static final OrderedMap<String, Object> EMPTY = new OrderedMap<>();
-    public static final BlockState AIR = new BlockState(Block.AIR);
+    public static final BlockState AIR = Block.AIR.getDefault();
 
     private final int meta;
     private final int hash;
     private final Block block;
+    private final String name;
     private final OrderedMap<String, Object> properties;
 
     public BlockState(Block block) {
@@ -25,6 +30,12 @@ public class BlockState {
         this.meta = meta;
         this.block = block;
         this.properties = properties;
+
+        StringBuilder sb = new StringBuilder(64);
+        sb.append(block.getId());
+        properties.appendTo(sb);
+
+        this.name = sb.toString();
         this.hash = 31 * block.hashCode() + properties.hashCode();
     }
 
@@ -48,6 +59,21 @@ public class BlockState {
         return properties.hashCode();
     }
 
+    public CompoundTag toNBT() {
+        CompoundTag state = new CompoundTag("", new HashMap<>());
+        state.setTag("Name", new StringTag("Name", block.getId()));
+
+        if (!properties.isEmpty()) {
+            CompoundTag properties = new CompoundTag("Properties", new HashMap<>());
+            for (Map.Entry<String, Object> entry : this.properties.entrySet()) {
+                properties.setTag(entry.getKey(), new StringTag(entry.getKey(), entry.getValue().toString()));
+            }
+            state.setTag("Properties", properties);
+        }
+
+        return state;
+    }
+
     @Override
     public boolean equals(Object other) {
         if (other == null) {
@@ -68,10 +94,7 @@ public class BlockState {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder(64);
-        sb.append(block);
-        properties.appendTo(sb);
-        return sb.toString();
+        return name;
     }
 
     public static Builder builder() {

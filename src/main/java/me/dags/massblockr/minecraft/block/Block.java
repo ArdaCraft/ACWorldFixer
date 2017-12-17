@@ -3,7 +3,6 @@ package me.dags.massblockr.minecraft.block;
 import me.dags.massblockr.util.EntryIterator;
 import me.dags.massblockr.util.OrderedMap;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -14,14 +13,24 @@ import java.util.function.BiConsumer;
  */
 public class Block {
 
-    public static final Block AIR = new Block("minecraft:air", Collections.emptyList());
+    public static final Block AIR = new Block();
 
     private final String id;
     private final BlockState defaultState;
     private final BlockState[] metaStates;
     private final OrderedMap<Integer, BlockState> states;
 
+    private Block() {
+        id = "minecraft:air";
+        defaultState = new BlockState(this);
+        metaStates = new BlockState[]{defaultState};
+        states = new OrderedMap<>();
+        states.put(defaultState.hashCode(), defaultState);
+    }
+
     public Block(String id, List<BlockState.Builder> properties) {
+        this.id = id;
+
         BlockState def = null;
         OrderedMap<Integer, BlockState> unique = new OrderedMap<>();
         OrderedMap<Integer, BlockState> states = new OrderedMap<>();
@@ -37,7 +46,6 @@ public class Block {
             }
         }
 
-        this.id = id;
         this.states = states;
         this.defaultState = def;
         this.metaStates = new BlockState[max + 1];

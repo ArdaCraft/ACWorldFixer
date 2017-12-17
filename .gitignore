@@ -14,6 +14,6 @@ hs_err_pid*
 target/
 .idea/
 *.iml
-world/
-world-converted/
+/world/
+/world-converted/
 dependency-reduced-pom.xml

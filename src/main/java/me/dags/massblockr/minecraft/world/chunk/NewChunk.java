@@ -2,10 +2,12 @@ package me.dags.massblockr.minecraft.world.chunk;
 
 import me.dags.massblockr.jnbt.*;
 import me.dags.massblockr.minecraft.block.BlockState;
+import me.dags.massblockr.minecraft.palette.LocalPalette;
 import me.dags.massblockr.minecraft.palette.Palette;
 import me.dags.massblockr.minecraft.world.World;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
@@ -17,7 +19,7 @@ public class NewChunk implements Chunk {
     private final CompoundTag chunk;
     private final LongArrayTag[] sections;
     private final ByteArrayTag biomes;
-    private final Palette[] palettes;
+    private final LocalPalette[] palettes;
     private final int sectionCount;
     private final int maxHeight;
     private final int x, z;
@@ -30,7 +32,7 @@ public class NewChunk implements Chunk {
         this.chunk = chunk;
         this.sectionCount = sections.getValue().size();
         this.sections = new LongArrayTag[sectionCount];
-        this.palettes = new Palette[sectionCount];
+        this.palettes = new LocalPalette[sectionCount];
         this.biomes = (ByteArrayTag) level.getTag("Biomes");
         this.maxHeight = sectionCount << 4;
         for (int i = 0; i < sectionCount; i++) {
@@ -54,6 +56,13 @@ public class NewChunk implements Chunk {
 
     @Override
     public CompoundTag getTag() {
+        CompoundTag level = (CompoundTag) chunk.getTag("Level");
+        ListTag sections = (ListTag) level.getTag("Sections");
+        for (int i = 0; i < sections.getValue().size(); i++) {
+            CompoundTag section = (CompoundTag) sections.getValue().get(i);
+            LocalPalette palette = palettes[i];
+            section.setTag("Palette", palette.toNBT());
+        }
         return chunk;
     }
 
@@ -89,7 +98,11 @@ public class NewChunk implements Chunk {
         int shortIndex = getShortIndex(blockIndex);
         long value = section[longIndex];
         int blockStateId = getShort(value, shortIndex);
-        return getPalette(sectionIndex).getState(blockStateId);
+        BlockState state = getPalette(sectionIndex).getState(blockStateId);
+        if (state == null) {
+            System.out.println("NULL STATE FOR ID: " + blockStateId);
+        }
+        return state;
     }
 
     @Override
@@ -124,20 +137,23 @@ public class NewChunk implements Chunk {
     }
 
     public static Chunk createNewChunk(World world, Chunk input) {
-        if (input instanceof NewChunk) {
-            return input;
-        }
-
-        List<Tag> list = new ArrayList<>(input.getSectionCount());
+        List<Tag> sections = new ArrayList<>(input.getSectionCount());
         for (int i = 0; i < input.getSectionCount(); i++) {
-            list.add(i, new LongArrayTag("" + i, new long[Chunk.SECTION_AREA]));
+            CompoundTag section = new CompoundTag("", new HashMap<>());
+            section.setTag("Y", new ByteTag("Y", (byte) i));
+            section.setTag("Palette", new ListTag("Palette", NBTConstants.TYPE_COMPOUND, Collections.emptyList()));
+            section.setTag("BlockStates", new LongArrayTag("BlockStates", new long[256]));
+            sections.add(section);
         }
 
-        CompoundTag chunk = new CompoundTag("Chunk", new HashMap<>()); // name should be chunk id (x,z) ??
         CompoundTag level = new CompoundTag("Level", new HashMap<>());
-        level.setTag("Sections", new ListTag("Sections", NBTConstants.TYPE_LONG_ARRAY, list));
+        level.setTag("Sections", new ListTag("Sections", NBTConstants.TYPE_COMPOUND, sections));
 
-        Chunk.shallowCopy(input.getTag(), chunk);
+        CompoundTag chunk = new CompoundTag("", new HashMap<>());
+        chunk.setTag("Level", level);
+        chunk.setTag("DataVersion", new IntTag("DataVersion", 1452));
+
+        Chunk.copy(input.getTag(), chunk);
         return new NewChunk(world, input.getX(), input.getZ(), chunk);
     }
 }

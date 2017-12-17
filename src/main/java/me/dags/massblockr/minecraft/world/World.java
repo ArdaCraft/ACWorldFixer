@@ -8,8 +8,10 @@ import me.dags.massblockr.minecraft.world.chunk.LegacyChunk;
 import me.dags.massblockr.minecraft.world.chunk.NewChunk;
 import me.dags.massblockr.minecraft.world.dimension.Dimension;
 import me.dags.massblockr.minecraft.world.dimension.WorldDimension;
+import me.dags.massblockr.minecraft.world.volume.VolumeWorker;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 
@@ -39,7 +41,7 @@ public interface World {
         return count;
     }
 
-    default Chunk createChunk(int x, int z, CompoundTag data) {
+    default Chunk readChunk(int x, int z, CompoundTag data) {
         switch (getSchema()) {
             case World.LEGACY_SCHEMA:
                 return new LegacyChunk(this, x, z, data);
@@ -47,6 +49,17 @@ public interface World {
                 return new NewChunk(this, x, z, data);
             default:
                 throw new IllegalStateException("Invalid world schema: " + getSchema());
+        }
+    }
+
+    default VolumeWorker<Chunk> chunkWorker(Chunk chunkIn) {
+        switch (getSchema()) {
+            case World.LEGACY_SCHEMA:
+                return new VolumeWorker<>(chunkIn, LegacyChunk.createNewChunk(this, chunkIn));
+            case World.FUTURE_SCHEMA:
+                return new VolumeWorker<>(chunkIn, NewChunk.createNewChunk(this, chunkIn));
+            default:
+                return null;
         }
     }
 
@@ -66,5 +79,9 @@ public interface World {
             builder.add(new WorldDimension(world, file));
         }
         return builder.build();
+    }
+
+    static World of(WorldOptions options, int schema) throws IOException {
+        return new WorldImpl(options, schema);
     }
 }

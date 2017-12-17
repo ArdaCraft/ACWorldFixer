@@ -2,15 +2,11 @@ package me.dags.massblockr;
 
 import me.dags.massblockr.client.Client;
 import me.dags.massblockr.client.headless.HeadlessClient;
-import me.dags.massblockr.minecraft.block.BlockState;
 import me.dags.massblockr.minecraft.block.Mapper;
-import me.dags.massblockr.minecraft.world.LegacyWorld;
 import me.dags.massblockr.minecraft.world.World;
 import me.dags.massblockr.minecraft.world.WorldOptions;
-import me.dags.massblockr.minecraft.world.chunk.Chunk;
 import me.dags.massblockr.minecraft.world.dimension.Dimension;
 import me.dags.massblockr.minecraft.world.region.Region;
-import me.dags.massblockr.minecraft.world.volume.VolumeWorker;
 import me.dags.massblockr.util.Mappings;
 import me.dags.massblockr.util.StatCounters;
 
@@ -37,8 +33,8 @@ public class Test {
         out.setRegistry(new File("src/main/resources/registry.json"));
         out.setLevelData(new File("src/main/resources/level.dat"));
 
-        World input = new LegacyWorld(in);
-        World output = new LegacyWorld(out);
+        World input = World.of(in, World.LEGACY_SCHEMA);
+        World output = World.of(out, World.FUTURE_SCHEMA);
         Mapper mapper = Mappings.load(input, output, new File("src/main/resources/mappings.txt"));
 
         System.out.println("Mappings:");
@@ -79,8 +75,8 @@ public class Test {
         }
     }
 
-    private static Callable<Boolean> task(World worldOut, Dimension dimOut, Region regionIn, Mapper mapper) {
-        return () -> processRegion(worldOut, dimOut, regionIn, mapper);
+    private static Callable<Boolean> task(Dimension dimOut, Region regionIn, Mapper mapper) {
+        return () -> processRegion(dimOut, regionIn, mapper);
     }
 
     private static void processDimension(Client client, World worldOut, Dimension dimension, Mapper mapper) {
@@ -88,7 +84,7 @@ public class Test {
 
         Dimension dimOut = worldOut.createDimension(dimension.getName());
         List<Callable<Boolean>> tasks = dimension.getRegions()
-                .map(region -> task(worldOut, dimOut, region, mapper))
+                .map(region -> task(dimOut, region, mapper))
                 .collect(Collectors.toList());
 
         StatCounters.dimTasksComplete.set(0);
@@ -101,39 +97,20 @@ public class Test {
         }
     }
 
-    private static boolean processRegion(World worldOut, Dimension dimOut, Region regionIn, Mapper mapper) {
+    private static boolean processRegion(Dimension dimOut, Region regionIn, Mapper mapper) {
         try {
             Region regionOut = dimOut.createRegion(regionIn.getName());
-
             regionOut.writeChunks(regionIn.getChunks()
-                    .map(chunkIn -> VolumeWorker.newChunkWorker(worldOut, chunkIn))
-                    .map(worker -> work(worker, mapper))
+                    .map(chunkIn -> dimOut.getWorld().chunkWorker(chunkIn))
+                    .map(worker -> worker.apply(mapper).getOutput())
             );
-
             return true;
+        } catch (Throwable t) {
+            t.printStackTrace();
+            return false;
         } finally {
             StatCounters.dimTasksComplete.incrementAndGet();
             StatCounters.globalTasksComplete.incrementAndGet();
         }
-    }
-
-    private static Chunk work(VolumeWorker<Chunk> worker, Mapper mapper) {
-        try {
-            for (int section = 0; section < worker.getSectionCount(); section++) {
-                for (int block = 0; block < worker.getSectionSize(); block++) {
-                    BlockState in = worker.getState(section, block);
-                    BlockState out = mapper.map(in);
-                    worker.setState(section, block, out);
-
-                    StatCounters.blockVisits.incrementAndGet();
-                    if (in != out) {
-                        StatCounters.blockChanges.incrementAndGet();
-                    }
-                }
-            }
-        } finally {
-            StatCounters.chunkVisits.incrementAndGet();
-        }
-        return worker.getOutput();
     }
 }

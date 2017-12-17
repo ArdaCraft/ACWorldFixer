@@ -4,6 +4,7 @@ import me.dags.massblockr.jnbt.CompoundTag;
 import me.dags.massblockr.jnbt.ListTag;
 import me.dags.massblockr.jnbt.Tag;
 import me.dags.massblockr.minecraft.block.Block;
+import me.dags.massblockr.minecraft.block.BlockState;
 import me.dags.massblockr.minecraft.registry.Registry;
 import me.dags.massblockr.minecraft.world.LegacyBlockHandler;
 
@@ -16,6 +17,14 @@ public class GlobalPalette extends AbstractPalette implements LegacyBlockHandler
 
     public GlobalPalette(Registry registry) {
         this.registry = registry;
+    }
+
+    @Override
+    public BlockState getState(int stateId) {
+        if (stateId == 0) {
+            return BlockState.AIR;
+        }
+        return super.getState(stateId);
     }
 
     public void load(ListTag blocks) {

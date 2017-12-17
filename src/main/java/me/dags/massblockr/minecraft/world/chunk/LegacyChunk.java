@@ -100,7 +100,11 @@ public class LegacyChunk implements Chunk, LegacyBlockHandler {
         int id = getShort(blockIndex, blocks, adds);
         int meta = getNibble(blockIndex, data);
         int stateId = getStateId(id, meta);
-        return getPalette(sectionIndex).getState(stateId);
+        BlockState state = getPalette(sectionIndex).getState(stateId);
+        if (state == null) {
+            System.out.println("NULL STATE FOR ID: " + stateId);
+        }
+        return state;
     }
 
     @Override
@@ -117,26 +121,38 @@ public class LegacyChunk implements Chunk, LegacyBlockHandler {
         setNibble(blockIndex, metaData, data);
 
         if (newAdds != adds) {
-            this.adds[sectionIndex] = new ByteArrayTag("Adds", newAdds);
+            addAddsSection(sectionIndex, newAdds);
         }
     }
 
-    public static Chunk createNewChunk(World world, Chunk input) {
-        if (input instanceof LegacyChunk) {
-            return input;
-        }
+    private void addAddsSection(int sectionIndex, byte[] adds) {
+        ByteArrayTag addsTag = new ByteArrayTag("Adds", adds);
+        this.adds[sectionIndex] = addsTag;
 
-        List<Tag> list = new ArrayList<>(input.getSectionCount());
+        CompoundTag level = (CompoundTag) chunk.getTag("Level");
+        ListTag sections = (ListTag) level.getTag("Sections");
+        CompoundTag section = (CompoundTag) sections.getValue().get(sectionIndex);
+        section.setTag("Adds", addsTag);
+    }
+
+    public static Chunk createNewChunk(World world, Chunk input) {
+        List<Tag> sections = new ArrayList<>(input.getSectionCount());
+
         for (int i = 0; i < input.getSectionCount(); i++) {
-            list.add(i, new ByteArrayTag("" + i, new byte[256 * 16]));
+            CompoundTag section = new CompoundTag("", new HashMap<>());
+            section.setTag("Y", new ByteTag("Y", (byte) i));
+            section.setTag("Blocks", new ByteArrayTag("Blocks", new byte[4096]));
+            section.setTag("Data", new ByteArrayTag("Data", new byte[4096]));
+            sections.add(section);
         }
 
         CompoundTag level = new CompoundTag("Level", new HashMap<>());
-        level.setTag("Sections", new ListTag("Sections", NBTConstants.TYPE_BYTE_ARRAY, list));
+        level.setTag("Sections", new ListTag("Sections", NBTConstants.TYPE_COMPOUND, sections));
 
-        CompoundTag chunk = new CompoundTag("", Collections.singletonMap("Level", level)); // name should be chunk id (x,z) ??
+        CompoundTag chunk = new CompoundTag("", Collections.singletonMap("Level", level));
+        chunk.setTag("DataVersion", new IntTag("DataVersion", 512));
+        Chunk.copy(input.getTag(), chunk);
 
-        Chunk.shallowCopy(input.getTag(), chunk);
         return new LegacyChunk(world, input.getX(), input.getZ(), chunk);
     }
 }

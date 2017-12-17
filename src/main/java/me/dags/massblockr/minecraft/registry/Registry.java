@@ -7,10 +7,10 @@ import me.dags.massblockr.minecraft.block.Block;
 import me.dags.massblockr.minecraft.block.BlockState;
 import me.dags.massblockr.minecraft.palette.GlobalPalette;
 import me.dags.massblockr.minecraft.palette.LocalPalette;
-import me.dags.massblockr.minecraft.palette.Palette;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.Consumer;
 
 /**
  * @author dags <dags@dags.me>
@@ -21,7 +21,7 @@ public class Registry {
     private final Map<String, BlockState> namesToStates = new HashMap<>();
     private final GlobalPalette globalPalette = new GlobalPalette(this);
 
-    public Palette createLocalPalette(ListTag tag) {
+    public LocalPalette createLocalPalette(ListTag tag) {
         return new LocalPalette(this, tag);
     }
 
@@ -33,8 +33,14 @@ public class Registry {
         return namesToBlocks.getOrDefault(name, Block.AIR);
     }
 
-    public BlockState getState(String state) {
-        return namesToStates.getOrDefault(state, BlockState.AIR);
+    public void iterateStates(Consumer<BlockState> consumer) {
+        for (Block block : namesToBlocks.values()) {
+            block.forEach((i, s) -> consumer.accept(s));
+        }
+    }
+
+    public BlockState matchState(BlockState in) {
+        return namesToStates.getOrDefault(in.toString(), BlockState.AIR);
     }
 
     public BlockState parseState(CompoundTag tag) {
@@ -48,6 +54,10 @@ public class Registry {
     }
 
     void register(Block block) {
+        if (block.getId().equals(Block.AIR.getId())) {
+            return;
+        }
+
         namesToBlocks.put(block.getId(), block);
         block.forEach((i, s) -> namesToStates.put(s.toString(), s));
     }

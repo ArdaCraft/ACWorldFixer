@@ -64,7 +64,7 @@ public class Matcher {
         String name = input.substring(0, end);
         Block block = world.getRegistry().getBlock(name);
 
-        if (end + 1 < input.length()) {
+        if (end + 2 < input.length()) {
             ImmutableMap.Builder<String, Object> builder = ImmutableMap.builder();
             for (int start = end + 1; start < input.length(); start = end) {
                 end = input.indexOf('=', start);

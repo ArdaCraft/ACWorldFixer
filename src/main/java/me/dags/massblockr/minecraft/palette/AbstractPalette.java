@@ -28,8 +28,7 @@ public abstract class AbstractPalette implements Palette {
         Integer id = stateToIds.get(state);
         if (id == null) {
             id = createID();
-            stateToIds.put(state, id);
-            idToStates.put(id, state);
+            register(id, state);
         }
         return id;
     }

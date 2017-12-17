@@ -68,6 +68,13 @@ public class Mapper {
             this.worldOut = worldOut;
         }
 
+        public Builder map(BlockState in, BlockState out) {
+            if (visited.add(in)) {
+                builder.put(in, out);
+            }
+            return this;
+        }
+
         public Builder map(String inputString, String outputString) {
             Merger merger = Merger.of(worldIn, inputString, worldOut, outputString);
             merger.getMatcher().getBlock().forEach((i, input) -> {
@@ -77,10 +84,7 @@ public class Mapper {
                         System.out.printf("Unable to merge state: %s with merger: %s\n", input, merger);
                         return;
                     }
-
-                    if (visited.add(input)) {
-                        builder.put(input, output.get());
-                    }
+                    map(input, output.get());
                 }
             });
             return this;

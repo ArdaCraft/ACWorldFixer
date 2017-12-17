@@ -13,8 +13,6 @@ import java.util.Map;
  */
 public interface Chunk extends VolumeInput, VolumeOutput {
 
-    int SECTION_AREA = 16 * 16;
-
     CompoundTag getTag();
 
     int getX();
@@ -50,13 +48,13 @@ public interface Chunk extends VolumeInput, VolumeOutput {
         return x | ((z | ((y & 0xF) << 4)) << 4);
     }
 
-    static void shallowCopy(CompoundTag in, CompoundTag out) {
+    static void copy(CompoundTag in, CompoundTag out) {
         if (in == out) {
             return;
         }
 
         for (Map.Entry<String, Tag> entry : in.getValue().entrySet()) {
-            if (entry.getKey().equals("Level")) {
+            if (out.getValue().containsKey(entry.getKey())) {
                 continue;
             }
             out.setTag(entry.getKey(), entry.getValue());
@@ -66,7 +64,7 @@ public interface Chunk extends VolumeInput, VolumeOutput {
         out = (CompoundTag) out.getTag("Level");
 
         for (Map.Entry<String, Tag> entry : in.getValue().entrySet()) {
-            if (entry.getKey().equals("Sections")) {
+            if (out.getValue().containsKey(entry.getKey())) {
                 continue;
             }
             out.setTag(entry.getKey(), entry.getValue());
@@ -76,10 +74,9 @@ public interface Chunk extends VolumeInput, VolumeOutput {
         ListTag sectionsOut = (ListTag) out.getTag("Sections");
         for (int i = 0; i < sectionsIn.getValue().size(); i++) {
             CompoundTag sectionIn = (CompoundTag) sectionsIn.getValue().get(i);
-            CompoundTag sectionUut = (CompoundTag) sectionsOut.getValue().get(i);
-            sectionUut.setTag("Y", sectionIn.getTag("Y"));
-            sectionUut.setTag("BlockLight", sectionIn.getTag("BlockLight"));
-            sectionUut.setTag("SkyLight", sectionIn.getTag("SkyLight"));
+            CompoundTag sectionOut = (CompoundTag) sectionsOut.getValue().get(i);
+            sectionOut.setTag("BlockLight", sectionIn.getTag("BlockLight"));
+            sectionOut.setTag("SkyLight", sectionIn.getTag("SkyLight"));
         }
     }
 }

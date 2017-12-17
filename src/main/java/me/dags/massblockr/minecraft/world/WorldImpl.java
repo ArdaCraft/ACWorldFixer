@@ -17,24 +17,28 @@ import java.util.List;
 /**
  * @author dags <dags@dags.me>
  */
-public class LegacyWorld implements World {
+public class WorldImpl implements World {
 
+    private final int schema;
     private final File worldDir;
     private final Registry registry;
     private final List<Dimension> dimensions;
 
-    public LegacyWorld(WorldOptions options) throws IOException {
+    WorldImpl(WorldOptions options, int schema) throws IOException {
         options.validate();
+        this.schema = schema;
         this.worldDir = options.getDirectory();
         this.registry = Loader.load(options.getRegistryStream());
-        ListTag ids = loadIdRegistry(options.getLevelDataStream());
-        this.registry.getGlobalPalette().load(ids);
         this.dimensions = World.findDimensions(this);
+        if (schema == World.LEGACY_SCHEMA) {
+            ListTag ids = loadIdRegistry(options.getLevelDataStream());
+            this.registry.getGlobalPalette().load(ids);
+        }
     }
 
     @Override
     public int getSchema() {
-        return World.LEGACY_SCHEMA;
+        return schema;
     }
 
     @Override

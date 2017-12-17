@@ -2,12 +2,9 @@ package me.dags.massblockr.minecraft.world.volume;
 
 import me.dags.massblockr.jnbt.CompoundTag;
 import me.dags.massblockr.minecraft.block.BlockState;
+import me.dags.massblockr.minecraft.block.Mapper;
 import me.dags.massblockr.minecraft.palette.Palette;
-import me.dags.massblockr.minecraft.world.World;
-import me.dags.massblockr.minecraft.world.chunk.Chunk;
-import me.dags.massblockr.minecraft.world.chunk.LegacyChunk;
-import me.dags.massblockr.minecraft.world.chunk.NewChunk;
-import me.dags.massblockr.minecraft.world.schematic.Schematic;
+import me.dags.massblockr.util.StatCounters;
 
 /**
  * @author dags <dags@dags.me>
@@ -28,6 +25,26 @@ public class VolumeWorker<T extends VolumeInput & VolumeOutput> implements Volum
 
     public T getOutput() {
         return output;
+    }
+
+    public VolumeWorker<T> apply(Mapper mapper) {
+        try {
+            for (int section = 0; section < getSectionCount(); section++) {
+                for (int block = 0; block < getSectionSize(); block++) {
+                    BlockState in = getState(section, block);
+                    BlockState out = mapper.map(in);
+                    setState(section, block, out);
+
+                    StatCounters.blockVisits.incrementAndGet();
+                    if (in != out) {
+                        StatCounters.blockChanges.incrementAndGet();
+                    }
+                }
+            }
+        } finally {
+            StatCounters.chunkVisits.incrementAndGet();
+        }
+        return this;
     }
 
     @Override
@@ -83,20 +100,5 @@ public class VolumeWorker<T extends VolumeInput & VolumeOutput> implements Volum
     @Override
     public BlockState getState(int sectionIndex, int blockIndex) {
         return getInput().getState(sectionIndex, blockIndex);
-    }
-
-    public static VolumeWorker<Chunk> newChunkWorker(World worldOut, Chunk chunkIn) {
-        switch (worldOut.getSchema()) {
-            case World.LEGACY_SCHEMA:
-                return new VolumeWorker<>(chunkIn, LegacyChunk.createNewChunk(worldOut, chunkIn));
-            case World.FUTURE_SCHEMA:
-                return new VolumeWorker<>(chunkIn, NewChunk.createNewChunk(worldOut, chunkIn));
-            default:
-                return null;
-        }
-    }
-
-    public static VolumeWorker<Schematic> newSchemWorker(World worldOut, Schematic schemIn) {
-        return null;
     }
 }
