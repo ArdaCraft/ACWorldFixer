@@ -30,7 +30,7 @@ public class WorldImpl implements World {
         this.level = level;
         this.schema = level.getSchema();
         this.worldDir = options.getDirectory();
-        this.registry = Loader.load(level, options.getRegistry());
+        this.registry = Loader.load(level, options);
         this.dimensions = World.findDimensions(this);
         if (level.getSchema() == World.PRE_1_13_SCHEMA) {
             loadGlobalRegistry();
