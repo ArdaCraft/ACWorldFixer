@@ -7,6 +7,7 @@ import me.dags.massblockr.minecraft.block.Block;
 import me.dags.massblockr.minecraft.block.BlockState;
 import me.dags.massblockr.minecraft.world.Level;
 import me.dags.massblockr.minecraft.world.World;
+import me.dags.massblockr.minecraft.world.WorldOptions;
 
 import java.io.*;
 import java.util.LinkedList;
@@ -19,14 +20,23 @@ import java.util.function.BiFunction;
  */
 public class Loader {
 
-    public static Registry load(Level level, File customRegistry) throws IOException {
+    public static Registry load(Level level, WorldOptions options) throws IOException {
+        File customRegistry = options.getRegistry();
+
+        // no registry specified
         if (customRegistry == null) {
-            String registry = String.format("/registry/%s.json", level.getMainVersion());
-            try (InputStream inputStream = Loader.class.getResourceAsStream(registry)) {
-                if (inputStream == null) {
-                    throw new FileNotFoundException("Registry does not exist for version: " + level.getVersionName());
+            // allow registry to packaged in the root of the world dir
+            customRegistry = new File(options.getDirectory(), "registry.json");
+
+            if (!customRegistry.exists()) {
+                // use the built-in registry for the mc version
+                String registry = String.format("/registry/%s.json", level.getMainVersion());
+                try (InputStream inputStream = Loader.class.getResourceAsStream(registry)) {
+                    if (inputStream == null) {
+                        throw new FileNotFoundException("Registry does not exist for version: " + level.getVersionName());
+                    }
+                    return load(inputStream);
                 }
-                return load(inputStream);
             }
         }
 
