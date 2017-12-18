@@ -1,27 +1,27 @@
 package me.dags.massblockr.client.headless;
 
+import com.google.common.base.Preconditions;
 import me.dags.massblockr.App;
+import me.dags.massblockr.ConverterOptions;
 import me.dags.massblockr.client.Client;
-import me.dags.massblockr.client.Options;
 import me.dags.massblockr.util.Flags;
-
-import java.io.File;
 
 /**
  * @author dags <dags@dags.me>
  */
 public class HeadlessApp implements App {
 
-    private static final String TARGET_WORLD = "world";
+    private static final String WORLD_IN = "worldIn";
+    private static final String WORLD_OUT = "worldOut";
+    private static final String REGISTRY_IN = "regIn";
+    private static final String REGISTRY_OUT = "regOut";
     private static final String CUSTOM_LEVEL = "level";
     private static final String THREAD_COUNT = "cores";
-    private static final String REMAP = "remap";
-    private static final String REMAP_ONLY = "remapOnly";
     private static final String SCHEMS_ONLY = "schemOnly";
 
     @Override
-    public Client newClient(Options options) {
-        return new HeadlessClient(options.threads);
+    public Client newClient(ConverterOptions options) {
+        return new HeadlessClient(options.threadCount);
     }
 
     @Override
@@ -39,39 +39,22 @@ public class HeadlessApp implements App {
         }
 
         Flags flags = Flags.parse(args);
-        if (!flags.containsKey(TARGET_WORLD)) {
-            System.out.printf("World directory required: --%s 'path/to/world'\n", TARGET_WORLD);
+        if (!flags.containsKey(WORLD_IN)) {
+            System.out.printf("World directory required: --%s 'path/to/world'\n", WORLD_IN);
             return;
         }
 
-        Options options = new Options();
+        ConverterOptions options = new ConverterOptions();
+        options.worldIn = flags.getOrDefault(WORLD_IN, "");
+        options.worldOut = flags.getOrDefault(WORLD_OUT, "");
+        options.registryIn = flags.getOrDefault(REGISTRY_IN, "");
+        options.registryOut = flags.getOrDefault(REGISTRY_OUT, "");
+        options.levelOut = flags.getOrDefault(CUSTOM_LEVEL, "");
         options.schemsOnly = flags.getFlag(SCHEMS_ONLY, Boolean::new, false);
-        options.remapOnly = flags.getFlag(REMAP_ONLY, Boolean::new, false);
-        options.remap = options.remapOnly || flags.getFlag(REMAP, Boolean::new, false);
-        options.threads = flags.getFlag(THREAD_COUNT, Integer::new, Runtime.getRuntime().availableProcessors());
-        options.world = new File(flags.get(TARGET_WORLD)).getAbsoluteFile();
-        options.level = flags.getFlag(CUSTOM_LEVEL, s -> new File(s).getAbsoluteFile(), null);
+        options.threadCount = flags.getFlag(THREAD_COUNT, Integer::new, Runtime.getRuntime().availableProcessors());
 
-        checkWorld(options.world);
-        checkLevel(options.level);
-
+        Preconditions.checkState(options.worldIn.isEmpty(), "No world directory provided: --worldIn");
         submit(options);
-    }
-
-    private void checkWorld(File file) {
-        if (file.exists()) {
-            if (!new File(file, "level.dat").exists()) {
-                throw new IllegalArgumentException("The provided world mustDir does not contain a level.dat file");
-            }
-        } else {
-            throw new IllegalArgumentException("The provided world mustDir does not exist: " + file);
-        }
-    }
-
-    private void checkLevel(File file) {
-        if (file != null && !file.exists()) {
-            throw new IllegalArgumentException("The provided custom level.dat does not exist: " + file);
-        }
     }
 
     private void printHelp() {
@@ -81,17 +64,16 @@ public class HeadlessApp implements App {
 
         System.out.println();
         System.out.println("Required:");
-        System.out.println("--world 'mustDir/path'   - the world directory");
+        System.out.println("--worldIn 'dir/path'   - the world directory");
 
         System.out.println();
         System.out.println("Optional:");
-        System.out.println("--level 'level.dat'  - use a custom level.dat file    - default = internal");
-        System.out.println("--cores #integer     - the number of threads to use   - default = number of cores");
-        System.out.println("--remap #boolean     - fix mismatching block ids      - default = false");
-        System.out.println(" -remap                                               - value   = true");
-        System.out.println("--remapOnly #boolean - only fix mismatching block ids - default = false");
-        System.out.println(" -remapOnly                                           - value   = false");
-        System.out.println("--schemOnly #boolean - only convert schematics        - default = false");
-        System.out.println(" -schemOnly          - as above                       - value   = false");
+        System.out.println("--worldOut 'output'      - set a specific output dir        - default = -converted");
+        System.out.println("--regIn 'registry.json'  - provide a registry for worldIn   - default = internal");
+        System.out.println("--regOut 'registry.json' - provide a registry for worldOut  - default = internal");
+        System.out.println("--level 'level.dat'      - provide a level.dat for worldOut - default = internal");
+        System.out.println("--threads #integer       - the number of threads to use     - default = number of cores");
+        System.out.println("--schemOnly #boolean     - only convert schematics          - default = false");
+        System.out.println(" -schemOnly              - as above                         - value   = false");
     }
 }

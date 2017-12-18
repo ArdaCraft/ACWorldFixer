@@ -123,5 +123,28 @@ public final class CompoundTag extends Tag {
         return clone;
     }
 
+    public static Tag getTag(CompoundTag parent, String... path) {
+        Tag result = parent;
+
+        for (String key : path) {
+            if (parent == null) {
+                return null;
+            }
+
+            result = parent.getTag(key);
+            if (result == null) {
+                return null;
+            }
+
+            if (result instanceof CompoundTag) {
+                parent = (CompoundTag) result;
+            } else {
+                parent = null;
+            }
+        }
+
+        return result;
+    }
+
     private static final long serialVersionUID = 1L;
 }

@@ -1,5 +1,6 @@
 package me.dags.massblockr.util;
 
+import java.io.PrintStream;
 import java.text.NumberFormat;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -33,6 +34,19 @@ public class StatCounters {
 
     public static void punchOut() {
         finish = System.currentTimeMillis();
+    }
+
+    public static void printEta(PrintStream print) {
+        float timeElapsedSecs = (System.currentTimeMillis() - start) / 1000F;
+        int progress = globalTasksComplete.get();
+        int total = globalTaskTotal.get();
+        float tps = progress / timeElapsedSecs;
+        int remaining = total - progress;
+        int timeRemainingSecs = Math.round(tps * remaining);
+        int hrs = timeRemainingSecs / 3600;
+        int mins = timeRemainingSecs / 60;
+        int secs = timeRemainingSecs % 60;
+        print.printf("%02dh:%02dm:%02ds", hrs, mins, secs);
     }
 
     public static String numFormat(Number in) {

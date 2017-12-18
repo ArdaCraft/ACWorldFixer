@@ -20,8 +20,9 @@ import java.util.List;
  */
 public interface World {
 
-    int LEGACY_SCHEMA = 0;
-    int FUTURE_SCHEMA = 1;
+    int UNKNOWN_SCHEMA = -1;
+    int PRE_1_13_SCHEMA = 0;
+    int POST_1_13_SCHEMA = 1;
 
     int getSchema();
 
@@ -43,20 +44,20 @@ public interface World {
 
     default Chunk readChunk(int x, int z, CompoundTag data) {
         switch (getSchema()) {
-            case World.LEGACY_SCHEMA:
+            case World.PRE_1_13_SCHEMA:
                 return new LegacyChunk(this, x, z, data);
-            case World.FUTURE_SCHEMA:
+            case World.POST_1_13_SCHEMA:
                 return new NewChunk(this, x, z, data);
             default:
                 throw new IllegalStateException("Invalid world schema: " + getSchema());
         }
     }
 
-    default VolumeWorker<Chunk> chunkWorker(Chunk chunkIn) {
+    default VolumeWorker<Chunk> newChunkWorker(Chunk chunkIn) {
         switch (getSchema()) {
-            case World.LEGACY_SCHEMA:
+            case World.PRE_1_13_SCHEMA:
                 return new VolumeWorker<>(chunkIn, LegacyChunk.createNewChunk(this, chunkIn));
-            case World.FUTURE_SCHEMA:
+            case World.POST_1_13_SCHEMA:
                 return new VolumeWorker<>(chunkIn, NewChunk.createNewChunk(this, chunkIn));
             default:
                 return null;
@@ -81,7 +82,11 @@ public interface World {
         return builder.build();
     }
 
-    static World of(WorldOptions options, int schema) throws IOException {
-        return new WorldImpl(options, schema);
+    static World of(WorldOptions options) throws IOException {
+        Level level = new Level(options.getLevelDataStream());
+        if (level.getSchema() == World.UNKNOWN_SCHEMA) {
+            throw new IllegalStateException("level.dat file has invalid schema version, world: " + options.getDirectory());
+        }
+        return new WorldImpl(options, level);
     }
 }

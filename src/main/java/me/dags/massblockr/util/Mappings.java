@@ -1,5 +1,6 @@
 package me.dags.massblockr.util;
 
+import me.dags.massblockr.ConverterOptions;
 import me.dags.massblockr.minecraft.block.Mapper;
 import me.dags.massblockr.minecraft.world.World;
 
@@ -10,9 +11,15 @@ import java.io.*;
  */
 public class Mappings {
 
-    public static Mapper load(World worldIn, World worldOut, File file) throws IOException {
-        try (InputStream inputStream = new BufferedInputStream(new FileInputStream(file))) {
-            return load(worldIn, worldOut, inputStream);
+    public static Mapper load(World worldIn, World worldOut, ConverterOptions options) throws IOException {
+        if (options.mappings.isEmpty()) {
+            try (InputStream inputStream = Mappings.class.getResourceAsStream("/mappings.txt"))  {
+                return load(worldIn, worldOut, inputStream);
+            }
+        } else {
+            try (InputStream inputStream = new BufferedInputStream(new FileInputStream(options.mappings))) {
+                return load(worldIn, worldOut, inputStream);
+            }
         }
     }
 

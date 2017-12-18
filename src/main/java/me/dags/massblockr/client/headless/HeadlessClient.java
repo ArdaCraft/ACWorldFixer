@@ -37,11 +37,19 @@ public class HeadlessClient implements Client {
     public void update() {
         PrintStream stream = System.out;
         stream.append('\r');
+
+        // overall conversion progress
         stream.append("Overall");
         overallProgress.write(stream);
-        stream.append(' ');
-        stream.append(dimension.get()).append(':').append(' ');
+
+        // dimension conversion progress
+        stream.append(' ').append(dimension.get()).append(':').append(' ');
         dimProgress.write(stream);
+
+        // time remaining
+        stream.append(' ').append('(');
+        StatCounters.printEta(stream);
+        stream.append(')');
     }
 
     @Override

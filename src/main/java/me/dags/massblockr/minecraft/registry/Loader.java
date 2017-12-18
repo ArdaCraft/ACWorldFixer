@@ -48,7 +48,7 @@ public class Loader {
 
     private static BiFunction<String, JsonElement, Block> getFactory(int version) {
         switch (version) {
-            case World.LEGACY_SCHEMA:
+            case World.PRE_1_13_SCHEMA:
                 return (name, properties) -> {
                     List<BlockState.Builder> states = new LinkedList<>();
                     if (properties.getAsJsonObject().size() == 0) {
@@ -63,7 +63,7 @@ public class Loader {
                     }
                     return new Block(name, states);
                 };
-            case World.FUTURE_SCHEMA:
+            case World.POST_1_13_SCHEMA:
                 return (name, properties) -> {
                     List<BlockState.Builder> states = new LinkedList<>();
                     if (properties.getAsJsonObject().size() == 0) {

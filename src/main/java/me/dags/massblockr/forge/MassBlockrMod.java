@@ -45,7 +45,7 @@ public class MassBlockrMod {
     }
 
     private static void writeSchema(JsonWriter writer) throws IOException {
-        writer.name("schema").value(World.LEGACY_SCHEMA);
+        writer.name("schema").value(World.PRE_1_13_SCHEMA);
     }
 
     private static void writeMods(JsonWriter writer) throws IOException {

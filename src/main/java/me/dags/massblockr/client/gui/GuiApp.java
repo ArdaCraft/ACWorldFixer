@@ -1,8 +1,8 @@
 package me.dags.massblockr.client.gui;
 
 import me.dags.massblockr.App;
+import me.dags.massblockr.ConverterOptions;
 import me.dags.massblockr.client.Client;
-import me.dags.massblockr.client.Options;
 
 import javax.swing.*;
 import java.awt.*;
@@ -23,8 +23,8 @@ public class GuiApp implements App {
     private final JFrame frame = new JFrame();
 
     @Override
-    public Client newClient(Options options) {
-        return new GuiClient(options.threads);
+    public Client newClient(ConverterOptions options) {
+        return new GuiClient(options.threadCount);
     }
 
     @Override
@@ -48,14 +48,14 @@ public class GuiApp implements App {
         frame.setTitle("World Converter");
         frame.setMinimumSize(new Dimension(300, 100));
 
-        selectWorld(frame, new Options());
+        selectWorld(frame, new ConverterOptions());
 
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 
-    private void selectWorld(JFrame frame, Options options) {
+    private void selectWorld(JFrame frame, ConverterOptions options) {
         JPanel root = root();
 
         JButton choose = new JButton("Choose");
@@ -66,7 +66,7 @@ public class GuiApp implements App {
             return level.exists();
         };
         Consumer<File> action = file -> {
-            options.world = file;
+            options.worldIn = file.getAbsolutePath();
             selectLevel(frame, options);
         };
         choose.addActionListener(e -> chooser(root, title, error, JFileChooser.DIRECTORIES_ONLY, predicate, action));
@@ -78,7 +78,7 @@ public class GuiApp implements App {
         frame.pack();
     }
 
-    private void selectLevel(JFrame frame, Options options) {
+    private void selectLevel(JFrame frame, ConverterOptions options) {
         JPanel root = root();
         root.setToolTipText(tooltips(
                 "Choose a custom level.dat file to be used in the converted world"
@@ -89,7 +89,7 @@ public class GuiApp implements App {
         String error = "%s does not appear to be a valid level.dat file";
         Predicate<File> predicate = file -> file.getName().equals("level.dat");
         Consumer<File> action = file -> {
-            options.level = file;
+            options.levelOut = file.getAbsolutePath();
             selectOptions(frame, options);
         };
         choose.addActionListener(e -> chooser(root, title, error, JFileChooser.FILES_ONLY, predicate, action));
@@ -106,7 +106,7 @@ public class GuiApp implements App {
         frame.pack();
     }
 
-    private void selectOptions(JFrame frame, Options options) {
+    private void selectOptions(JFrame frame, ConverterOptions options) {
         JPanel threads = root();
         threads.setToolTipText(tooltips(
                 "Set the maximum number of threads the converter can use.",
@@ -127,27 +127,8 @@ public class GuiApp implements App {
 
         JPanel autoRemap = root();
 
-        JCheckBox remap = new JCheckBox("Auto-Remap");
-        remap.setToolTipText(tooltips("Attempt to remap blocks with mismatching block ids."));
-        remap.setSelected(true);
-        autoRemap.add(remap);
-
-        JCheckBox onlyRemap = new JCheckBox("Remap Only");
-        onlyRemap.setToolTipText(tooltips("Only remap mis-matching block ids."));
-        onlyRemap.setSelected(false);
-        onlyRemap.setEnabled(true);
-        autoRemap.add(onlyRemap);
-
-        remap.addActionListener(actionEvent -> {
-            onlyRemap.setEnabled(remap.isSelected());
-            if (!onlyRemap.isEnabled()) {
-                onlyRemap.setSelected(false);
-            }
-        });
-
         JCheckBox onlySchems = new JCheckBox("Schematics Only");
         onlySchems.setToolTipText(tooltips("Only convert schematics ignoring any volume files."));
-        onlyRemap.setSelected(false);
         autoRemap.add(onlySchems);
 
         JPanel buttons = root();
@@ -156,9 +137,7 @@ public class GuiApp implements App {
 
         JButton start = new JButton("Start");
         start.addActionListener(e -> {
-            options.threads = threadSlider.getValue();
-            options.remap = remap.isSelected();
-            options.remapOnly = options.remap && onlyRemap.isSelected();
+            options.threadCount = threadSlider.getValue();
             options.schemsOnly = onlySchems.isSelected();
             start.setEnabled(false);
             submit(options);
