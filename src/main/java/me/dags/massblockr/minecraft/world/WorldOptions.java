@@ -1,6 +1,9 @@
 package me.dags.massblockr.minecraft.world;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 
 /**
  * @author dags <dags@dags.me>
@@ -36,11 +39,8 @@ public class WorldOptions {
         return directory;
     }
 
-    public InputStream getRegistryStream() throws FileNotFoundException {
-        if (registry == null || !registry.exists()) {
-            return WorldOptions.class.getResourceAsStream("/registry.json");
-        }
-        return new FileInputStream(registry);
+    public File getRegistry() {
+        return registry;
     }
 
     public InputStream getLevelDataStream() throws IOException {
@@ -63,7 +63,7 @@ public class WorldOptions {
         }
 
         if (registry != null && !registry.exists()) {
-            throw new IllegalStateException("Invalid registry file: " + registry);
+            throw new IllegalStateException("Invalid states file: " + registry);
         }
     }
 }

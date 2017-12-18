@@ -5,12 +5,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import me.dags.massblockr.minecraft.block.Block;
 import me.dags.massblockr.minecraft.block.BlockState;
+import me.dags.massblockr.minecraft.world.Level;
 import me.dags.massblockr.minecraft.world.World;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
+import java.io.*;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -21,14 +19,30 @@ import java.util.function.BiFunction;
  */
 public class Loader {
 
-    public static Registry load(InputStream inputStream) throws IOException {
-        Registry registry = new Registry();
+    public static Registry load(Level level, File customRegistry) throws IOException {
+        if (customRegistry == null) {
+            String registry = String.format("/registry/%s.json", level.getMainVersion());
+            try (InputStream inputStream = Loader.class.getResourceAsStream(registry)) {
+                if (inputStream == null) {
+                    throw new FileNotFoundException("Registry does not exist for version: " + level.getVersionName());
+                }
+                return load(inputStream);
+            }
+        }
 
+        try (FileInputStream inputStream = new FileInputStream(customRegistry)) {
+            return load(inputStream);
+        }
+    }
+
+    public static Registry load(InputStream inputStream) throws IOException {
         try (Reader reader = new InputStreamReader(inputStream)) {
             JsonElement element = new JsonParser().parse(reader);
             if (element.isJsonObject()) {
                 JsonObject root = element.getAsJsonObject();
                 if (root.has("schema") && root.has("registry")) {
+                    Registry registry = new Registry();
+
                     int version = root.get("schema").getAsInt();
                     JsonObject blocks = root.getAsJsonObject("registry");
                     BiFunction<String, JsonElement, Block> factory = getFactory(version);
@@ -43,7 +57,7 @@ public class Loader {
             }
         }
 
-        throw new IllegalArgumentException("Invalid registry!");
+        throw new IllegalArgumentException("Invalid states!");
     }
 
     private static BiFunction<String, JsonElement, Block> getFactory(int version) {

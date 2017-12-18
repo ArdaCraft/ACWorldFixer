@@ -18,15 +18,17 @@ public class FileUtils {
     public static final int VERSION_GZIP = 1;
     public static final int VERSION_DEFLATE = 2;
 
+    public static File mustDir(File dir) {
+        dir.mkdirs();
+        return dir;
+    }
+
     public static File mustDir(File parent, String name) {
-        File file = new File(parent, name);
-        file.mkdirs();
-        return file;
+        return mustDir(new File(parent, name));
     }
 
     public static File mustFile(File parent, String name) {
-        parent.mkdirs();
-        return new File(parent, name);
+        return new File(mustDir(parent), name);
     }
 
     public static InputStream bufferedIn(File file) throws IOException {

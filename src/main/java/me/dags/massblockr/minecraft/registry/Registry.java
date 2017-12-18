@@ -10,7 +10,6 @@ import me.dags.massblockr.minecraft.palette.LocalPalette;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.function.Consumer;
 
 /**
  * @author dags <dags@dags.me>
@@ -18,7 +17,6 @@ import java.util.function.Consumer;
 public class Registry {
 
     private final Map<String, Block> namesToBlocks = new HashMap<>();
-    private final Map<String, BlockState> namesToStates = new HashMap<>();
     private final GlobalPalette globalPalette = new GlobalPalette(this);
 
     public LocalPalette createLocalPalette(ListTag tag) {
@@ -31,16 +29,6 @@ public class Registry {
 
     public Block getBlock(String name) {
         return namesToBlocks.getOrDefault(name, Block.AIR);
-    }
-
-    public void iterateStates(Consumer<BlockState> consumer) {
-        for (Block block : namesToBlocks.values()) {
-            block.forEach((i, s) -> consumer.accept(s));
-        }
-    }
-
-    public BlockState matchState(BlockState in) {
-        return namesToStates.getOrDefault(in.toString(), BlockState.AIR);
     }
 
     public BlockState parseState(CompoundTag tag) {
@@ -59,6 +47,5 @@ public class Registry {
         }
 
         namesToBlocks.put(block.getId(), block);
-        block.forEach((i, s) -> namesToStates.put(s.toString(), s));
     }
 }

@@ -18,6 +18,7 @@ public class Level {
 
     private final int id;
     private final String version;
+    private final String mainVersion;
     private final CompoundTag root;
 
     public Level(File file) throws IOException {
@@ -36,6 +37,11 @@ public class Level {
         this.root = root;
         this.id = id.getValue();
         this.version = name.getValue();
+
+        int first = version.indexOf('.');
+        int second = version.indexOf('.', first);
+        second = second < 0 ? version.length() : second;
+        this.mainVersion = version.substring(0, second);
     }
 
     public int getSchema() {
@@ -54,6 +60,10 @@ public class Level {
 
     public String getVersionName() {
         return version;
+    }
+
+    public String getMainVersion() {
+        return mainVersion;
     }
 
     public CompoundTag getRoot() {
