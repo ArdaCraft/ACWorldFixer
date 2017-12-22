@@ -60,16 +60,13 @@ public class Schematic implements Extent {
 
     public void write() throws IOException {
         byte[] blocks = new byte[this.blocks.length];
-        byte[] adds = null;
+        byte[] adds = new byte[(blocks.length >> 1) + 1]; // nibbles
         byte[] data = new byte[blocks.length];
 
         for (int i = 0; i < blocks.length; i++) {
             int id = this.blocks[i];
             byte meta = this.data[i];
             if (id > 255) {
-                if (adds == null) {
-                    adds = new byte[(blocks.length >> 1) + 1];
-                }
                 if ((i & 1) == 0) {
                     adds[i >> 1] = (byte) (adds[i >> 1] & 0xF0 | (id >> 8) & 0xF);
                 } else {
@@ -81,12 +78,8 @@ public class Schematic implements Extent {
         }
 
         root.setTag("Blocks", new ByteArrayTag("Blocks", blocks));
+        root.setTag("AddBlocks", new ByteArrayTag("AddBlocks", adds)); // wp expects this tag even if every value is zero
         root.setTag("Data", new ByteArrayTag("Data", data));
-        if (adds != null) {
-            root.setTag("AddBlocks", new ByteArrayTag("AddBlocks", adds));
-        } else {
-            root.setTag("Data", null);
-        }
 
         try (NBTOutputStream outputStream = new NBTOutputStream(new GZIPOutputStream(new FileOutputStream(file)))) {
             outputStream.writeTag(root);
