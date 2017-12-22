@@ -142,13 +142,17 @@ public class World {
             }
         }
 
-        Collections.sort(conversions);
-        conversions.forEach(System.out::println);
+        if (conversions.size() == 0) {
+            System.out.println("No conversions to run!");
+        } else {
+            Collections.sort(conversions);
+            conversions.forEach(System.out::println);
+        }
 
         Replacer[][] replacers = new Replacer[max + 1][];
-        filter.entrySet().forEach(e -> {
-            List<Replacer> list = filter.get(e.getKey());
-            replacers[e.getKey()] = list.toArray(new Replacer[list.size()]);
+        filter.forEach((key, value) -> {
+            List<Replacer> list = filter.get(key);
+            replacers[key] = list.toArray(new Replacer[list.size()]);
         });
 
         return replacers;
