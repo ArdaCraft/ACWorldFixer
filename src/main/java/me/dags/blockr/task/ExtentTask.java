@@ -1,12 +1,14 @@
 package me.dags.blockr.task;
 
-import me.dags.blockr.replacer.Replacer;
-import org.pepsoft.minecraft.Extent;
-
 import java.io.File;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.util.concurrent.Callable;
+import me.dags.blockr.replacer.Replacer;
+import org.jnbt.CompoundTag;
+import org.jnbt.StringTag;
+import org.pepsoft.minecraft.Entity;
+import org.pepsoft.minecraft.Extent;
 
 /**
  * @author dags <dags@dags.me>
@@ -57,6 +59,8 @@ public abstract class ExtentTask<T extends Extent> implements Runnable, Callable
             processBlocks(extent);
         }
 
+        processEntities(extent);
+
         ChangeStats.incExtentCount();
     }
 
@@ -81,6 +85,28 @@ public abstract class ExtentTask<T extends Extent> implements Runnable, Callable
                     }
                 }
             }
+        }
+    }
+
+    public void processEntities(T extent) {
+        for (Entity entity : extent.getEntities()) {
+            String id = entity.getId();
+
+            if (!id.startsWith("conquest.painting")) {
+                continue;
+            }
+
+            CompoundTag tag = (CompoundTag) entity.toNBT();
+            String type = id.substring("conquest.".length());
+
+            // TODO check that 1.12.2 entities are id'd as follows
+            tag.setTag("id", new StringTag("id", "conquest.painting"));
+            tag.setTag("ArtType", new StringTag("ArtType", type));
+
+            // ArtID has not changed between 1.10.2 and 1.12.2
+//            tag.setTag("ArtID", new IntTag("ArtID", art.index()));
+
+            ChangeStats.incEntityChanges();
         }
     }
 }
